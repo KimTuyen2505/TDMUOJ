@@ -1,0 +1,526 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TDMUOJModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Account">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="username" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="password" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="email" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="255" />
+    <Property Name="avatar" Type="varchar" MaxLength="255" />
+    <Property Name="role" Type="varchar" MaxLength="50" />
+    <Property Name="rating" Type="int" />
+    <Property Name="maxRating" Type="int" />
+    <Property Name="numberOfAccepted" Type="int" />
+  </EntityType>
+  <EntityType Name="Contest">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="title" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="description" Type="nvarchar(max)" />
+    <Property Name="startTime" Type="datetime" Nullable="false" />
+    <Property Name="endTime" Type="datetime" Nullable="false" />
+    <Property Name="rules" Type="nvarchar(max)" />
+    <Property Name="virtualMode" Type="int" />
+  </EntityType>
+  <EntityType Name="ContestOrganizer">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="contestId" Type="int" Nullable="false" />
+    <Property Name="organizerId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ContestParticipant">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="contestId" Type="int" Nullable="false" />
+    <Property Name="memberId" Type="int" Nullable="false" />
+    <Property Name="seed" Type="int" />
+    <Property Name="score" Type="int" />
+    <Property Name="penalty" Type="int" />
+    <Property Name="currentRating" Type="int" />
+    <Property Name="ratingChange" Type="int" />
+  </EntityType>
+  <EntityType Name="ContestProblem">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="contestId" Type="int" Nullable="false" />
+    <Property Name="problemId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ContestRanking">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="contestId" Type="int" Nullable="false" />
+    <Property Name="contestRanking" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Follower">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="userId" Type="int" Nullable="false" />
+    <Property Name="followerId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="News">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="title" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="content" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="authorId" Type="int" Nullable="false" />
+    <Property Name="background" Type="nvarchar(max)" />
+    <Property Name="createdAt" Type="datetime" />
+    <Property Name="updatedAt" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Problem">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="title" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="difficulty" Type="nvarchar(max)" />
+    <Property Name="timeLimit" Type="int" Nullable="false" />
+    <Property Name="memoryLimit" Type="int" Nullable="false" />
+    <Property Name="status" Type="int" />
+    <Property Name="createdBy" Type="int" Nullable="false" />
+    <Property Name="createdAt" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ProblemExample">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="problemId" Type="int" Nullable="false" />
+    <Property Name="input" Type="nvarchar(max)" />
+    <Property Name="output" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="ProblemSolved">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="problemId" Type="int" Nullable="false" />
+    <Property Name="userId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProblemTestCase">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="problemId" Type="int" Nullable="false" />
+    <Property Name="input" Type="nvarchar(max)" />
+    <Property Name="output" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="RankingContest">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="contestId" Type="int" Nullable="false" />
+    <Property Name="userId" Type="int" Nullable="false" />
+    <Property Name="score" Type="int" Nullable="false" />
+    <Property Name="rank" Type="int" />
+  </EntityType>
+  <EntityType Name="ResetPassword">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="email" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="resetToken" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="createdAt" Type="datetime" />
+    <Property Name="expiresAt" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Submission">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="problemId" Type="int" Nullable="false" />
+    <Property Name="userId" Type="int" Nullable="false" />
+    <Property Name="code" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="language" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="maxTime" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="maxMemory" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="result" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="submittedAt" Type="datetime" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Tag">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tagName" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TagProblem">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tagId" Type="int" Nullable="false" />
+    <Property Name="problemId" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__ContestOr__conte__59063A47">
+    <End Role="Contest" Type="Self.Contest" Multiplicity="1" />
+    <End Role="ContestOrganizer" Type="Self.ContestOrganizer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Contest">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ContestOrganizer">
+        <PropertyRef Name="contestId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ContestOr__organ__59FA5E80">
+    <End Role="Account" Type="Self.Account" Multiplicity="1" />
+    <End Role="ContestOrganizer" Type="Self.ContestOrganizer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ContestOrganizer">
+        <PropertyRef Name="organizerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ContestPa__conte__5FB337D6">
+    <End Role="Contest" Type="Self.Contest" Multiplicity="1" />
+    <End Role="ContestParticipant" Type="Self.ContestParticipant" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Contest">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ContestParticipant">
+        <PropertyRef Name="contestId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ContestPa__membe__60A75C0F">
+    <End Role="Account" Type="Self.Account" Multiplicity="1" />
+    <End Role="ContestParticipant" Type="Self.ContestParticipant" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ContestParticipant">
+        <PropertyRef Name="memberId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ContestPr__conte__6383C8BA">
+    <End Role="Contest" Type="Self.Contest" Multiplicity="1" />
+    <End Role="ContestProblem" Type="Self.ContestProblem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Contest">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ContestProblem">
+        <PropertyRef Name="contestId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ContestPr__probl__6477ECF3">
+    <End Role="Account" Type="Self.Account" Multiplicity="1" />
+    <End Role="ContestProblem" Type="Self.ContestProblem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ContestProblem">
+        <PropertyRef Name="problemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Follower__follow__3E52440B">
+    <End Role="Account" Type="Self.Account" Multiplicity="1" />
+    <End Role="Follower" Type="Self.Follower" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Follower">
+        <PropertyRef Name="userId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Follower__follow__3F466844">
+    <End Role="Account" Type="Self.Account" Multiplicity="1" />
+    <End Role="Follower" Type="Self.Follower" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Follower">
+        <PropertyRef Name="followerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__News__authorId__6B24EA82">
+    <End Role="Account" Type="Self.Account" Multiplicity="1" />
+    <End Role="News" Type="Self.News" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="News">
+        <PropertyRef Name="authorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Problem__created__440B1D61">
+    <End Role="Account" Type="Self.Account" Multiplicity="1" />
+    <End Role="Problem" Type="Self.Problem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Problem">
+        <PropertyRef Name="createdBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ProblemEx__probl__4D94879B">
+    <End Role="Problem" Type="Self.Problem" Multiplicity="1" />
+    <End Role="ProblemExample" Type="Self.ProblemExample" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Problem">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ProblemExample">
+        <PropertyRef Name="problemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ProblemSo__probl__46E78A0C">
+    <End Role="Problem" Type="Self.Problem" Multiplicity="1" />
+    <End Role="ProblemSolved" Type="Self.ProblemSolved" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Problem">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ProblemSolved">
+        <PropertyRef Name="problemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ProblemSo__userI__47DBAE45">
+    <End Role="Account" Type="Self.Account" Multiplicity="1" />
+    <End Role="ProblemSolved" Type="Self.ProblemSolved" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ProblemSolved">
+        <PropertyRef Name="userId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ProblemTe__probl__4AB81AF0">
+    <End Role="Problem" Type="Self.Problem" Multiplicity="1" />
+    <End Role="ProblemTestCase" Type="Self.ProblemTestCase" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Problem">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ProblemTestCase">
+        <PropertyRef Name="problemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__RankingCo__conte__6E01572D">
+    <End Role="Contest" Type="Self.Contest" Multiplicity="1" />
+    <End Role="RankingContest" Type="Self.RankingContest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Contest">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="RankingContest">
+        <PropertyRef Name="contestId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__RankingCo__userI__6EF57B66">
+    <End Role="Account" Type="Self.Account" Multiplicity="1" />
+    <End Role="RankingContest" Type="Self.RankingContest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="RankingContest">
+        <PropertyRef Name="userId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Submissio__probl__75A278F5">
+    <End Role="Problem" Type="Self.Problem" Multiplicity="1" />
+    <End Role="Submission" Type="Self.Submission" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Problem">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Submission">
+        <PropertyRef Name="problemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Submissio__userI__76969D2E">
+    <End Role="Account" Type="Self.Account" Multiplicity="1" />
+    <End Role="Submission" Type="Self.Submission" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Submission">
+        <PropertyRef Name="userId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TagProble__probl__534D60F1">
+    <End Role="Problem" Type="Self.Problem" Multiplicity="1" />
+    <End Role="TagProblem" Type="Self.TagProblem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Problem">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="TagProblem">
+        <PropertyRef Name="problemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TagProble__tagId__52593CB8">
+    <End Role="Tag" Type="Self.Tag" Multiplicity="1" />
+    <End Role="TagProblem" Type="Self.TagProblem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tag">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="TagProblem">
+        <PropertyRef Name="tagId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="TDMUOJModelStoreContainer">
+    <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Contest" EntityType="Self.Contest" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ContestOrganizer" EntityType="Self.ContestOrganizer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ContestParticipant" EntityType="Self.ContestParticipant" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ContestProblem" EntityType="Self.ContestProblem" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ContestRanking" EntityType="Self.ContestRanking" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Follower" EntityType="Self.Follower" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="News" EntityType="Self.News" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Problem" EntityType="Self.Problem" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProblemExample" EntityType="Self.ProblemExample" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProblemSolved" EntityType="Self.ProblemSolved" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProblemTestCase" EntityType="Self.ProblemTestCase" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RankingContest" EntityType="Self.RankingContest" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ResetPassword" EntityType="Self.ResetPassword" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Submission" EntityType="Self.Submission" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tag" EntityType="Self.Tag" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TagProblem" EntityType="Self.TagProblem" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__ContestOr__conte__59063A47" Association="Self.FK__ContestOr__conte__59063A47">
+      <End Role="Contest" EntitySet="Contest" />
+      <End Role="ContestOrganizer" EntitySet="ContestOrganizer" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ContestOr__organ__59FA5E80" Association="Self.FK__ContestOr__organ__59FA5E80">
+      <End Role="Account" EntitySet="Account" />
+      <End Role="ContestOrganizer" EntitySet="ContestOrganizer" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ContestPa__conte__5FB337D6" Association="Self.FK__ContestPa__conte__5FB337D6">
+      <End Role="Contest" EntitySet="Contest" />
+      <End Role="ContestParticipant" EntitySet="ContestParticipant" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ContestPa__membe__60A75C0F" Association="Self.FK__ContestPa__membe__60A75C0F">
+      <End Role="Account" EntitySet="Account" />
+      <End Role="ContestParticipant" EntitySet="ContestParticipant" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ContestPr__conte__6383C8BA" Association="Self.FK__ContestPr__conte__6383C8BA">
+      <End Role="Contest" EntitySet="Contest" />
+      <End Role="ContestProblem" EntitySet="ContestProblem" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ContestPr__probl__6477ECF3" Association="Self.FK__ContestPr__probl__6477ECF3">
+      <End Role="Account" EntitySet="Account" />
+      <End Role="ContestProblem" EntitySet="ContestProblem" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Follower__follow__3E52440B" Association="Self.FK__Follower__follow__3E52440B">
+      <End Role="Account" EntitySet="Account" />
+      <End Role="Follower" EntitySet="Follower" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Follower__follow__3F466844" Association="Self.FK__Follower__follow__3F466844">
+      <End Role="Account" EntitySet="Account" />
+      <End Role="Follower" EntitySet="Follower" />
+    </AssociationSet>
+    <AssociationSet Name="FK__News__authorId__6B24EA82" Association="Self.FK__News__authorId__6B24EA82">
+      <End Role="Account" EntitySet="Account" />
+      <End Role="News" EntitySet="News" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Problem__created__440B1D61" Association="Self.FK__Problem__created__440B1D61">
+      <End Role="Account" EntitySet="Account" />
+      <End Role="Problem" EntitySet="Problem" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ProblemEx__probl__4D94879B" Association="Self.FK__ProblemEx__probl__4D94879B">
+      <End Role="Problem" EntitySet="Problem" />
+      <End Role="ProblemExample" EntitySet="ProblemExample" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ProblemSo__probl__46E78A0C" Association="Self.FK__ProblemSo__probl__46E78A0C">
+      <End Role="Problem" EntitySet="Problem" />
+      <End Role="ProblemSolved" EntitySet="ProblemSolved" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ProblemSo__userI__47DBAE45" Association="Self.FK__ProblemSo__userI__47DBAE45">
+      <End Role="Account" EntitySet="Account" />
+      <End Role="ProblemSolved" EntitySet="ProblemSolved" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ProblemTe__probl__4AB81AF0" Association="Self.FK__ProblemTe__probl__4AB81AF0">
+      <End Role="Problem" EntitySet="Problem" />
+      <End Role="ProblemTestCase" EntitySet="ProblemTestCase" />
+    </AssociationSet>
+    <AssociationSet Name="FK__RankingCo__conte__6E01572D" Association="Self.FK__RankingCo__conte__6E01572D">
+      <End Role="Contest" EntitySet="Contest" />
+      <End Role="RankingContest" EntitySet="RankingContest" />
+    </AssociationSet>
+    <AssociationSet Name="FK__RankingCo__userI__6EF57B66" Association="Self.FK__RankingCo__userI__6EF57B66">
+      <End Role="Account" EntitySet="Account" />
+      <End Role="RankingContest" EntitySet="RankingContest" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Submissio__probl__75A278F5" Association="Self.FK__Submissio__probl__75A278F5">
+      <End Role="Problem" EntitySet="Problem" />
+      <End Role="Submission" EntitySet="Submission" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Submissio__userI__76969D2E" Association="Self.FK__Submissio__userI__76969D2E">
+      <End Role="Account" EntitySet="Account" />
+      <End Role="Submission" EntitySet="Submission" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TagProble__probl__534D60F1" Association="Self.FK__TagProble__probl__534D60F1">
+      <End Role="Problem" EntitySet="Problem" />
+      <End Role="TagProblem" EntitySet="TagProblem" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TagProble__tagId__52593CB8" Association="Self.FK__TagProble__tagId__52593CB8">
+      <End Role="Tag" EntitySet="Tag" />
+      <End Role="TagProblem" EntitySet="TagProblem" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

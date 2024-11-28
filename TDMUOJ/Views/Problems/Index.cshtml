@@ -1,0 +1,320 @@
+﻿@model IEnumerable<TDMUOJ.Models.Problem>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link rel="stylesheet" href="~/Content/css/Problems.css" />
+<div class="content-left">
+    <h1>Danh sách bài</h1>
+    <br />
+    <hr />
+    <br />
+    <div class="table">
+        <input type="text" placeholder="Tìm kiếm đề bài" oninput="problemSearch()" id="search" />
+        <div class="head-table">
+            <div class="ID">
+                <p>ID</p>
+            </div>
+            <div class="problem">
+                <p>Bài</p>
+            </div>
+            <div class="group">Nhóm</div>
+            <div class="score">Điểm</div>
+            <div class="ACpercent">% AC</div>
+            <div class="ACid"># AC</div>
+        </div>
+        @foreach (var item in Model)
+        {
+            <div class="child-table">
+                <div class="ID">
+                    <a href="@Url.Action("DetailProblem", "Problems", new {id = item.id})">@item.id</a>
+                </div>
+                <div class="problem">
+                    <a href="@Url.Action("DetailProblem", "Problems", new {id = item.id})">@item.title</a>
+                </div>
+                <div class="group">Bedao Contest</div>
+                <div class="score">0,70</div>
+                <div class="ACpercent">3,5%</div>
+                <div class="ACid">2</div>
+            </div>
+        }
+        
+    </div>
+    <div style="display: flex; float: right" class="page">
+        <div class="child-page" onclick="getDataTablePrev()">
+            &#10094;
+        </div>
+        <div class="child-page" onclick="getDataTable(1)">1</div>
+        <div class="child-page" onclick="getDataTable(2)">2</div>
+        <div class="child-page" onclick="getDataTable(3)">3</div>
+        <div class="child-page" onclick="getDataTableNext()">
+            &#10095;
+        </div>
+    </div>
+</div>
+<div class="content-right">
+    <div class="top-user">
+        <h1 class="top-user-title">Top thành viên</h1>
+        <div class="top-head">
+            <div class="user-rank">
+                <p>#</p>
+            </div>
+            <div class="user-name">
+                <p>Tên truy cập</p>
+            </div>
+            <div class="user-score">Điểm</div>
+        </div>
+        <div class="top-child">
+            <div class="user-rank">
+                <p>1</p>
+            </div>
+            <div class="user-name"><a href="#">31tranhoangson</a></div>
+            <div class="user-score">146,92</div>
+        </div>
+        <div class="top-child">
+            <div class="user-rank">
+                <p>2</p>
+            </div>
+            <div class="user-name"><a href="#">NoobCpp</a></div>
+            <div class="user-score">146,16</div>
+        </div>
+        <div class="top-child">
+            <div class="user-rank">
+                <p>3</p>
+            </div>
+            <div class="user-name"><a href="#">ntnguyen</a></div>
+            <div class="user-score">145,10</div>
+        </div>
+        <div class="top-child">
+            <div class="user-rank">
+                <p>4</p>
+            </div>
+            <div class="user-name"><a href="#">marvinthang</a></div>
+            <div class="user-score">143,68</div>
+        </div>
+        <div class="top-child last-child">
+            <div class="user-rank">
+                <p>5</p>
+            </div>
+            <div class="user-name"><a href="#">ProTeam15</a></div>
+            <div class="user-score">143,30</div>
+        </div>
+    </div>
+    <div class="top-user" style="margin-top: 50px">
+        <h1 class="top-user-title">Top đóng góp</h1>
+        <div class="top-head">
+            <div class="user-rank">
+                <p>#</p>
+            </div>
+            <div class="user-name">
+                <p>Tên truy cập</p>
+            </div>
+            <div class="user-score">Đóng góp</div>
+        </div>
+        <div class="top-child">
+            <div class="user-rank">
+                <p>1</p>
+            </div>
+            <div class="user-name"><a href="#">dquynh_2811</a></div>
+            <div class="user-score">1165</div>
+        </div>
+        <div class="top-child">
+            <div class="user-rank">
+                <p>2</p>
+            </div>
+            <div class="user-name"><a href="#">Mike4235</a></div>
+            <div class="user-score">582</div>
+        </div>
+        <div class="top-child">
+            <div class="user-rank">
+                <p>3</p>
+            </div>
+            <div class="user-name"><a href="#">NoobCpp</a></div>
+            <div class="user-score">404</div>
+        </div>
+        <div class="top-child">
+            <div class="user-rank">
+                <p>4</p>
+            </div>
+            <div class="user-name"><a href="#">Mondeus</a></div>
+            <div class="user-score">362</div>
+        </div>
+        <div class="top-child last-child">
+            <div class="user-rank">
+                <p>5</p>
+            </div>
+            <div class="user-name"><a href="#">darkkcyan</a></div>
+            <div class="user-score">332</div>
+        </div>
+    </div>
+    <div class="top-user" style="margin-top: 50px">
+        <h1 class="top-user-title">Dòng bình luận</h1>
+        <div class="top-comment">bautroidaysao → <a href="#">Đếm</a></div>
+        <div class="top-comment">
+            reddevils2709 →
+            <a href="#">Educational Segment Tree Contest - ITLAZY</a>
+        </div>
+        <div class="top-comment">
+            21ti_hdhphat → <a href="#">Tìm khớp và cầu (Cơ bản)</a>
+        </div>
+        <div class="top-comment">
+            KhongAiBiet → <a href="#">Beginner Free Contest 49 - CLOSEST</a>
+        </div>
+        <div class="top-comment">
+            ksomg →
+            <a href="#">Tổng hợp livestream chữa đề thi HSGQG môn Tin học các năm</a>
+        </div>
+        <div class="top-comment">
+            ZuyVuNee → <a href="#">Free Contest 119 - SWAP</a>
+        </div>
+        <div class="top-comment">
+            princeoftime05 → <a href="#">Free Contest 119 - SWAP</a>
+        </div>
+        <div class="top-comment">
+            MonSus → <a href="#">Bedao Mini Contest 17</a>
+        </div>
+        <div class="top-comment">
+            Dannyplusplus → <a href="#">Bedao Mini Contest 17</a>
+        </div>
+        <div class="top-comment last-child">
+            bruhlmao21 → <a href="#">Bedao Mini Contest 17</a>
+        </div>
+    </div>
+    <div class="top-user" style="margin-top: 50px">
+        <h1 class="top-user-title">Bài mới</h1>
+        <div class="top-problem">
+            <a href="#">Bedao Mini Contest 17 - DIVISORS</a>
+        </div>
+        <div class="top-problem">
+            <a href="#">Bedao Mini Contest 17 - EQUATION</a>
+        </div>
+        <div class="top-problem">
+            <a href="#">Bedao Mini Contest 17 - PEACHTREE</a>
+        </div>
+        <div class="top-problem">
+            <a href="#">Bedao Mini Contest 17 - PLUS</a>
+        </div>
+        <div class="top-problem">
+            <a href="#">Bedao Mini Contest 17 - SUMSQUARE</a>
+        </div>
+        <div class="top-problem">
+            <a href="#">Beginner Free Contest 49 - SALES</a>
+        </div>
+        <div class="top-problem last-child">
+            <a href="#">Beginner Free Contest 49 - TOYS</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    var listProblem = document.getElementsByClassName("child-table");
+    const getChildPage = document.getElementsByClassName("child-page");
+    const numberPage = Math.ceil(listProblem.length / 12);
+    var index = 1;
+    for (var i = 0; i < Math.min(listProblem.length, 12); i++) {
+        listProblem[i].classList.add("show");
+    }
+    getChildPage[1].classList.add("choose");
+
+    function getDataTable(id) {
+        index = id;
+        for (var i = 0; i < listProblem.length; i++) {
+            listProblem[i].classList.remove("show");
+        }
+        for (
+            var i = (id - 1) * 12;
+            i < Math.min(listProblem.length, id * 12);
+            i++
+        ) {
+            listProblem[i].classList.add("show");
+        }
+        for (var i = 0; i < getChildPage.length; i++) {
+            getChildPage[i].classList.remove("choose");
+        }
+        getChildPage[id].classList.add("choose");
+    }
+
+    function getDataTablePrev() {
+        if (index > 1) {
+            index--;
+            for (var i = 0; i < listProblem.length; i++) {
+                listProblem[i].classList.remove("show");
+            }
+            for (
+                var i = (index - 1) * 12;
+                i < Math.min(listProblem.length, index * 12);
+                i++
+            ) {
+                listProblem[i].classList.add("show");
+            }
+            for (var i = 0; i < getChildPage.length; i++) {
+                getChildPage[i].classList.remove("choose");
+            }
+            getChildPage[index].classList.add("choose");
+        }
+    }
+
+    function getDataTableNext() {
+        if (index < numberPage) {
+            index++;
+            for (var i = 0; i < listProblem.length; i++) {
+                listProblem[i].classList.remove("show");
+            }
+            for (
+                var i = (index - 1) * 12;
+                i < Math.min(listProblem.length, index * 12);
+                i++
+            ) {
+                listProblem[i].classList.add("show");
+            }
+            for (var i = 0; i < getChildPage.length; i++) {
+                getChildPage[i].classList.remove("choose");
+            }
+            getChildPage[index].classList.add("choose");
+        }
+    }
+    var keySearch = "";
+    function problemSearch() {
+        var inp = document.getElementById("search");
+        keySearch = inp.value;
+        for (var i = 0; i < listProblem.length; i++) {
+            listProblem[i].classList.remove("show");
+        }
+        if (keySearch == "") {
+            getDataTable(index);
+        } else {
+            index = 1;
+            for (var i = 0; i < getChildPage.length; i++) {
+                getChildPage[i].classList.remove("choose");
+            }
+            getChildPage[1].classList.add("choose");
+            for (var i = 0; i < listProblem.length; i++) {
+                var str = listProblem[i].getElementsByClassName("ID");
+                var checkID =
+                    str[0].getElementsByTagName("a")[0].childNodes[0].data;
+                var id = 0;
+                for (var j = 0; j < checkID.length; j++) {
+                    if (id < keySearch.length && keySearch[id] == checkID[j]) {
+                        id++;
+                    }
+                }
+                if (id == keySearch.length) {
+                    listProblem[i].classList.add("show");
+                } else {
+                    str = listProblem[i].getElementsByClassName("problem");
+                    checkID =
+                        str[0].getElementsByTagName("a")[0].childNodes[0].data;
+                    id = 0;
+                    for (var j = 0; j < checkID.length; j++) {
+                        if (id < keySearch.length && keySearch[id] == checkID[j]) {
+                            id++;
+                        }
+                    }
+                    if (id == keySearch.length) {
+                        listProblem[i].classList.add("show");
+                    }
+                }
+            }
+        }
+    }
+</script>

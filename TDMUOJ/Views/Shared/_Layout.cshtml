@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="~/Content/css/General.css" />
+    <title>Trang Chủ - TDMUOJ</title>
+</head>
+
+<body>
+    <div id="container">
+        @Html.Action("HeaderPartial", "Layout")
+
+        <div class="container-content">
+            <div class="content">
+                @RenderBody()
+            </div>
+        </div>
+        <div class="footer-content">@Html.Action("FooterPartial", "Layout")</div>
+    </div>
+</body>
+</html>

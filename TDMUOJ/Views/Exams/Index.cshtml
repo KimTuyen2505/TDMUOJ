@@ -1,0 +1,158 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link rel="stylesheet" href="~/Content/css/Exams.css" />
+<div class="container-content">
+    <div class="content">
+        <h1>Các kỳ thi</h1>
+        <br />
+        <hr />
+        <br />
+        <h2>Kỳ thi sắp tới</h2>
+        <br />
+        <hr />
+        <br />
+        <div class="table-coming">
+            <div class="head-coming">
+                <div class="contest">Kỳ thi</div>
+            </div>
+            <div class="child-coming">
+                <div class="contest">
+                    <div style="margin-left: 10px">
+                        <a class="contest-name"
+                           href="../Cuocthi/BedaoGrandContest12.html">Bedao Grand Contest 12</a>
+                        <div style="color: gray">Cuộc thi diễn ra sau:</div>
+                        <div id="time-down"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br />
+        <br />
+        <br />
+        <h2>Các kỳ thi đã qua</h2>
+        <br />
+        <div class="table">
+            <div class="head-table">
+                <div class="contest">Kỳ thi</div>
+                <div class="member"><p>Thành viên</p></div>
+                <div class="join"><p></p></div>
+            </div>
+            <div class="child-table">
+                <div class="contest">
+                    <div style="margin-left: 10px">
+                        <a class="contest-name"
+                           href="../Cuocthi/BedaoGrandContest12.html">Bedao Grand Contest 12</a>
+                        <div class="contest-time">
+                            12 Tháng 3, 2023, 20:00 <br />
+                            Thời gian làm bài: 03 giờ, 00 phút
+                        </div>
+                    </div>
+                </div>
+                <div class="member">
+                    <div>&nbsp;</div>
+                    <div>247</div>
+                </div>
+                <div class="join" style="text-align: center">
+                    <div>&nbsp;</div>
+                    <div class="but" style="text-align: center; display: inline">
+                        Tham gia ảo
+                    </div>
+                </div>
+            </div>
+            <div class="child-table">
+                <div class="contest">
+                    <div style="margin-left: 10px">
+                        <a class="contest-name"
+                           href="../Cuocthi/FreeContestTestingRound45.html">Free Contest Testing Round 45</a>
+                        <div class="contest-time">
+                            11 Tháng 3, 2023, 19:30 <br />
+                            Thời gian làm bài: 01 giờ, 30 phút
+                        </div>
+                    </div>
+                </div>
+                <div class="member">
+                    <div>&nbsp;</div>
+                    <div>0</div>
+                </div>
+                <div class="join" style="text-align: center">
+                    <div>&nbsp;</div>
+                    <div class="but" style="text-align: center; display: inline">
+                        Tham gia ảo
+                    </div>
+                </div>
+            </div>
+            <div class="child-table">
+                <div class="contest">
+                    <div style="margin-left: 10px">
+                        <a class="contest-name"
+                           href="../Cuocthi/BedaoGrandContest12.html">Free Contest 145</a>
+                        <div class="contest-time">
+                            4 Tháng 3, 2023, 19:30 <br />
+                            Thời gian làm bài: 03 giờ, 00 phút
+                        </div>
+                    </div>
+                </div>
+                <div class="member">
+                    <div>&nbsp;</div>
+                    <div>0</div>
+                </div>
+                <div class="join" style="text-align: center">
+                    <div>&nbsp;</div>
+                    <div class="but" style="text-align: center; display: inline">
+                        Tham gia ảo
+                    </div>
+                </div>
+            </div>
+            <div class="child-table">
+                <div class="contest">
+                    <div style="margin-left: 10px">
+                        <a class="contest-name"
+                           href="../Cuocthi/BedaoGrandContest12.html">Free Contest Testing Round 44</a>
+                        <div class="contest-time">
+                            18 Tháng 2, 2023, 19:30 <br />
+                            Thời gian làm bài: 01 giờ, 30 phút
+                        </div>
+                    </div>
+                </div>
+                <div class="member">
+                    <div>&nbsp;</div>
+                    <div>0</div>
+                </div>
+                <div class="join" style="text-align: center">
+                    <div>&nbsp;</div>
+                    <div class="but" style="text-align: center; display: inline">
+                        Tham gia ảo
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+        var countDownDate = new Date().getTime() + 10000000;
+
+        var countdown = setInterval(function () {
+          var now = new Date().getTime();
+          var distance = countDownDate - now;
+          var hours = Math.floor(
+            (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+          );
+          var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+          var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+          document.getElementById("time-down").innerHTML =
+            (parseInt(hours / 10) == 0 ? "0" + hours : hours) +
+            " : " +
+            (parseInt(minutes / 10) == 0 ? "0" + minutes : minutes) +
+            " : " +
+            (parseInt(seconds / 10) == 0 ? "0" + seconds : seconds);
+          if (distance < 0) {
+            clearInterval(countdown);
+            document.getElementById("time-down").innerHTML =
+              "Kỳ thi đang diễn ra";
+          }
+        }, 1000);
+</script>

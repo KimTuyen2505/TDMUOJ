@@ -1,0 +1,102 @@
+﻿
+
+#container .container-content {
+    width: 90%;
+    margin: 150px auto 0;
+}
+
+#container .content {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.hov:hover {
+    transform: scale(1.05);
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+}
+
+.content .content-left {
+    width: 78%;
+    height: 570px;
+    overflow: auto;
+    padding-right: 12px;
+}
+
+.content .content-right {
+    width: 19%;
+    height: 570px;
+    overflow: auto;
+    padding-right: 12px;
+}
+
+.content .content-left .news h3 {
+    font-weight: normal;
+}
+
+.content .content-left .news h1 {
+    color: #5593df;
+}
+
+.content .content-right .top-user {
+    width: 100%;
+}
+
+    .content .content-right .top-user .top-user-title {
+        background-color: #4587e4;
+        color: #fff;
+        font-weight: bold;
+        font-size: 18px;
+        width: 100%;
+        display: flex;
+        text-align: center;
+        padding: 5px;
+        border-top-right-radius: 10px;
+        border-top-left-radius: 10px;
+        border: #000 1px solid;
+    }
+
+    .content .content-right .top-user .top-head {
+        padding: 5px;
+        width: 100%;
+        color: #fff;
+        font-weight: bold;
+        text-align: center;
+        background-color: #999af2;
+        border-top: 1px solid white;
+        display: inline-flex;
+        border: #000 1px solid;
+    }
+
+    .content .content-right .top-user .top-child {
+        padding: 5px;
+        width: 100%;
+        text-align: center;
+        font-weight: bold;
+        display: inline-flex;
+        border: #000 1px solid;
+        background-color: #fff;
+    }
+
+    .content .content-right .top-user .user-rank {
+        width: 10%;
+    }
+
+    .content .content-right .top-user .user-name {
+        width: 70%;
+    }
+
+    .content .content-right .top-user .top-problem,
+    .content .content-right .top-user .top-comment {
+        background-color: #fff;
+        font-weight: bold;
+        padding: 5px;
+        width: 100%;
+        border: #000 1px solid;
+    }
+
+    .content .content-right .top-user .last-child {
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+    }

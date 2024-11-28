@@ -1,0 +1,88 @@
+﻿@model IEnumerable<TDMUOJ.Models.Account>
+
+<link rel="stylesheet" href="~/Content/css/Header.css" />
+<header>
+    <nav>
+        <div class="nav-left">
+            <div class="logo-tdmu">
+                <a href="@Url.Action("Index", "Home")">
+                    <img src="~/Content/IMAGE/Home/logo-tdmu.png"
+                         alt="TDMU Logo"
+                         title="TDMUOJ"
+                         width="130" />
+                </a>
+            </div>
+            <div class="divider">
+                <div class="nav-divider"></div>
+            </div>
+            <div class="nav-item">
+                <a href="@Url.Action("Index", "Problems")">DANH SÁCH BÀI</a>
+            </div>
+            <div class="nav-item">
+                <a href="@Url.Action("Index", "Submissions")">CÁC BÀI NỘp</a>
+            </div>
+            <div class="nav-item">
+                <a href="@Url.Action("Index", "Members")">THÀNH VIÊN</a>
+            </div>
+            <div class="nav-item">
+                <a href="@Url.Action("Index", "Exams")">CÁC KỲ THI</a>
+            </div>
+            <div class="nav-item">
+                <a href="@Url.Action("Index", "FAQ")">FAQ</a>
+            </div>
+            <div class="nav-item">
+                <a href="@Url.Action("Index", "News")">Tin tức</a>
+            </div>
+            <div class="nav-item">
+                <a href="@Url.Action("Index", "Discuss")">Thảo luận</a>
+            </div>
+            <div class="nav-item">
+                <a href="https://drive.google.com/drive/folders/1LBcmCf7TEwKJeaIgDRk-BBkHQbkHyR3n">THƯ VIỆN ĐỀ THI</a>
+            </div>
+            <div class="nav-right">
+                <div>
+                    <img src="https://oj.vnoi.info/static/icons/vi_flag.svg"
+                         alt="VN"
+                         height="24" />
+                </div>
+                <div>
+                    <img src="https://oj.vnoi.info/static/icons/gb_flag.svg"
+                         alt="America"
+                         height="24" />
+                </div>
+                <div class="item-right">
+
+                    @if (Session["User"] == null)
+                    {
+                        <div style="font-weight: 500; cursor: pointer" class="dropdown">
+                            Tài khoản
+                        </div>
+                        <ul>
+                            <a href="@Url.Action("Index", "Register")">
+                            <li>Đăng ký</li>
+                            </a>
+                            <a href="@Url.Action("Index", "Login")">
+                            <li>Đăng nhập</li>
+                            </a>
+                        </ul>
+                    }
+                    else
+                    {
+                        var user = (TDMUOJ.Models.Account)Session["User"];
+                        <div style="font-weight: 500; cursor: pointer" class="dropdown">
+                            @user.username
+                        </div>
+                        <ul>
+                            <a href="@Url.Action("Index", "Profile")">
+                            <li>Trang cá nhân</li>
+                            </a>
+                            <a href="@Url.Action("Logout", "Login")">
+                            <li>Đăng xuất</li>
+                            </a>
+                        </ul>
+                    }
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>

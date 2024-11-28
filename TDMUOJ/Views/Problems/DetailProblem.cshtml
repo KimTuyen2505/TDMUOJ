@@ -1,0 +1,193 @@
+﻿@model dynamic
+@{
+    ViewBag.Title = "DetailProblem";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link rel="stylesheet" href="~/Content/css/DetailProblem.css" />
+<div class="content-left">
+    <div style="text-align: center">
+        <h1 style="font-weight: normal">@Model.title</h1>
+        <p>
+            Giới hạn thời gian: @Model.timeLimit giây<br />
+            Giới hạn bộ nhớ: @Model.memoryLimit megabyte<br />
+            Đăng bởi: @Model.createdBy
+        </p>
+    </div>
+    <div>
+        <div>
+            @Model.description
+        </div>
+        <br />
+        <p><b>Ví dụ:</b></p>
+        <div style="width: 100%; color: #333">
+            <div style="
+                    background-color: #eee;
+                    padding: 8px;
+                    border-top: 1px solid #333;
+                    border-left: 1px solid #333;
+                    border-right: 1px solid #333;
+                  ">
+                <b>input</b>
+            </div>
+            <div style="
+                    background-color: #ffffff;
+                    padding: 8px;
+                    border-top: 1px solid #333;
+                    border-left: 1px solid #333;
+                    border-right: 1px solid #333;
+                  ">
+                <code> @Model.input </code>
+                <!-- Chỗ này nếu input có nhiều dòng thì cứ cho thẻ br để xuống dòng -->
+            </div>
+            <div style="
+                    background-color: #eee;
+                    padding: 8px;
+                    border-top: 1px solid #333;
+                    border-left: 1px solid #333;
+                    border-right: 1px solid #333;
+                  ">
+                <b>output</b>
+            </div>
+            <div style="
+                    background-color: #ffffff;
+                    padding: 8px;
+                    border: 1px solid #333;
+                  ">
+                <code> @Model.output </code>
+                <!-- Chỗ này nếu output có nhiều dòng thì cứ cho thẻ br để xuống dòng -->
+            </div>
+        </div>
+    </div>
+</div>
+<div class="content-right">
+    <div align="center">
+        <a href="../HTML/NopBai.html" class="but"> Gửi bài giải </a>
+        <br />
+        <br />
+        <hr />
+        <br />
+    </div>
+    <div class="top-user">
+        <h1 class="top-user-title">Top thành viên</h1>
+        <div class="top-head">
+            <div class="user-rank"><p>#</p></div>
+            <div class="user-name"><p>Tên truy cập</p></div>
+            <div class="user-score">Điểm</div>
+        </div>
+        <div class="top-child">
+            <div class="user-rank"><p>1</p></div>
+            <div class="user-name"><a href="#">31tranhoangson</a></div>
+            <div class="user-score">146,92</div>
+        </div>
+        <div class="top-child">
+            <div class="user-rank"><p>2</p></div>
+            <div class="user-name"><a href="#">NoobCpp</a></div>
+            <div class="user-score">146,16</div>
+        </div>
+        <div class="top-child">
+            <div class="user-rank"><p>3</p></div>
+            <div class="user-name"><a href="#">ntnguyen</a></div>
+            <div class="user-score">145,10</div>
+        </div>
+        <div class="top-child">
+            <div class="user-rank"><p>4</p></div>
+            <div class="user-name"><a href="#">marvinthang</a></div>
+            <div class="user-score">143,68</div>
+        </div>
+        <div class="top-child last-child">
+            <div class="user-rank"><p>5</p></div>
+            <div class="user-name"><a href="#">ProTeam15</a></div>
+            <div class="user-score">143,30</div>
+        </div>
+    </div>
+    <div class="top-user" style="margin-top: 50px">
+        <h1 class="top-user-title">Top đóng góp</h1>
+        <div class="top-head">
+            <div class="user-rank"><p>#</p></div>
+            <div class="user-name"><p>Tên truy cập</p></div>
+            <div class="user-score">Đóng góp</div>
+        </div>
+        <div class="top-child">
+            <div class="user-rank"><p>1</p></div>
+            <div class="user-name"><a href="#">dquynh_2811</a></div>
+            <div class="user-score">1165</div>
+        </div>
+        <div class="top-child">
+            <div class="user-rank"><p>2</p></div>
+            <div class="user-name"><a href="#">Mike4235</a></div>
+            <div class="user-score">582</div>
+        </div>
+        <div class="top-child">
+            <div class="user-rank"><p>3</p></div>
+            <div class="user-name"><a href="#">NoobCpp</a></div>
+            <div class="user-score">404</div>
+        </div>
+        <div class="top-child">
+            <div class="user-rank"><p>4</p></div>
+            <div class="user-name"><a href="#">Mondeus</a></div>
+            <div class="user-score">362</div>
+        </div>
+        <div class="top-child last-child">
+            <div class="user-rank"><p>5</p></div>
+            <div class="user-name"><a href="#">darkkcyan</a></div>
+            <div class="user-score">332</div>
+        </div>
+    </div>
+    <div class="top-user" style="margin-top: 50px">
+        <h1 class="top-user-title">Dòng bình luận</h1>
+        <div class="top-comment">bautroidaysao → <a href="#">Đếm</a></div>
+        <div class="top-comment">
+            reddevils2709 →
+            <a href="#">Educational Segment Tree Contest - ITLAZY</a>
+        </div>
+        <div class="top-comment">
+            21ti_hdhphat → <a href="#">Tìm khớp và cầu (Cơ bản)</a>
+        </div>
+        <div class="top-comment">
+            KhongAiBiet → <a href="#">Beginner Free Contest 49 - CLOSEST</a>
+        </div>
+        <div class="top-comment">
+            ksomg →
+            <a href="#">Tổng hợp livestream chữa đề thi HSGQG môn Tin học các năm</a>
+        </div>
+        <div class="top-comment">
+            ZuyVuNee → <a href="#">Free Contest 119 - SWAP</a>
+        </div>
+        <div class="top-comment">
+            princeoftime05 → <a href="#">Free Contest 119 - SWAP</a>
+        </div>
+        <div class="top-comment">
+            MonSus → <a href="#">Bedao Mini Contest 17</a>
+        </div>
+        <div class="top-comment">
+            Dannyplusplus → <a href="#">Bedao Mini Contest 17</a>
+        </div>
+        <div class="top-comment last-child">
+            bruhlmao21 → <a href="#">Bedao Mini Contest 17</a>
+        </div>
+    </div>
+    <div class="top-user" style="margin-top: 50px">
+        <h1 class="top-user-title">Bài mới</h1>
+        <div class="top-problem">
+            <a href="#">Bedao Mini Contest 17 - DIVISORS</a>
+        </div>
+        <div class="top-problem">
+            <a href="#">Bedao Mini Contest 17 - EQUATION</a>
+        </div>
+        <div class="top-problem">
+            <a href="#">Bedao Mini Contest 17 - PEACHTREE</a>
+        </div>
+        <div class="top-problem">
+            <a href="#">Bedao Mini Contest 17 - PLUS</a>
+        </div>
+        <div class="top-problem">
+            <a href="#">Bedao Mini Contest 17 - SUMSQUARE</a>
+        </div>
+        <div class="top-problem">
+            <a href="#">Beginner Free Contest 49 - SALES</a>
+        </div>
+        <div class="top-problem last-child">
+            <a href="#">Beginner Free Contest 49 - TOYS</a>
+        </div>
+    </div>
+</div>

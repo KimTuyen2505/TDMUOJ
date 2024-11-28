@@ -1,0 +1,49 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device=width,initial=scale=1.0" />
+    <title>Đăng nhập</title>
+    <link rel="stylesheet" href="~/Content/css/Login.css" />
+</head>
+<body>
+    <section>
+        <div class="color"></div>
+        <div class="color"></div>
+        <div class="color"></div>
+        <div class="boxx">
+            <div class="square" style="--i: 0"></div>
+            <div class="square" style="--i: 1"></div>
+            <div class="square" style="--i: 2"></div>
+            <div class="square" style="--i: 3"></div>
+            <div class="square" style="--i: 4"></div>
+            <div class="ctn">
+                <div class="fromm">
+                    <h2>Đăng nhập</h2>
+                    <div style="color: red;">@ViewBag.Error</div>
+                    <form action="~/Login/Index" method="post">
+                        <div class="inputboxx">
+                            <input type="text" name="username" placeholder="Tên tài khoản" />
+                        </div>
+                        <div class="inputboxx">
+                            <input type="password" name="password" placeholder="Mật khẩu" />
+                        </div>
+                        <div class="inputboxx">
+                            <input type="submit" value="Đăng nhập" />
+                        </div>
+                        <p class="forget"><a href="#">Quên mật khẩu? </a></p>
+                        <p class="forget">
+                            Không có tài khoản? <a href="@Url.Action("Index", "Register")">Đăng ký</a>
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

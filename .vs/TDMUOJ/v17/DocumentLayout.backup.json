@@ -1,0 +1,569 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\thang\\Desktop\\TDMUOJ\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|C:\\Users\\thang\\Desktop\\TDMUOJ\\tdmuoj\\content\\css\\problems.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|solutionrelative:tdmuoj\\content\\css\\problems.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|C:\\Users\\thang\\Desktop\\TDMUOJ\\tdmuoj\\views\\problems\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|solutionrelative:tdmuoj\\views\\problems\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|C:\\Users\\thang\\Desktop\\TDMUOJ\\tdmuoj\\content\\css\\general.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|solutionrelative:tdmuoj\\content\\css\\general.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|C:\\Users\\thang\\Desktop\\TDMUOJ\\tdmuoj\\controllers\\problemscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|solutionrelative:tdmuoj\\controllers\\problemscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|C:\\Users\\thang\\Desktop\\TDMUOJ\\tdmuoj\\content\\css\\login.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|solutionrelative:tdmuoj\\content\\css\\login.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|C:\\Users\\thang\\Desktop\\TDMUOJ\\tdmuoj\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|solutionrelative:tdmuoj\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|C:\\Users\\thang\\Desktop\\TDMUOJ\\tdmuoj\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|solutionrelative:tdmuoj\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|C:\\Users\\thang\\Desktop\\TDMUOJ\\tdmuoj\\content\\css\\exams.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|solutionrelative:tdmuoj\\content\\css\\exams.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|C:\\Users\\thang\\Desktop\\TDMUOJ\\tdmuoj\\content\\css\\detailproblem.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|solutionrelative:tdmuoj\\content\\css\\detailproblem.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|C:\\Users\\thang\\Desktop\\TDMUOJ\\tdmuoj\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|solutionrelative:tdmuoj\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|C:\\Users\\thang\\Desktop\\TDMUOJ\\tdmuoj\\controllers\\registercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|solutionrelative:tdmuoj\\controllers\\registercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|c:\\users\\thang\\desktop\\tdmuoj\\tdmuoj\\views\\problems\\detailproblem.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|solutionrelative:tdmuoj\\views\\problems\\detailproblem.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|C:\\Users\\thang\\Desktop\\TDMUOJ\\tdmuoj\\views\\register\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|solutionrelative:tdmuoj\\views\\register\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|C:\\Users\\thang\\Desktop\\TDMUOJ\\tdmuoj\\views\\layout\\headerpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|solutionrelative:tdmuoj\\views\\layout\\headerpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|C:\\Users\\thang\\Desktop\\TDMUOJ\\tdmuoj\\views\\login\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|solutionrelative:tdmuoj\\views\\login\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|C:\\Users\\thang\\Desktop\\TDMUOJ\\tdmuoj\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|solutionrelative:tdmuoj\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|C:\\Users\\thang\\Desktop\\TDMUOJ\\tdmuoj\\content\\css\\register.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|solutionrelative:tdmuoj\\content\\css\\register.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|C:\\Users\\thang\\Desktop\\TDMUOJ\\tdmuoj\\views\\submissions\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|solutionrelative:tdmuoj\\views\\submissions\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|C:\\Users\\thang\\Desktop\\TDMUOJ\\tdmuoj\\content\\css\\submissions.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|solutionrelative:tdmuoj\\content\\css\\submissions.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|C:\\Users\\thang\\Desktop\\TDMUOJ\\tdmuoj\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|solutionrelative:tdmuoj\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|C:\\Users\\thang\\Desktop\\TDMUOJ\\tdmuoj\\views\\layout\\footerpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|solutionrelative:tdmuoj\\views\\layout\\footerpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|C:\\Users\\thang\\Desktop\\TDMUOJ\\tdmuoj\\content\\css\\footer.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|solutionrelative:tdmuoj\\content\\css\\footer.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|C:\\Users\\thang\\Desktop\\TDMUOJ\\tdmuoj\\content\\css\\discuss.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|solutionrelative:tdmuoj\\content\\css\\discuss.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|C:\\Users\\thang\\Desktop\\TDMUOJ\\tdmuoj\\controllers\\discusscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|solutionrelative:tdmuoj\\controllers\\discusscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|C:\\Users\\thang\\Desktop\\TDMUOJ\\tdmuoj\\views\\discuss\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|solutionrelative:tdmuoj\\views\\discuss\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|C:\\Users\\thang\\Desktop\\TDMUOJ\\tdmuoj\\content\\css\\header.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|solutionrelative:tdmuoj\\content\\css\\header.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|C:\\Users\\thang\\Desktop\\TDMUOJ\\tdmuoj\\views\\faq\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|solutionrelative:tdmuoj\\views\\faq\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|C:\\Users\\thang\\Desktop\\TDMUOJ\\tdmuoj\\content\\css\\faq.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|solutionrelative:tdmuoj\\content\\css\\faq.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|C:\\Users\\thang\\Desktop\\TDMUOJ\\tdmuoj\\content\\css\\news.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|solutionrelative:tdmuoj\\content\\css\\news.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|C:\\Users\\thang\\Desktop\\TDMUOJ\\tdmuoj\\content\\css\\members.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|solutionrelative:tdmuoj\\content\\css\\members.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|C:\\Users\\thang\\Desktop\\TDMUOJ\\tdmuoj\\content\\css\\home.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|solutionrelative:tdmuoj\\content\\css\\home.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|C:\\Users\\thang\\Desktop\\TDMUOJ\\tdmuoj\\views\\news\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|solutionrelative:tdmuoj\\views\\news\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|C:\\Users\\thang\\Desktop\\TDMUOJ\\tdmuoj\\controllers\\newscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|solutionrelative:tdmuoj\\controllers\\newscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 8,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\thang\\Desktop\\TDMUOJ\\TDMUOJ\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "TDMUOJ\\Views\\Home\\Index.cshtml",
+              "ToolTip": "C:\\Users\\thang\\Desktop\\TDMUOJ\\TDMUOJ\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "TDMUOJ\\Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-24T08:01:47.633Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "HeaderPartial.cshtml",
+              "DocumentMoniker": "C:\\Users\\thang\\Desktop\\TDMUOJ\\TDMUOJ\\Views\\Layout\\HeaderPartial.cshtml",
+              "RelativeDocumentMoniker": "TDMUOJ\\Views\\Layout\\HeaderPartial.cshtml",
+              "ToolTip": "C:\\Users\\thang\\Desktop\\TDMUOJ\\TDMUOJ\\Views\\Layout\\HeaderPartial.cshtml",
+              "RelativeToolTip": "TDMUOJ\\Views\\Layout\\HeaderPartial.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-24T07:54:33.539Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "RegisterController.cs",
+              "DocumentMoniker": "C:\\Users\\thang\\Desktop\\TDMUOJ\\TDMUOJ\\Controllers\\RegisterController.cs",
+              "RelativeDocumentMoniker": "TDMUOJ\\Controllers\\RegisterController.cs",
+              "ToolTip": "C:\\Users\\thang\\Desktop\\TDMUOJ\\TDMUOJ\\Controllers\\RegisterController.cs",
+              "RelativeToolTip": "TDMUOJ\\Controllers\\RegisterController.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAQwBUAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-27T13:29:16.636Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\thang\\Desktop\\TDMUOJ\\TDMUOJ\\Views\\Problems\\Index.cshtml",
+              "RelativeDocumentMoniker": "TDMUOJ\\Views\\Problems\\Index.cshtml",
+              "ToolTip": "C:\\Users\\thang\\Desktop\\TDMUOJ\\TDMUOJ\\Views\\Problems\\Index.cshtml",
+              "RelativeToolTip": "TDMUOJ\\Views\\Problems\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-26T16:54:37.815Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "DetailProblem.css",
+              "DocumentMoniker": "C:\\Users\\thang\\Desktop\\TDMUOJ\\TDMUOJ\\Content\\css\\DetailProblem.css",
+              "RelativeDocumentMoniker": "TDMUOJ\\Content\\css\\DetailProblem.css",
+              "ToolTip": "C:\\Users\\thang\\Desktop\\TDMUOJ\\TDMUOJ\\Content\\css\\DetailProblem.css",
+              "RelativeToolTip": "TDMUOJ\\Content\\css\\DetailProblem.css",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-11-27T15:19:40.755Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Exams.css",
+              "DocumentMoniker": "C:\\Users\\thang\\Desktop\\TDMUOJ\\TDMUOJ\\Content\\css\\Exams.css",
+              "RelativeDocumentMoniker": "TDMUOJ\\Content\\css\\Exams.css",
+              "ToolTip": "C:\\Users\\thang\\Desktop\\TDMUOJ\\TDMUOJ\\Content\\css\\Exams.css",
+              "RelativeToolTip": "TDMUOJ\\Content\\css\\Exams.css",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-11-27T03:14:06.836Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\thang\\Desktop\\TDMUOJ\\TDMUOJ\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "TDMUOJ\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\thang\\Desktop\\TDMUOJ\\TDMUOJ\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "TDMUOJ\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-26T16:53:57.135Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Problems.css",
+              "DocumentMoniker": "C:\\Users\\thang\\Desktop\\TDMUOJ\\TDMUOJ\\Content\\css\\Problems.css",
+              "RelativeDocumentMoniker": "TDMUOJ\\Content\\css\\Problems.css",
+              "ToolTip": "C:\\Users\\thang\\Desktop\\TDMUOJ\\TDMUOJ\\Content\\css\\Problems.css",
+              "RelativeToolTip": "TDMUOJ\\Content\\css\\Problems.css",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-11-26T16:54:49.494Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ProblemsController.cs",
+              "DocumentMoniker": "C:\\Users\\thang\\Desktop\\TDMUOJ\\TDMUOJ\\Controllers\\ProblemsController.cs",
+              "RelativeDocumentMoniker": "TDMUOJ\\Controllers\\ProblemsController.cs",
+              "ToolTip": "C:\\Users\\thang\\Desktop\\TDMUOJ\\TDMUOJ\\Controllers\\ProblemsController.cs",
+              "RelativeToolTip": "TDMUOJ\\Controllers\\ProblemsController.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAAwCIAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-27T15:05:37.339Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "General.css",
+              "DocumentMoniker": "C:\\Users\\thang\\Desktop\\TDMUOJ\\TDMUOJ\\Content\\css\\General.css",
+              "RelativeDocumentMoniker": "TDMUOJ\\Content\\css\\General.css",
+              "ToolTip": "C:\\Users\\thang\\Desktop\\TDMUOJ\\TDMUOJ\\Content\\css\\General.css",
+              "RelativeToolTip": "TDMUOJ\\Content\\css\\General.css",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-11-26T16:50:36.782Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Login.css",
+              "DocumentMoniker": "C:\\Users\\thang\\Desktop\\TDMUOJ\\TDMUOJ\\Content\\css\\Login.css",
+              "RelativeDocumentMoniker": "TDMUOJ\\Content\\css\\Login.css",
+              "ToolTip": "C:\\Users\\thang\\Desktop\\TDMUOJ\\TDMUOJ\\Content\\css\\Login.css",
+              "RelativeToolTip": "TDMUOJ\\Content\\css\\Login.css",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-11-27T12:30:13.727Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "LoginController.cs",
+              "DocumentMoniker": "C:\\Users\\thang\\Desktop\\TDMUOJ\\TDMUOJ\\Controllers\\LoginController.cs",
+              "RelativeDocumentMoniker": "TDMUOJ\\Controllers\\LoginController.cs",
+              "ToolTip": "C:\\Users\\thang\\Desktop\\TDMUOJ\\TDMUOJ\\Controllers\\LoginController.cs",
+              "RelativeToolTip": "TDMUOJ\\Controllers\\LoginController.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAqwA0AAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-27T14:23:55.637Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "DetailProblem.cshtml",
+              "DocumentMoniker": "C:\\Users\\thang\\Desktop\\TDMUOJ\\TDMUOJ\\Views\\Problems\\DetailProblem.cshtml",
+              "RelativeDocumentMoniker": "TDMUOJ\\Views\\Problems\\DetailProblem.cshtml",
+              "ToolTip": "C:\\Users\\thang\\Desktop\\TDMUOJ\\TDMUOJ\\Views\\Problems\\DetailProblem.cshtml",
+              "RelativeToolTip": "TDMUOJ\\Views\\Problems\\DetailProblem.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-27T15:18:52.175Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\thang\\Desktop\\TDMUOJ\\TDMUOJ\\Views\\Register\\Index.cshtml",
+              "RelativeDocumentMoniker": "TDMUOJ\\Views\\Register\\Index.cshtml",
+              "ToolTip": "C:\\Users\\thang\\Desktop\\TDMUOJ\\TDMUOJ\\Views\\Register\\Index.cshtml",
+              "RelativeToolTip": "TDMUOJ\\Views\\Register\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-27T13:13:36.709Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\thang\\Desktop\\TDMUOJ\\TDMUOJ\\Views\\Login\\Index.cshtml",
+              "RelativeDocumentMoniker": "TDMUOJ\\Views\\Login\\Index.cshtml",
+              "ToolTip": "C:\\Users\\thang\\Desktop\\TDMUOJ\\TDMUOJ\\Views\\Login\\Index.cshtml",
+              "RelativeToolTip": "TDMUOJ\\Views\\Login\\Index.cshtml",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAACkAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-26T16:45:19.776Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "Web.config",
+              "DocumentMoniker": "C:\\Users\\thang\\Desktop\\TDMUOJ\\TDMUOJ\\Web.config",
+              "RelativeDocumentMoniker": "TDMUOJ\\Web.config",
+              "ToolTip": "C:\\Users\\thang\\Desktop\\TDMUOJ\\TDMUOJ\\Web.config",
+              "RelativeToolTip": "TDMUOJ\\Web.config",
+              "ViewState": "AgIAADAAAAAAAAAAAAAAAD8AAAAVAQAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2024-11-27T14:28:15.614Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\thang\\Desktop\\TDMUOJ\\TDMUOJ\\Views\\Discuss\\Index.cshtml",
+              "RelativeDocumentMoniker": "TDMUOJ\\Views\\Discuss\\Index.cshtml",
+              "ToolTip": "C:\\Users\\thang\\Desktop\\TDMUOJ\\TDMUOJ\\Views\\Discuss\\Index.cshtml",
+              "RelativeToolTip": "TDMUOJ\\Views\\Discuss\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-26T09:15:56.637Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "Discuss.css",
+              "DocumentMoniker": "C:\\Users\\thang\\Desktop\\TDMUOJ\\TDMUOJ\\Content\\css\\Discuss.css",
+              "RelativeDocumentMoniker": "TDMUOJ\\Content\\css\\Discuss.css",
+              "ToolTip": "C:\\Users\\thang\\Desktop\\TDMUOJ\\TDMUOJ\\Content\\css\\Discuss.css",
+              "RelativeToolTip": "TDMUOJ\\Content\\css\\Discuss.css",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-11-26T09:18:21.131Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "Register.css",
+              "DocumentMoniker": "C:\\Users\\thang\\Desktop\\TDMUOJ\\TDMUOJ\\Content\\css\\Register.css",
+              "RelativeDocumentMoniker": "TDMUOJ\\Content\\css\\Register.css",
+              "ToolTip": "C:\\Users\\thang\\Desktop\\TDMUOJ\\TDMUOJ\\Content\\css\\Register.css",
+              "RelativeToolTip": "TDMUOJ\\Content\\css\\Register.css",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-11-27T12:34:05.846Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "DiscussController.cs",
+              "DocumentMoniker": "C:\\Users\\thang\\Desktop\\TDMUOJ\\TDMUOJ\\Controllers\\DiscussController.cs",
+              "RelativeDocumentMoniker": "TDMUOJ\\Controllers\\DiscussController.cs",
+              "ToolTip": "C:\\Users\\thang\\Desktop\\TDMUOJ\\TDMUOJ\\Controllers\\DiscussController.cs",
+              "RelativeToolTip": "TDMUOJ\\Controllers\\DiscussController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-26T09:15:24.492Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "Footer.css",
+              "DocumentMoniker": "C:\\Users\\thang\\Desktop\\TDMUOJ\\TDMUOJ\\Content\\css\\Footer.css",
+              "RelativeDocumentMoniker": "TDMUOJ\\Content\\css\\Footer.css",
+              "ToolTip": "C:\\Users\\thang\\Desktop\\TDMUOJ\\TDMUOJ\\Content\\css\\Footer.css",
+              "RelativeToolTip": "TDMUOJ\\Content\\css\\Footer.css",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-11-27T12:36:08.227Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "Submissions.css",
+              "DocumentMoniker": "C:\\Users\\thang\\Desktop\\TDMUOJ\\TDMUOJ\\Content\\css\\Submissions.css",
+              "RelativeDocumentMoniker": "TDMUOJ\\Content\\css\\Submissions.css",
+              "ToolTip": "C:\\Users\\thang\\Desktop\\TDMUOJ\\TDMUOJ\\Content\\css\\Submissions.css",
+              "RelativeToolTip": "TDMUOJ\\Content\\css\\Submissions.css",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-11-26T17:13:25.404Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\thang\\Desktop\\TDMUOJ\\TDMUOJ\\Views\\Submissions\\Index.cshtml",
+              "RelativeDocumentMoniker": "TDMUOJ\\Views\\Submissions\\Index.cshtml",
+              "ToolTip": "C:\\Users\\thang\\Desktop\\TDMUOJ\\TDMUOJ\\Views\\Submissions\\Index.cshtml",
+              "RelativeToolTip": "TDMUOJ\\Views\\Submissions\\Index.cshtml",
+              "ViewState": "AgIAAFABAAAAAAAAAAAAAF8BAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-26T17:13:19.633Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "FAQ.css",
+              "DocumentMoniker": "C:\\Users\\thang\\Desktop\\TDMUOJ\\TDMUOJ\\Content\\css\\FAQ.css",
+              "RelativeDocumentMoniker": "TDMUOJ\\Content\\css\\FAQ.css",
+              "ToolTip": "C:\\Users\\thang\\Desktop\\TDMUOJ\\TDMUOJ\\Content\\css\\FAQ.css",
+              "RelativeToolTip": "TDMUOJ\\Content\\css\\FAQ.css",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-11-27T12:29:10.51Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\thang\\Desktop\\TDMUOJ\\TDMUOJ\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "TDMUOJ\\Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\thang\\Desktop\\TDMUOJ\\TDMUOJ\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "TDMUOJ\\Controllers\\HomeController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-27T13:02:47.64Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "FooterPartial.cshtml",
+              "DocumentMoniker": "C:\\Users\\thang\\Desktop\\TDMUOJ\\TDMUOJ\\Views\\Layout\\FooterPartial.cshtml",
+              "RelativeDocumentMoniker": "TDMUOJ\\Views\\Layout\\FooterPartial.cshtml",
+              "ToolTip": "C:\\Users\\thang\\Desktop\\TDMUOJ\\TDMUOJ\\Views\\Layout\\FooterPartial.cshtml",
+              "RelativeToolTip": "TDMUOJ\\Views\\Layout\\FooterPartial.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-26T17:03:49.514Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\thang\\Desktop\\TDMUOJ\\TDMUOJ\\Views\\FAQ\\Index.cshtml",
+              "RelativeDocumentMoniker": "TDMUOJ\\Views\\FAQ\\Index.cshtml",
+              "ToolTip": "C:\\Users\\thang\\Desktop\\TDMUOJ\\TDMUOJ\\Views\\FAQ\\Index.cshtml",
+              "RelativeToolTip": "TDMUOJ\\Views\\FAQ\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-27T12:29:27.978Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "Members.css",
+              "DocumentMoniker": "C:\\Users\\thang\\Desktop\\TDMUOJ\\TDMUOJ\\Content\\css\\Members.css",
+              "RelativeDocumentMoniker": "TDMUOJ\\Content\\css\\Members.css",
+              "ToolTip": "C:\\Users\\thang\\Desktop\\TDMUOJ\\TDMUOJ\\Content\\css\\Members.css",
+              "RelativeToolTip": "TDMUOJ\\Content\\css\\Members.css",
+              "ViewState": "AgIAAMMAAAAAAAAAAAAAANkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-11-27T12:30:18.802Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "News.css",
+              "DocumentMoniker": "C:\\Users\\thang\\Desktop\\TDMUOJ\\TDMUOJ\\Content\\css\\News.css",
+              "RelativeDocumentMoniker": "TDMUOJ\\Content\\css\\News.css",
+              "ToolTip": "C:\\Users\\thang\\Desktop\\TDMUOJ\\TDMUOJ\\Content\\css\\News.css",
+              "RelativeToolTip": "TDMUOJ\\Content\\css\\News.css",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-11-27T12:33:37.889Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "Header.css",
+              "DocumentMoniker": "C:\\Users\\thang\\Desktop\\TDMUOJ\\TDMUOJ\\Content\\css\\Header.css",
+              "RelativeDocumentMoniker": "TDMUOJ\\Content\\css\\Header.css",
+              "ToolTip": "C:\\Users\\thang\\Desktop\\TDMUOJ\\TDMUOJ\\Content\\css\\Header.css",
+              "RelativeToolTip": "TDMUOJ\\Content\\css\\Header.css",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-11-27T12:37:24.715Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "Home.css",
+              "DocumentMoniker": "C:\\Users\\thang\\Desktop\\TDMUOJ\\TDMUOJ\\Content\\css\\Home.css",
+              "RelativeDocumentMoniker": "TDMUOJ\\Content\\css\\Home.css",
+              "ToolTip": "C:\\Users\\thang\\Desktop\\TDMUOJ\\TDMUOJ\\Content\\css\\Home.css",
+              "RelativeToolTip": "TDMUOJ\\Content\\css\\Home.css",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-11-26T16:50:22.633Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\thang\\Desktop\\TDMUOJ\\TDMUOJ\\Views\\News\\Index.cshtml",
+              "RelativeDocumentMoniker": "TDMUOJ\\Views\\News\\Index.cshtml",
+              "ToolTip": "C:\\Users\\thang\\Desktop\\TDMUOJ\\TDMUOJ\\Views\\News\\Index.cshtml",
+              "RelativeToolTip": "TDMUOJ\\Views\\News\\Index.cshtml",
+              "ViewState": "AgIAAOEAAAAAAAAAAAAAAHkAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-26T09:26:53.471Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "NewsController.cs",
+              "DocumentMoniker": "C:\\Users\\thang\\Desktop\\TDMUOJ\\TDMUOJ\\Controllers\\NewsController.cs",
+              "RelativeDocumentMoniker": "TDMUOJ\\Controllers\\NewsController.cs",
+              "ToolTip": "C:\\Users\\thang\\Desktop\\TDMUOJ\\TDMUOJ\\Controllers\\NewsController.cs",
+              "RelativeToolTip": "TDMUOJ\\Controllers\\NewsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-26T09:26:48.447Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

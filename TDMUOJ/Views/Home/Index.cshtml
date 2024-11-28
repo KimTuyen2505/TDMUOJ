@@ -1,0 +1,81 @@
+﻿
+@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link rel="stylesheet" href="~/Content/css/Home.css" />
+<div class="slideshow-container">
+    <div class="slideshow">
+        <div class="slide fade"
+             style=" background-image: url(@Url.Content("~/Content/IMAGE/Slide1.jpg")); background-size: cover; "></div>
+        <div class="slide fade"
+             style=" background-image: url(@Url.Content("~/Content/IMAGE/Slide2.jpg")); background-size: cover; "></div>
+        <div class="slide fade"
+             style=" background-image: url(@Url.Content("~/Content/IMAGE/Slide3.jpg")); background-size: cover; "></div>
+        <div class="slide fade"
+             style=" background-image: url(@Url.Content("~/Content/IMAGE/Slide4.jpg")); background-size: cover; "></div>
+        <div class="slide fade"
+             style=" background-image: url(@Url.Content("~/Content/IMAGE/Slide5.jpg")); background-size: cover; "></div>
+        <div class="slide fade"
+             style=" background-image: url(@Url.Content("~/Content/IMAGE/Slide6.jpg")); background-size: cover; "></div>
+    </div>
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+</div>
+<div class="welcome">
+    <h1 style="font-size: 60px; margin: 10px 0">TDMU Online Judge</h1>
+    <div class="review" style="font-weight: bold; font-size: 15px">
+        Web TDMUOJ là một nơi lý tưởng để bắt đầu học lập trình hoặc nâng
+        cao kỹ năng lập trình của bạn. Tại đây, bạn có thể tìm thấy nhiều
+        bài tập lập trình khác nhau với độ khó từ cơ bản đến nâng cao,
+        cùng với các lời giải chi tiết để giúp bạn hiểu rõ hơn về cách
+        giải quyết các vấn đề. Trang web cũng cung cấp các ngôn ngữ lập
+        trình khác nhau để bạn có thể tập luyện kỹ năng của mình. Hơn nữa,
+        trang web còn cung cấp một cộng đồng lập trình viên để bạn có thể
+        thảo luận, học hỏi và chia sẻ kiến thức với nhau. Tất cả những
+        điều này sẽ giúp bạn trở thành một lập trình viên tốt hơn và có
+        thể giúp bạn đạt được các mục tiêu lập trình của mình.
+    </div>
+    <div class="butt">
+        <a href="@Url.Action("Index", "Register")" class="but">Đăng ký</a>
+        <a href="@Url.Action("Index", "Problems")" class="but">Danh sách bài</a>
+        <a href="@Url.Action("Index", "Exams")" class="but">Cuộc thi</a>
+    </div>
+</div>
+
+<script>
+    var slideIndex = 1;
+    var slideTimer;
+    showSlides(slideIndex);
+    slideTimer = setInterval(function () {
+        plusSlides(1);
+    }, 2000);
+    var slides = document.getElementsByClassName("slide");
+    for (var i = 0; i < slides.length; i++) {
+        slides[i].addEventListener("mouseover", function () {
+            clearInterval(slideTimer);
+        });
+        slides[i].addEventListener("mouseleave", function () {
+            slideTimer = setInterval(function () {
+                plusSlides(1);
+            }, 2000);
+        });
+    }
+    function plusSlides(n) {
+        showSlides((slideIndex += n));
+    }
+    function showSlides(n) {
+        var i;
+        var slides = document.getElementsByClassName("slide");
+        if (n > slides.length) {
+            slideIndex = 1;
+        }
+        if (n < 1) {
+            slideIndex = slides.length;
+        }
+        for (i = 0; i < slides.length; i++) {
+            slides[i].classList.remove("fade");
+        }
+        slides[slideIndex - 1].classList.add("fade");
+    }
+</script>
