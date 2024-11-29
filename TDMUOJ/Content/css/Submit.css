@@ -1,0 +1,41 @@
+﻿.content table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#container .container-content .content .submit .but {
+    background: linear-gradient(to bottom, #337ab7, #265a88);
+    color: aliceblue;
+    border-radius: 5px;
+    line-height: 30px;
+    text-align: center;
+}
+
+    #container .container-content .content .submit .but:hover {
+        background: linear-gradient(to bottom, #265a88, #265a88);
+    }
+
+.content th,
+.content .member,
+.content .join {
+    text-align: center;
+    padding: 8px;
+}
+
+.content td {
+    text-align: left;
+    padding: 8px;
+}
+
+.content th {
+    background-color: black;
+    color: white;
+}
+
+.content tr .code {
+    font-weight: bold;
+}
+
+.content tr:hover {
+    background-color: #f5f5f5;
+}

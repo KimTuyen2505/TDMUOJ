@@ -1,0 +1,24 @@
+﻿#container .content .color-aqua {
+    color: #03a89e;
+}
+
+#container .content .color-blue {
+    color: #00f;
+}
+
+#container .content .color-gray {
+    color: gray;
+}
+
+.content .info-profile {
+    display: flex;
+    justify-content: space-between;
+}
+
+    .content .info-profile .info-left {
+        width: 10%;
+    }
+
+    .content .info-profile .info-right {
+        width: 89%;
+    }

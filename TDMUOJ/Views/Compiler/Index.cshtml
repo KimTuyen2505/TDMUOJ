@@ -1,0 +1,60 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link rel="stylesheet" href="~/Content/css/Compiler.css" />
+<form action="~/Compiler/Index" method="post">
+    <div>
+        <h1 class="title">Trình biên dịch</h1>
+        <h3 class="title-language">Chọn ngôn ngữ:</h3>
+        <select class="language-select" aria-label="Chọn ngôn ngữ" name="language"  >
+            <option value="50" @(ViewBag.SelectedLang == "50" ? "selected" : "")>C</option>
+            <option value="54" @(ViewBag.SelectedLang == "54" ? "selected" : "")>C++</option>
+            <option value="51" @(ViewBag.SelectedLang == "51" ? "selected" : "")>C#</option>
+            <option value="71" @(ViewBag.SelectedLang == "71" ? "selected" : "")>Python</option>
+            <option value="62" @(ViewBag.SelectedLang == "62" ? "selected" : "")>Java</option>
+            <option value="63" @(ViewBag.SelectedLang == "63" ? "selected" : "")>JavaScript</option>
+        </select>
+    </div>
+
+    <h3 class="title-code">Nhập code tại đây:</h3>
+    <div class="compiler-grid">
+        <div class="editor-section">
+            <textarea class="editor" name="code"
+                      placeholder="Nhập code bạn vào đây..."
+                      aria-label="Code editor"
+                      spellcheck="false">@ViewBag.Code</textarea>
+        </div>
+
+        <div class="io-section">
+            <div class="io-box">
+                <div class="io-header">
+                    <h3>Đầu vào</h3>
+                </div>
+                <div class="io-content">
+                    <textarea class="io-textarea" name="input"
+                              placeholder="Nhập đầu vào tại đây..."
+                              aria-label="Program input">@ViewBag.Input</textarea>
+                </div>
+            </div>
+
+            <div class="io-box">
+                <div class="io-header">
+                    <h3>Đầu ra</h3>
+                </div>
+                <div class="io-content">
+                    <textarea class="io-textarea" name="output"
+                              placeholder="Đầu ra tại đây..."
+                              aria-label="Program output" disabled>@ViewBag.Output</textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="button-container">
+        <button type="submit" class="button button-primary" type="button">
+            Chạy
+        </button>
+    </div>
+</form>
