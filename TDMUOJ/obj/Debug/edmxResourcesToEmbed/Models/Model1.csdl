@@ -188,22 +188,14 @@
     <Property Name="userId" Type="Int32" Nullable="false" />
     <Property Name="code" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="language" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="maxTime" Type="Decimal" Precision="18" Scale="0" />
-    <Property Name="maxMemory" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="maxTime" Type="Double" />
+    <Property Name="maxMemory" Type="Double" />
     <Property Name="result" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="submittedAt" Type="DateTime" Precision="3" />
+    <Property Name="testCaseTotal" Type="Int32" />
+    <Property Name="testCaseAchieved" Type="Int32" />
     <NavigationProperty Name="Account" Relationship="Self.FK__Submissio__userI__76969D2E" FromRole="Submission" ToRole="Account" />
     <NavigationProperty Name="Problem" Relationship="Self.FK__Submissio__probl__75A278F5" FromRole="Submission" ToRole="Problem" />
-  </EntityType>
-  <EntityType Name="sysdiagram">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="principal_id" Type="Int32" Nullable="false" />
-    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="version" Type="Int32" />
-    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
   </EntityType>
   <EntityType Name="Tag">
     <Key>
@@ -479,7 +471,6 @@
     <EntitySet Name="RankingContests" EntityType="Self.RankingContest" />
     <EntitySet Name="ResetPasswords" EntityType="Self.ResetPassword" />
     <EntitySet Name="Submissions" EntityType="Self.Submission" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
     <EntitySet Name="Tags" EntityType="Self.Tag" />
     <EntitySet Name="TagProblems" EntityType="Self.TagProblem" />
     <AssociationSet Name="FK__ContestOr__organ__59FA5E80" Association="Self.FK__ContestOr__organ__59FA5E80">

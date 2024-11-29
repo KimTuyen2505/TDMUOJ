@@ -19,10 +19,12 @@ namespace TDMUOJ.Models
         public int userId { get; set; }
         public string code { get; set; }
         public string language { get; set; }
-        public Nullable<decimal> maxTime { get; set; }
-        public Nullable<decimal> maxMemory { get; set; }
+        public Nullable<double> maxTime { get; set; }
+        public Nullable<double> maxMemory { get; set; }
         public string result { get; set; }
         public Nullable<System.DateTime> submittedAt { get; set; }
+        public Nullable<int> testCaseTotal { get; set; }
+        public Nullable<int> testCaseAchieved { get; set; }
     
         public virtual Account Account { get; set; }
         public virtual Problem Problem { get; set; }

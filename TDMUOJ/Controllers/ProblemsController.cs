@@ -4,6 +4,7 @@ using System.Dynamic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
 using TDMUOJ.Models;
 
 namespace TDMUOJ.Controllers
@@ -14,33 +15,60 @@ namespace TDMUOJ.Controllers
         // GET: Problems
         public ActionResult Index()
         {
-            var problems = db.Problems.ToList();
-            return View(problems);
+            var problems = db.Problems.GroupJoin(
+                    db.ProblemSolveds,
+                    problem => problem.id,
+                    solved => solved.problemId,
+                    (problem, solved) => new
+                    {
+                        id = problem.id,
+                        title = problem.title,
+                        difficulty = problem.difficulty,
+                        numberOfAccepted = solved.Count()
+                    }
+                 ).ToList().Select(x => new
+                 {
+                     id = x.id,
+                     title = x.title,
+                     difficulty = x.difficulty,
+                     numberOfAccepted = x.numberOfAccepted
+                 });
+            var dynamicProblems = new List<dynamic>();
+            dynamicProblems = problems.Select(x =>
+            {
+                dynamic expando = new ExpandoObject();
+                // Copy tất cả thuộc tính từ `x` vào `expando`
+                foreach (var property in x.GetType().GetProperties())
+                {
+                    ((IDictionary<string, object>)expando)[property.Name] = property.GetValue(x);
+                }
+                return expando;
+            }).ToList();
+            return View(dynamicProblems);
         }
 
         [HttpGet]
         public ActionResult DetailProblem(int id)
         {
-            var detailProblem = db.Problems.Join(db.ProblemExamples, problem => problem.id, example => example.problemId, (problem, example) => new { problem, example })
-                .Where(x => x.problem.id == id)
-                .Select(x => new { id = x.problem.id, title = x.problem.title, description = x.problem.description, timeLimit = x.problem.timeLimit, memoryLimit = x.problem.memoryLimit, createdBy = x.problem.createdBy, input = x.example.input, output = x.example.output })
-                .Join(db.Accounts, problem => problem.createdBy, user => user.id, (problem, user) => new {problem, user})
-                .Select(x => new { id = x.problem.id, title = x.problem.title, description = x.problem.description, timeLimit = x.problem.timeLimit, memoryLimit = x.problem.memoryLimit, createdBy = x.user.username, input = x.problem.input, output = x.problem.output })
-                .SingleOrDefault();
-            dynamic model = new ExpandoObject();
-
-            if (detailProblem != null)
-            {
-                model.id = detailProblem.id;
-                model.title = detailProblem.title;
-                model.description = detailProblem.description;
-                model.timeLimit = detailProblem.timeLimit;
-                model.memoryLimit = detailProblem.memoryLimit;
-                model.createdBy = detailProblem.createdBy;
-                model.input = detailProblem.input;
-                model.output = detailProblem.output;
-            }
-            return View(model);
+            var detailProblem = db.Problems
+                .Where(problem => problem.id == id)
+                .Select(problem => new DetailProblem
+                {
+                    id = problem.id,
+                    title = problem.title,
+                    description = problem.description,
+                    timeLimit = problem.timeLimit,
+                    memoryLimit = problem.memoryLimit,
+                    createdBy = db.Accounts
+                        .Where(account => account.id == problem.createdBy)
+                        .Select(account => account.username)
+                        .FirstOrDefault(),
+                    examples = db.ProblemExamples
+                        .Where(example => example.problemId == problem.id)
+                        .Select(example => example).ToList()
+                })
+                .FirstOrDefault();
+            return View(detailProblem);
         }
     }
 }

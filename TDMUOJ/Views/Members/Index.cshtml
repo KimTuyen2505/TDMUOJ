@@ -1,4 +1,4 @@
-﻿
+﻿@model dynamic
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -15,139 +15,16 @@
                     <div class="name"><p>Tên truy cập</p></div>
                     <div class="problem"><p>Số bài</p></div>
                 </div>
-                <div class="child-table">
-                    <div class="rank">1</div>
-                    <div class="name">
-                        <a href="../Profile/minhthang1907.html">minhthang1907</a>
+                @foreach (var member in Model)
+                {
+                    <div class="child-table">
+                        <div class="rank">@member.rank</div>
+                        <div class="name">
+                            <a href="@Url.Action("Index", "Profile", new {id = member.id})">@member.name</a>
+                        </div>
+                        <div class="problem">@member.numberOfAccepted</div>
                     </div>
-                    <div class="problem">100</div>
-                </div>
-                <div class="child-table">
-                    <div class="rank">2</div>
-                    <div class="name">
-                        <a href="../Profile/minhthang1907.html">KimTuyenn</a>
-                    </div>
-                    <div class="problem">295</div>
-                </div>
-                <div class="child-table">
-                    <div class="rank">3</div>
-                    <div class="name">
-                        <a href="../Profile/minhthang1907.html">PhuocYen</a>
-                    </div>
-                    <div class="problem">294</div>
-                </div>
-                <div class="child-table">
-                    <div class="rank">4</div>
-                    <div class="name">
-                        <a href="../Profile/minhthang1907.html">Gia Huy</a>
-                    </div>
-                    <div class="problem">290</div>
-                </div>
-                <div class="child-table">
-                    <div class="rank">5</div>
-                    <div class="name">
-                        <a href="../Profile/minhthang1907.html">Dai Hoc TDM</a>
-                    </div>
-                    <div class="problem">288</div>
-                </div>
-                <div class="child-table">
-                    <div class="rank">6</div>
-                    <div class="name">
-                        <a href="../Profile/minhthang1907.html">Khanh An</a>
-                    </div>
-                    <div class="problem">287</div>
-                </div>
-                <div class="child-table">
-                    <div class="rank">7</div>
-                    <div class="name">
-                        <a href="../Profile/minhthang1907.html">ViViAn123</a>
-                    </div>
-                    <div class="problem">285</div>
-                </div>
-                <div class="child-table">
-                    <div class="rank">8</div>
-                    <div class="name">
-                        <a href="../Profile/minhthang1907.html">Lưu Sơn Bá</a>
-                    </div>
-                    <div class="problem">199</div>
-                </div>
-                <div class="child-table">
-                    <div class="rank">9</div>
-                    <div class="name">
-                        <a href="../Profile/minhthang1907.html">MY Love</a>
-                    </div>
-                    <div class="problem">180</div>
-                </div>
-                <div class="child-table">
-                    <div class="rank">10</div>
-                    <div class="name">
-                        <a href="../Profile/minhthang1907.html">ASUS</a>
-                    </div>
-                    <div class="problem">179</div>
-                </div>
-                <div class="child-table">
-                    <div class="rank">11</div>
-                    <div class="name">
-                        <a href="../Profile/minhthang1907.html">LaiLaPhuocYen</a>
-                    </div>
-                    <div class="problem">177</div>
-                </div>
-                <div class="child-table">
-                    <div class="rank">12</div>
-                    <div class="name">
-                        <a href="../Profile/minhthang1907.html">Mỹ Diệu</a>
-                    </div>
-                    <div class="problem">176</div>
-                </div>
-                <div class="child-table">
-                    <div class="rank">13</div>
-                    <div class="name">
-                        <a href="../Profile/minhthang1907.html">MỸ lỆ</a>
-                    </div>
-                    <div class="problem">175</div>
-                </div>
-                <div class="child-table">
-                    <div class="rank">14</div>
-                    <div class="name">
-                        <a href="../Profile/minhthang1907.html">Thanh Ngọc</a>
-                    </div>
-                    <div class="problem">172</div>
-                </div>
-                <div class="child-table">
-                    <div class="rank">15</div>
-                    <div class="name">
-                        <a href="../Profile/minhthang1907.html">JackSonWang</a>
-                    </div>
-                    <div class="problem">130</div>
-                </div>
-                <div class="child-table">
-                    <div class="rank">16</div>
-                    <div class="name">
-                        <a href="../Profile/minhthang1907.html">TrucLi</a>
-                    </div>
-                    <div class="problem">123</div>
-                </div>
-                <div class="child-table">
-                    <div class="rank">17</div>
-                    <div class="name">
-                        <a href="../Profile/minhthang1907.html">Thùy Linh</a>
-                    </div>
-                    <div class="problem">122</div>
-                </div>
-                <div class="child-table">
-                    <div class="rank">18</div>
-                    <div class="name">
-                        <a href="../Profile/minhthang1907.html">Ngọc Diễm</a>
-                    </div>
-                    <div class="problem">121</div>
-                </div>
-                <div class="child-table">
-                    <div class="rank">19</div>
-                    <div class="name">
-                        <a href="../Profile/minhthang1907.html">GreenCros</a>
-                    </div>
-                    <div class="problem">120</div>
-                </div>
+                }
             </div>
         </div>
         <div class="content-right">

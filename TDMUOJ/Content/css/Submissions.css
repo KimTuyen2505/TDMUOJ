@@ -23,50 +23,59 @@
 	.content .content-left table tr .score {
 		width: 10%;
 		text-align: center;
+		background-color: #fab623;
 	}
+		.content .content-left table tr .score p {
+			font-weight: bold;
+		}
 
-	.content .content-left table tr .AC {
-		background-color: #53f23f;
-	}
+		.content .content-left table tr .AC {
+			background-color: #53f23f;
+		}
 
 		.content .content-left table tr .AC p {
 			color: #225b1a;
 			font-weight: bold;
 		}
 
-	.content .content-left table tr .TIMELIMIT {
+	.content .content-left table tr .TLE {
 		background-color: #ccc;
 	}
 
-		.content .content-left table tr .TIMELIMIT p {
+		.content .content-left table tr .TLE p {
 			font-weight: bold;
 		}
 
-	.content .content-left table tr .WRONG {
+	.content .content-left table tr .WA {
 		background-color: #ccc;
 	}
 
-		.content .content-left table tr .WRONG p {
+		.content .content-left table tr .WA p {
 			color: #d73c2b;
 			font-weight: bold;
 		}
 
-	.content .content-left table tr .RUNTIME {
+	.content .content-left table tr .RTE {
 		background-color: #fab623;
 	}
 
-		.content .content-left table tr .RUNTIME p {
+		.content .content-left table tr .RTE p {
 			font-weight: bold;
 		}
+	
 
 	.content .content-left table tr .info {
 		text-align: left;
 	}
 
-		.content .content-left table tr .info a {
+		.content .content-left table tr .info .problem-name {
 			color: #1958c1;
 			font-weight: bold;
 			font-size: 20px;
+		}
+		.content .content-left table tr .info .account-name {
+			font-weight: bold;
+			color: #000;
 		}
 
 	.content .content-left table tr .time {

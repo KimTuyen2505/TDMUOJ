@@ -1,4 +1,4 @@
-﻿@model IEnumerable<TDMUOJ.Models.Problem>
+﻿@model dynamic
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -18,10 +18,12 @@
             <div class="problem">
                 <p>Bài</p>
             </div>
-            <div class="group">Nhóm</div>
-            <div class="score">Điểm</div>
-            <div class="ACpercent">% AC</div>
-            <div class="ACid"># AC</div>
+            <div class="difficulty">
+                <p>Độ khó</p>
+            </div>
+            <div class="numberOfAccepted">
+                <p>Số người giải</p>
+            </div>
         </div>
         @foreach (var item in Model)
         {
@@ -32,10 +34,8 @@
                 <div class="problem">
                     <a href="@Url.Action("DetailProblem", "Problems", new {id = item.id})">@item.title</a>
                 </div>
-                <div class="group">Bedao Contest</div>
-                <div class="score">0,70</div>
-                <div class="ACpercent">3,5%</div>
-                <div class="ACid">2</div>
+                <div class="difficulty">@item.difficulty</div>
+                <div class="numberOfAccepted">@item.numberOfAccepted</div>
             </div>
         }
         
@@ -44,9 +44,10 @@
         <div class="child-page" onclick="getDataTablePrev()">
             &#10094;
         </div>
-        <div class="child-page" onclick="getDataTable(1)">1</div>
-        <div class="child-page" onclick="getDataTable(2)">2</div>
-        <div class="child-page" onclick="getDataTable(3)">3</div>
+        @for (var i = 1; i <= (Model.Count + 11) / 12; i++)
+        {
+            <div class="child-page" onclick="getDataTable(i)">@i</div>
+        }
         <div class="child-page" onclick="getDataTableNext()">
             &#10095;
         </div>

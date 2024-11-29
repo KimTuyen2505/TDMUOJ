@@ -37,7 +37,7 @@
                 <a href="@Url.Action("Index", "Discuss")">Thảo luận</a>
             </div>
             <div class="nav-item">
-                <a href="https://drive.google.com/drive/folders/1LBcmCf7TEwKJeaIgDRk-BBkHQbkHyR3n">THƯ VIỆN ĐỀ THI</a>
+                <a href="@Url.Action("Index", "Compiler")">TRÌNH BIÊN DỊCH</a>
             </div>
             <div class="nav-right">
                 <div>
@@ -73,7 +73,7 @@
                             @user.username
                         </div>
                         <ul>
-                            <a href="@Url.Action("Index", "Profile")">
+                            <a href="@Url.Action("Index", "Profile", new {id = @user.id})">
                             <li>Trang cá nhân</li>
                             </a>
                             <a href="@Url.Action("Logout", "Login")">

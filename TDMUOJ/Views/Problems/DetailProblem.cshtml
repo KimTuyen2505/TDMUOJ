@@ -1,4 +1,4 @@
-﻿@model dynamic
+﻿@model TDMUOJ.Models.DetailProblem
 @{
     ViewBag.Title = "DetailProblem";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -19,49 +19,52 @@
         </div>
         <br />
         <p><b>Ví dụ:</b></p>
-        <div style="width: 100%; color: #333">
-            <div style="
-                    background-color: #eee;
-                    padding: 8px;
-                    border-top: 1px solid #333;
-                    border-left: 1px solid #333;
-                    border-right: 1px solid #333;
-                  ">
-                <b>input</b>
+        @foreach (var example in Model.examples)
+        {
+            <div style="width: 100%; color: #333; margin-bottom: 10px;">
+                <div style="
+            background-color: #eee;
+            padding: 8px;
+            border-top: 1px solid #333;
+            border-left: 1px solid #333;
+            border-right: 1px solid #333;
+          ">
+                    <b>input</b>
+                </div>
+                <div style="
+            background-color: #ffffff;
+            padding: 8px;
+            border-top: 1px solid #333;
+            border-left: 1px solid #333;
+            border-right: 1px solid #333;
+          ">
+                    <code> @example.input </code>
+                    <!-- Chỗ này nếu input có nhiều dòng thì cứ cho thẻ br để xuống dòng -->
+                </div>
+                <div style="
+            background-color: #eee;
+            padding: 8px;
+            border-top: 1px solid #333;
+            border-left: 1px solid #333;
+            border-right: 1px solid #333;
+          ">
+                    <b>output</b>
+                </div>
+                <div style="
+            background-color: #ffffff;
+            padding: 8px;
+            border: 1px solid #333;
+          ">
+                    <code> @example.output </code>
+                    <!-- Chỗ này nếu output có nhiều dòng thì cứ cho thẻ br để xuống dòng -->
+                </div>
             </div>
-            <div style="
-                    background-color: #ffffff;
-                    padding: 8px;
-                    border-top: 1px solid #333;
-                    border-left: 1px solid #333;
-                    border-right: 1px solid #333;
-                  ">
-                <code> @Model.input </code>
-                <!-- Chỗ này nếu input có nhiều dòng thì cứ cho thẻ br để xuống dòng -->
-            </div>
-            <div style="
-                    background-color: #eee;
-                    padding: 8px;
-                    border-top: 1px solid #333;
-                    border-left: 1px solid #333;
-                    border-right: 1px solid #333;
-                  ">
-                <b>output</b>
-            </div>
-            <div style="
-                    background-color: #ffffff;
-                    padding: 8px;
-                    border: 1px solid #333;
-                  ">
-                <code> @Model.output </code>
-                <!-- Chỗ này nếu output có nhiều dòng thì cứ cho thẻ br để xuống dòng -->
-            </div>
-        </div>
+        }
     </div>
 </div>
 <div class="content-right">
     <div align="center">
-        <a href="../HTML/NopBai.html" class="but"> Gửi bài giải </a>
+        <a href="@Url.Action("Index", "Submit", new {id = Model.id})" class="but"> Gửi bài giải </a>
         <br />
         <br />
         <hr />

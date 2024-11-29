@@ -153,20 +153,12 @@
     <Property Name="userId" Type="int" Nullable="false" />
     <Property Name="code" Type="nvarchar(max)" Nullable="false" />
     <Property Name="language" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="maxTime" Type="decimal" Precision="18" Scale="0" />
-    <Property Name="maxMemory" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="maxTime" Type="float" />
+    <Property Name="maxMemory" Type="float" />
     <Property Name="result" Type="nvarchar(max)" Nullable="false" />
     <Property Name="submittedAt" Type="datetime" />
-  </EntityType>
-  <EntityType Name="sysdiagrams">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-    <Property Name="principal_id" Type="int" Nullable="false" />
-    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="version" Type="int" />
-    <Property Name="definition" Type="varbinary(max)" />
+    <Property Name="testCaseTotal" Type="int" />
+    <Property Name="testCaseAchieved" Type="int" />
   </EntityType>
   <EntityType Name="Tag">
     <Key>
@@ -439,7 +431,6 @@
     <EntitySet Name="RankingContest" EntityType="Self.RankingContest" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ResetPassword" EntityType="Self.ResetPassword" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Submission" EntityType="Self.Submission" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Tag" EntityType="Self.Tag" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TagProblem" EntityType="Self.TagProblem" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK__ContestOr__conte__59063A47" Association="Self.FK__ContestOr__conte__59063A47">

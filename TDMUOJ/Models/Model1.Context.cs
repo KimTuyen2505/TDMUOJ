@@ -40,7 +40,6 @@ namespace TDMUOJ.Models
         public virtual DbSet<RankingContest> RankingContests { get; set; }
         public virtual DbSet<ResetPassword> ResetPasswords { get; set; }
         public virtual DbSet<Submission> Submissions { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<Tag> Tags { get; set; }
         public virtual DbSet<TagProblem> TagProblems { get; set; }
     }
