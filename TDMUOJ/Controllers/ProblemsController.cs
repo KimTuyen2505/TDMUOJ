@@ -82,7 +82,21 @@ namespace TDMUOJ.Controllers
                         .Select(example => example).ToList()
                 })
                 .FirstOrDefault();
-            return View(detailProblem);
+            TopUsers topUsers = new TopUsers
+            {
+                AccountList = db.Accounts
+                        .OrderByDescending(account => account.rating)
+                        .Take(5)
+                        .Select(account => account).ToList(),
+                NewProblemList = db.Problems
+                        .OrderByDescending(problem => problem.createdAt)
+                        .Take(5)
+                        .Select(problem => problem).ToList()
+            };
+            dynamic dynamicProblems = new ExpandoObject();
+            dynamicProblems.topUsers = topUsers;
+            dynamicProblems.detailProblem = detailProblem;
+            return View(dynamicProblems);
         }
 
     }

@@ -1,0 +1,211 @@
+﻿
+@model TDMUOJ.Models.ContestProblemViewModel
+
+<style>
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.4);
+    }
+
+    .modal-content {
+        background-color: #fefefe;
+        margin: 15% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+        max-width: 500px;
+        border-radius: 5px;
+    }
+
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+        .close:hover {
+            color: black;
+        }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-group select,
+        .form-group input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+    .btn-add {
+        background-color: #2ecc71;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-bottom: 20px;
+    }
+
+        .btn-add:hover {
+            background-color: #27ae60;
+        }
+
+    .btn-remove {
+        background-color: #e74c3c;
+        color: white;
+        padding: 5px 10px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+        .btn-remove:hover {
+            background-color: #c0392b;
+        }
+</style>
+
+<div id="contestProblems" class="dashboard-item hidden">
+    <h2>Quản lý Bài tập trong Kỳ thi</h2>
+
+    <form id="addProblemToContestForm" method="post">
+        <div class="form-group">
+            <label for="contestSelect">Chọn kỳ thi:</label>
+            <select id="contestSelect" name="contestId" required>
+                <option value="">-- Chọn kỳ thi --</option>
+                @foreach (var contest in Model.Contests)
+                {
+                    <option value="@contest.id">@contest.title</option>
+                }
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="problemSelect">Chọn bài tập:</label>
+            <select id="problemSelect" name="problemId" required>
+                <option value="">-- Chọn bài tập --</option>
+                @foreach (var problem in Model.AllProblems)
+                {
+                    <option value="@problem.id">@problem.title</option>
+                }
+            </select>
+        </div>
+        <button type="submit" class="btn-add">Thêm Bài tập vào Kỳ thi</button>
+    </form>
+
+    <div id="contestProblemsList">
+        <!-- This will be populated dynamically -->
+    </div>
+</div>
+
+<script>
+    const contestSelect = document.getElementById('contestSelect');
+    const contestProblemsList = document.getElementById('contestProblemsList');
+
+    contestSelect.addEventListener('change', function() {
+        const contestId = this.value;
+        if (contestId) {
+            fetchContestProblems(contestId);
+        } else {
+            contestProblemsList.innerHTML = '';
+        }
+    });
+
+    function fetchContestProblems(contestId) {
+        fetch(`@Url.Action("GetContestProblems", "Admin")?contestId=${contestId}`)
+            .then(response => response.json())
+            .then(data => {
+                displayContestProblems(data);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                contestProblemsList.innerHTML = '<p>Có lỗi xảy ra khi tải danh sách bài tập.</p>';
+            });
+    }
+
+    function displayContestProblems(problems) {
+        let html = '<h3>Bài tập trong kỳ thi</h3>';
+        if (problems.length === 0) {
+            html += '<p>Không có bài tập nào trong kỳ thi này.</p>';
+        } else {
+            html += '<ul>';
+            problems.forEach(problem => {
+                html += `
+                    <li>
+                        ${problem.title}
+                        <button class="btn-remove" onclick="removeProblemFromContest(${problem.id})">Xóa</button>
+                    </li>
+                `;
+            });
+            html += '</ul>';
+        }
+        contestProblemsList.innerHTML = html;
+    }
+
+    document.getElementById('addProblemToContestForm').onsubmit = function(e) {
+        e.preventDefault();
+        const formData = new FormData(this);
+
+        fetch('@Url.Action("AddProblemToContest", "Admin")', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert('Thêm bài tập vào kỳ thi thành công!');
+                fetchContestProblems(formData.get('contestId'));
+            } else {
+                alert('Có lỗi xảy ra: ' + data.message);
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Có lỗi xảy ra khi gửi yêu cầu');
+        });
+    };
+
+    function removeProblemFromContest(problemId) {
+        const contestId = contestSelect.value;
+        if (!contestId) {
+            alert('Vui lòng chọn một kỳ thi.');
+            return;
+        }
+
+        fetch('@Url.Action("RemoveProblemFromContest", "Admin")', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ contestId: contestId, problemId: problemId })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert('Xóa bài tập khỏi kỳ thi thành công!');
+                fetchContestProblems(contestId);
+            } else {
+                alert('Có lỗi xảy ra: ' + data.message);
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Có lỗi xảy ra khi gửi yêu cầu');
+        });
+    }
+</script>
+

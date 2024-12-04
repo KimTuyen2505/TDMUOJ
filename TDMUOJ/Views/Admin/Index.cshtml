@@ -104,6 +104,8 @@
             <li><a href="#" class="nav-link" data-target="contests">Quản lý cuộc thi</a></li>
             <li><a href="#" class="nav-link" data-target="problems">Quản lý bài tập</a></li>
             <li><a href="#" class="nav-link" data-target="submissions">Quản lý bài nộp</a></li>
+            <li><a href="#" class="nav-link" data-target="testcases">Quản lý Test Case</a></li>
+            <li><a href="#" class="nav-link" data-target="contestProblems">Quản lý bài tập trong kỳ thi</a></li>
         </ul>
     </div>
 
@@ -113,6 +115,8 @@
         @Html.Action("ContestManagement", "Admin")
         @Html.Action("ProblemManagement", "Admin")
         @Html.Action("SubmissionManagement", "Admin")
+        @Html.Action("TestCaseManagement", "Admin")
+        @Html.Action("ProblemsForContestManagement", "Admin")
     </div>
 
     <script>

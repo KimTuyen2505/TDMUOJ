@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Ajax.Utilities;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -244,6 +245,152 @@ namespace TDMUOJ.Controllers
                     createdAt = x.submission.submission.submittedAt
                 }).ToList();
             return PartialView(submissions);
+        }
+        public ActionResult TestCaseManagement()
+        {
+            var problems = db.Problems.Include(p => p.ProblemTestCases).ToList();
+            return PartialView(problems);
+        }
+        [HttpPost]
+        public JsonResult AddTestCase(ProblemTestCase testCase)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    db.ProblemTestCases.Add(testCase);
+                    db.SaveChanges();
+                    return Json(new { success = true });
+                }
+                return Json(new { success = false, message = "Dữ liệu không hợp lệ" });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { success = false, message = ex.Message });
+            }
+        }
+        [HttpPost]
+        public JsonResult AddExample(ProblemExample example)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    db.ProblemExamples.Add(example);
+                    db.SaveChanges();
+                    return Json(new { success = true });
+                }
+                return Json(new { success = false, message = "Dữ liệu không hợp lệ" });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { success = false, message = ex.Message });
+            }
+        }
+
+        [HttpPost]
+        public JsonResult EditTestCase(ProblemTestCase testCase)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    var existingTestCase = db.ProblemTestCases.Find(testCase.id);
+                    if (existingTestCase != null)
+                    {
+                        existingTestCase.input = testCase.input;
+                        existingTestCase.output = testCase.output;
+                        db.SaveChanges();
+                        return Json(new { success = true });
+                    }
+                }
+                return Json(new { success = false, message = "Dữ liệu không hợp lệ" });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { success = false, message = ex.Message });
+            }
+        }
+
+        public ActionResult DeleteTestCase(int id)
+        {
+            var testCase = db.ProblemTestCases.Find(id);
+            if (testCase != null)
+            {
+                db.ProblemTestCases.Remove(testCase);
+                db.SaveChanges();
+            }
+            return RedirectToAction("Index");
+        }
+        public ActionResult ProblemsForContestManagement()
+        {
+            var viewModel = new ContestProblemViewModel
+            {
+                Contests = db.Contests.ToList(),
+                AllProblems = db.Problems.ToList()
+            };
+            return PartialView(viewModel);
+        }
+        [HttpGet]
+        public JsonResult GetContestProblems(int contestId)
+        {
+            var problems = db.ContestProblems
+                .Where(cp => cp.contestId == contestId)
+                .Select(cp => new {
+                    id = cp.Problem.id,
+                    title = cp.Problem.title
+                })
+                .ToList();
+            return Json(problems, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult AddProblemToContest(int contestId, int problemId)
+        {
+            try
+            {
+                var existingContestProblem = db.ContestProblems
+                    .FirstOrDefault(cp => cp.contestId == contestId && cp.problemId == problemId);
+
+                if (existingContestProblem != null)
+                {
+                    return Json(new { success = false, message = "Bài tập đã tồn tại trong kỳ thi này." });
+                }
+
+                var contestProblem = new ContestProblem
+                {
+                    contestId = contestId,
+                    problemId = problemId
+                };
+                db.ContestProblems.Add(contestProblem);
+                db.SaveChanges();
+                return Json(new { success = true });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { success = false, message = ex.Message });
+            }
+        }
+
+        [HttpPost]
+        public JsonResult RemoveProblemFromContest(int contestId, int problemId)
+        {
+            try
+            {
+                var contestProblem = db.ContestProblems
+                    .FirstOrDefault(cp => cp.contestId == contestId && cp.problemId == problemId);
+                if (contestProblem != null)
+                {
+                    db.ContestProblems.Remove(contestProblem);
+                    db.SaveChanges();
+                    return Json(new { success = true });
+                }
+                return Json(new { success = false, message = "Bài tập không tồn tại trong kỳ thi này." });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { success = false, message = ex.Message });
+            }
         }
     }
 }

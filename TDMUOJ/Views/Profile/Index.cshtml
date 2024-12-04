@@ -6,11 +6,17 @@
 <link rel="stylesheet" href="~/Content/css/Profile.css" />
 <div class="container">
     <header>
-        <img id="avatar" src="~/Content/IMAGE/@Model.avatar" alt="User Avatar">
+        <div class="avatar-container">
+            <img id="avatar" src="~/Content/IMAGE/@Model.avatar" alt="User Avatar">
+            <input type="file" id="avatar-upload" style="display: none;" accept="image/*">
+            <label for="avatar-upload" class="edit-avatar" style="display: none;">Change Avatar</label>
+        </div>
         <h1 id="name">@Model.name</h1>
+        <input type="text" id="name-edit" value="@Model.name" style="display: none;">
         <p id="username">@Model.username</p>
         <hr style="margin: 10px 0" />
         <p id="email">@Model.email</p>
+        <input type="email" id="email-edit" value="@Model.email" style="display: none;">
     </header>
     <main>
         <section class="stats">
@@ -31,4 +37,97 @@
             </div>
         </section>
     </main>
+    @if (Session["User"] != null && (Session["User"] as TDMUOJ.Models.Account).id == Model.id)
+    {
+        <button id="edit-toggle" class="edit-button">Edit Profile</button>
+        <button id="save-changes" class="save-button" style="display: none;">Save Changes</button>
+    }
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const editToggle = document.getElementById('edit-toggle');
+        const saveChanges = document.getElementById('save-changes');
+        const nameElement = document.getElementById('name');
+        const nameEdit = document.getElementById('name-edit');
+        const emailElement = document.getElementById('email');
+        const emailEdit = document.getElementById('email-edit');
+        const avatarElement = document.getElementById('avatar');
+        const avatarUpload = document.getElementById('avatar-upload');
+        const editAvatarLabel = document.querySelector('.edit-avatar');
+
+        let isEditMode = false;
+
+        editToggle.addEventListener('click', function () {
+            isEditMode = !isEditMode;
+            toggleEditMode();
+        });
+
+        saveChanges.addEventListener('click', function () {
+            saveProfile();
+        });
+
+        avatarUpload.addEventListener('change', function (event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    avatarElement.src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        function toggleEditMode() {
+            if (isEditMode) {
+                nameElement.style.display = 'none';
+                nameEdit.style.display = 'inline-block';
+                emailElement.style.display = 'none';
+                emailEdit.style.display = 'inline-block';
+                editAvatarLabel.style.display = 'block';
+                editToggle.style.display = 'none';
+                saveChanges.style.display = 'block';
+            } else {
+                nameElement.style.display = 'block';
+                nameEdit.style.display = 'none';
+                emailElement.style.display = 'block';
+                emailEdit.style.display = 'none';
+                editAvatarLabel.style.display = 'none';
+                editToggle.style.display = 'block';
+                saveChanges.style.display = 'none';
+            }
+        }
+
+        function saveProfile() {
+            const formData = new FormData();
+            formData.append('name', nameEdit.value);
+            formData.append('email', emailEdit.value);
+            if (avatarUpload.files[0]) {
+                formData.append('avatar', avatarUpload.files[0]);
+            }
+
+            fetch('/Profile/UpdateProfile', {
+                method: 'POST',
+                body: formData
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        nameElement.textContent = nameEdit.value;
+                        emailElement.textContent = emailEdit.value;
+                        isEditMode = false;
+                        toggleEditMode();
+                        alert('Cập nhật thông tin thành công!');
+                    } else {
+                        alert('Cập nhật thông tin thất bại. Vui lòng thử lại.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Đã xảy ra lỗi. Vui lòng thử lại.');
+                });
+        }
+    });
+
+
+</script>

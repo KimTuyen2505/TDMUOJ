@@ -58,7 +58,7 @@ namespace TDMUOJ.Controllers
             account.password = password;
             account.email = email;
             account.name = fullName;
-            account.avatar = "default.png";
+            account.avatar = "default_avatar.png";
             account.role = "user";
             account.rating = 0;
             account.maxRating = 0;
