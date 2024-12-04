@@ -12,13 +12,13 @@ namespace TDMUOJ.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class RankingContest
+    public partial class Comment
     {
         public int id { get; set; }
-        public int contestId { get; set; }
+        public string content { get; set; }
         public int userId { get; set; }
-        public int score { get; set; }
-        public Nullable<int> rank { get; set; }
+        public int contestId { get; set; }
+        public System.DateTime createdAt { get; set; }
     
         public virtual Account Account { get; set; }
         public virtual Contest Contest { get; set; }

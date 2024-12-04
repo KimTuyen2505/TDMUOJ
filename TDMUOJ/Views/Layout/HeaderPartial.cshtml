@@ -34,22 +34,9 @@
                 <a href="@Url.Action("Index", "News")">Tin tức</a>
             </div>
             <div class="nav-item">
-                <a href="@Url.Action("Index", "Discuss")">Thảo luận</a>
-            </div>
-            <div class="nav-item">
                 <a href="@Url.Action("Index", "Compiler")">TRÌNH BIÊN DỊCH</a>
             </div>
             <div class="nav-right">
-                <div>
-                    <img src="https://oj.vnoi.info/static/icons/vi_flag.svg"
-                         alt="VN"
-                         height="24" />
-                </div>
-                <div>
-                    <img src="https://oj.vnoi.info/static/icons/gb_flag.svg"
-                         alt="America"
-                         height="24" />
-                </div>
                 <div class="item-right">
 
                     @if (Session["User"] == null)

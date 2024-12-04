@@ -162,6 +162,22 @@ namespace TDMUOJ.Controllers
                 submission.submittedAt = DateTime.Now;
 
                 db.Submissions.Add(submission);
+
+                if (submission.result == "AC")
+                {
+                    var checkExist = db.ProblemSolveds.FirstOrDefault(ps => ps.problemId == problemId && ps.userId == submission.userId);
+                    var account = db.Accounts.FirstOrDefault(a => a.id == submission.userId);
+                    if (checkExist == null)
+                    {
+                        ProblemSolved ps = new ProblemSolved();
+                        ps.problemId = problemId;
+                        ps.userId = (Session["User"] as Account).id;
+
+                        account.numberOfAccepted = account.numberOfAccepted + 1;
+
+                        db.ProblemSolveds.Add(ps);
+                    }
+                }
                 db.SaveChanges();
             }
 

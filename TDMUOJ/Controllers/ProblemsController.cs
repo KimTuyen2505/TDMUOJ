@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Dynamic;
 using System.Linq;
+using System.Security.Principal;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.UI.WebControls;
@@ -33,8 +34,21 @@ namespace TDMUOJ.Controllers
                      difficulty = x.difficulty,
                      numberOfAccepted = x.numberOfAccepted
                  });
-            var dynamicProblems = new List<dynamic>();
-            dynamicProblems = problems.Select(x =>
+
+            TopUsers topUsers = new TopUsers
+            {
+                AccountList = db.Accounts
+                        .OrderByDescending(account => account.rating)
+                        .Take(5)
+                        .Select(account => account).ToList(),
+                NewProblemList = db.Problems
+                        .OrderByDescending(problem => problem.createdAt)
+                        .Take(5)
+                        .Select(problem => problem).ToList()
+            };
+            dynamic dynamicProblems = new ExpandoObject();
+            dynamicProblems.topUsers = topUsers;
+            dynamicProblems.problems = problems.Select(x =>
             {
                 dynamic expando = new ExpandoObject();
                 // Copy tất cả thuộc tính từ `x` vào `expando`
@@ -70,5 +84,6 @@ namespace TDMUOJ.Controllers
                 .FirstOrDefault();
             return View(detailProblem);
         }
+
     }
 }

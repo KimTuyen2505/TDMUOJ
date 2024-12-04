@@ -16,6 +16,9 @@ namespace TDMUOJ.Models
     {
         public int id { get; set; }
         public int contestId { get; set; }
-        public int contestRanking1 { get; set; }
+        public int rankingId { get; set; }
+    
+        public virtual Contest Contest { get; set; }
+        public virtual Ranking Ranking { get; set; }
     }
 }

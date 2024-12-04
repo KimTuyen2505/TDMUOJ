@@ -1,0 +1,27 @@
+﻿@model List <TDMUOJ.Models.SubmissionManagementCustom>
+<div id="submissions" class="dashboard-item hidden">
+    <h2>Quản lý bài nộp</h2>
+    <table>
+        <tr>
+            <th>STT</th>
+            <th>Người nộp</th>
+            <th>Bài tập</th>
+            <th>Ngôn ngữ</th>
+            <th>Thời gian nộp</th>
+            <th>Kết quả</th>
+            <th>Thao tác</th>
+        </tr>
+        @for (var i = 0; i < Model.Count; i++)
+        {
+            <tr>
+                <td>@(i+1)</td>
+                <td>@Model[i].username</td>
+                <td>@Model[i].problemTitle</td>
+                <td>@Model[i].language</td>
+                <td>@(Model[i].createdAt?.ToString("dd/MM/yyyy HH:mm") ?? "Không xác định")</td>
+                <td>@Model[i].status</td>
+                <td><a href="#">Chi tiết</a></td>
+            </tr>
+        }
+    </table>
+</div>

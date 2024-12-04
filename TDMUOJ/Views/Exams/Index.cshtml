@@ -1,4 +1,4 @@
-﻿
+﻿@model TDMUOJ.Models.ContestStatus
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -10,149 +10,151 @@
         <br />
         <hr />
         <br />
+        <h2>Kỳ thi đang diễn ra</h2>
+        <br />
+        <hr />
+        <br />
+        @if (Model.contestsRunning.Count > 0)
+        {
+            <div class="table-coming">
+                <div class="head-coming">
+                    <div class="contest">Kỳ thi</div>
+                </div>
+                @foreach (var contest in Model.contestsRunning)
+                {
+                    <div class="child-coming" data-endtime="@contest.endTime.ToString("yyyy-MM-dd HH:mm:ss")">
+                        <div class="contest">
+                            <div style="margin-left: 10px">
+                                <a class="contest-name"
+                                   href="@Url.Action("DetailExam", "Exams", new {id = @contest.id})">@contest.title</a>
+                                <div style="color: gray">Bắt đầu từ @contest.startTime.ToString("dd-MM-yyyy HH:mm")</div>
+                                <div style="color: gray">Cuộc thi sẽ kết thúc sau:</div>
+                                <div id="time-down"></div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+        else
+        {
+            <i>Chưa có kỳ thi nào đang diễn ra</i>
+            <br />
+            <br />
+            <br />
+        }
         <h2>Kỳ thi sắp tới</h2>
         <br />
         <hr />
         <br />
-        <div class="table-coming">
-            <div class="head-coming">
-                <div class="contest">Kỳ thi</div>
-            </div>
-            <div class="child-coming">
-                <div class="contest">
-                    <div style="margin-left: 10px">
-                        <a class="contest-name"
-                           href="../Cuocthi/BedaoGrandContest12.html">Bedao Grand Contest 12</a>
-                        <div style="color: gray">Cuộc thi diễn ra sau:</div>
-                        <div id="time-down"></div>
-                    </div>
+        @if (Model.contestsUpComming.Count > 0)
+        {
+            <div class="table-coming">
+                <div class="head-coming">
+                    <div class="contest">Kỳ thi</div>
                 </div>
+                @foreach (var contest in Model.contestsUpComming)
+                {
+                    <div class="child-coming" data-endtime="@contest.startTime.ToString("yyyy-MM-dd HH:mm:ss")">
+                        <div class="contest">
+                            <div style="margin-left: 10px">
+                                <a class="contest-name"
+                                   href="@Url.Action("DetailExam", "Exams", new {id = @contest.id})">@contest.title</a>
+                                <div style="color: gray">Bắt đầu từ @contest.startTime.ToString("dd-MM-yyyy HH:mm")</div>
+                                <div style="color: gray">Cuộc thi diễn ra sau:</div>
+                                <div id="time-down"></div>
+                            </div>
+                        </div>
+                    </div>
+                }
             </div>
-        </div>
+        }
+        else
+        {
+            <i>Chưa có kỳ thi nào được lên lịch</i>
+        }
         <br />
         <br />
         <br />
         <h2>Các kỳ thi đã qua</h2>
         <br />
-        <div class="table">
-            <div class="head-table">
-                <div class="contest">Kỳ thi</div>
-                <div class="member"><p>Thành viên</p></div>
-                <div class="join"><p></p></div>
-            </div>
-            <div class="child-table">
-                <div class="contest">
-                    <div style="margin-left: 10px">
-                        <a class="contest-name"
-                           href="../Cuocthi/BedaoGrandContest12.html">Bedao Grand Contest 12</a>
-                        <div class="contest-time">
-                            12 Tháng 3, 2023, 20:00 <br />
-                            Thời gian làm bài: 03 giờ, 00 phút
+        <hr />
+        <br />
+        @if (Model.contestsEnded.Count > 0)
+        {
+            <div class="table">
+                <div class="head-table">
+                    <div class="contest">Kỳ thi</div>
+                    <div class="member"><p>Thành viên</p></div>
+                    <div class="join"><p></p></div>
+                </div>
+                @foreach (var contest in Model.contestsEnded)
+                {
+                    <div class="child-table">
+                        <div class="contest">
+                            <div style="margin-left: 10px">
+                                <a class="contest-name"
+                                   href="@Url.Action("DetailExam", "Exams", new {id = @contest.id})">@contest.title</a>
+                                <div class="contest-time">
+                                    Bắt đầu từ @contest.startTime.ToString("dd-MM-yyyy, HH:mm") <br />
+                                    Thời gian làm bài: @{ TimeSpan diff = contest.endTime.Subtract(contest.startTime);} <span>@diff.TotalMinutes phút</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="member">
+                            <div>&nbsp;</div>
+                            <div>247</div>
+                        </div>
+                        <div class="join" style="text-align: center">
+                            <div>&nbsp;</div>
+                            <div class="but" style="text-align: center; display: inline">
+                                Tham gia ảo
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="member">
-                    <div>&nbsp;</div>
-                    <div>247</div>
-                </div>
-                <div class="join" style="text-align: center">
-                    <div>&nbsp;</div>
-                    <div class="but" style="text-align: center; display: inline">
-                        Tham gia ảo
-                    </div>
-                </div>
+                }
             </div>
-            <div class="child-table">
-                <div class="contest">
-                    <div style="margin-left: 10px">
-                        <a class="contest-name"
-                           href="../Cuocthi/FreeContestTestingRound45.html">Free Contest Testing Round 45</a>
-                        <div class="contest-time">
-                            11 Tháng 3, 2023, 19:30 <br />
-                            Thời gian làm bài: 01 giờ, 30 phút
-                        </div>
-                    </div>
-                </div>
-                <div class="member">
-                    <div>&nbsp;</div>
-                    <div>0</div>
-                </div>
-                <div class="join" style="text-align: center">
-                    <div>&nbsp;</div>
-                    <div class="but" style="text-align: center; display: inline">
-                        Tham gia ảo
-                    </div>
-                </div>
-            </div>
-            <div class="child-table">
-                <div class="contest">
-                    <div style="margin-left: 10px">
-                        <a class="contest-name"
-                           href="../Cuocthi/BedaoGrandContest12.html">Free Contest 145</a>
-                        <div class="contest-time">
-                            4 Tháng 3, 2023, 19:30 <br />
-                            Thời gian làm bài: 03 giờ, 00 phút
-                        </div>
-                    </div>
-                </div>
-                <div class="member">
-                    <div>&nbsp;</div>
-                    <div>0</div>
-                </div>
-                <div class="join" style="text-align: center">
-                    <div>&nbsp;</div>
-                    <div class="but" style="text-align: center; display: inline">
-                        Tham gia ảo
-                    </div>
-                </div>
-            </div>
-            <div class="child-table">
-                <div class="contest">
-                    <div style="margin-left: 10px">
-                        <a class="contest-name"
-                           href="../Cuocthi/BedaoGrandContest12.html">Free Contest Testing Round 44</a>
-                        <div class="contest-time">
-                            18 Tháng 2, 2023, 19:30 <br />
-                            Thời gian làm bài: 01 giờ, 30 phút
-                        </div>
-                    </div>
-                </div>
-                <div class="member">
-                    <div>&nbsp;</div>
-                    <div>0</div>
-                </div>
-                <div class="join" style="text-align: center">
-                    <div>&nbsp;</div>
-                    <div class="but" style="text-align: center; display: inline">
-                        Tham gia ảo
-                    </div>
-                </div>
-            </div>
-        </div>
+        }
+        else
+        {
+            <i>Chưa có kỳ thi nào trong quá khứ</i>
+        }
     </div>
 </div>
 <script>
-        var countDownDate = new Date().getTime() + 10000000;
+    // Lấy tất cả các phần tử kỳ thi
+    const exams = document.querySelectorAll(".child-coming");
 
-        var countdown = setInterval(function () {
-          var now = new Date().getTime();
-          var distance = countDownDate - now;
-          var hours = Math.floor(
-            (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-          );
-          var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-          var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    // Hàm cập nhật countdown
+    function updateCountdown() {
+        exams.forEach(exam => {
+            const endTime = new Date(exam.getAttribute("data-endtime")).getTime();
+            const now = new Date().getTime();
+            const distance = endTime - now;
 
-          document.getElementById("time-down").innerHTML =
-            (parseInt(hours / 10) == 0 ? "0" + hours : hours) +
-            " : " +
-            (parseInt(minutes / 10) == 0 ? "0" + minutes : minutes) +
-            " : " +
-            (parseInt(seconds / 10) == 0 ? "0" + seconds : seconds);
-          if (distance < 0) {
-            clearInterval(countdown);
-            document.getElementById("time-down").innerHTML =
-              "Kỳ thi đang diễn ra";
-          }
-        }, 1000);
+            if (distance > 0) {
+                var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                var unit = ["ngày", "giờ", "phút", "giây"];
+                var value = [days, hours, minutes, seconds];
+                var id = (days > 0 ? 0 : hours > 0 ? 1 : minutes > 0 ? 2 : 3);
+                var time = "";
+                for (var i = id; i < 4; i++) {
+                    time = `${time} ${value[i]} ${unit[i]}`;
+                }
+                exam.querySelector("#time-down").innerText = time;
+            } else {
+                exam.querySelector("#time-down").innerText = "Hết giờ!";
+                window.location.reload();
+            }
+        });
+    }
+
+    // Cập nhật mỗi giây
+    setInterval(updateCountdown, 1000);
+
+    // Khởi chạy ngay khi tải trang
+    updateCountdown();
 </script>

@@ -18,7 +18,7 @@ namespace TDMUOJ.Models
         public int contestId { get; set; }
         public int problemId { get; set; }
     
-        public virtual Account Account { get; set; }
         public virtual Contest Contest { get; set; }
+        public virtual Problem Problem { get; set; }
     }
 }

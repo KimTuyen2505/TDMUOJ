@@ -37,10 +37,11 @@ namespace TDMUOJ.Models
         public virtual DbSet<ProblemExample> ProblemExamples { get; set; }
         public virtual DbSet<ProblemSolved> ProblemSolveds { get; set; }
         public virtual DbSet<ProblemTestCase> ProblemTestCases { get; set; }
-        public virtual DbSet<RankingContest> RankingContests { get; set; }
         public virtual DbSet<ResetPassword> ResetPasswords { get; set; }
         public virtual DbSet<Submission> Submissions { get; set; }
         public virtual DbSet<Tag> Tags { get; set; }
         public virtual DbSet<TagProblem> TagProblems { get; set; }
+        public virtual DbSet<Ranking> Rankings { get; set; }
+        public virtual DbSet<Comment> Comments { get; set; }
     }
 }

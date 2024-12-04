@@ -31,8 +31,20 @@ namespace TDMUOJ.Controllers
                     problemName = db.Problems.Where(problem => problem.id == submission.problemId).Select(problem => problem.title).FirstOrDefault(),
                     accountName = db.Accounts.Where(account => account.id == submission.userId).Select(account => account.username).FirstOrDefault()
                 }).OrderByDescending(submission => submission.submittedAt).ToList();
-            var dynamicSubmissions = new List<dynamic>();
-            dynamicSubmissions = submissions.Select(x =>
+            TopUsers topUsers = new TopUsers
+            {
+                AccountList = db.Accounts
+                        .OrderByDescending(account => account.rating)
+                        .Take(5)
+                        .Select(account => account).ToList(),
+                NewProblemList = db.Problems
+                        .OrderByDescending(problem => problem.createdAt)
+                        .Take(5)
+                        .Select(problem => problem).ToList()
+            };
+            dynamic dynamicSubmissions = new ExpandoObject();
+            dynamicSubmissions.topUsers = topUsers;
+            dynamicSubmissions.submissions = submissions.Select(x =>
             {
                 dynamic expando = new ExpandoObject();
                 // Copy tất cả thuộc tính từ `x` vào `expando`

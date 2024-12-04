@@ -16,14 +16,14 @@
     <Property Name="numberOfAccepted" Type="Int32" />
     <NavigationProperty Name="ContestOrganizers" Relationship="Self.FK__ContestOr__organ__59FA5E80" FromRole="Account" ToRole="ContestOrganizer" />
     <NavigationProperty Name="ContestParticipants" Relationship="Self.FK__ContestPa__membe__60A75C0F" FromRole="Account" ToRole="ContestParticipant" />
-    <NavigationProperty Name="ContestProblems" Relationship="Self.FK__ContestPr__probl__6477ECF3" FromRole="Account" ToRole="ContestProblem" />
     <NavigationProperty Name="Followers" Relationship="Self.FK__Follower__follow__3E52440B" FromRole="Account" ToRole="Follower" />
     <NavigationProperty Name="Followers1" Relationship="Self.FK__Follower__follow__3F466844" FromRole="Account" ToRole="Follower" />
     <NavigationProperty Name="News" Relationship="Self.FK__News__authorId__6B24EA82" FromRole="Account" ToRole="News" />
     <NavigationProperty Name="Problems" Relationship="Self.FK__Problem__created__440B1D61" FromRole="Account" ToRole="Problem" />
     <NavigationProperty Name="ProblemSolveds" Relationship="Self.FK__ProblemSo__userI__47DBAE45" FromRole="Account" ToRole="ProblemSolved" />
-    <NavigationProperty Name="RankingContests" Relationship="Self.FK__RankingCo__userI__6EF57B66" FromRole="Account" ToRole="RankingContest" />
     <NavigationProperty Name="Submissions" Relationship="Self.FK__Submissio__userI__76969D2E" FromRole="Account" ToRole="Submission" />
+    <NavigationProperty Name="Rankings" Relationship="TDMUOJModel.FK__RankingCo__userI__6EF57B661" FromRole="Account" ToRole="Ranking" />
+    <NavigationProperty Name="Comments" Relationship="TDMUOJModel.FK_Comment_Account" FromRole="Account" ToRole="Comment" />
   </EntityType>
   <EntityType Name="Contest">
     <Key>
@@ -31,7 +31,6 @@
     </Key>
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="title" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="startTime" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="endTime" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="rules" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -39,7 +38,9 @@
     <NavigationProperty Name="ContestOrganizers" Relationship="Self.FK__ContestOr__conte__59063A47" FromRole="Contest" ToRole="ContestOrganizer" />
     <NavigationProperty Name="ContestParticipants" Relationship="Self.FK__ContestPa__conte__5FB337D6" FromRole="Contest" ToRole="ContestParticipant" />
     <NavigationProperty Name="ContestProblems" Relationship="Self.FK__ContestPr__conte__6383C8BA" FromRole="Contest" ToRole="ContestProblem" />
-    <NavigationProperty Name="RankingContests" Relationship="Self.FK__RankingCo__conte__6E01572D" FromRole="Contest" ToRole="RankingContest" />
+    <NavigationProperty Name="Rankings" Relationship="TDMUOJModel.FK__RankingCo__conte__6E01572D1" FromRole="Contest" ToRole="Ranking" />
+    <NavigationProperty Name="ContestRankings" Relationship="TDMUOJModel.FK_ContestRanking_Contest" FromRole="Contest" ToRole="ContestRanking" />
+    <NavigationProperty Name="Comments" Relationship="TDMUOJModel.FK_Comment_Contest" FromRole="Contest" ToRole="Comment" />
   </EntityType>
   <EntityType Name="ContestOrganizer">
     <Key>
@@ -73,8 +74,8 @@
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="contestId" Type="Int32" Nullable="false" />
     <Property Name="problemId" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="Account" Relationship="Self.FK__ContestPr__probl__6477ECF3" FromRole="ContestProblem" ToRole="Account" />
     <NavigationProperty Name="Contest" Relationship="Self.FK__ContestPr__conte__6383C8BA" FromRole="ContestProblem" ToRole="Contest" />
+    <NavigationProperty Name="Problem" Relationship="TDMUOJModel.FK__ContestPr__probl__6477ECF31" FromRole="ContestProblem" ToRole="Problem" />
   </EntityType>
   <EntityType Name="ContestRanking">
     <Key>
@@ -82,7 +83,9 @@
     </Key>
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="contestId" Type="Int32" Nullable="false" />
-    <Property Name="contestRanking1" Type="Int32" Nullable="false" />
+    <Property Name="rankingId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Contest" Relationship="TDMUOJModel.FK_ContestRanking_Contest" FromRole="ContestRanking" ToRole="Contest" />
+    <NavigationProperty Name="Ranking" Relationship="TDMUOJModel.FK_ContestRanking_Ranking" FromRole="ContestRanking" ToRole="Ranking" />
   </EntityType>
   <EntityType Name="Follower">
     <Key>
@@ -126,6 +129,7 @@
     <NavigationProperty Name="ProblemTestCases" Relationship="Self.FK__ProblemTe__probl__4AB81AF0" FromRole="Problem" ToRole="ProblemTestCase" />
     <NavigationProperty Name="Submissions" Relationship="Self.FK__Submissio__probl__75A278F5" FromRole="Problem" ToRole="Submission" />
     <NavigationProperty Name="TagProblems" Relationship="Self.FK__TagProble__probl__534D60F1" FromRole="Problem" ToRole="TagProblem" />
+    <NavigationProperty Name="ContestProblems" Relationship="TDMUOJModel.FK__ContestPr__probl__6477ECF31" FromRole="Problem" ToRole="ContestProblem" />
   </EntityType>
   <EntityType Name="ProblemExample">
     <Key>
@@ -157,18 +161,6 @@
     <Property Name="output" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Problem" Relationship="Self.FK__ProblemTe__probl__4AB81AF0" FromRole="ProblemTestCase" ToRole="Problem" />
   </EntityType>
-  <EntityType Name="RankingContest">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="contestId" Type="Int32" Nullable="false" />
-    <Property Name="userId" Type="Int32" Nullable="false" />
-    <Property Name="score" Type="Int32" Nullable="false" />
-    <Property Name="rank" Type="Int32" />
-    <NavigationProperty Name="Account" Relationship="Self.FK__RankingCo__userI__6EF57B66" FromRole="RankingContest" ToRole="Account" />
-    <NavigationProperty Name="Contest" Relationship="Self.FK__RankingCo__conte__6E01572D" FromRole="RankingContest" ToRole="Contest" />
-  </EntityType>
   <EntityType Name="ResetPassword">
     <Key>
       <PropertyRef Name="id" />
@@ -196,6 +188,7 @@
     <Property Name="testCaseAchieved" Type="Int32" />
     <NavigationProperty Name="Account" Relationship="Self.FK__Submissio__userI__76969D2E" FromRole="Submission" ToRole="Account" />
     <NavigationProperty Name="Problem" Relationship="Self.FK__Submissio__probl__75A278F5" FromRole="Submission" ToRole="Problem" />
+    <Property Name="contestId" Type="Int32" />
   </EntityType>
   <EntityType Name="Tag">
     <Key>
@@ -236,18 +229,6 @@
       </Principal>
       <Dependent Role="ContestParticipant">
         <PropertyRef Name="memberId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__ContestPr__probl__6477ECF3">
-    <End Role="Account" Type="Self.Account" Multiplicity="1" />
-    <End Role="ContestProblem" Type="Self.ContestProblem" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Account">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="ContestProblem">
-        <PropertyRef Name="problemId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -311,18 +292,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__RankingCo__userI__6EF57B66">
-    <End Role="Account" Type="Self.Account" Multiplicity="1" />
-    <End Role="RankingContest" Type="Self.RankingContest" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Account">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="RankingContest">
-        <PropertyRef Name="userId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK__Submissio__userI__76969D2E">
     <End Role="Account" Type="Self.Account" Multiplicity="1" />
     <End Role="Submission" Type="Self.Submission" Multiplicity="*" />
@@ -367,18 +336,6 @@
         <PropertyRef Name="id" />
       </Principal>
       <Dependent Role="ContestProblem">
-        <PropertyRef Name="contestId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__RankingCo__conte__6E01572D">
-    <End Role="Contest" Type="Self.Contest" Multiplicity="1" />
-    <End Role="RankingContest" Type="Self.RankingContest" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Contest">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="RankingContest">
         <PropertyRef Name="contestId" />
       </Dependent>
     </ReferentialConstraint>
@@ -468,7 +425,6 @@
     <EntitySet Name="ProblemExamples" EntityType="Self.ProblemExample" />
     <EntitySet Name="ProblemSolveds" EntityType="Self.ProblemSolved" />
     <EntitySet Name="ProblemTestCases" EntityType="Self.ProblemTestCase" />
-    <EntitySet Name="RankingContests" EntityType="Self.RankingContest" />
     <EntitySet Name="ResetPasswords" EntityType="Self.ResetPassword" />
     <EntitySet Name="Submissions" EntityType="Self.Submission" />
     <EntitySet Name="Tags" EntityType="Self.Tag" />
@@ -480,10 +436,6 @@
     <AssociationSet Name="FK__ContestPa__membe__60A75C0F" Association="Self.FK__ContestPa__membe__60A75C0F">
       <End Role="Account" EntitySet="Accounts" />
       <End Role="ContestParticipant" EntitySet="ContestParticipants" />
-    </AssociationSet>
-    <AssociationSet Name="FK__ContestPr__probl__6477ECF3" Association="Self.FK__ContestPr__probl__6477ECF3">
-      <End Role="Account" EntitySet="Accounts" />
-      <End Role="ContestProblem" EntitySet="ContestProblems" />
     </AssociationSet>
     <AssociationSet Name="FK__Follower__follow__3E52440B" Association="Self.FK__Follower__follow__3E52440B">
       <End Role="Account" EntitySet="Accounts" />
@@ -505,10 +457,6 @@
       <End Role="Account" EntitySet="Accounts" />
       <End Role="ProblemSolved" EntitySet="ProblemSolveds" />
     </AssociationSet>
-    <AssociationSet Name="FK__RankingCo__userI__6EF57B66" Association="Self.FK__RankingCo__userI__6EF57B66">
-      <End Role="Account" EntitySet="Accounts" />
-      <End Role="RankingContest" EntitySet="RankingContests" />
-    </AssociationSet>
     <AssociationSet Name="FK__Submissio__userI__76969D2E" Association="Self.FK__Submissio__userI__76969D2E">
       <End Role="Account" EntitySet="Accounts" />
       <End Role="Submission" EntitySet="Submissions" />
@@ -524,10 +472,6 @@
     <AssociationSet Name="FK__ContestPr__conte__6383C8BA" Association="Self.FK__ContestPr__conte__6383C8BA">
       <End Role="Contest" EntitySet="Contests" />
       <End Role="ContestProblem" EntitySet="ContestProblems" />
-    </AssociationSet>
-    <AssociationSet Name="FK__RankingCo__conte__6E01572D" Association="Self.FK__RankingCo__conte__6E01572D">
-      <End Role="Contest" EntitySet="Contests" />
-      <End Role="RankingContest" EntitySet="RankingContests" />
     </AssociationSet>
     <AssociationSet Name="FK__ProblemEx__probl__4D94879B" Association="Self.FK__ProblemEx__probl__4D94879B">
       <End Role="Problem" EntitySet="Problems" />
@@ -553,5 +497,144 @@
       <End Role="Tag" EntitySet="Tags" />
       <End Role="TagProblem" EntitySet="TagProblems" />
     </AssociationSet>
+    <EntitySet Name="Rankings" EntityType="TDMUOJModel.Ranking" />
+    <AssociationSet Name="FK__RankingCo__userI__6EF57B661" Association="TDMUOJModel.FK__RankingCo__userI__6EF57B661">
+      <End Role="Account" EntitySet="Accounts" />
+      <End Role="Ranking" EntitySet="Rankings" />
+    </AssociationSet>
+    <AssociationSet Name="FK__RankingCo__conte__6E01572D1" Association="TDMUOJModel.FK__RankingCo__conte__6E01572D1">
+      <End Role="Contest" EntitySet="Contests" />
+      <End Role="Ranking" EntitySet="Rankings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ContestRanking_Contest" Association="TDMUOJModel.FK_ContestRanking_Contest">
+      <End Role="Contest" EntitySet="Contests" />
+      <End Role="ContestRanking" EntitySet="ContestRankings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ContestRanking_Ranking" Association="TDMUOJModel.FK_ContestRanking_Ranking">
+      <End Role="Ranking" EntitySet="Rankings" />
+      <End Role="ContestRanking" EntitySet="ContestRankings" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ContestPr__probl__6477ECF31" Association="TDMUOJModel.FK__ContestPr__probl__6477ECF31">
+      <End Role="Problem" EntitySet="Problems" />
+      <End Role="ContestProblem" EntitySet="ContestProblems" />
+    </AssociationSet>
+    <EntitySet Name="Comments" EntityType="TDMUOJModel.Comment" />
+    <AssociationSet Name="FK_Comment_Account" Association="TDMUOJModel.FK_Comment_Account">
+      <End Role="Account" EntitySet="Accounts" />
+      <End Role="Comment" EntitySet="Comments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Comment_Contest" Association="TDMUOJModel.FK_Comment_Contest">
+      <End Role="Contest" EntitySet="Contests" />
+      <End Role="Comment" EntitySet="Comments" />
+    </AssociationSet>
   </EntityContainer>
+  <EntityType Name="Ranking">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="contestId" Type="Int32" Nullable="false" />
+    <Property Name="userId" Type="Int32" Nullable="false" />
+    <Property Name="score" Type="Int32" Nullable="false" />
+    <Property Name="rank" Type="Int32" />
+    <NavigationProperty Name="Account" Relationship="TDMUOJModel.FK__RankingCo__userI__6EF57B661" FromRole="Ranking" ToRole="Account" />
+    <NavigationProperty Name="Contest" Relationship="TDMUOJModel.FK__RankingCo__conte__6E01572D1" FromRole="Ranking" ToRole="Contest" />
+    <NavigationProperty Name="ContestRankings" Relationship="TDMUOJModel.FK_ContestRanking_Ranking" FromRole="Ranking" ToRole="ContestRanking" />
+  </EntityType>
+  <Association Name="FK__RankingCo__userI__6EF57B661">
+    <End Type="TDMUOJModel.Account" Role="Account" Multiplicity="1" />
+    <End Type="TDMUOJModel.Ranking" Role="Ranking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Ranking">
+        <PropertyRef Name="userId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__RankingCo__conte__6E01572D1">
+    <End Type="TDMUOJModel.Contest" Role="Contest" Multiplicity="1" />
+    <End Type="TDMUOJModel.Ranking" Role="Ranking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Contest">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Ranking">
+        <PropertyRef Name="contestId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ContestRanking_Contest">
+    <End Type="TDMUOJModel.Contest" Role="Contest" Multiplicity="1" />
+    <End Type="TDMUOJModel.ContestRanking" Role="ContestRanking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Contest">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ContestRanking">
+        <PropertyRef Name="contestId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ContestRanking_Ranking">
+    <End Type="TDMUOJModel.Ranking" Role="Ranking" Multiplicity="1" />
+    <End Type="TDMUOJModel.ContestRanking" Role="ContestRanking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ranking">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ContestRanking">
+        <PropertyRef Name="rankingId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ContestPr__probl__6477ECF31">
+    <End Type="TDMUOJModel.Problem" Role="Problem" Multiplicity="1" />
+    <End Type="TDMUOJModel.ContestProblem" Role="ContestProblem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Problem">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ContestProblem">
+        <PropertyRef Name="problemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Comment">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="content" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="userId" Type="Int32" Nullable="false" />
+    <Property Name="contestId" Type="Int32" Nullable="false" />
+    <Property Name="createdAt" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Account" Relationship="TDMUOJModel.FK_Comment_Account" FromRole="Comment" ToRole="Account" />
+    <NavigationProperty Name="Contest" Relationship="TDMUOJModel.FK_Comment_Contest" FromRole="Comment" ToRole="Contest" />
+  </EntityType>
+  <Association Name="FK_Comment_Account">
+    <End Type="TDMUOJModel.Account" Role="Account" Multiplicity="1" />
+    <End Type="TDMUOJModel.Comment" Role="Comment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Comment">
+        <PropertyRef Name="userId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Comment_Contest">
+    <End Type="TDMUOJModel.Contest" Role="Contest" Multiplicity="1" />
+    <End Type="TDMUOJModel.Comment" Role="Comment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Contest">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Comment">
+        <PropertyRef Name="contestId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

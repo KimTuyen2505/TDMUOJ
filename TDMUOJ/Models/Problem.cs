@@ -22,6 +22,7 @@ namespace TDMUOJ.Models
             this.ProblemTestCases = new HashSet<ProblemTestCase>();
             this.Submissions = new HashSet<Submission>();
             this.TagProblems = new HashSet<TagProblem>();
+            this.ContestProblems = new HashSet<ContestProblem>();
         }
     
         public int id { get; set; }
@@ -45,5 +46,7 @@ namespace TDMUOJ.Models
         public virtual ICollection<Submission> Submissions { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TagProblem> TagProblems { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ContestProblem> ContestProblems { get; set; }
     }
 }

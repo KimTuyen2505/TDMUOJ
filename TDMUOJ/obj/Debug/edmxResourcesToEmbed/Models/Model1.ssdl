@@ -15,13 +15,22 @@
     <Property Name="maxRating" Type="int" />
     <Property Name="numberOfAccepted" Type="int" />
   </EntityType>
+  <EntityType Name="Comment">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="content" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="userId" Type="int" Nullable="false" />
+    <Property Name="contestId" Type="int" Nullable="false" />
+    <Property Name="createdAt" Type="datetime" Nullable="false" />
+  </EntityType>
   <EntityType Name="Contest">
     <Key>
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="title" Type="nvarchar" MaxLength="255" Nullable="false" />
-    <Property Name="description" Type="nvarchar(max)" />
     <Property Name="startTime" Type="datetime" Nullable="false" />
     <Property Name="endTime" Type="datetime" Nullable="false" />
     <Property Name="rules" Type="nvarchar(max)" />
@@ -62,7 +71,7 @@
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="contestId" Type="int" Nullable="false" />
-    <Property Name="contestRanking" Type="int" Nullable="false" />
+    <Property Name="rankingId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Follower">
     <Key>
@@ -124,7 +133,7 @@
     <Property Name="input" Type="nvarchar(max)" />
     <Property Name="output" Type="nvarchar(max)" />
   </EntityType>
-  <EntityType Name="RankingContest">
+  <EntityType Name="Ranking">
     <Key>
       <PropertyRef Name="id" />
     </Key>
@@ -151,6 +160,7 @@
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="problemId" Type="int" Nullable="false" />
     <Property Name="userId" Type="int" Nullable="false" />
+    <Property Name="contestId" Type="int" />
     <Property Name="code" Type="nvarchar(max)" Nullable="false" />
     <Property Name="language" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="maxTime" Type="float" />
@@ -236,10 +246,10 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK__ContestPr__probl__6477ECF3">
-    <End Role="Account" Type="Self.Account" Multiplicity="1" />
+    <End Role="Problem" Type="Self.Problem" Multiplicity="1" />
     <End Role="ContestProblem" Type="Self.ContestProblem" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Account">
+      <Principal Role="Problem">
         <PropertyRef Name="id" />
       </Principal>
       <Dependent Role="ContestProblem">
@@ -345,24 +355,24 @@
   </Association>
   <Association Name="FK__RankingCo__conte__6E01572D">
     <End Role="Contest" Type="Self.Contest" Multiplicity="1" />
-    <End Role="RankingContest" Type="Self.RankingContest" Multiplicity="*" />
+    <End Role="Ranking" Type="Self.Ranking" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Contest">
         <PropertyRef Name="id" />
       </Principal>
-      <Dependent Role="RankingContest">
+      <Dependent Role="Ranking">
         <PropertyRef Name="contestId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
   <Association Name="FK__RankingCo__userI__6EF57B66">
     <End Role="Account" Type="Self.Account" Multiplicity="1" />
-    <End Role="RankingContest" Type="Self.RankingContest" Multiplicity="*" />
+    <End Role="Ranking" Type="Self.Ranking" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Account">
         <PropertyRef Name="id" />
       </Principal>
-      <Dependent Role="RankingContest">
+      <Dependent Role="Ranking">
         <PropertyRef Name="userId" />
       </Dependent>
     </ReferentialConstraint>
@@ -415,8 +425,57 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Comment_Account">
+    <End Role="Account" Type="Self.Account" Multiplicity="1" />
+    <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Comment">
+        <PropertyRef Name="userId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Comment_Contest">
+    <End Role="Contest" Type="Self.Contest" Multiplicity="1" />
+    <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Contest">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Comment">
+        <PropertyRef Name="contestId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ContestRanking_Contest">
+    <End Role="Contest" Type="Self.Contest" Multiplicity="1" />
+    <End Role="ContestRanking" Type="Self.ContestRanking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Contest">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ContestRanking">
+        <PropertyRef Name="contestId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ContestRanking_Ranking">
+    <End Role="Ranking" Type="Self.Ranking" Multiplicity="1" />
+    <End Role="ContestRanking" Type="Self.ContestRanking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ranking">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ContestRanking">
+        <PropertyRef Name="rankingId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="TDMUOJModelStoreContainer">
     <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Comment" EntityType="Self.Comment" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Contest" EntityType="Self.Contest" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ContestOrganizer" EntityType="Self.ContestOrganizer" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ContestParticipant" EntityType="Self.ContestParticipant" Schema="dbo" store:Type="Tables" />
@@ -428,7 +487,7 @@
     <EntitySet Name="ProblemExample" EntityType="Self.ProblemExample" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ProblemSolved" EntityType="Self.ProblemSolved" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ProblemTestCase" EntityType="Self.ProblemTestCase" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="RankingContest" EntityType="Self.RankingContest" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ranking" EntityType="Self.Ranking" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ResetPassword" EntityType="Self.ResetPassword" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Submission" EntityType="Self.Submission" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Tag" EntityType="Self.Tag" Schema="dbo" store:Type="Tables" />
@@ -454,7 +513,7 @@
       <End Role="ContestProblem" EntitySet="ContestProblem" />
     </AssociationSet>
     <AssociationSet Name="FK__ContestPr__probl__6477ECF3" Association="Self.FK__ContestPr__probl__6477ECF3">
-      <End Role="Account" EntitySet="Account" />
+      <End Role="Problem" EntitySet="Problem" />
       <End Role="ContestProblem" EntitySet="ContestProblem" />
     </AssociationSet>
     <AssociationSet Name="FK__Follower__follow__3E52440B" Association="Self.FK__Follower__follow__3E52440B">
@@ -491,11 +550,11 @@
     </AssociationSet>
     <AssociationSet Name="FK__RankingCo__conte__6E01572D" Association="Self.FK__RankingCo__conte__6E01572D">
       <End Role="Contest" EntitySet="Contest" />
-      <End Role="RankingContest" EntitySet="RankingContest" />
+      <End Role="Ranking" EntitySet="Ranking" />
     </AssociationSet>
     <AssociationSet Name="FK__RankingCo__userI__6EF57B66" Association="Self.FK__RankingCo__userI__6EF57B66">
       <End Role="Account" EntitySet="Account" />
-      <End Role="RankingContest" EntitySet="RankingContest" />
+      <End Role="Ranking" EntitySet="Ranking" />
     </AssociationSet>
     <AssociationSet Name="FK__Submissio__probl__75A278F5" Association="Self.FK__Submissio__probl__75A278F5">
       <End Role="Problem" EntitySet="Problem" />
@@ -512,6 +571,22 @@
     <AssociationSet Name="FK__TagProble__tagId__52593CB8" Association="Self.FK__TagProble__tagId__52593CB8">
       <End Role="Tag" EntitySet="Tag" />
       <End Role="TagProblem" EntitySet="TagProblem" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Comment_Account" Association="Self.FK_Comment_Account">
+      <End Role="Account" EntitySet="Account" />
+      <End Role="Comment" EntitySet="Comment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Comment_Contest" Association="Self.FK_Comment_Contest">
+      <End Role="Contest" EntitySet="Contest" />
+      <End Role="Comment" EntitySet="Comment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ContestRanking_Contest" Association="Self.FK_ContestRanking_Contest">
+      <End Role="Contest" EntitySet="Contest" />
+      <End Role="ContestRanking" EntitySet="ContestRanking" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ContestRanking_Ranking" Association="Self.FK_ContestRanking_Ranking">
+      <End Role="Ranking" EntitySet="Ranking" />
+      <End Role="ContestRanking" EntitySet="ContestRanking" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

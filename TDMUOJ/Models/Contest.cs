@@ -20,12 +20,13 @@ namespace TDMUOJ.Models
             this.ContestOrganizers = new HashSet<ContestOrganizer>();
             this.ContestParticipants = new HashSet<ContestParticipant>();
             this.ContestProblems = new HashSet<ContestProblem>();
-            this.RankingContests = new HashSet<RankingContest>();
+            this.Rankings = new HashSet<Ranking>();
+            this.ContestRankings = new HashSet<ContestRanking>();
+            this.Comments = new HashSet<Comment>();
         }
     
         public int id { get; set; }
         public string title { get; set; }
-        public string description { get; set; }
         public System.DateTime startTime { get; set; }
         public System.DateTime endTime { get; set; }
         public string rules { get; set; }
@@ -38,6 +39,10 @@ namespace TDMUOJ.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ContestProblem> ContestProblems { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RankingContest> RankingContests { get; set; }
+        public virtual ICollection<Ranking> Rankings { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ContestRanking> ContestRankings { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Comment> Comments { get; set; }
     }
 }

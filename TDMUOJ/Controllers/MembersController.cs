@@ -14,8 +14,21 @@ namespace TDMUOJ.Controllers
         // GET: Members
         public ActionResult Index()
         {
+            TopUsers topUsers = new TopUsers
+            {
+                AccountList = db.Accounts
+                    .OrderByDescending(account => account.rating)
+                    .Take(5)
+                    .Select(account => account).ToList(),
+                NewProblemList = db.Problems
+                    .OrderByDescending(problem => problem.createdAt)
+                    .Take(5)
+                    .Select(problem => problem).ToList()
+            };
+            dynamic dynamicMembers = new ExpandoObject();
+            dynamicMembers.topUsers = topUsers;
             var members = db.Accounts.OrderByDescending(x => x.numberOfAccepted).ToList();
-            var dynamicMembers = new List<dynamic>();
+            dynamicMembers.members = new List<dynamic>();
             var rank = 0;
             var prev = -1;
             for (var i = 0; i < members.Count; i++)
@@ -32,7 +45,7 @@ namespace TDMUOJ.Controllers
                     rank = i + 1;
                 }
                 expando.rank = rank;
-                dynamicMembers.Add(expando);
+                dynamicMembers.members.Add(expando);
             }
             return View(dynamicMembers);
         }

@@ -1,49 +1,34 @@
-﻿
+﻿@model TDMUOJ.Models.Account
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <link rel="stylesheet" href="~/Content/css/Profile.css" />
-<h1 class="color-aqua">@Model.name</h1>
-<hr style="margin: 10px 0" />
-<div class="info-profile">
-    <div class="info-left">
-        <img src="~/Content/IMAGE/minhthang1907.png"
-             alt="@Model.username"
-             style="border: solid 1px #b1b1b1; border-radius: 5px" />
-        <p>
-            <b>Số bài đã giải: @Model.numberOfAccepted</b><br />Hạng điểm: #1032<br />Tổng điểm:
-            26,44<br />Đóng góp: 0
-        </p>
-        <br />
-        <p>
-            <b>Đã tham gia 23 kỳ thi</b><br />Hạng rating: #1150<br />Rating:
-            <span class="color-aqua"><b>@Model.rating</b></span>
-            <br />Max rating:
-            <span class="color-blue"><b>@Model.maxRating</b></span>
-        </p>
-    </div>
-    <div class="info-right">
-        <p><i>Người dùng không chia sẻ thông tin. </i></p>
-        <br />
-        <h2>Huy hiệu</h2>
+<div class="container">
+    <header>
+        <img id="avatar" src="~/Content/IMAGE/@Model.avatar" alt="User Avatar">
+        <h1 id="name">@Model.name</h1>
+        <p id="username">@Model.username</p>
         <hr style="margin: 10px 0" />
-        <p><i>Người dùng này không có huy hiệu nào. </i></p>
-        <br />
-        <h2>466 submissions in the last year</h2>
-        <hr style="margin: 10px 0" />
-        <img src="../IMAGE/submission-minhthang1907.png"
-             alt="submissions"
-             style="
-                  width: 100%;
-                  border: solid 1px #b1b1b1;
-                  border-radius: 10px;
-                " />
-        <br />
-        <h2>Lịch sử rating</h2>
-        <hr style="margin: 10px 0" />
-        <img src="../IMAGE/history-minhthang1907.png"
-             alt="history"
-             style="width: 100%; border-radius: 10px" />
-    </div>
+        <p id="email">@Model.email</p>
+    </header>
+    <main>
+        <section class="stats">
+            <div class="stat-item">
+                <i class="fas fa-star"></i>
+                <span id="rating">@Model.rating</span>
+                <p>Rating</p>
+            </div>
+            <div class="stat-item">
+                <i class="fas fa-trophy"></i>
+                <span id="maxRating">@Model.maxRating</span>
+                <p>Max Rating</p>
+            </div>
+            <div class="stat-item">
+                <i class="fas fa-check-circle"></i>
+                <span id="accepted">@Model.numberOfAccepted</span>
+                <p>Accepted</p>
+            </div>
+        </section>
+    </main>
 </div>

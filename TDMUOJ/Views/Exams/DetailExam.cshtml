@@ -1,0 +1,183 @@
+﻿@model TDMUOJ.Models.ContestDetail
+@{
+    ViewBag.Title = "DetailExam";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link rel="stylesheet" href="~/Content/css/DetailExam.css" />
+<h1 style="font-weight: normal">@Model.title</h1>
+<hr style="margin: 10px 0" />
+<div class="time" style="text-align: center; margin-bottom: 10px">
+    <h1 style="font-weight: normal; color: #0645ad">
+        @if (Model.startTime <= DateTime.Now && Model.endTime >= DateTime.Now)
+        {
+            <span>Kỳ thi đang diễn ra.</span>
+        }
+        else if (Model.endTime < DateTime.Now)
+        {
+            <span>Kỳ thi đã kết thúc.</span>
+        }
+        else
+        {
+            <span>Kỳ thi chưa diễn ra.</span>
+        }
+    </h1>
+    @if (Model.startTime <= DateTime.Now && Model.endTime >= DateTime.Now)
+    {
+        <p class="time-remain" data-endtime="@Model.endTime.ToString("yyyy-MM-dd HH:mm:ss")">
+            Còn lại <b id="time-down"></b>
+        </p>
+    }
+    else if (Model.endTime < DateTime.Now)
+    {
+        TimeSpan diff = Model.endTime.Subtract(Model.startTime);
+        <p>
+            <b>@diff.TotalMinutes phút</b> tính từ <b>@Model.startTime.ToString("dd-MM-yyyy HH:mm")</b>
+        </p>
+    }
+    else
+    {
+        <p class="time-remain" data-endtime="@Model.startTime.ToString("yyyy-MM-dd HH:mm:ss")">
+            Bắt đầu trong <b id="time-down"></b>
+        </p>
+    }
+
+</div>
+<div class="info-contest">
+    @Model.rules
+</div>
+<hr style="margin: 10px 0" />
+@if ((Model.startTime <= DateTime.Now && Model.endTime >= DateTime.Now) || (Model.endTime < DateTime.Now))
+{
+    <h1>Bài</h1>
+    <hr style="margin: 10px 0" />
+    <div class="table">
+        <div class="head-table">
+            <div class="STT">#</div>
+            <div class="problem"><p>Tên bài tập</p></div>
+            <div class="score"><p>Số giải được</p></div>
+        </div>
+
+        @for (var i = 0; i < Model.problems.Count; i++)
+        {
+            <div class="child-table">
+                <div class="STT">@(i + 1)</div>
+                <div class="problem">
+                    <a href="@Url.Action("DetailProblem", "Problems", new { id = Model.problems[i].id })">@Model.problems[i].title</a>
+                </div>
+                <div class="score">@Model.problems[i].numberOfAccepted</div>
+            </div>
+        }
+    </div>
+}
+<div class="comments-section">
+    <h2>Bình luận</h2>
+    <div id="comments-list">
+        @foreach (var comment in Model.comments)
+        {
+            <div class="comment">
+                <p><strong>@comment.username</strong> - @comment.createdAt.ToString("HH:mm:ss d/MM/yyyy")</p>
+                <p>@comment.content</p>
+            </div>
+        }
+    </div>
+    @if (Session["User"] != null)
+    {
+        <div class="comment-form">
+            <textarea id="comment-content" rows="3" placeholder="Nhập bình luận của bạn"></textarea>
+            <button id="submit-comment">Gửi bình luận</button>
+        </div>
+        <div id="comment-status"></div>
+    }
+    else
+    {
+        <p>Vui lòng <a href="@Url.Action("Index", "Login")">đăng nhập</a> để bình luận.</p>
+    }
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    // Lấy tất cả các phần tử kỳ thi
+    const exams = document.querySelectorAll(".time-remain");
+
+    // Hàm cập nhật countdown
+    function updateCountdown() {
+        exams.forEach(exam => {
+            const endTime = new Date(exam.getAttribute("data-endtime")).getTime();
+            const now = new Date().getTime();
+            const distance = endTime - now;
+
+            if (distance > 0) {
+                var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                var unit = ["ngày", "giờ", "phút", "giây"];
+                var value = [days, hours, minutes, seconds];
+                var id = (days > 0 ? 0 : hours > 0 ? 1 : minutes > 0 ? 2 : 3);
+                var time = "";
+                for (var i = id; i < 4; i++) {
+                    time = `${time} ${value[i]} ${unit[i]}`;
+                }
+                exam.querySelector("#time-down").innerText = time;
+            } else {
+                exam.querySelector("#time-down").innerText = "Hết giờ!";
+                window.location.href = "/Exams";
+            }
+        });
+    }
+
+    // Cập nhật mỗi giây
+    setInterval(updateCountdown, 1000);
+
+    // Khởi chạy ngay khi tải trang
+    updateCountdown();
+
+    $(document).ready(function() {
+        $("#submit-comment").click(function() {
+            var content = $("#comment-content").val().trim();
+            if (content !== "") {
+                // Hiển thị trạng thái đang gửi
+                $("#comment-status").text("Đang gửi bình luận...").show();
+
+                $.ajax({
+                    url: '@Url.Action("AddComment", "Exams")',
+                    type: 'POST',
+                    data: { contestId: @Model.id, content: content },
+                    success: function(response) {
+                        if (response.success) {
+                            @{ 
+                                var user = (TDMUOJ.Models.Account)Session["User"];
+                            }
+                            var newComment = $('<div class="comment"></div>');
+                            var commentHeader = $('<p></p>').html('<strong>@(user == null ? "" : user.username)</strong> - ' + new Date().toLocaleString('vi-VN'));
+                            var commentContent = $('<p></p>').text(content);
+
+                            newComment.append(commentHeader).append(commentContent);
+
+                            $("#comments-list").prepend(newComment);
+
+                            $("#comment-content").val('');
+
+                            newComment.hide().fadeIn(1000);
+
+                            $("#comment-status").text("Bình luận đã được gửi thành công!").fadeOut(3000);
+                        } else {
+                            $("#comment-status").text("Lỗi: " + response.message).show();
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        $("#comment-status").text("Có lỗi xảy ra khi gửi bình luận: " + error).show();
+                    }
+                });
+            } else {
+                $("#comment-status").text("Vui lòng nhập nội dung bình luận.").show();
+            }
+        });
+
+        // Xóa thông báo trạng thái khi người dùng bắt đầu nhập
+        $("#comment-content").on('input', function() {
+            $("#comment-status").hide();
+        });
+    });
+</script>

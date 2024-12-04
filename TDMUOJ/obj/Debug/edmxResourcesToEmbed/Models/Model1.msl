@@ -22,7 +22,6 @@
         <MappingFragment StoreEntitySet="Contest">
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="title" ColumnName="title" />
-          <ScalarProperty Name="description" ColumnName="description" />
           <ScalarProperty Name="startTime" ColumnName="startTime" />
           <ScalarProperty Name="endTime" ColumnName="endTime" />
           <ScalarProperty Name="rules" ColumnName="rules" />
@@ -65,9 +64,9 @@
     <EntitySetMapping Name="ContestRankings">
       <EntityTypeMapping TypeName="TDMUOJModel.ContestRanking">
         <MappingFragment StoreEntitySet="ContestRanking">
+          <ScalarProperty Name="rankingId" ColumnName="rankingId" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="contestId" ColumnName="contestId" />
-          <ScalarProperty Name="contestRanking1" ColumnName="contestRanking" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -137,17 +136,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="RankingContests">
-      <EntityTypeMapping TypeName="TDMUOJModel.RankingContest">
-        <MappingFragment StoreEntitySet="RankingContest">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="contestId" ColumnName="contestId" />
-          <ScalarProperty Name="userId" ColumnName="userId" />
-          <ScalarProperty Name="score" ColumnName="score" />
-          <ScalarProperty Name="rank" ColumnName="rank" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="ResetPasswords">
       <EntityTypeMapping TypeName="TDMUOJModel.ResetPassword">
         <MappingFragment StoreEntitySet="ResetPassword">
@@ -162,6 +150,7 @@
     <EntitySetMapping Name="Submissions">
       <EntityTypeMapping TypeName="TDMUOJModel.Submission">
         <MappingFragment StoreEntitySet="Submission">
+          <ScalarProperty Name="contestId" ColumnName="contestId" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="problemId" ColumnName="problemId" />
           <ScalarProperty Name="userId" ColumnName="userId" />
@@ -190,6 +179,28 @@
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="tagId" ColumnName="tagId" />
           <ScalarProperty Name="problemId" ColumnName="problemId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Rankings">
+      <EntityTypeMapping TypeName="TDMUOJModel.Ranking">
+        <MappingFragment StoreEntitySet="Ranking">
+          <ScalarProperty Name="rank" ColumnName="rank" />
+          <ScalarProperty Name="score" ColumnName="score" />
+          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="contestId" ColumnName="contestId" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Comments">
+      <EntityTypeMapping TypeName="TDMUOJModel.Comment">
+        <MappingFragment StoreEntitySet="Comment">
+          <ScalarProperty Name="createdAt" ColumnName="createdAt" />
+          <ScalarProperty Name="contestId" ColumnName="contestId" />
+          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="content" ColumnName="content" />
+          <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

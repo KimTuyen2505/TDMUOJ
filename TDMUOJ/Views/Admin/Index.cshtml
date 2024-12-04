@@ -1,0 +1,142 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TDMUOJ Admin Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            height: 100vh;
+        }
+
+        #sidebar {
+            width: 250px;
+            height: 100vh;
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px;
+            position: fixed;
+            left: 0;
+            top: 0;
+            overflow-y: auto;
+        }
+
+            #sidebar h1 {
+                margin-bottom: 30px;
+                text-align: center;
+            }
+
+            #sidebar ul {
+                list-style-type: none;
+                padding: 0;
+            }
+
+            #sidebar li {
+                margin-bottom: 10px;
+            }
+
+            #sidebar a {
+                color: white;
+                text-decoration: none;
+                display: block;
+                padding: 10px;
+                border-radius: 5px;
+                transition: background-color 0.3s;
+            }
+
+                #sidebar a:hover {
+                    background-color: #34495e;
+                }
+
+                #sidebar a.active {
+                    background-color: #3498db;
+                }
+
+        #content {
+            margin-left: 300px;
+            padding: 20px;
+            flex: 1;
+            overflow-y: auto;
+        }
+
+        .dashboard-item {
+            background-color: #ecf0f1;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="sidebar">
+        <h1>TDMUOJ Admin</h1>
+        <ul>
+            <li><a href="#" class="nav-link active" data-target="dashboard">Tổng quan</a></li>
+            <li><a href="#" class="nav-link" data-target="accounts">Quản lý tài khoản</a></li>
+            <li><a href="#" class="nav-link" data-target="contests">Quản lý cuộc thi</a></li>
+            <li><a href="#" class="nav-link" data-target="problems">Quản lý bài tập</a></li>
+            <li><a href="#" class="nav-link" data-target="submissions">Quản lý bài nộp</a></li>
+        </ul>
+    </div>
+
+    <div id="content">
+        @Html.Action("Overview", "Admin")
+        @Html.Action("AccountManagement", "Admin")
+        @Html.Action("ContestManagement", "Admin")
+        @Html.Action("ProblemManagement", "Admin")
+        @Html.Action("SubmissionManagement", "Admin")
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const dashboardItems = document.querySelectorAll('.dashboard-item');
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('data-target');
+
+                    // Ẩn tất cả các phần
+                    dashboardItems.forEach(item => item.classList.add('hidden'));
+
+                    // Hiển thị phần được chọn
+                    document.getElementById(targetId).classList.remove('hidden');
+
+                    // Cập nhật trạng thái active của các liên kết
+                    navLinks.forEach(navLink => navLink.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

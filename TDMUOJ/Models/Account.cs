@@ -19,14 +19,14 @@ namespace TDMUOJ.Models
         {
             this.ContestOrganizers = new HashSet<ContestOrganizer>();
             this.ContestParticipants = new HashSet<ContestParticipant>();
-            this.ContestProblems = new HashSet<ContestProblem>();
             this.Followers = new HashSet<Follower>();
             this.Followers1 = new HashSet<Follower>();
             this.News = new HashSet<News>();
             this.Problems = new HashSet<Problem>();
             this.ProblemSolveds = new HashSet<ProblemSolved>();
-            this.RankingContests = new HashSet<RankingContest>();
             this.Submissions = new HashSet<Submission>();
+            this.Rankings = new HashSet<Ranking>();
+            this.Comments = new HashSet<Comment>();
         }
     
         public int id { get; set; }
@@ -45,8 +45,6 @@ namespace TDMUOJ.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ContestParticipant> ContestParticipants { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ContestProblem> ContestProblems { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Follower> Followers { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Follower> Followers1 { get; set; }
@@ -57,8 +55,10 @@ namespace TDMUOJ.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ProblemSolved> ProblemSolveds { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RankingContest> RankingContests { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Submission> Submissions { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Ranking> Rankings { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Comment> Comments { get; set; }
     }
 }
