@@ -26,6 +26,8 @@ namespace TDMUOJ.Models
         public Nullable<int> testCaseTotal { get; set; }
         public Nullable<int> testCaseAchieved { get; set; }
         public Nullable<int> contestId { get; set; }
+        public bool isVirtual { get; set; }
+        public Nullable<System.DateTime> virtualSubmissionTime { get; set; }
     
         public virtual Account Account { get; set; }
         public virtual Problem Problem { get; set; }

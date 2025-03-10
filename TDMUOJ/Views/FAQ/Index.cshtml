@@ -1,116 +1,96 @@
-﻿
-@{
-    ViewBag.Title = "Index";
+﻿@{
+    ViewBag.Title = "FAQ";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <link rel="stylesheet" href="~/Content/css/FAQ.css" />
+
 <div class="container-content">
     <div class="content">
         <h1>FAQ - Câu hỏi thường gặp</h1>
-        <br />
         <hr />
-        <br />
-        <h3>
-            <br />
-            1. Khi chấm bài, trang web đưa ra một số thông tin như AC/WA/TLE/...
-            mình không hiểu.
-        </h3>
-        <br />
-        <p>
-            Những thông tin đó còn gọi là Status Code - là một mã ngắn thể hiện
-            thông tin về bài nộp của bạn, hiện tại có những mã sau đây:
-        </p>
-        <br />
-        <div class="table">
-            <div class="head-table">
-                <div class="code">Code</div>
-                <div class="sub"><p>Giải thích</p></div>
-            </div>
-            <div class="child-table">
-                <div class="code" style="color: #4587e4">AC - Accepted</div>
-                <div class="sub">
-                    Chương trình đã chạy đúng với toàn bộ test của đề bài.
+
+        <div class="faq-item">
+            <h3>1. Khi chấm bài, trang web đưa ra một số thông tin như AC/WA/TLE/... mình không hiểu.</h3>
+            <p>
+                Những thông tin đó còn gọi là Status Code - là một mã ngắn thể hiện
+                thông tin về bài nộp của bạn, hiện tại có những mã sau đây:
+            </p>
+
+            <div class="table">
+                <div class="head-table">
+                    <div class="code">Code</div>
+                    <div class="sub">Giải thích</div>
                 </div>
-            </div>
-            <div class="child-table">
-                <div class="code" style="color: #4587e4">WA - Wrong Answer</div>
-                <div class="sub">
-                    Chương trình đưa ra output không giống với output chuẩn.
+                <div class="child-table">
+                    <div class="code status-accepted">AC - Accepted</div>
+                    <div class="sub">
+                        Chương trình đã chạy đúng với toàn bộ test của đề bài.
+                    </div>
                 </div>
-            </div>
-            <div class="child-table">
-                <div class="code" style="color: #4587e4">
-                    RTE - Runtime Exception
+                <div class="child-table">
+                    <div class="code status-error">WA - Wrong Answer</div>
+                    <div class="sub">
+                        Chương trình đưa ra output không giống với output chuẩn.
+                    </div>
                 </div>
-                <div class="sub">
-                    Thường biết với cái tên Runtime Error. Chương trình sinh lỗi và
-                    trả về một giá trị khác 0 và lỗi này đa số chỉ xuất hiện khi bạn
-                    dùng ngôn ngữ như C hoặc C++. Các bạn có thể xem ở
-                    <a href="https://docs.dmoj.ca/#/judge/status_codes?id=rte-runtime-exception"
-                       style="color: red">link này</a>
-                    về một số lỗi RTE thường xuất hiện.
+                <div class="child-table">
+                    <div class="code status-error">RTE - Runtime Exception</div>
+                    <div class="sub">
+                        Thường biết với cái tên Runtime Error. Chương trình sinh lỗi và
+                        trả về một giá trị khác 0 và lỗi này đa số chỉ xuất hiện khi bạn
+                        dùng ngôn ngữ như C hoặc C++. Các bạn có thể xem ở
+                        <a href="https://docs.dmoj.ca/#/judge/status_codes?id=rte-runtime-exception">link này</a>
+                        về một số lỗi RTE thường xuất hiện.
+                    </div>
                 </div>
-            </div>
-            <div class="child-table">
-                <div class="code" style="color: #4587e4">IR - Invalid Return</div>
-                <div class="sub">
-                    Chương trình trả về một giá trị khác 0, cũng giống RTE, nhưng nó
-                    thường xuất hiện ở các ngôn ngữ Python hoặc Java khi bạn xử lý
-                    ngoại lệ (exception).
+                <div class="child-table">
+                    <div class="code status-error">IR - Invalid Return</div>
+                    <div class="sub">
+                        Chương trình trả về một giá trị khác 0, cũng giống RTE, nhưng nó
+                        thường xuất hiện ở các ngôn ngữ Python hoặc Java khi bạn xử lý
+                        ngoại lệ (exception).
+                    </div>
                 </div>
-            </div>
-            <div class="child-table">
-                <div class="code" style="color: #4587e4">
-                    OLE - Output Limit Exceeded
+                <div class="child-table">
+                    <div class="code status-warning">OLE - Output Limit Exceeded</div>
+                    <div class="sub">
+                        Chương trình in ra quá nhiều thông in ra output (thường giới hạn
+                        là 256MB).
+                    </div>
                 </div>
-                <div class="sub">
-                    Chương trình in ra quá nhiều thông in ra output (thường giới hạn
-                    là 256MB).
+                <div class="child-table">
+                    <div class="code status-warning">MLE - Memory Limit Exceeded</div>
+                    <div class="sub">
+                        Chương trình dùng quá nhiều bộ nhớ. Đôi khi lỗi này sẽ gây ra
+                        RTE thay vì MLE.
+                    </div>
                 </div>
-            </div>
-            <div class="child-table">
-                <div class="code" style="color: #4587e4">
-                    MLE - Memory Limit Exceeded
+                <div class="child-table">
+                    <div class="code status-warning">TLE - Time Limit Exceeded</div>
+                    <div class="sub">Chương trình chạy quá thời gian quy định.</div>
                 </div>
-                <div class="sub">
-                    Chương trình dùng quá nhiều bộ nhớ. Đôi khi lỗi này sẽ gây ra
-                    RTE thay vì MLE.
-                </div>
-            </div>
-            <div class="child-table">
-                <div class="code" style="color: #4587e4">
-                    TLE - Time Limit Exceeded
-                </div>
-                <div class="sub">Chương trình chạy quá thời gian quy định.</div>
-            </div>
-            <div class="child-table">
-                <div class="code" style="color: #4587e4">IE - Internal Error</div>
-                <div class="sub">
-                    Lỗi hệ thống. Lỗi này có thể do bài tập chưa được cấu hình đúng,
-                    hoặc do lỗi ở máy chấm. Nếu bạn thấy lỗi này, bạn có thể thử nộp
-                    lại bài tập của mình, nếu vẫn không được thì bạn có thể liên hệ
-                    với admin hoặc người ra đề.
+                <div class="child-table">
+                    <div class="code status-info">IE - Internal Error</div>
+                    <div class="sub">
+                        Lỗi hệ thống. Lỗi này có thể do bài tập chưa được cấu hình đúng,
+                        hoặc do lỗi ở máy chấm. Nếu bạn thấy lỗi này, bạn có thể thử nộp
+                        lại bài tập của mình, nếu vẫn không được thì bạn có thể liên hệ
+                        với admin hoặc người ra đề.
+                    </div>
                 </div>
             </div>
         </div>
-        <br />
-        <h3>2. Mình muốn đóng góp bài tập cho TDMUOJ.</h3>
-        <br />
-        <p>
-            Hiện tại các bài tập trên TDMUOJ bao gồm các bài tập từ SPOJ cũ và
-            các contest chính thức hoặc training contest được host bởi ban quản
-            trị TDMUOJ. Hiện tại TDMUOJ chưa có kế hoạch cụ thể về việc cho phép
-            các thành viên tổ chức contest. Tuy nhiên TDMUOJ rất cởi mở với việc
-            tổ chức các contest, vì vậy đừng ngần ngại đề xuất các bài tập,
-            contest với ban quản trị TDMUOJ nhé.
-        </p>
-        <br />
-        <h3>3. Tại sao có một số account có icon trước tên?</h3>
-        <br />
-        <p>
-            Các account có icon trước tên là dành cho những account có đóng góp
-            cho TDMUOJ, các bạn tình nguyện viên TDMUOJ, các admin TDMUOJ, các
-            bạn tổ chức contest ở TDMUOJ, ...
-        </p>
+
+        <div class="faq-item">
+            <h3>2. Mình muốn đóng góp bài tập cho TDMUOJ.</h3>
+            <p>
+                Hiện tại các bài tập trên TDMUOJ bao gồm các bài tập trong
+                các contest chính thức hoặc training contest được host bởi ban quản
+                trị TDMUOJ. Hiện tại TDMUOJ chưa có kế hoạch cụ thể về việc cho phép
+                các thành viên tổ chức contest. Tuy nhiên TDMUOJ rất cởi mở với việc
+                tổ chức các contest, vì vậy đừng ngần ngại đề xuất các bài tập,
+                contest với ban quản trị TDMUOJ nhé.
+            </p>
+        </div>
     </div>
 </div>

@@ -22,6 +22,7 @@ namespace TDMUOJ.Models
         public Nullable<int> penalty { get; set; }
         public Nullable<int> currentRating { get; set; }
         public Nullable<int> ratingChange { get; set; }
+        public bool isVirtual { get; set; }
     
         public virtual Account Account { get; set; }
         public virtual Contest Contest { get; set; }

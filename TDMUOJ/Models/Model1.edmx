@@ -40,6 +40,7 @@
           <Property Name="endTime" Type="datetime" Nullable="false" />
           <Property Name="rules" Type="nvarchar(max)" />
           <Property Name="virtualMode" Type="int" />
+          <Property Name="isCalculatedRating" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="ContestOrganizer">
           <Key>
@@ -61,6 +62,7 @@
           <Property Name="penalty" Type="int" />
           <Property Name="currentRating" Type="int" />
           <Property Name="ratingChange" Type="int" />
+          <Property Name="isVirtual" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="ContestProblem">
           <Key>
@@ -174,6 +176,8 @@
           <Property Name="submittedAt" Type="datetime" />
           <Property Name="testCaseTotal" Type="int" />
           <Property Name="testCaseAchieved" Type="int" />
+          <Property Name="isVirtual" Type="bit" Nullable="false" />
+          <Property Name="virtualSubmissionTime" Type="datetime" />
         </EntityType>
         <EntityType Name="Tag">
           <Key>
@@ -639,6 +643,7 @@
           <NavigationProperty Name="Rankings" Relationship="TDMUOJModel.FK__RankingCo__conte__6E01572D1" FromRole="Contest" ToRole="Ranking" />
           <NavigationProperty Name="ContestRankings" Relationship="TDMUOJModel.FK_ContestRanking_Contest" FromRole="Contest" ToRole="ContestRanking" />
           <NavigationProperty Name="Comments" Relationship="TDMUOJModel.FK_Comment_Contest" FromRole="Contest" ToRole="Comment" />
+          <Property Name="isCalculatedRating" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="ContestOrganizer">
           <Key>
@@ -664,6 +669,7 @@
           <Property Name="ratingChange" Type="Int32" />
           <NavigationProperty Name="Account" Relationship="Self.FK__ContestPa__membe__60A75C0F" FromRole="ContestParticipant" ToRole="Account" />
           <NavigationProperty Name="Contest" Relationship="Self.FK__ContestPa__conte__5FB337D6" FromRole="ContestParticipant" ToRole="Contest" />
+          <Property Name="isVirtual" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="ContestProblem">
           <Key>
@@ -787,6 +793,8 @@
           <NavigationProperty Name="Account" Relationship="Self.FK__Submissio__userI__76969D2E" FromRole="Submission" ToRole="Account" />
           <NavigationProperty Name="Problem" Relationship="Self.FK__Submissio__probl__75A278F5" FromRole="Submission" ToRole="Problem" />
           <Property Name="contestId" Type="Int32" />
+          <Property Name="isVirtual" Type="Boolean" Nullable="false" />
+          <Property Name="virtualSubmissionTime" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="Tag">
           <Key>
@@ -1260,6 +1268,7 @@
           <EntitySetMapping Name="Contests">
             <EntityTypeMapping TypeName="TDMUOJModel.Contest">
               <MappingFragment StoreEntitySet="Contest">
+                <ScalarProperty Name="isCalculatedRating" ColumnName="isCalculatedRating" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="title" ColumnName="title" />
                 <ScalarProperty Name="startTime" ColumnName="startTime" />
@@ -1281,6 +1290,7 @@
           <EntitySetMapping Name="ContestParticipants">
             <EntityTypeMapping TypeName="TDMUOJModel.ContestParticipant">
               <MappingFragment StoreEntitySet="ContestParticipant">
+                <ScalarProperty Name="isVirtual" ColumnName="isVirtual" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="contestId" ColumnName="contestId" />
                 <ScalarProperty Name="memberId" ColumnName="memberId" />
@@ -1390,6 +1400,8 @@
           <EntitySetMapping Name="Submissions">
             <EntityTypeMapping TypeName="TDMUOJModel.Submission">
               <MappingFragment StoreEntitySet="Submission">
+                <ScalarProperty Name="virtualSubmissionTime" ColumnName="virtualSubmissionTime" />
+                <ScalarProperty Name="isVirtual" ColumnName="isVirtual" />
                 <ScalarProperty Name="contestId" ColumnName="contestId" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="problemId" ColumnName="problemId" />

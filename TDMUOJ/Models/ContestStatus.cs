@@ -9,6 +9,6 @@ namespace TDMUOJ.Models
     {
         public List<Contest> contestsUpComming { get; set; }
         public List<Contest> contestsRunning { get; set; }
-        public List<Contest> contestsEnded { get; set; }
+        public List<ContestEndedCustom> contestsEnded { get; set; }
     }
 }

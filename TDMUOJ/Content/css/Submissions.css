@@ -1,161 +1,546 @@
-﻿
+﻿/* Variables */
+:root {
+	--primary-color: #1a56db;
+	--primary-hover: #1e429f;
+	--secondary-color: #f3f4f6;
+	--text-color: #374151;
+	--text-light: #6b7280;
+	--background-color: #f9fafb;
+	--white: #ffffff;
+	--border-color: #e5e7eb;
+	--shadow-color: rgba(0, 0, 0, 0.1);
+	--transition: all 0.3s ease;
+	/* Status colors */
+	--status-accepted-bg: #ecfdf5;
+	--status-accepted-text: #047857;
+	--status-accepted-border: #a7f3d0;
+	--status-wrong-answer-bg: #fef2f2;
+	--status-wrong-answer-text: #b91c1c;
+	--status-wrong-answer-border: #fecaca;
+	--status-time-limit-bg: #fff7ed;
+	--status-time-limit-text: #c2410c;
+	--status-time-limit-border: #fed7aa;
+	--status-memory-limit-bg: #eff6ff;
+	--status-memory-limit-text: #1d4ed8;
+	--status-memory-limit-border: #bfdbfe;
+	--status-runtime-error-bg: #fdf2f8;
+	--status-runtime-error-text: #be185d;
+	--status-runtime-error-border: #fbcfe8;
+	--status-compilation-error-bg: #f5f3ff;
+	--status-compilation-error-text: #6d28d9;
+	--status-compilation-error-border: #ddd6fe;
+	--status-presentation-error-bg: #f0fdfa;
+	--status-presentation-error-text: #0f766e;
+	--status-presentation-error-border: #99f6e4;
+	--status-pending-bg: #f8fafc;
+	--status-pending-text: #64748b;
+	--status-pending-border: #e2e8f0;
+	--status-running-bg: #f0f9ff;
+	--status-running-text: #0369a1;
+	--status-running-border: #bae6fd;
+	--status-unknown-bg: #f9fafb;
+	--status-unknown-text: #6b7280;
+	--status-unknown-border: #e5e7eb;
+}
 
-#container .content {
+/* Main container */
+.submissions-container {
 	display: flex;
+	gap: 30px;
+	margin-bottom: 40px;
 }
 
-.content .content-left {
-	width: 78%;
-	height: 570px;
-	overflow: auto;
-	padding-right: 12px;
+/* Left content (submissions list) */
+.content-left {
+	flex: 1;
+	min-width: 0; /* Prevent flex item from overflowing */
 }
 
-	.content .content-left table {
-		border-collapse: collapse;
-		width: 100%;
+/* Page header */
+.page-header {
+	margin-bottom: 24px;
+}
+
+.page-title {
+	font-size: 1.875rem;
+	font-weight: 700;
+	color: var(--text-color);
+	margin: 0;
+}
+
+/* Submissions table */
+.submissions-table-container {
+	background-color: var(--white);
+	border-radius: 10px;
+	box-shadow: 0 1px 3px var(--shadow-color);
+	overflow: hidden;
+}
+
+.submissions-table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+	/* Table header */
+	.submissions-table thead {
+		background-color: var(--primary-color) !important;
+		color: var(--white);
 	}
 
-	.content .content-left td {
-		padding: 8px;
+	.submissions-table th {
+		padding: 16px;
+		font-weight: 600;
+		text-align: left;
+		vertical-align: middle;
+		background-color: var(--primary-color);
+		color: var(--white);
+		border: none;
 	}
 
-	.content .content-left table tr .score {
-		width: 10%;
-		text-align: center;
-		background-color: #fab623;
-	}
-		.content .content-left table tr .score p {
-			font-weight: bold;
-		}
+/* Table columns */
+.column-status {
+	width: 20%;
+	text-align: center;
+}
 
-		.content .content-left table tr .AC {
-			background-color: #53f23f;
-		}
+.column-info {
+	width: 60%;
+}
 
-		.content .content-left table tr .AC p {
-			color: #225b1a;
-			font-weight: bold;
-		}
+.column-performance {
+	width: 20%;
+}
 
-	.content .content-left table tr .TLE {
-		background-color: #ccc;
-	}
+/* Table rows */
+.submissions-table tbody tr {
+	border-bottom: 1px solid var(--border-color);
+	transition: var(--transition);
+}
 
-		.content .content-left table tr .TLE p {
-			font-weight: bold;
-		}
-
-	.content .content-left table tr .WA {
-		background-color: #ccc;
+	.submissions-table tbody tr:hover {
+		background-color: var(--secondary-color);
 	}
 
-		.content .content-left table tr .WA p {
-			color: #d73c2b;
-			font-weight: bold;
-		}
+.submissions-table td {
+	padding: 16px;
+	vertical-align: middle;
+}
 
-	.content .content-left table tr .RTE {
-		background-color: #fab623;
+/* Status badges */
+.status-badge {
+	display: inline-block;
+	padding: 6px 12px;
+	border-radius: 20px;
+	font-weight: 600;
+	font-size: 0.85rem;
+	margin-bottom: 8px;
+	text-align: center;
+	min-width: 120px;
+}
+
+.status-accepted {
+	background-color: var(--status-accepted-bg);
+	color: var(--status-accepted-text);
+	border: 1px solid var(--status-accepted-border);
+}
+
+.status-wrong-answer {
+	background-color: var(--status-wrong-answer-bg);
+	color: var(--status-wrong-answer-text);
+	border: 1px solid var(--status-wrong-answer-border);
+}
+
+.status-time-limit {
+	background-color: var(--status-time-limit-bg);
+	color: var(--status-time-limit-text);
+	border: 1px solid var(--status-time-limit-border);
+}
+
+.status-memory-limit {
+	background-color: var(--status-memory-limit-bg);
+	color: var(--status-memory-limit-text);
+	border: 1px solid var(--status-memory-limit-border);
+}
+
+.status-runtime-error {
+	background-color: var(--status-runtime-error-bg);
+	color: var(--status-runtime-error-text);
+	border: 1px solid var(--status-runtime-error-border);
+}
+
+.status-compilation-error {
+	background-color: var(--status-compilation-error-bg);
+	color: var(--status-compilation-error-text);
+	border: 1px solid var(--status-compilation-error-border);
+}
+
+.status-presentation-error {
+	background-color: var(--status-presentation-error-bg);
+	color: var(--status-presentation-error-text);
+	border: 1px solid var(--status-presentation-error-border);
+}
+
+.status-pending {
+	background-color: var(--status-pending-bg);
+	color: var(--status-pending-text);
+	border: 1px solid var(--status-pending-border);
+}
+
+.status-running {
+	background-color: var(--status-running-bg);
+	color: var(--status-running-text);
+	border: 1px solid var(--status-running-border);
+}
+
+.status-unknown {
+	background-color: var(--status-unknown-bg);
+	color: var(--status-unknown-text);
+	border: 1px solid var(--status-unknown-border);
+}
+
+/* Score text */
+.score-text {
+	margin-bottom: 8px;
+	font-weight: 500;
+}
+
+.score-value {
+	font-size: 0.9rem;
+}
+
+/* Language badge */
+.language-badge {
+	display: inline-block;
+	padding: 4px 8px;
+	background-color: var(--secondary-color);
+	border-radius: 4px;
+	font-size: 0.8rem;
+	color: var(--text-light);
+}
+
+/* Problem info */
+.problem-info {
+	margin-bottom: 8px;
+}
+
+.problem-link {
+	color: var(--primary-color);
+	text-decoration: none;
+	font-weight: 600;
+	font-size: 1.1rem;
+	transition: var(--transition);
+}
+
+	.problem-link:hover {
+		color: var(--primary-hover);
+		text-decoration: underline;
 	}
 
-		.content .content-left table tr .RTE p {
-			font-weight: bold;
-		}
-	
+/* Submission meta */
+.submission-meta {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 10px;
+	color: var(--text-light);
+	font-size: 0.9rem;
+}
 
-	.content .content-left table tr .info {
+.user-link {
+	color: var(--text-color);
+	text-decoration: none;
+	font-weight: 500;
+	transition: var(--transition);
+}
+
+	.user-link:hover {
+		color: var(--primary-color);
+	}
+
+/* Performance metrics */
+.performance-metrics {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.metric {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.metric-icon {
+	width: 16px;
+	height: 16px;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: contain;
+}
+
+.time-icon {
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'%3E%3C/circle%3E%3Cpolyline points='12 6 12 12 16 14'%3E%3C/polyline%3E%3C/svg%3E");
+}
+
+.memory-icon {
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='2' y='2' width='20' height='8' rx='2' ry='2'%3E%3C/rect%3E%3Crect x='2' y='14' width='20' height='8' rx='2' ry='2'%3E%3C/rect%3E%3Cline x1='6' y1='6' x2='6.01' y2='6'%3E%3C/line%3E%3Cline x1='6' y1='18' x2='6.01' y2='18'%3E%3C/line%3E%3C/svg%3E");
+}
+
+.metric-value {
+	font-weight: 500;
+	color: var(--text-color);
+}
+
+/* Right sidebar */
+.content-right {
+	width: 300px;
+	flex-shrink: 0;
+}
+
+/* Sidebar widgets */
+.sidebar-widget {
+	background-color: var(--white);
+	border-radius: 10px;
+	box-shadow: 0 1px 3px var(--shadow-color);
+	overflow: hidden;
+	margin-bottom: 30px;
+}
+
+.widget-title {
+	background-color: var(--primary-color);
+	color: var(--white);
+	font-size: 1.1rem;
+	font-weight: 600;
+	padding: 14px 16px;
+	margin: 0;
+}
+
+.widget-content {
+	padding: 0;
+}
+
+/* Top users table */
+.top-users-table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.top-users-header {
+	background-color: rgba(26, 86, 219, 0.1);
+}
+
+	.top-users-header th {
+		padding: 10px 16px;
+		font-weight: 600;
+		color: var(--text-color);
 		text-align: left;
 	}
 
-		.content .content-left table tr .info .problem-name {
-			color: #1958c1;
-			font-weight: bold;
-			font-size: 20px;
-		}
-		.content .content-left table tr .info .account-name {
-			font-weight: bold;
-			color: #000;
-		}
-
-	.content .content-left table tr .time {
-		width: 10%;
-		text-align: center;
-	}
-
-		.content .content-left table tr .time p {
-			font-weight: bold;
-		}
-
-	.content .content-left tr:hover {
-		background-color: #cdcdcd;
-	}
-
-.content .content-right {
-	width: 19%;
-	height: 570px;
-	overflow: auto;
-	padding-right: 12px;
+.top-user-rank {
+	width: 20%;
+	text-align: center;
 }
 
-	.content .content-right .top-user {
+.top-user-name {
+	width: 80%;
+	text-align: left;
+}
+
+.top-user-item {
+	border-bottom: 1px solid var(--border-color);
+	transition: var(--transition);
+}
+
+	.top-user-item:hover {
+		background-color: var(--secondary-color);
+	}
+
+	.top-user-item td {
+		padding: 10px 16px;
+		vertical-align: middle;
+	}
+
+/* New problems widget */
+.new-problems-list {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	max-height: 300px;
+	overflow-y: auto;
+}
+
+.new-problem-item {
+	padding: 12px 16px;
+	border-bottom: 1px solid var(--border-color);
+	transition: var(--transition);
+}
+
+	.new-problem-item:hover {
+		background-color: var(--secondary-color);
+	}
+
+	.new-problem-item:last-child {
+		border-bottom: none;
+	}
+
+/* Responsive styles */
+@media (max-width: 992px) {
+	.submissions-container {
+		flex-direction: column;
+	}
+
+	.content-right {
+		width: 100%;
+	}
+}
+
+@media (max-width: 768px) {
+	.submissions-table th,
+	.submissions-table td {
+		padding: 12px;
+	}
+
+	.column-status {
+		width: 25%;
+	}
+
+	.column-info {
+		width: 50%;
+	}
+
+	.column-performance {
+		width: 25%;
+	}
+
+	.status-badge {
+		min-width: 100px;
+		font-size: 0.8rem;
+	}
+
+	.problem-link {
+		font-size: 1rem;
+	}
+}
+
+@media (max-width: 576px) {
+	.submissions-table {
+		display: block;
+	}
+
+		.submissions-table thead {
+			display: none;
+		}
+
+		.submissions-table tbody,
+		.submissions-table tr,
+		.submissions-table td {
+			display: block;
+			width: 100%;
+		}
+
+		.submissions-table tr {
+			margin-bottom: 16px;
+			border: 1px solid var(--border-color);
+			border-radius: 8px;
+			overflow: hidden;
+		}
+
+		.submissions-table td {
+			position: relative;
+			padding: 12px;
+			text-align: left;
+			border-bottom: 1px solid var(--border-color);
+		}
+
+			.submissions-table td:last-child {
+				border-bottom: none;
+			}
+
+	.column-status,
+	.column-info,
+	.column-performance {
 		width: 100%;
 	}
 
-		.content .content-right .top-user .top-user-title {
-			background-color: #4587e4;
-			color: #fff;
-			font-weight: bold;
-			font-size: 18px;
-			width: 100%;
-			display: flex;
-			text-align: center;
-			padding: 5px;
-			border-top-right-radius: 10px;
-			border-top-left-radius: 10px;
-			border: #000 1px solid;
-		}
+	.status-badge {
+		display: inline-block;
+	}
 
-		.content .content-right .top-user .top-head {
-			padding: 5px;
-			width: 100%;
-			color: #fff;
-			font-weight: bold;
-			text-align: center;
-			background-color: #999af2;
-			border-top: 1px solid white;
-			display: inline-flex;
-			border: #000 1px solid;
-		}
+	.performance-metrics {
+		flex-direction: row;
+		gap: 16px;
+	}
+}
+/* Add this to your existing Submissions.css file */
 
-		.content .content-right .top-user .top-child {
-			padding: 5px;
-			width: 100%;
-			text-align: center;
-			font-weight: bold;
-			display: inline-flex;
-			background-color: #fff;
-			border: #000 1px solid;
-		}
+/* Pagination */
+.pagination {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 16px;
+	border-top: 1px solid var(--border-color);
+}
 
-		.content .content-right .top-user .user-rank {
-			width: 20%;
-		}
+.pagination-numbers {
+	display: flex;
+	gap: 5px;
+	margin: 0 10px;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+}
 
-		.content .content-right .top-user .user-name {
-			width: 80%;
-		}
+.pagination-button {
+	min-width: 36px;
+	height: 36px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 6px;
+	border: 1px solid var(--border-color);
+	background-color: var(--white);
+	color: var(--text-color);
+	font-weight: 500;
+	cursor: pointer;
+	transition: var(--transition);
+}
 
-		.content .content-right .top-user .top-problem,
-		.content .content-right .top-user .top-comment {
-			background-color: #fff;
-			font-weight: bold;
-			padding: 5px;
-			width: 100%;
-			border: #000 1px solid;
-		}
+	.pagination-button:hover {
+		background-color: var(--secondary-color);
+		border-color: var(--border-color);
+	}
 
-		.content .content-right .top-user .last-child {
-			border-bottom-left-radius: 10px;
-			border-bottom-right-radius: 10px;
-		}
+	.pagination-button.active {
+		background-color: var(--primary-color);
+		color: var(--white);
+		border-color: var(--primary-color);
+	}
+
+.pagination-icon {
+	font-size: 14px;
+	line-height: 1;
+}
+
+.pagination-ellipsis {
+	min-width: 36px;
+	height: 36px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: var(--text-light);
+	font-weight: 500;
+}
+
+/* Responsive pagination */
+@media (max-width: 576px) {
+	.pagination-button {
+		min-width: 32px;
+		height: 32px;
+		font-size: 0.85rem;
+	}
+
+	.pagination-numbers {
+		gap: 3px;
+	}
+}

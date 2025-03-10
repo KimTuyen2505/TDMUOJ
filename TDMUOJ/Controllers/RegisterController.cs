@@ -60,8 +60,8 @@ namespace TDMUOJ.Controllers
             account.name = fullName;
             account.avatar = "default_avatar.png";
             account.role = "user";
-            account.rating = 0;
-            account.maxRating = 0;
+            account.rating = 500;
+            account.maxRating = 500;
             account.numberOfAccepted = 0;
             db.Accounts.Add(account);
             db.SaveChanges();

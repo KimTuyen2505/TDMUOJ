@@ -1,23 +1,28 @@
 ﻿@model TDMUOJ.Models.Account
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Trang cá nhân";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <link rel="stylesheet" href="~/Content/css/Profile.css" />
-<div class="container">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+<div class="container-profile">
     <header>
         <div class="avatar-container">
             <img id="avatar" src="~/Content/IMAGE/@Model.avatar" alt="User Avatar">
             <input type="file" id="avatar-upload" style="display: none;" accept="image/*">
-            <label for="avatar-upload" class="edit-avatar" style="display: none;">Change Avatar</label>
+            <label for="avatar-upload" class="edit-avatar" style="display: none;">Đổi ảnh đại diện</label>
         </div>
+
         <h1 id="name">@Model.name</h1>
         <input type="text" id="name-edit" value="@Model.name" style="display: none;">
-        <p id="username">@Model.username</p>
-        <hr style="margin: 10px 0" />
+
+        <p id="username">@@@Model.username</p>
+
         <p id="email">@Model.email</p>
         <input type="email" id="email-edit" value="@Model.email" style="display: none;">
     </header>
+
     <main>
         <section class="stats">
             <div class="stat-item">
@@ -37,10 +42,11 @@
             </div>
         </section>
     </main>
+
     @if (Session["User"] != null && (Session["User"] as TDMUOJ.Models.Account).id == Model.id)
     {
-        <button id="edit-toggle" class="edit-button">Edit Profile</button>
-        <button id="save-changes" class="save-button" style="display: none;">Save Changes</button>
+        <button id="edit-toggle" class="edit-button">Chỉnh sửa thông tin</button>
+        <button id="save-changes" class="save-button" style="display: none;">Lưu thay đổi</button>
     }
 </div>
 
@@ -58,25 +64,31 @@
 
         let isEditMode = false;
 
-        editToggle.addEventListener('click', function () {
-            isEditMode = !isEditMode;
-            toggleEditMode();
-        });
+        if (editToggle) {
+            editToggle.addEventListener('click', function () {
+                isEditMode = !isEditMode;
+                toggleEditMode();
+            });
+        }
 
-        saveChanges.addEventListener('click', function () {
-            saveProfile();
-        });
+        if (saveChanges) {
+            saveChanges.addEventListener('click', function () {
+                saveProfile();
+            });
+        }
 
-        avatarUpload.addEventListener('change', function (event) {
-            const file = event.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function (e) {
-                    avatarElement.src = e.target.result;
-                };
-                reader.readAsDataURL(file);
-            }
-        });
+        if (avatarUpload) {
+            avatarUpload.addEventListener('change', function (event) {
+                const file = event.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function (e) {
+                        avatarElement.src = e.target.result;
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+        }
 
         function toggleEditMode() {
             if (isEditMode) {
@@ -128,6 +140,4 @@
                 });
         }
     });
-
-
 </script>

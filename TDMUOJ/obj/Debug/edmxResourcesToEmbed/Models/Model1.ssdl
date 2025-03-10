@@ -35,6 +35,7 @@
     <Property Name="endTime" Type="datetime" Nullable="false" />
     <Property Name="rules" Type="nvarchar(max)" />
     <Property Name="virtualMode" Type="int" />
+    <Property Name="isCalculatedRating" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="ContestOrganizer">
     <Key>
@@ -56,6 +57,7 @@
     <Property Name="penalty" Type="int" />
     <Property Name="currentRating" Type="int" />
     <Property Name="ratingChange" Type="int" />
+    <Property Name="isVirtual" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="ContestProblem">
     <Key>
@@ -169,6 +171,8 @@
     <Property Name="submittedAt" Type="datetime" />
     <Property Name="testCaseTotal" Type="int" />
     <Property Name="testCaseAchieved" Type="int" />
+    <Property Name="isVirtual" Type="bit" Nullable="false" />
+    <Property Name="virtualSubmissionTime" Type="datetime" />
   </EntityType>
   <EntityType Name="Tag">
     <Key>

@@ -47,6 +47,7 @@
         <EntityTypeShape EntityType="TDMUOJModel.Comment" Width="1.5" PointX="6" PointY="13.5" />
         <AssociationConnector Association="TDMUOJModel.FK_Comment_Account" />
         <AssociationConnector Association="TDMUOJModel.FK_Comment_Contest" />
+        <AssociationConnector Association="TDMUOJModel.FK__ContestPr__probl__6477ECF3" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

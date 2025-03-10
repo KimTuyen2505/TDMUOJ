@@ -1,188 +1,246 @@
-﻿
-@model TDMUOJ.Models.ContestProblemViewModel
-
-<style>
-    .modal {
-        display: none;
-        position: fixed;
-        z-index: 1;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0,0,0,0.4);
-    }
-
-    .modal-content {
-        background-color: #fefefe;
-        margin: 15% auto;
-        padding: 20px;
-        border: 1px solid #888;
-        width: 80%;
-        max-width: 500px;
-        border-radius: 5px;
-    }
-
-    .close {
-        color: #aaa;
-        float: right;
-        font-size: 28px;
-        font-weight: bold;
-        cursor: pointer;
-    }
-
-        .close:hover {
-            color: black;
-        }
-
-    .form-group {
-        margin-bottom: 15px;
-    }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        .form-group select,
-        .form-group input {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-        }
-
-    .btn-add {
-        background-color: #2ecc71;
-        color: white;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        margin-bottom: 20px;
-    }
-
-        .btn-add:hover {
-            background-color: #27ae60;
-        }
-
-    .btn-remove {
-        background-color: #e74c3c;
-        color: white;
-        padding: 5px 10px;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-    }
-
-        .btn-remove:hover {
-            background-color: #c0392b;
-        }
-</style>
+﻿@model TDMUOJ.Models.ContestProblemsViewModel
 
 <div id="contestProblems" class="dashboard-item hidden">
-    <h2>Quản lý Bài tập trong Kỳ thi</h2>
+    <div class="flex items-center justify-between mb-4">
+        <h2>Quản lý Bài tập trong Kỳ thi</h2>
+        <button id="toggleAddProblemForm" class="action-btn btn-primary">
+            Thêm bài tập vào kỳ thi
+        </button>
+    </div>
 
-    <form id="addProblemToContestForm" method="post">
-        <div class="form-group">
-            <label for="contestSelect">Chọn kỳ thi:</label>
-            <select id="contestSelect" name="contestId" required>
-                <option value="">-- Chọn kỳ thi --</option>
-                @foreach (var contest in Model.Contests)
-                {
-                    <option value="@contest.id">@contest.title</option>
-                }
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="problemSelect">Chọn bài tập:</label>
-            <select id="problemSelect" name="problemId" required>
-                <option value="">-- Chọn bài tập --</option>
-                @foreach (var problem in Model.AllProblems)
-                {
-                    <option value="@problem.id">@problem.title</option>
-                }
-            </select>
-        </div>
-        <button type="submit" class="btn-add">Thêm Bài tập vào Kỳ thi</button>
-    </form>
+    <!-- Collapsible form for adding problem to contest -->
+    <div id="addProblemFormContainer" class="admin-form" style="display: none;">
+        <h3>Thêm bài tập vào kỳ thi</h3>
+        <form id="addProblemToContestForm" method="post">
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="contestSelect">Chọn kỳ thi:</label>
+                    <select id="contestSelect" name="contestId" class="form-control" required>
+                        <option value="">-- Chọn kỳ thi --</option>
+                        @foreach (var contest in Model.Contests)
+                        {
+                            <option value="@contest.id">@contest.title</option>
+                        }
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="problemSelect">Chọn bài tập:</label>
+                    <select id="problemSelect" name="problemId" class="form-control" required>
+                        <option value="">-- Chọn bài tập --</option>
+                        @foreach (var problem in Model.AllProblems)
+                        {
+                            var difficultyClass = problem.difficulty == "Dễ" ? "easy" :
+                                                (problem.difficulty == "Khó" ? "hard" : "medium");
 
-    <div id="contestProblemsList">
-        <!-- This will be populated dynamically -->
+                            <option value="@problem.id">
+                                @problem.title (@problem.difficulty)
+                            </option>
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="flex justify-end">
+                <button type="submit" class="btn btn-success">
+                    <i class="fas fa-save btn-icon"></i>Thêm vào kỳ thi
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <div class="contest-problems-container">
+        <div class="filter-bar mb-4">
+            <div class="filter-group">
+                <label for="contestFilterSelect">Chọn kỳ thi để xem bài tập:</label>
+                <select id="contestFilterSelect" class="form-control">
+                    <option value="">-- Chọn kỳ thi --</option>
+                    @foreach (var contest in Model.Contests)
+                    {
+                        <option value="@contest.id">@contest.title</option>
+                    }
+                </select>
+            </div>
+        </div>
+
+        <div id="contestProblemsList" class="contest-problems-list">
+            <div class="empty-state">
+                <i class="fas fa-clipboard-list empty-icon"></i>
+                <p>Vui lòng chọn một kỳ thi để xem danh sách bài tập</p>
+            </div>
+        </div>
     </div>
 </div>
 
 <script>
-    const contestSelect = document.getElementById('contestSelect');
-    const contestProblemsList = document.getElementById('contestProblemsList');
+    document.addEventListener('DOMContentLoaded', function() {
+        const contestSelect = document.getElementById('contestSelect');
+        const contestFilterSelect = document.getElementById('contestFilterSelect');
+        const contestProblemsList = document.getElementById('contestProblemsList');
+        const toggleFormButton = document.getElementById("toggleAddProblemForm");
+        const addProblemForm = document.getElementById("addProblemFormContainer");
 
-    contestSelect.addEventListener('change', function() {
-        const contestId = this.value;
-        if (contestId) {
-            fetchContestProblems(contestId);
-        } else {
-            contestProblemsList.innerHTML = '';
+        // Toggle add problem form
+        toggleFormButton.addEventListener('click', function() {
+            if (addProblemForm.style.display === "none") {
+                addProblemForm.style.display = "block";
+                toggleFormButton.innerHTML = 'Ẩn biểu mẫu';
+            } else {
+                addProblemForm.style.display = "none";
+                toggleFormButton.innerHTML = 'Thêm bài tập vào kỳ thi';
+            }
+        });
+
+        // Sync the two contest selects
+        contestSelect.addEventListener('change', function() {
+            contestFilterSelect.value = this.value;
+            if (this.value) {
+                fetchContestProblems(this.value);
+            }
+        });
+
+        contestFilterSelect.addEventListener('change', function() {
+            contestSelect.value = this.value;
+            if (this.value) {
+                fetchContestProblems(this.value);
+            } else {
+                showEmptyState();
+            }
+        });
+
+        function showEmptyState() {
+            contestProblemsList.innerHTML = `
+                <div class="empty-state">
+                    <i class="fas fa-clipboard-list empty-icon"></i>
+                    <p>Vui lòng chọn một kỳ thi để xem danh sách bài tập</p>
+                </div>
+            `;
         }
-    });
 
-    function fetchContestProblems(contestId) {
-        fetch(`@Url.Action("GetContestProblems", "Admin")?contestId=${contestId}`)
+        function showLoadingState() {
+            contestProblemsList.innerHTML = `
+                <div class="loading-state">
+                    <i class="fas fa-spinner fa-spin loading-icon"></i>
+                    <p>Đang tải danh sách bài tập...</p>
+                </div>
+            `;
+        }
+
+        function fetchContestProblems(contestId) {
+            showLoadingState();
+
+            fetch(`@Url.Action("GetContestProblems", "Admin")?contestId=${contestId}`)
+                .then(response => response.json())
+                .then(data => {
+                    displayContestProblems(data, contestId);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    contestProblemsList.innerHTML = `
+                        <div class="error-state">
+                            <i class="fas fa-exclamation-triangle error-icon"></i>
+                            <p>Có lỗi xảy ra khi tải danh sách bài tập.</p>
+                        </div>
+                    `;
+                });
+        }
+
+        function displayContestProblems(problems, contestId) {
+            if (problems.length === 0) {
+                contestProblemsList.innerHTML = `
+                    <div class="empty-state">
+                        <i class="fas fa-clipboard-list empty-icon"></i>
+                        <p>Không có bài tập nào trong kỳ thi này.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            let html = `
+                <div class="table-responsive">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th width="5%">STT</th>
+                                <th width="50%">Tên bài tập</th>
+                                <th width="15%">Độ khó</th>
+                                <th width="30%">Thao tác</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+            `;
+
+            problems.forEach((problem, index) => {
+                const difficultyClass = problem.difficulty === "Dễ" ? "easy" :
+                                       (problem.difficulty === "Khó" ? "hard" : "medium");
+
+                html += `
+                    <tr>
+                        <td>${index + 1}</td>
+                        <td>
+                            <div class="problem-info">
+                                <span class="problem-title">${problem.title}</span>
+                            </div>
+                        </td>
+                        <td>
+                            <span class="difficulty-badge difficulty-${difficultyClass}">${problem.difficulty}</span>
+                        </td>
+                        <td>
+                            <div class="action-buttons">
+                                <button onclick="removeProblemFromContest(${contestId}, ${problem.id})" class="btn btn-danger btn-sm">
+                                    <i class="fas fa-trash-alt"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+            });
+
+            html += `
+                        </tbody>
+                    </table>
+                </div>
+            `;
+
+            contestProblemsList.innerHTML = html;
+        }
+
+        // Handle add problem to contest form submission
+        document.getElementById('addProblemToContestForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const formData = new FormData(this);
+            const contestId = formData.get('contestId');
+
+            if (!contestId) {
+                showNotification('Vui lòng chọn một kỳ thi.', 'error');
+                return;
+            }
+
+            fetch('@Url.Action("AddProblemToContest", "Admin")', {
+                method: 'POST',
+                body: formData
+            })
             .then(response => response.json())
             .then(data => {
-                displayContestProblems(data);
+                if (data.success) {
+                    showNotification('Thêm bài tập vào kỳ thi thành công!', 'success');
+                    fetchContestProblems(contestId);
+
+                    // Reset problem select
+                    document.getElementById('problemSelect').value = '';
+                } else {
+                    showNotification('Có lỗi xảy ra: ' + data.message, 'error');
+                }
             })
             .catch(error => {
                 console.error('Error:', error);
-                contestProblemsList.innerHTML = '<p>Có lỗi xảy ra khi tải danh sách bài tập.</p>';
+                showNotification('Có lỗi xảy ra khi gửi yêu cầu', 'error');
             });
-    }
-
-    function displayContestProblems(problems) {
-        let html = '<h3>Bài tập trong kỳ thi</h3>';
-        if (problems.length === 0) {
-            html += '<p>Không có bài tập nào trong kỳ thi này.</p>';
-        } else {
-            html += '<ul>';
-            problems.forEach(problem => {
-                html += `
-                    <li>
-                        ${problem.title}
-                        <button class="btn-remove" onclick="removeProblemFromContest(${problem.id})">Xóa</button>
-                    </li>
-                `;
-            });
-            html += '</ul>';
-        }
-        contestProblemsList.innerHTML = html;
-    }
-
-    document.getElementById('addProblemToContestForm').onsubmit = function(e) {
-        e.preventDefault();
-        const formData = new FormData(this);
-
-        fetch('@Url.Action("AddProblemToContest", "Admin")', {
-            method: 'POST',
-            body: formData
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                alert('Thêm bài tập vào kỳ thi thành công!');
-                fetchContestProblems(formData.get('contestId'));
-            } else {
-                alert('Có lỗi xảy ra: ' + data.message);
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            alert('Có lỗi xảy ra khi gửi yêu cầu');
         });
-    };
+    });
 
-    function removeProblemFromContest(problemId) {
-        const contestId = contestSelect.value;
-        if (!contestId) {
-            alert('Vui lòng chọn một kỳ thi.');
+    // Remove problem from contest
+    function removeProblemFromContest(contestId, problemId) {
+        if (!confirm('Bạn có chắc chắn muốn xóa bài tập này khỏi kỳ thi?')) {
             return;
         }
 
@@ -196,16 +254,106 @@
         .then(response => response.json())
         .then(data => {
             if (data.success) {
-                alert('Xóa bài tập khỏi kỳ thi thành công!');
+                showNotification('Xóa bài tập khỏi kỳ thi thành công!', 'success');
                 fetchContestProblems(contestId);
             } else {
-                alert('Có lỗi xảy ra: ' + data.message);
+                showNotification('Có lỗi xảy ra: ' + data.message, 'error');
             }
         })
         .catch(error => {
             console.error('Error:', error);
-            alert('Có lỗi xảy ra khi gửi yêu cầu');
+            showNotification('Có lỗi xảy ra khi gửi yêu cầu', 'error');
         });
+    }
+
+    // Fetch contest problems (global function for use in other functions)
+    function fetchContestProblems(contestId) {
+        const contestProblemsList = document.getElementById('contestProblemsList');
+
+        contestProblemsList.innerHTML = `
+            <div class="loading-state">
+                <i class="fas fa-spinner fa-spin loading-icon"></i>
+                <p>Đang tải danh sách bài tập...</p>
+            </div>
+        `;
+
+        fetch(`@Url.Action("GetContestProblems", "Admin")?contestId=${contestId}`)
+            .then(response => response.json())
+            .then(data => {
+                displayContestProblems(data, contestId);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                contestProblemsList.innerHTML = `
+                    <div class="error-state">
+                        <i class="fas fa-exclamation-triangle error-icon"></i>
+                        <p>Có lỗi xảy ra khi tải danh sách bài tập.</p>
+                    </div>
+                `;
+            });
+    }
+
+    // Display contest problems (global function for use in other functions)
+    function displayContestProblems(problems, contestId) {
+        const contestProblemsList = document.getElementById('contestProblemsList');
+
+        if (problems.length === 0) {
+            contestProblemsList.innerHTML = `
+                <div class="empty-state">
+                    <i class="fas fa-clipboard-list empty-icon"></i>
+                    <p>Không có bài tập nào trong kỳ thi này.</p>
+                </div>
+            `;
+            return;
+        }
+
+        let html = `
+            <div class="table-responsive">
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th width="5%">STT</th>
+                            <th width="50%">Tên bài tập</th>
+                            <th width="15%">Độ khó</th>
+                            <th width="30%">Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+        `;
+
+        problems.forEach((problem, index) => {
+            const difficultyClass = problem.difficulty === "Dễ" ? "easy" :
+                                   (problem.difficulty === "Khó" ? "hard" : "medium");
+
+            html += `
+                <tr>
+                    <td>${index + 1}</td>
+                    <td>
+                        <div class="problem-info">
+                            <span class="problem-title">${problem.title}</span>
+                        </div>
+                    </td>
+                    <td>
+                        <span class="difficulty-badge difficulty-${difficultyClass}">${problem.difficulty}</span>
+                    </td>
+                    <td>
+                        <div class="action-buttons">
+                            <button onclick="removeProblemFromContest(${contestId}, ${problem.id})" class="btn btn-danger btn-sm">
+                                <i class="fas fa-trash-alt"></i>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            `;
+        });
+
+        html += `
+                    </tbody>
+                </table>
+            </div>
+        `;
+
+        contestProblemsList.innerHTML = html;
     }
 </script>
 

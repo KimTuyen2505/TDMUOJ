@@ -1,211 +1,203 @@
 ﻿@model List<TDMUOJ.Models.Contest>
-<style>
-    /* Existing styles... */
 
-    .modal {
-        display: none;
-        position: fixed;
-        z-index: 1;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0,0,0,0.4);
-    }
-
-    .modal-content {
-        background-color: #fefefe;
-        margin: 15% auto;
-        padding: 20px;
-        border: 1px solid #888;
-        width: 80%;
-        max-width: 500px;
-        border-radius: 5px;
-    }
-
-    .close {
-        color: #aaa;
-        float: right;
-        font-size: 28px;
-        font-weight: bold;
-        cursor: pointer;
-    }
-
-        .close:hover {
-            color: black;
-        }
-
-    .form-group {
-        margin-bottom: 15px;
-    }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        .form-group input {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-        }
-
-    button[type="submit"] {
-        background-color: #3498db;
-        color: white;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-    }
-
-        button[type="submit"]:hover {
-            background-color: #2980b9;
-        }
-
-    .btn-add {
-        background-color: #2ecc71;
-        color: white;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        margin-bottom: 20px;
-    }
-
-        .btn-add:hover {
-            background-color: #27ae60;
-        }
-</style>
 <div id="contests" class="dashboard-item hidden">
-    <h2>Quản lý cuộc thi</h2>
-    <form id="newContestForm" method="post">
-        <div class="form-group">
-            <label for="newContestTitle">Tên cuộc thi:</label>
-            <input type="text" id="newContestTitle" name="title" required />
-        </div>
-        <div class="form-group">
-            <label for="newStartTime">Thời gian bắt đầu:</label>
-            <input type="datetime-local" id="newStartTime" name="startTime" required />
-        </div>
-        <div class="form-group">
-            <label for="newEndTime">Thời gian kết thúc:</label>
-            <input type="datetime-local" id="newEndTime" name="endTime" required />
-        </div>
-        <div class="form-group">
-            <label for="newRules">Quy tắc cuộc thi:</label>
-            <textarea id="newRules" name="rules" rows="5" style="width: 100%" required></textarea>
-        </div>
-        <input name="virtualMode" value="0" hidden />
-        <button type="submit" class="btn-add">Thêm cuộc thi mới</button>
-    </form>
-    <table>
-        <tr>
-            <th>STT</th>
-            <th>Tên cuộc thi</th>
-            <th>Thời gian bắt đầu</th>
-            <th>Thời gian kết thúc</th>
-            <th>Thao tác</th>
-        </tr>
-        @for (var i = 0; i < Model.Count; i++)
-        {
-            <tr>
-                <td>@(i+1)</td>
-                <td>@Model[i].title</td>
-                <td>@Model[i].startTime.ToString("dd/MM/yyyy HH:mm")</td>
-                <td>@Model[i].endTime.ToString("dd/MM/yyyy HH:mm")</td>
-                <td>
-                    <a href="@Url.Action("DetailExam", "Exams", new {id = Model[i].id })">Chi tiết</a> |
-                    <a href="#" onclick="showEditModal(@Model[i].id, '@Model[i].title', '@Model[i].startTime.ToString("dd-MM-yyyy HH:mm:ss")', '@Model[i].endTime.ToString("dd-MM-yyyy HH:mm:ss")', '@Model[i].rules')">Sửa</a> |
-                    <a href="@Url.Action("DeleteContest", "Admin", new {id = Model[i].id})">Xóa</a>
-                </td>
-            </tr>
-        }
-    </table>
-</div>
+    <div class="flex items-center justify-between mb-4">
+        <h2>Quản lý cuộc thi</h2>
+        <button id="toggleNewContestForm" class="action-btn btn-primary">
+            Thêm cuộc thi mới
+        </button>
+    </div>
 
-<!-- Modal Edit Contest -->
-<div class="modal">
-    <div class="modal-content">
-        <span class="close">&times;</span>
-        <h2>Chỉnh sửa cuộc thi</h2>
-        <form id="editContestForm" method="post">
-            <input type="hidden" id="contestId" name="id" />
-            <div class="form-group">
-                <label for="title">Tên cuộc thi:</label>
-                <input type="text" id="title" name="title" required />
-            </div>
-            <div class="form-group">
-                <label for="startTime">Thời gian bắt đầu:</label>
-                <input type="datetime-local" id="startTime" name="startTime" required />
-            </div>
-            <div class="form-group">
-                <label for="endTime">Thời gian kết thúc:</label>
-                <input type="datetime-local" id="endTime" name="endTime" required />
+    <!-- Collapsible form for adding new contest -->
+    <div id="newContestFormContainer" class="admin-form" style="display: none;">
+        <h3>Thêm cuộc thi mới</h3>
+        <form id="newContestForm" method="post">
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="newContestTitle">Tên cuộc thi:</label>
+                    <input type="text" id="newContestTitle" name="title" class="form-control" required />
+                </div>
+                <div class="form-group">
+                    <label for="newStartTime">Thời gian bắt đầu:</label>
+                    <input type="datetime-local" id="newStartTime" name="startTime" class="form-control" required />
+                </div>
+                <div class="form-group">
+                    <label for="newEndTime">Thời gian kết thúc:</label>
+                    <input type="datetime-local" id="newEndTime" name="endTime" class="form-control" required />
+                </div>
             </div>
             <div class="form-group">
                 <label for="newRules">Quy tắc cuộc thi:</label>
-                <textarea id="rules" name="rules" rows="5" style="width: 100%" required></textarea>
+                <textarea id="newRules" name="rules" class="form-control" required></textarea>
             </div>
-            <button type="submit">Lưu thay đổi</button>
+            <input name="virtualMode" value="0" hidden />
+            <div class="flex justify-end">
+                <button type="submit" class="btn btn-success">
+                    <i class="fas fa-save btn-icon"></i>Lưu cuộc thi
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <div class="table-responsive">
+        <table class="admin-table">
+            <thead>
+                <tr>
+                    <th width="5%">STT</th>
+                    <th width="35%">Tên cuộc thi</th>
+                    <th width="20%">Thời gian bắt đầu</th>
+                    <th width="20%">Thời gian kết thúc</th>
+                    <th width="20%">Thao tác</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (var i = 0; i < Model.Count; i++)
+                {
+                    var contest = Model[i];
+                    var status = DateTime.Now < contest.startTime ? "upcoming" :
+                                (DateTime.Now > contest.endTime ? "completed" : "active");
+                    var statusText = status == "upcoming" ? "Sắp diễn ra" :
+                                    (status == "completed" ? "Đã kết thúc" : "Đang diễn ra");
+
+                    <tr>
+                        <td>@(i+1)</td>
+                        <td>
+                            <div>
+                                <span class="font-medium">@contest.title</span>
+                                <span class="status-badge status-@status ml-2">@statusText</span>
+                            </div>
+                        </td>
+                        <td>@contest.startTime.ToString("dd/MM/yyyy HH:mm")</td>
+                        <td>@contest.endTime.ToString("dd/MM/yyyy HH:mm")</td>
+                        <td>
+                            <div class="action-buttons">
+                                @if (status == "completed" && contest.isCalculatedRating == false)
+                                {
+                                    <button onclick="calculateRatings(@contest.id)" class="btn btn-green">
+                                        Tính điểm
+                                    </button>
+                                }
+                                <a href="@Url.Action("DetailExam", "Exams", new {id = contest.id })" class="btn btn-primary">
+                                    <i class="fas fa-eye btn-icon"></i>Chi tiết
+                                </a>
+                                <button onclick="showEditModal(@contest.id, '@contest.title', '@contest.startTime.ToString("yyyy-MM-ddTHH:mm")', '@contest.endTime.ToString("yyyy-MM-ddTHH:mm")', '@contest.rules')" class="btn btn-warning">
+                                    <i class="fas fa-edit btn-icon"></i>Sửa
+                                </button>
+                                <a href="@Url.Action("DeleteContest", "Admin", new {id = contest.id})" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa cuộc thi này?');">
+                                    <i class="fas fa-trash-alt btn-icon"></i>Xóa
+                                </a>
+
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Modal Edit Contest -->
+<div id="editContestModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3 class="modal-title"><i class="fas fa-edit mr-2"></i>Chỉnh sửa cuộc thi</h3>
+            <button type="button" class="close">&times;</button>
+        </div>
+
+        <form id="editContestForm" method="post">
+            <input type="hidden" id="contestId" name="id" />
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="title">Tên cuộc thi:</label>
+                    <input type="text" id="title" name="title" class="form-control" required />
+                </div>
+                <div class="form-group">
+                    <label for="startTime">Thời gian bắt đầu:</label>
+                    <input type="datetime-local" id="startTime" name="startTime" class="form-control" required />
+                </div>
+                <div class="form-group">
+                    <label for="endTime">Thời gian kết thúc:</label>
+                    <input type="datetime-local" id="endTime" name="endTime" class="form-control" required />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="rules">Quy tắc cuộc thi:</label>
+                <textarea id="rules" name="rules" class="form-control" required></textarea>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary close-modal">
+                    <i class="fas fa-times btn-icon"></i>Hủy
+                </button>
+                <button type="submit" class="btn btn-success">
+                    <i class="fas fa-save btn-icon"></i>Lưu thay đổi
+                </button>
+            </div>
         </form>
     </div>
 </div>
+
 <script>
-    const modal = document.getElementsByClassName("modal")[0];
-    const span = document.getElementsByClassName("close")[0];
+    document.addEventListener('DOMContentLoaded', function() {
+        const modal = document.getElementById("editContestModal");
+        const closeButtons = document.querySelectorAll(".close, .close-modal");
+        const toggleFormButton = document.getElementById("toggleNewContestForm");
+        const newContestForm = document.getElementById("newContestFormContainer");
 
-    function showEditModal(id, title, startTime, endTime, rules) {
-        modal.style.display = "block";
-
-        document.getElementById("contestId").value = id;
-        document.getElementById("title").value = title;
-
-        document.getElementById("startTime").value = formatDateTime(new Date(startTime));
-        document.getElementById("endTime").value = formatDateTime(new Date(endTime));
-        document.getElementById("rules").value = rules;
-    }
-
-    function formatDateTime(date) {
-        return date.getFullYear() + '-' +
-               String(date.getMonth() + 1).padStart(2, '0') + '-' +
-               String(date.getDate()).padStart(2, '0') + 'T' +
-               String(date.getHours()).padStart(2, '0') + ':' +
-               String(date.getMinutes()).padStart(2, '0');
-    }
-
-    // Close modal when clicking (x)
-    span.onclick = function() {
-        modal.style.display = "none";
-    }
-
-    // Handle form submission
-    document.getElementById("editContestForm").onsubmit = function(e) {
-        e.preventDefault();
-
-        const formData = new FormData(this);
-
-        fetch('@Url.Action("EditContest", "Admin")', {
-            method: 'POST',
-            body: formData
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                alert('Cập nhật thành công!');
-                window.location.reload();
+        // Toggle new contest form
+        toggleFormButton.addEventListener('click', function() {
+            if (newContestForm.style.display === "none") {
+                newContestForm.style.display = "block";
+                toggleFormButton.innerHTML = 'Ẩn biểu mẫu';
             } else {
-                alert('Có lỗi xảy ra: ' + data.message);
+                newContestForm.style.display = "none";
+                toggleFormButton.innerHTML = 'Thêm cuộc thi mới';
             }
-        })
-        .catch(error => {
-            alert('Có lỗi xảy ra khi gửi yêu cầu');
         });
-    };
 
-    // Handle new contest form submission
-        document.getElementById("newContestForm").onsubmit = function(e) {
+        // Close modal when clicking close buttons
+        closeButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                modal.style.display = "none";
+            });
+        });
+
+        // Close modal when clicking outside
+        window.addEventListener('click', function(event) {
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        });
+
+        // Handle edit contest form submission
+        document.getElementById("editContestForm").addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const formData = new FormData(this);
+
+            fetch('@Url.Action("EditContest", "Admin")', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    showNotification('Cập nhật thành công!', 'success');
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 1500);
+                } else {
+                    showNotification('Có lỗi xảy ra: ' + data.message, 'error');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                showNotification('Có lỗi xảy ra khi gửi yêu cầu', 'error');
+            });
+        });
+
+        // Handle new contest form submission
+        document.getElementById("newContestForm").addEventListener('submit', function(e) {
             e.preventDefault();
 
             const formData = new FormData(this);
@@ -217,16 +209,117 @@
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
-                    alert('Thêm cuộc thi mới thành công!');
-                    window.location.reload();
+                    showNotification('Thêm cuộc thi mới thành công!', 'success');
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 1500);
                 } else {
-                    alert('Có lỗi xảy ra: ' + data.message);
+                    showNotification('Có lỗi xảy ra: ' + data.message, 'error');
                 }
             })
             .catch(error => {
                 console.error('Error:', error);
-                alert('Có lỗi xảy ra khi gửi yêu cầu');
+                showNotification('Có lỗi xảy ra khi gửi yêu cầu', 'error');
             });
-    };
+        });
+    });
 
+    // Show edit modal with contest data
+    function showEditModal(id, title, startTime, endTime, rules) {
+        const modal = document.getElementById("editContestModal");
+
+        document.getElementById("contestId").value = id;
+        document.getElementById("title").value = title;
+        document.getElementById("startTime").value = startTime;
+        document.getElementById("endTime").value = endTime;
+        document.getElementById("rules").value = rules;
+
+        modal.style.display = "block";
+    }
+
+    // Show notification
+    function showNotification(message, type) {
+        // Check if notification container exists, if not create it
+        let container = document.getElementById('notification-container');
+        if (!container) {
+            container = document.createElement('div');
+            container.id = 'notification-container';
+            container.style.position = 'fixed';
+            container.style.top = '20px';
+            container.style.right = '20px';
+            container.style.zIndex = '1000';
+            document.body.appendChild(container);
+        }
+
+        // Create notification element
+        const notification = document.createElement('div');
+        notification.className = `notification ${type}`;
+        notification.style.backgroundColor = type === 'success' ? '#10b981' : '#ef4444';
+        notification.style.color = 'white';
+        notification.style.padding = '12px 20px';
+        notification.style.borderRadius = '4px';
+        notification.style.marginBottom = '10px';
+        notification.style.boxShadow = '0 2px 5px rgba(0,0,0,0.2)';
+        notification.style.animation = 'slideIn 0.3s ease-out forwards';
+        notification.innerHTML = `
+            <div style="display: flex; align-items: center;">
+                <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'}" style="margin-right: 10px;"></i>
+                <span>${message}</span>
+            </div>
+        `;
+
+        // Add animation keyframes
+        if (!document.getElementById('notification-style')) {
+            const style = document.createElement('style');
+            style.id = 'notification-style';
+            style.innerHTML = `
+                @@keyframes slideIn {
+                    from { transform: translateX(100%); opacity: 0; }
+                    to { transform: translateX(0); opacity: 1; }
+                }
+                @@keyframes fadeOut {
+                    from { opacity: 1; }
+                    to { opacity: 0; }
+                }
+            `;
+            document.head.appendChild(style);
+        }
+
+        // Add to container
+        container.appendChild(notification);
+
+        // Remove after 3 seconds
+        setTimeout(() => {
+            notification.style.animation = 'fadeOut 0.3s ease-out forwards';
+            setTimeout(() => {
+                container.removeChild(notification);
+            }, 300);
+        }, 3000);
+    }
+
+    function calculateRatings(contestId) {
+        fetch('@Url.Action("CalculateRatings", "Admin")', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ id: contestId })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                showNotification(data.message, 'success');
+                setTimeout(() => {
+                    window.location.reload();
+                }, 1500);
+            } else {
+                showNotification('Có lỗi xảy ra: ' + data.message, 'error');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            showNotification('Có lỗi xảy ra khi gửi yêu cầu', 'error');
+        });
+    }
 </script>
+

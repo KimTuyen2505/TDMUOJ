@@ -1,42 +1,89 @@
-﻿@model dynamic
+﻿@model TDMUOJ.Models.Problem
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Nộp bài - " + Model.title;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <link rel="stylesheet" href="~/Content/css/Submit.css" />
-<h1>Nộp bài <span><a href="@Url.Action("DetailProblem", "Problems", new {id = Model.id})">@Model.title</a></span> </h1>
-<br />
-<hr />
-<br />
-<div class="submit"
-     style="
-              padding: 10px;
-              background-color: #e8e8e8;
-              border: 1px solid #7a7a7a;
-              border-radius: 5px;
-            ">
-    <form action="~/Submit/Index" method="post">
-        <input hidden name="problemId" value="@Model.id" />
-        <div style="display: flex">
-            <p><i>Dán bài làm của bạn ở đây hoặc nhập từ file:&nbsp;</i></p>
-            <input type="file" />
-        </div>
-        <br />
-        <textarea name="code"
-                  id=""
-                  style="width: 100%; height: 300px"></textarea>
-        <hr style="margin-top: 5px; margin-bottom: 5px" />
-        <select name="language" id="lang" style="width: 100%; height: 30px">
-            <option value="50">C</option>
-            <option value="54">C++</option>
-            <option value="51">C#</option>
-            <option value="71">Python</option>
-            <option value="62">Java</option>
-            <option value="63">JavaScript</option>
-        </select>
-        <hr style="margin-top: 5px; margin-bottom: 5px" />
-        <div align="right">
-            <button type="submit" class="but"> Nộp bài </button>
-        </div>
-    </form>
+
+<div class="submit-container">
+    <div class="submit-header">
+        <h1 class="page-title">
+            Nộp bài: <a href="@Url.Action("DetailProblem", "Problems", new {id = Model.id})" class="problem-link">@Model.title</a>
+        </h1>
+    </div>
+
+    <div class="submit-card">
+        <form action="@Url.Action("Index", "Submit")" method="post" class="submit-form">
+            <input type="hidden" name="problemId" value="@Model.id" />
+
+            <div class="form-section">
+                <div class="section-header">
+                    <h2 class="section-title">Mã nguồn</h2>
+                    <div class="file-upload-container">
+                        <label for="file-upload" class="file-upload-label">
+                            <span class="upload-icon"></span>
+                            <span>Tải lên từ file</span>
+                        </label>
+                        <input type="file" id="file-upload" class="file-upload-input" onchange="handleFileUpload(this)" />
+                    </div>
+                </div>
+
+                <div class="code-editor-container">
+                    <textarea name="code" id="code-editor" class="code-editor" placeholder="// Nhập hoặc dán mã nguồn của bạn ở đây"></textarea>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <div class="section-header">
+                    <h2 class="section-title">Ngôn ngữ lập trình</h2>
+                </div>
+
+                <div class="language-selector-container">
+                    <div class="custom-select">
+                        <select name="language" id="language-selector" class="language-selector">
+                            <option value="50">C</option>
+                            <option value="54" selected>C++</option>
+                            <option value="51">C#</option>
+                            <option value="71">Python</option>
+                            <option value="62">Java</option>
+                            <option value="63">JavaScript</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="submit-button">
+                    <span class="button-icon"></span>
+                    <span>Nộp bài</span>
+                </button>
+            </div>
+        </form>
+    </div>
 </div>
+
+<script>
+    function handleFileUpload(input) {
+        const file = input.files[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            document.getElementById('code-editor').value = e.target.result;
+        };
+        reader.readAsText(file);
+    }
+
+    // Highlight the selected language in the dropdown
+    document.addEventListener('DOMContentLoaded', function() {
+        const languageSelector = document.getElementById('language-selector');
+
+        // Set default to C++ (value 54)
+        languageSelector.value = "54";
+
+        languageSelector.addEventListener('change', function() {
+            // You could add additional logic here if needed
+            // For example, changing the editor's syntax highlighting based on language
+        });
+    });
+</script>

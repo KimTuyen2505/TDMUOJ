@@ -43,7 +43,8 @@ namespace TDMUOJ.Controllers
                     title = c.title,
                     startTime = c.startTime,
                     endTime = c.endTime,
-                    rules = c.rules
+                    rules = c.rules,
+                    isCalculatedRating = c.isCalculatedRating
                 }).ToList();
 
             var contests = contestData.Select(c => new Contest
@@ -52,7 +53,8 @@ namespace TDMUOJ.Controllers
                 title = c.title,
                 startTime = c.startTime,
                 endTime = c.endTime,
-                rules = c.rules
+                rules = c.rules,
+                isCalculatedRating = c.isCalculatedRating
             }).ToList();
             return PartialView(contests);
         }
@@ -136,6 +138,109 @@ namespace TDMUOJ.Controllers
             {
                 return Json(new { success = false, message = ex.Message });
             }
+        }
+        // Phương thức tính toán rating sau khi kỳ thi kết thúc
+        [HttpPost]
+        public ActionResult CalculateRatings(int id)
+        {
+            var contest = db.Contests.Find(id);
+            if (contest == null)
+            {
+                return Json(new { success = false, message = "Không tìm thấy kỳ thi." });
+            }
+
+            // Kiểm tra xem kỳ thi đã kết thúc chưa
+            if (contest.endTime > DateTime.Now)
+            {
+                return Json(new { success = false, message = "Kỳ thi chưa kết thúc." });
+            }
+
+            // Lấy danh sách người tham gia và sắp xếp theo điểm và penalty
+            var participants = db.ContestParticipants
+                .Where(cp => cp.contestId == id && cp.isVirtual == false)
+                .Join(db.Accounts, cp => cp.memberId, a => a.id, (cp, a) => new { cp, a })
+                .OrderByDescending(x => x.cp.score ?? 0)
+                .ThenBy(x => x.cp.penalty ?? 0)
+                .ToList();
+
+            int totalParticipants = participants.Count;
+            if (totalParticipants <= 1)
+            {
+                return Json(new { success = false, message = "Kỳ thi cần có 2 người tham gia trở lên." });
+            }
+
+            // Tính toán rating cho từng người tham gia
+            foreach (var participant in participants)
+            {
+                // Tính thứ hạng (rank) của người tham gia
+                int rank = participants.IndexOf(participant) + 1;
+
+                // Tính điểm thực tế dựa trên thứ hạng
+                double actualScore = (double)(totalParticipants - rank + 1) / totalParticipants;
+
+                // Tính điểm kỳ vọng dựa trên rating hiện tại
+                double expectedScore = 0;
+                foreach (var opponent in participants)
+                {
+                    if (opponent != participant)
+                    {
+                        double ratingDiff = (opponent.a.rating ?? 500) - (participant.a.rating ?? 500);
+                        expectedScore += 1.0 / (1.0 + Math.Pow(10, ratingDiff / 400.0));
+                    }
+                }
+                expectedScore /= (totalParticipants - 1);
+
+                // Tính hệ số K dựa trên rating hiện tại
+                int k = 32;
+                if ((participant.a.rating ?? 500) >= 2100 && (participant.a.rating ?? 500) < 2400)
+                {
+                    k = 24;
+                }
+                else if ((participant.a.rating ?? 500) >= 2400)
+                {
+                    k = 16;
+                }
+
+                // Tính thay đổi rating
+                int ratingChange = (int)Math.Round(k * (actualScore - expectedScore));
+
+                // Cập nhật rating của người tham gia
+                participant.cp.ratingChange = ratingChange;
+                participant.a.rating += ratingChange;
+
+                // Cập nhật maxRating nếu cần
+                if ((participant.a.rating ?? 0) > (participant.a.maxRating ?? 0))
+                {
+                    participant.a.maxRating = participant.a.rating;
+                }
+
+                // Lưu thông tin vào bảng Ranking
+                var ranking = new Ranking
+                {
+                    contestId = id,
+                    userId = participant.a.id,
+                    score = participant.cp.score ?? 0,
+                    rank = rank
+                };
+
+                db.Rankings.Add(ranking);
+
+                // Lưu thông tin vào bảng ContestRanking
+                db.SaveChanges(); // Lưu trước để có id của ranking
+
+                var contestRanking = new ContestRanking
+                {
+                    contestId = id,
+                    rankingId = ranking.id
+                };
+
+                db.ContestRankings.Add(contestRanking);
+            }
+
+            contest.isCalculatedRating = true;
+            db.SaveChanges();
+
+            return Json(new { success = true, message = "Đã tính toán rating thành công." });
         }
         public ActionResult ProblemManagement()
         {
@@ -242,14 +347,19 @@ namespace TDMUOJ.Controllers
                     problemTitle = x.problem.title,
                     language = x.submission.submission.language,
                     status = x.submission.submission.result,
+                    code = x.submission.submission.code,
                     createdAt = x.submission.submission.submittedAt
                 }).ToList();
             return PartialView(submissions);
         }
         public ActionResult TestCaseManagement()
         {
-            var problems = db.Problems.Include(p => p.ProblemTestCases).ToList();
-            return PartialView(problems);
+            var viewModel = new TestCaseManagementViewModel
+            {
+                Problems = db.Problems.Include(p => p.ProblemTestCases).ToList(),
+                Examples = db.ProblemExamples.ToList()
+            };
+            return PartialView(viewModel);
         }
         [HttpPost]
         public JsonResult AddTestCase(ProblemTestCase testCase)
@@ -322,9 +432,19 @@ namespace TDMUOJ.Controllers
             }
             return RedirectToAction("Index");
         }
+        public ActionResult DeleteExample(int id)
+        {
+            var example = db.ProblemExamples.Find(id);
+            if (example != null)
+            {
+                db.ProblemExamples.Remove(example);
+                db.SaveChanges();
+            }
+            return RedirectToAction("Index");
+        }
         public ActionResult ProblemsForContestManagement()
         {
-            var viewModel = new ContestProblemViewModel
+            var viewModel = new ContestProblemsViewModel
             {
                 Contests = db.Contests.ToList(),
                 AllProblems = db.Problems.ToList()
@@ -338,7 +458,8 @@ namespace TDMUOJ.Controllers
                 .Where(cp => cp.contestId == contestId)
                 .Select(cp => new {
                     id = cp.Problem.id,
-                    title = cp.Problem.title
+                    title = cp.Problem.title,
+                    difficulty = cp.Problem.difficulty
                 })
                 .ToList();
             return Json(problems, JsonRequestBehavior.AllowGet);

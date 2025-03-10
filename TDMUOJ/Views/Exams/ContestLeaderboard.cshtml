@@ -1,0 +1,174 @@
+﻿@model TDMUOJ.Models.ContestLeaderboardViewModel
+@{
+    ViewBag.Title = "Bảng xếp hạng - " + Model.Contest.title;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link rel="stylesheet" href="~/Content/css/ContestLeaderboard.css" />
+
+<div class="leaderboard-container">
+    <div class="contest-info-bar">
+        <div class="contest-info">
+            <h3 class="contest-title">
+                <a href="@Url.Action("DetailExam", new { id = Model.Contest.id })">@Model.Contest.title</a>
+            </h3>
+            <div class="contest-time-info">
+                @if (Model.Contest.endTime > DateTime.Now)
+                {
+                    <div class="time-remain" data-endtime="@Model.Contest.endTime.ToString("yyyy-MM-dd HH:mm:ss")">
+                        <span class="time-label">Còn lại:</span>
+                        <span class="time-value time-down"></span>
+                    </div>
+                }
+                else
+                {
+                    <div class="time-info">
+                        <span class="time-label">Kỳ thi đã kết thúc</span>
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="contest-actions">
+            <a href="@Url.Action("DetailExam", new { id = Model.Contest.id })" class="action-btn problems-btn">Bài tập</a>
+            <a href="@Url.Action("ContestSubmissions", new { id = Model.Contest.id })" class="action-btn submissions-btn">Bài nộp</a>
+        </div>
+    </div>
+
+    <div class="leaderboard-header">
+        <h1 class="leaderboard-title">Bảng xếp hạng</h1>
+    </div>
+
+    <div class="leaderboard-table-container">
+        <table class="leaderboard-table">
+            <thead>
+                <tr>
+                    <th class="column-rank">Hạng</th>
+                    <th class="column-user">Thành viên</th>
+                    <th class="column-score">Điểm</th>
+                    <th class="column-penalty">Penalty</th>
+                    @foreach (var problem in Model.Problems)
+                    {
+                        <th class="column-problem">
+                            <a href="@Url.Action("ContestProblem", new { id = problem.id, contestId = Model.Contest.id })" class="problem-link">
+                                @problem.problemIndex
+                            </a>
+                        </th>
+                    }
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var participant in Model.Participants)
+                {
+                    <tr class="participant-row @(participant.Rank <= 3 ? "top-ranked" : "")">
+                        <td class="column-rank">
+                            <div class="rank-badge @GetRankClass(participant.Rank)">
+                                @participant.Rank
+                            </div>
+                        </td>
+                        <td class="column-user">
+                            <a href="@Url.Action("Index", "Profile", new { id = participant.UserId })" class="user-link">
+                                @participant.Username
+                            </a>
+                            @if (Model.Contest.endTime < DateTime.Now && participant.RatingChange >= 0)
+                            {
+                                <span class="rating-change @(participant.RatingChange > 0 ? "rating-up" : participant.RatingChange < 0 ? "rating-down" : "rating-same")">
+                                    @(participant.RatingChange > 0 ? "+" : "")@participant.RatingChange
+                                </span>
+                            }
+                        </td>
+                        <td class="column-score">@participant.Score</td>
+                        <td class="column-penalty">@participant.Penalty</td>
+                        @foreach (var problem in Model.Problems)
+                        {
+                            <td class="column-problem">
+                                @if (participant.SolvedProblems.Contains(problem.id))
+                                {
+                                    <div class="problem-solved">
+                                        <span class="solved-icon">✓</span>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="problem-unsolved">
+                                        <span class="unsolved-icon">-</span>
+                                    </div>
+                                }
+                            </td>
+                        }
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    // Lấy tất cả các phần tử countdown
+    const timeRemainElements = document.querySelectorAll(".time-remain");
+
+    // Hàm cập nhật countdown
+    function updateCountdown() {
+        timeRemainElements.forEach(element => {
+            const endTime = new Date(element.getAttribute("data-endtime")).getTime();
+            const now = new Date().getTime();
+            const distance = endTime - now;
+            const countdownElement = element.querySelector(".time-down");
+
+            if (distance > 0) {
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                const unit = ["ngày", "giờ", "phút", "giây"];
+                const value = [days, hours, minutes, seconds];
+                const id = (days > 0 ? 0 : hours > 0 ? 1 : minutes > 0 ? 2 : 3);
+
+                let time = "";
+                for (let i = id; i < 4; i++) {
+                    time = `${time} ${value[i]} ${unit[i]}`;
+                }
+
+                countdownElement.innerText = time.trim();
+
+                // Thêm hiệu ứng nhấp nháy cho countdown sắp hết giờ (dưới 5 phút)
+                if (distance < 5 * 60 * 1000) {
+                    countdownElement.classList.add("urgent");
+                } else {
+                    countdownElement.classList.remove("urgent");
+                }
+            } else {
+                countdownElement.innerText = "Hết giờ!";
+
+                // Tự động làm mới trang sau 3 giây khi hết giờ
+                setTimeout(() => {
+                    window.location.reload();
+                }, 3000);
+            }
+        });
+    }
+
+    // Cập nhật mỗi giây
+    setInterval(updateCountdown, 1000);
+
+    // Khởi chạy ngay khi tải trang
+    updateCountdown();
+</script>
+
+@functions {
+    public string GetRankClass(int rank)
+    {
+        switch (rank)
+        {
+            case 1:
+                return "rank-first";
+            case 2:
+                return "rank-second";
+            case 3:
+                return "rank-third";
+            default:
+                return "";
+        }
+    }
+}

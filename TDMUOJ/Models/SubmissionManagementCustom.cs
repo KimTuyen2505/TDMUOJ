@@ -12,6 +12,7 @@ namespace TDMUOJ.Models
         public string problemTitle { get; set; }
         public string language { get; set; }
         public string status { get; set; }
+        public string code { get; set; }
         public Nullable<System.DateTime> createdAt { get; set; }
     }
 }

@@ -1,14 +1,14 @@
 ﻿@model dynamic
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Tin tức";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <link rel="stylesheet" href="~/Content/css/News.css" />
+
 <div class="content-left">
     <h1>Tin tức</h1>
-    <br />
     <hr />
-    <br />
+
     @if (Model.news.Count > 0)
     {
         foreach (var item in Model.news)
@@ -27,49 +27,59 @@
                          height="auto"
                          class="hov" />
                 }
-                <br />
                 <hr />
-                <br />
             </div>
         }
-    } else
+    }
+    else
     {
         <i>Chưa có tin tức nào.</i>
     }
 </div>
-        <div class="content-right">
-            <div class="top-user">
-                <h1 class="top-user-title">Top thành viên</h1>
-                <div class="top-head">
-                    <div class="user-rank">
-                        <p>#</p>
-                    </div>
-                    <div class="user-name">
-                        <p>Tên truy cập</p>
-                    </div>
-                </div>
-                @for (var i = 0; i < Model.topUsers.AccountList.Count; i++)
-                {
-                    <div class="top-child">
-                        <div class="user-rank">
-                            <p>@(i+1)</p>
-                        </div>
-                        <div class="user-name">
-                            <a href="@Url.Action("Index", "Profile", new {id = Model.topUsers.AccountList[i].id})">
-                                @Model.topUsers.AccountList[i].username
-                            </a>
-                        </div>
-                    </div>
-                }
-            </div>
-            <div class="top-user" style="margin-top: 50px">
-                <h1 class="top-user-title">Bài mới</h1>
+
+<div class="content-right">
+    <div class="sidebar-widget top-users-widget">
+        <h2 class="widget-title">Top thành viên</h2>
+
+        <div class="widget-content">
+            <table class="top-users-table">
+                <thead>
+                    <tr class="top-users-header">
+                        <th class="top-user-rank">#</th>
+                        <th class="top-user-name">Tên truy cập</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (var i = 0; i < Model.topUsers.AccountList.Count; i++)
+                    {
+                        <tr class="top-user-item">
+                            <td class="top-user-rank">@(i+1)</td>
+                            <td class="top-user-name">
+                                <a href="@Url.Action("Index", "Profile", new {id = Model.topUsers.AccountList[i].id})" class="user-link">
+                                    @Model.topUsers.AccountList[i].username
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="sidebar-widget new-problems-widget">
+        <h2 class="widget-title">Bài tập mới</h2>
+
+        <div class="widget-content">
+            <ul class="new-problems-list">
                 @foreach (var item in Model.topUsers.NewProblemList)
                 {
-                    <div class="top-problem">
-                        <a href="@Url.Action("DetailProblem", "Problems", new {id = item.id})">@item.title</a>
-                    </div>
+                    <li class="new-problem-item">
+                        <a href="@Url.Action("DetailProblem", "Problems", new {id = item.id})" class="problem-link">
+                            @item.title
+                        </a>
+                    </li>
                 }
-            </div>
+            </ul>
         </div>
-
+    </div>
+</div>

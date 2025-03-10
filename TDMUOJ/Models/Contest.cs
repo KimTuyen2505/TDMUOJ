@@ -31,6 +31,7 @@ namespace TDMUOJ.Models
         public System.DateTime endTime { get; set; }
         public string rules { get; set; }
         public Nullable<int> virtualMode { get; set; }
+        public bool isCalculatedRating { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ContestOrganizer> ContestOrganizers { get; set; }

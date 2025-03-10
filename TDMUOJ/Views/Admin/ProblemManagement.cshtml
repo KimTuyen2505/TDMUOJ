@@ -1,5 +1,5 @@
 ﻿@model List<TDMUOJ.Models.ProblemManagementCustom>
-@{ 
+@{
     var account = (TDMUOJ.Models.Account)Session["User"];
     var currentUser = -1;
     if (account != null)
@@ -7,102 +7,251 @@
         currentUser = account.id;
     }
 }
+
 <div id="problems" class="dashboard-item hidden">
-    <h2>Quản lý bài tập</h2>
-    <form id="newProblemForm" method="post">
-        <div class="form-group">
-            <label for="newProblemTitle">Tên bài tập:</label>
-            <input type="text" id="newProblemTitle" name="title" required />
-        </div>
-        <div class="form-group">
-            <label for="newDescription">Mô tả:</label>
-            <textarea id="newDescription" name="description" rows="5" style="width: 100%" required></textarea>
-        </div>
-        <div class="form-group">
-            <label for="newDifficulty">Độ khó:</label>
-            <select id="newDifficulty" name="difficulty" required>
-                <option value="Dễ">Dễ</option>
-                <option value="Trung bình">Trung bình</option>
-                <option value="Khó">Khó</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="newTimeLimit">Giới hạn thời gian:</label>
-            <input type="number" id="newTimeLimit" name="timeLimit" required />
-        </div>
-        <div class="form-group">
-            <label for="newMemoryLimit">Giới hạn bộ nhớ:</label>
-            <input type="number" id="newMemoryLimit" name="memoryLimit" required />
-        </div>
-        <button type="submit" class="btn-add">Thêm bài tập mới</button>
-    </form>
-    <table>
-        <tr>
-            <th>STT</th>
-            <th>Tên bài tập</th>
-            <th>Độ khó</th>
-            <th>Người tạo</th>
-            <th>Thao tác</th>
-        </tr>
-        @for (var i = 0; i < Model.Count; i++)
-        {
-            <tr>
-                <td>@(i+1)</td>
-                <td>@Model[i].title</td>
-                <td>@Model[i].difficulty</td>
-                <td>@Model[i].createdBy</td>
-                <td>
-                    <a href="@Url.Action("DetailProblem", "Problems", new {id = Model[i].id })">Chi tiết</a> |
-                    <a href="#" onclick="showEditProblemModal(@Model[i].id, '@Model[i].title', '@Model[i].description', '@Model[i].difficulty', @Model[i].timeLimit, @Model[i].memoryLimit)">Sửa</a> |
-                    <a href="@Url.Action("DeleteProblem", "Admin", new {id = Model[i].id})">Xóa</a>
-                </td>
-            </tr>
-        }
-    </table>
+    <div class="flex items-center justify-between mb-4">
+        <h2>Quản lý bài tập</h2>
+        <button id="toggleNewProblemForm" class="action-btn btn-primary">
+            Thêm bài tập mới
+        </button>
+    </div>
+
+    <!-- Collapsible form for adding new problem -->
+    <div id="newProblemFormContainer" class="admin-form" style="display: none;">
+        <h3>Thêm bài tập mới</h3>
+        <form id="newProblemForm" method="post">
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="newProblemTitle">Tên bài tập:</label>
+                    <input type="text" id="newProblemTitle" name="title" class="form-control" required />
+                </div>
+                <div class="form-group">
+                    <label for="newDifficulty">Độ khó:</label>
+                    <select id="newDifficulty" name="difficulty" class="form-control" required>
+                        <option value="Dễ">Dễ</option>
+                        <option value="Trung bình">Trung bình</option>
+                        <option value="Khó">Khó</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="newTimeLimit">Giới hạn thời gian (giây):</label>
+                    <input type="number" id="newTimeLimit" name="timeLimit" class="form-control" min="1" max="100" value="1" required />
+                </div>
+                <div class="form-group">
+                    <label for="newMemoryLimit">Giới hạn bộ nhớ (MB):</label>
+                    <input type="number" id="newMemoryLimit" name="memoryLimit" class="form-control" min="16" max="512" value="256" required />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="newDescription">Mô tả bài tập:</label>
+                <textarea id="newDescription" name="description" class="form-control" rows="5" required></textarea>
+            </div>
+            <div class="flex justify-end">
+                <button type="submit" class="btn btn-success">
+                    <i class="fas fa-save btn-icon"></i>Lưu bài tập
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <div class="table-responsive">
+        <table class="admin-table">
+            <thead>
+                <tr>
+                    <th width="5%">STT</th>
+                    <th width="40%">Tên bài tập</th>
+                    <th width="15%">Độ khó</th>
+                    <th width="20%">Người tạo</th>
+                    <th width="20%">Thao tác</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (var i = 0; i < Model.Count; i++)
+                {
+                    var problem = Model[i];
+                    var difficultyClass = problem.difficulty == "Dễ" ? "easy" :
+                                         (problem.difficulty == "Khó" ? "hard" : "medium");
+
+                    <tr>
+                        <td>@(i+1)</td>
+                        <td>
+                            <div class="problem-title">@problem.title</div>
+                        </td>
+                        <td>
+                            <span class="difficulty-badge difficulty-@difficultyClass">@problem.difficulty</span>
+                        </td>
+                        <td>@problem.createdBy</td>
+                        <td>
+                            <div class="action-buttons">
+                                <a href="@Url.Action("DetailProblem", "Problems", new {id = problem.id })" class="btn btn-primary">
+                                    <i class="fas fa-eye btn-icon"></i>Chi tiết
+                                </a>
+                                <button onclick="showEditProblemModal(@problem.id, '@problem.title', '@problem.description', '@problem.difficulty', @problem.timeLimit, @problem.memoryLimit)" class="btn btn-warning">
+                                    <i class="fas fa-edit btn-icon"></i>Sửa
+                                </button>
+                                <a href="@Url.Action("DeleteProblem", "Admin", new {id = problem.id})" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa bài tập này?');">
+                                    <i class="fas fa-trash-alt btn-icon"></i>Xóa
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
 </div>
 
 <!-- Modal Edit Problem -->
 <div id="editProblemModal" class="modal">
     <div class="modal-content">
-        <span class="close">&times;</span>
-        <h2>Chỉnh sửa bài tập</h2>
+        <div class="modal-header">
+            <h3 class="modal-title"><i class="fas fa-edit mr-2"></i>Chỉnh sửa bài tập</h3>
+            <button type="button" class="close">&times;</button>
+        </div>
+
         <form id="editProblemForm" method="post">
             <input type="hidden" id="problemId" name="id" />
-            <div class="form-group">
-                <label for="problemTitle">Tên bài tập:</label>
-                <input type="text" id="problemTitle" name="title" required />
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="problemTitle">Tên bài tập:</label>
+                    <input type="text" id="problemTitle" name="title" class="form-control" required />
+                </div>
+                <div class="form-group">
+                    <label for="difficulty">Độ khó:</label>
+                    <select id="difficulty" name="difficulty" class="form-control" required>
+                        <option value="Dễ">Dễ</option>
+                        <option value="Trung bình">Trung bình</option>
+                        <option value="Khó">Khó</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="timeLimit">Giới hạn thời gian (giây):</label>
+                    <input type="number" id="timeLimit" name="timeLimit" class="form-control" min="1" max="100" required />
+                </div>
+                <div class="form-group">
+                    <label for="memoryLimit">Giới hạn bộ nhớ (MB):</label>
+                    <input type="number" id="memoryLimit" name="memoryLimit" class="form-control" min="16" max="1024" required />
+                </div>
             </div>
             <div class="form-group">
-                <label for="description">Mô tả:</label>
-                <textarea id="description" name="description" rows="5" style="width: 100%" required></textarea>
+                <label for="description">Mô tả bài tập:</label>
+                <textarea id="description" name="description" class="form-control" rows="5" required></textarea>
             </div>
-            <div class="form-group">
-                <label for="difficulty">Độ khó:</label>
-                <select id="difficulty" name="difficulty" required>
-                    <option value="Dễ">Dễ</option>
-                    <option value="Trung bình">Trung bình</option>
-                    <option value="Khó">Khó</option>
-                </select>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary close-modal">
+                    <i class="fas fa-times btn-icon"></i>Hủy
+                </button>
+                <button type="submit" class="btn btn-success">
+                    <i class="fas fa-save btn-icon"></i>Lưu thay đổi
+                </button>
             </div>
-            <div class="form-group">
-                <label for="timeLimit">Giới hạn thời gian:</label>
-                <input type="number" id="timeLimit" name="timeLimit" required />
-            </div>
-            <div class="form-group">
-                <label for="memoryLimit">Giới hạn bộ nhớ:</label>
-                <input type="number" id="memoryLimit" name="memoryLimit" required />
-            </div>
-            <button type="submit">Lưu thay đổi</button>
         </form>
     </div>
 </div>
 
 <script>
-    const modal1 = document.getElementsByClassName("modal")[1];
-    const span1 = document.getElementsByClassName("close")[1];
+    document.addEventListener('DOMContentLoaded', function() {
+        const modal = document.getElementById("editProblemModal");
+        const closeButtons = document.querySelectorAll("#editProblemModal .close, #editProblemModal .close-modal");
+        const toggleFormButton = document.getElementById("toggleNewProblemForm");
+        const newProblemForm = document.getElementById("newProblemFormContainer");
 
+        // Toggle new problem form
+        toggleFormButton.addEventListener('click', function() {
+            if (newProblemForm.style.display === "none") {
+                newProblemForm.style.display = "block";
+                toggleFormButton.innerHTML = 'Ẩn biểu mẫu';
+            } else {
+                newProblemForm.style.display = "none";
+                toggleFormButton.innerHTML = 'Thêm bài tập mới';
+            }
+        });
+
+        // Close modal when clicking close buttons
+        closeButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                modal.style.display = "none";
+            });
+        });
+
+        // Close modal when clicking outside
+        window.addEventListener('click', function(event) {
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        });
+
+        // Handle edit problem form submission
+        document.getElementById("editProblemForm").addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const formData = new FormData(this);
+
+            fetch('@Url.Action("EditProblem", "Admin")', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    showNotification('Cập nhật thành công!', 'success');
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 1500);
+                } else {
+                    showNotification('Có lỗi xảy ra: ' + data.message, 'error');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                showNotification('Có lỗi xảy ra khi gửi yêu cầu', 'error');
+            });
+        });
+
+        // Handle new problem form submission
+        document.getElementById("newProblemForm").addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const formData = new FormData(this);
+
+            if (@currentUser == -1) {
+                showNotification('Bạn cần đăng nhập để thực hiện chức năng này!', 'error');
+                setTimeout(() => {
+                    window.location.href = "/Login";
+                }, 1500);
+                return;
+            }
+
+            formData.append("status", 0);
+            formData.append("createdBy", @currentUser);
+            formData.append("createdAt", '@DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")');
+
+            fetch('@Url.Action("AddProblem", "Admin")', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    showNotification('Thêm bài tập mới thành công!', 'success');
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 1500);
+                } else {
+                    showNotification('Có lỗi xảy ra: ' + data.message, 'error');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                showNotification('Có lỗi xảy ra khi gửi yêu cầu', 'error');
+            });
+        });
+    });
+
+    // Show edit problem modal with problem data
     function showEditProblemModal(id, title, description, difficulty, timeLimit, memoryLimit) {
-        modal1.style.display = "block";
+        const modal = document.getElementById("editProblemModal");
 
         document.getElementById("problemId").value = id;
         document.getElementById("problemTitle").value = title;
@@ -110,63 +259,8 @@
         document.getElementById("difficulty").value = difficulty;
         document.getElementById("timeLimit").value = timeLimit;
         document.getElementById("memoryLimit").value = memoryLimit;
+
+        modal.style.display = "block";
     }
-
-    span1.onclick = function() {
-        modal1.style.display = "none";
-    }
-
-
-    document.getElementById("editProblemForm").onsubmit = function(e) {
-        e.preventDefault();
-        const formData = new FormData(this);
-
-        fetch('@Url.Action("EditProblem", "Admin")', {
-            method: 'POST',
-            body: formData
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                alert('Cập nhật thành công!');
-                window.location.reload();
-            } else {
-                alert('Có lỗi xảy ra: ' + data.message);
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            alert('Có lỗi xảy ra khi gửi yêu cầu');
-        });
-    };
-    document.getElementById("newProblemForm").onsubmit = function(e) {
-        e.preventDefault();
-
-        const formData = new FormData(this);
-        if (@currentUser == -1) {
-            window.location.href = "/Login";
-            return;
-        }
-        formData.append("status", 0);
-        formData.append("createdBy", @currentUser);
-        formData.append("createdAt", '@DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")');
-
-        fetch('@Url.Action("AddProblem", "Admin")', {
-            method: 'POST',
-            body: formData
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                alert('Thêm bài tập mới thành công!');
-                window.location.reload();
-            } else {
-                alert('Có lỗi xảy ra: ' + data.message);
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            alert('Có lỗi xảy ra khi gửi yêu cầu');
-        });
-    };
 </script>
+

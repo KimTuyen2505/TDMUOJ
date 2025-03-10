@@ -41,6 +41,7 @@
     <NavigationProperty Name="Rankings" Relationship="TDMUOJModel.FK__RankingCo__conte__6E01572D1" FromRole="Contest" ToRole="Ranking" />
     <NavigationProperty Name="ContestRankings" Relationship="TDMUOJModel.FK_ContestRanking_Contest" FromRole="Contest" ToRole="ContestRanking" />
     <NavigationProperty Name="Comments" Relationship="TDMUOJModel.FK_Comment_Contest" FromRole="Contest" ToRole="Comment" />
+    <Property Name="isCalculatedRating" Type="Boolean" Nullable="false" />
   </EntityType>
   <EntityType Name="ContestOrganizer">
     <Key>
@@ -66,6 +67,7 @@
     <Property Name="ratingChange" Type="Int32" />
     <NavigationProperty Name="Account" Relationship="Self.FK__ContestPa__membe__60A75C0F" FromRole="ContestParticipant" ToRole="Account" />
     <NavigationProperty Name="Contest" Relationship="Self.FK__ContestPa__conte__5FB337D6" FromRole="ContestParticipant" ToRole="Contest" />
+    <Property Name="isVirtual" Type="Boolean" Nullable="false" />
   </EntityType>
   <EntityType Name="ContestProblem">
     <Key>
@@ -189,6 +191,8 @@
     <NavigationProperty Name="Account" Relationship="Self.FK__Submissio__userI__76969D2E" FromRole="Submission" ToRole="Account" />
     <NavigationProperty Name="Problem" Relationship="Self.FK__Submissio__probl__75A278F5" FromRole="Submission" ToRole="Problem" />
     <Property Name="contestId" Type="Int32" />
+    <Property Name="isVirtual" Type="Boolean" Nullable="false" />
+    <Property Name="virtualSubmissionTime" Type="DateTime" Precision="3" />
   </EntityType>
   <EntityType Name="Tag">
     <Key>

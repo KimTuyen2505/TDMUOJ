@@ -1,120 +1,253 @@
-﻿.container {
+﻿/* Profile Page Styles */
+:root {
+    --primary-color: #1a56db;
+    --primary-hover: #1e429f;
+    --secondary-color: #f3f4f6;
+    --text-color: #374151;
+    --text-light: #6b7280;
+    --background-color: #f9fafb;
+    --white: #ffffff;
+    --border-color: #e5e7eb;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+    --rating-color: #f59e0b;
+    --max-rating-color: #10b981;
+    --accepted-color: #3b82f6;
+}
+
+/* Main container */
+.container-profile {
     max-width: 800px;
     margin: 2rem auto;
     padding: 2rem;
-    background-color: #fff;
+    background-color: var(--white);
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 3px var(--shadow-color);
 }
 
-header {
-    text-align: center;
-    margin-bottom: 2rem;
-}
+    /* Profile header */
+    .container-profile header {
+        text-align: center;
+        margin-bottom: 2.5rem;
+        padding-bottom: 1.5rem;
+        border-bottom: 1px solid var(--border-color);
+    }
 
+/* Avatar */
 .avatar-container {
     position: relative;
     display: inline-block;
+    margin-bottom: 1.5rem;
 }
 
 #avatar {
     width: 150px;
     height: 150px;
     border-radius: 50%;
-    margin-bottom: 1rem;
+    object-fit: cover;
+    border: 4px solid var(--white);
+    box-shadow: 0 4px 6px var(--shadow-color);
+    transition: var(--transition);
 }
 
 .edit-avatar {
     position: absolute;
-    bottom: 0;
+    bottom: 10px;
     left: 50%;
     transform: translateX(-50%);
-    background-color: rgba(0, 0, 0, 0.7);
-    color: white;
-    padding: 5px 10px;
-    border-radius: 5px;
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
     cursor: pointer;
+    transition: var(--transition);
+    white-space: nowrap;
+    box-shadow: 0 2px 4px var(--shadow-color);
 }
 
-h1 {
-    font-size: 2rem;
+    .edit-avatar:hover {
+        background-color: var(--primary-hover);
+    }
+
+/* Profile info */
+#name {
+    font-size: 1.875rem;
+    font-weight: 700;
+    color: var(--text-color);
     margin-bottom: 0.5rem;
 }
 
 #username {
-    color: #666;
-    font-size: 1.2rem;
+    font-size: 1.25rem;
+    color: var(--text-light);
+    margin-bottom: 0.75rem;
 }
 
+#email {
+    font-size: 1rem;
+    color: var(--text-light);
+}
+
+/* Edit inputs */
+#name-edit, #email-edit {
+    font-size: 1rem;
+    padding: 0.625rem 1rem;
+    margin: 0.5rem auto;
+    width: 100%;
+    max-width: 300px;
+    border: 1px solid var(--border-color);
+    border-radius: 0.375rem;
+    color: var(--text-color);
+    transition: var(--transition);
+    box-shadow: 0 1px 2px var(--shadow-color);
+}
+
+    #name-edit:focus, #email-edit:focus {
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 3px rgba(26, 86, 219, 0.1);
+        outline: none;
+    }
+
+/* Stats section */
 .stats {
     display: flex;
     justify-content: space-around;
-    margin-bottom: 2rem;
+    margin-bottom: 2.5rem;
+    flex-wrap: wrap;
+    gap: 1.5rem;
 }
 
 .stat-item {
     text-align: center;
+    background-color: var(--secondary-color);
+    border-radius: 10px;
+    padding: 1.5rem;
+    min-width: 150px;
+    flex: 1;
+    box-shadow: 0 1px 3px var(--shadow-color);
+    transition: var(--transition);
 }
+
+    .stat-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 4px 6px var(--shadow-color);
+    }
 
     .stat-item i {
         font-size: 2rem;
-        color: #4a90e2;
-        margin-bottom: 0.5rem;
+        margin-bottom: 0.75rem;
+        display: block;
+    }
+
+    .stat-item:nth-child(1) i {
+        color: var(--rating-color);
+    }
+
+    .stat-item:nth-child(2) i {
+        color: var(--max-rating-color);
+    }
+
+    .stat-item:nth-child(3) i {
+        color: var(--accepted-color);
     }
 
     .stat-item span {
         font-size: 1.5rem;
-        font-weight: bold;
+        font-weight: 700;
+        color: var(--text-color);
+        display: block;
+        margin-bottom: 0.5rem;
     }
 
-.details {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
-
-.detail-item {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-}
-
-    .detail-item i {
-        font-size: 1.2rem;
-        color: #4a90e2;
+    .stat-item p {
+        font-size: 0.95rem;
+        color: var(--text-light);
+        margin: 0;
     }
 
+/* Buttons */
 .edit-button, .save-button {
     display: block;
-    margin: 20px auto;
-    padding: 10px 20px;
-    background-color: #4a90e2;
-    color: white;
+    margin: 1.5rem auto 0;
+    padding: 0.75rem 1.5rem;
+    background-color: var(--primary-color);
+    color: var(--white);
     border: none;
-    border-radius: 5px;
-    cursor: pointer;
+    border-radius: 0.375rem;
+    font-weight: 600;
     font-size: 1rem;
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: 0 1px 3px var(--shadow-color);
 }
 
     .edit-button:hover, .save-button:hover {
-        background-color: #3a7bc8;
+        background-color: var(--primary-hover);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 6px var(--shadow-color);
     }
 
-input[type="text"], input[type="email"] {
-    font-size: 1rem;
-    padding: 5px;
-    margin: 5px 0;
-    width: 100%;
-    max-width: 300px;
+    .edit-button:active, .save-button:active {
+        transform: translateY(0);
+        box-shadow: 0 1px 3px var(--shadow-color);
+    }
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .container-profile {
+        padding: 1.5rem;
+        margin: 1.5rem auto;
+    }
+
+    #avatar {
+        width: 120px;
+        height: 120px;
+    }
+
+    #name {
+        font-size: 1.5rem;
+    }
+
+    #username {
+        font-size: 1.1rem;
+    }
+
+    .stat-item {
+        padding: 1.25rem;
+        min-width: 120px;
+    }
+
+        .stat-item i {
+            font-size: 1.75rem;
+        }
+
+        .stat-item span {
+            font-size: 1.25rem;
+        }
 }
 
-@media (max-width: 600px) {
-    .container {
-        padding: 1rem;
+@media (max-width: 576px) {
+    .container-profile {
+        padding: 1.25rem;
+        margin: 1rem auto;
     }
 
     .stats {
         flex-direction: column;
         gap: 1rem;
+    }
+
+    .stat-item {
+        width: 100%;
+    }
+
+    #avatar {
+        width: 100px;
+        height: 100px;
+    }
+
+    .edit-button, .save-button {
+        width: 100%;
     }
 }

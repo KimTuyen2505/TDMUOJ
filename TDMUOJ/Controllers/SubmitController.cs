@@ -21,7 +21,7 @@ namespace TDMUOJ.Controllers
         // GET: Submit
         public ActionResult Index(int id)
         {
-            var problem = db.Problems.SingleOrDefault(x => x.id == id);
+            Problem problem = db.Problems.SingleOrDefault(x => x.id == id);
             return View(problem);
         }
         [HttpPost]

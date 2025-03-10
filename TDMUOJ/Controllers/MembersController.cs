@@ -34,11 +34,9 @@ namespace TDMUOJ.Controllers
             for (var i = 0; i < members.Count; i++)
             {
                 dynamic expando = new ExpandoObject();
-                // Copy tất cả thuộc tính từ `x` vào `expando`
-                foreach (var property in members[i].GetType().GetProperties())
-                {
-                    ((IDictionary<string, object>)expando)[property.Name] = property.GetValue(members[i]);
-                }
+                expando.id = members[i].id;
+                expando.name = members[i].name;
+                expando.numberOfAccepted = members[i].numberOfAccepted;
                 if (members[i].numberOfAccepted != prev)
                 {
                     prev = (int)members[i].numberOfAccepted;

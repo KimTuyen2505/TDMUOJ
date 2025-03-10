@@ -1,71 +1,293 @@
 ﻿@model dynamic
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Danh sách bài nộp";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <link rel="stylesheet" href="~/Content/css/Submissions.css" />
 
-       
-                <div class="content-left">
-                    <h1>Danh sách bài nộp</h1>
-                    <br />
-                    <hr />
-                    <br />
-                    <table>
-                        @foreach (var submission in Model.submissions)
+<div class="submissions-container">
+    <div class="content-left">
+        <div class="page-header">
+            <h1 class="page-title">Danh sách bài nộp</h1>
+        </div>
+
+        <div class="submissions-table-container">
+            <table class="submissions-table">
+                <thead>
+                    <tr>
+                        <th class="column-status">Trạng thái</th>
+                        <th class="column-info">Thông tin</th>
+                        <th class="column-performance">Hiệu suất</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var submission in Model.submissions)
+                    {
+                        <tr class="submission-row">
+                            <td class="column-status">
+                                <div class="status-badge @GetStatusClass(submission.result)">
+                                    <span class="status-text">@submission.result</span>
+                                </div>
+                                <div class="score-text">
+                                    <span class="score-value">@submission.testCaseAchieved / @submission.testCaseTotal</span>
+                                </div>
+                                <div class="language-badge">
+                                    <span>@submission.language</span>
+                                </div>
+                            </td>
+                            <td class="column-info">
+                                <div class="problem-info">
+                                    <a href="@Url.Action("DetailProblem", "Problems", new {id = submission.problemId})" class="problem-link">
+                                        @submission.problemName
+                                    </a>
+                                </div>
+                                <div class="submission-meta">
+                                    <a href="@Url.Action("Index", "Profile", new {id = submission.userId})" class="user-link">
+                                        @submission.accountName
+                                    </a>
+                                    <span class="submission-time">
+                                        @submission.submittedAt.ToString("hh:mm:ss tt, dd/MM/yyyy")
+                                    </span>
+                                </div>
+                            </td>
+                            <td class="column-performance">
+                                <div class="performance-metrics">
+                                    <div class="metric time-metric">
+                                        <span class="metric-icon time-icon"></span>
+                                        <span class="metric-value">@submission.maxTime ms</span>
+                                    </div>
+                                    <div class="metric memory-metric">
+                                        <span class="metric-icon memory-icon"></span>
+                                        <span class="metric-value">@submission.maxMemory KB</span>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+            <div class="pagination">
+                <button class="pagination-button prev-button" onclick="goToPrevPage()">
+                    <span class="pagination-icon">&#10094;</span>
+                </button>
+
+                <div class="pagination-numbers" id="pagination-numbers">
+                    <!-- Page numbers will be inserted here by JavaScript -->
+                </div>
+
+                <button class="pagination-button next-button" onclick="goToNextPage()">
+                    <span class="pagination-icon">&#10095;</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-right">
+        <div class="sidebar-widget top-users-widget">
+            <h2 class="widget-title">Top thành viên</h2>
+
+            <div class="widget-content">
+                <table class="top-users-table">
+                    <thead>
+                        <tr class="top-users-header">
+                            <th class="top-user-rank">#</th>
+                            <th class="top-user-name">Tên truy cập</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (var i = 0; i < Model.topUsers.AccountList.Count; i++)
                         {
-                            <tr style="width: 100%">
-                                <td class="score @submission.result">
-                                    @submission.testCaseAchieved / @submission.testCaseTotal <br />
-                                    <p>@submission.result | @submission.language</p>
-                                </td>
-                                <td class="info">
-                                    <a href="@Url.Action("DetailProblem", "Problems", new {id = submission.problemId})" class="problem-name">@submission.problemName</a>
-                                    <br />
-                                    <a href="@Url.Action("Index", "Profile", new {id = submission.userId})" class="account-name">@submission.accountName</a> <span>@submission.submittedAt.ToString("hh:mm:ss tt, dd/MM/yyyy")</span>
-                                </td>
-                                <td style="width: 10%; text-align: center" class="time">
-                                    <p>@submission.maxTime ms</p>
-                                    @submission.maxMemory KB
+                            <tr class="top-user-item">
+                                <td class="top-user-rank">@(i+1)</td>
+                                <td class="top-user-name">
+                                    <a href="@Url.Action("Index", "Profile", new {id = Model.topUsers.AccountList[i].id})" class="user-link">
+                                        @Model.topUsers.AccountList[i].username
+                                    </a>
                                 </td>
                             </tr>
                         }
-                    </table>
-                </div>
-                <div class="content-right">
-                    <div class="top-user">
-                        <h1 class="top-user-title">Top thành viên</h1>
-                        <div class="top-head">
-                            <div class="user-rank">
-                                <p>#</p>
-                            </div>
-                            <div class="user-name">
-                                <p>Tên truy cập</p>
-                            </div>
-                        </div>
-                        @for (var i = 0; i < Model.topUsers.AccountList.Count; i++)
-                        {
-                            <div class="top-child">
-                                <div class="user-rank">
-                                    <p>@(i+1)</p>
-                                </div>
-                                <div class="user-name">
-                                    <a href="@Url.Action("Index", "Profile", new {id = Model.topUsers.AccountList[i].id})">
-                                        @Model.topUsers.AccountList[i].username
-                                    </a>
-                                </div>
-                            </div>
-                        }
-                    </div>
-                    <div class="top-user" style="margin-top: 50px">
-                        <h1 class="top-user-title">Bài mới</h1>
-                        @foreach (var item in Model.topUsers.NewProblemList)
-                        {
-                            <div class="top-problem">
-                                <a href="@Url.Action("DetailProblem", "Problems", new {id = item.id})">@item.title</a>
-                            </div>
-                        }
-                    </div>
-                </div>
-            
-   
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="sidebar-widget new-problems-widget">
+            <h2 class="widget-title">Bài tập mới</h2>
+
+            <div class="widget-content">
+                <ul class="new-problems-list">
+                    @foreach (var item in Model.topUsers.NewProblemList)
+                    {
+                        <li class="new-problem-item">
+                            <a href="@Url.Action("DetailProblem", "Problems", new {id = item.id})" class="problem-link">
+                                @item.title
+                            </a>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+@functions {
+    public string GetStatusClass(string status)
+    {
+        switch (status.ToUpper())
+        {
+            case "AC":
+            case "ACCEPTED":
+                return "status-accepted";
+            case "WA":
+            case "WRONG ANSWER":
+                return "status-wrong-answer";
+            case "TLE":
+            case "TIME LIMIT EXCEEDED":
+                return "status-time-limit";
+            case "MLE":
+            case "MEMORY LIMIT EXCEEDED":
+                return "status-memory-limit";
+            case "RTE":
+            case "RUNTIME ERROR":
+                return "status-runtime-error";
+            case "CE":
+            case "COMPILATION ERROR":
+                return "status-compilation-error";
+            case "PE":
+            case "PRESENTATION ERROR":
+                return "status-presentation-error";
+            case "PENDING":
+                return "status-pending";
+            case "RUNNING":
+                return "status-running";
+            default:
+                return "status-unknown";
+        }
+    }
+}
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Configuration
+        const submissionsPerPage = 20;
+        const submissionRows = document.querySelectorAll('.submission-row');
+        const totalSubmissions = submissionRows.length;
+        const totalPages = Math.ceil(totalSubmissions / submissionsPerPage);
+
+        // State
+        let currentPage = 1;
+
+        // Initialize pagination
+        initPagination();
+        showPage(currentPage);
+
+        // Make pagination functions available globally
+        window.goToPage = goToPage;
+        window.goToPrevPage = goToPrevPage;
+        window.goToNextPage = goToNextPage;
+
+        // Initialize pagination numbers
+        function initPagination() {
+            const paginationNumbers = document.getElementById('pagination-numbers');
+            paginationNumbers.innerHTML = '';
+
+            // Determine range of page numbers to show
+            let startPage = Math.max(1, currentPage - 2);
+            let endPage = Math.min(totalPages, startPage + 4);
+
+            // Adjust start if we're near the end
+            if (endPage - startPage < 4) {
+                startPage = Math.max(1, endPage - 4);
+            }
+
+            // Add first page button if not in range
+            if (startPage > 1) {
+                addPageButton(1);
+                if (startPage > 2) {
+                    addEllipsis();
+                }
+            }
+
+            // Add page buttons in range
+            for (let i = startPage; i <= endPage; i++) {
+                addPageButton(i);
+            }
+
+            // Add last page button if not in range
+            if (endPage < totalPages) {
+                if (endPage < totalPages - 1) {
+                    addEllipsis();
+                }
+                addPageButton(totalPages);
+            }
+        }
+
+        function addPageButton(pageNumber) {
+            const paginationNumbers = document.getElementById('pagination-numbers');
+            const button = document.createElement('button');
+            button.className = 'pagination-button page-number' + (pageNumber === currentPage ? ' active' : '');
+            button.textContent = pageNumber;
+            button.onclick = function() {
+                goToPage(pageNumber);
+            };
+            paginationNumbers.appendChild(button);
+        }
+
+        function addEllipsis() {
+            const paginationNumbers = document.getElementById('pagination-numbers');
+            const ellipsis = document.createElement('span');
+            ellipsis.className = 'pagination-ellipsis';
+            ellipsis.textContent = '...';
+            paginationNumbers.appendChild(ellipsis);
+        }
+
+        // Show the specified page
+        function showPage(pageNumber) {
+            const startIndex = (pageNumber - 1) * submissionsPerPage;
+            const endIndex = Math.min(startIndex + submissionsPerPage, totalSubmissions);
+
+            // Hide all rows
+            submissionRows.forEach(row => {
+                row.style.display = 'none';
+            });
+
+            // Show rows for current page
+            for (let i = startIndex; i < endIndex; i++) {
+                if (submissionRows[i]) {
+                    submissionRows[i].style.display = '';
+                }
+            }
+
+            // Update active page button
+            const pageButtons = document.querySelectorAll('.page-number');
+            pageButtons.forEach(button => {
+                button.classList.remove('active');
+                if (parseInt(button.textContent) === pageNumber) {
+                    button.classList.add('active');
+                }
+            });
+        }
+
+        // Navigation functions
+        function goToPage(pageNumber) {
+            if (pageNumber >= 1 && pageNumber <= totalPages) {
+                currentPage = pageNumber;
+                showPage(currentPage);
+                initPagination();
+            }
+        }
+
+        function goToPrevPage() {
+            if (currentPage > 1) {
+                goToPage(currentPage - 1);
+            }
+        }
+
+        function goToNextPage() {
+            if (currentPage < totalPages) {
+                goToPage(currentPage + 1);
+            }
+        }
+    });
+</script>

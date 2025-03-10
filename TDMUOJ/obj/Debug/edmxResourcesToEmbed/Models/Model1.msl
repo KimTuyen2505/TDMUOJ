@@ -20,6 +20,7 @@
     <EntitySetMapping Name="Contests">
       <EntityTypeMapping TypeName="TDMUOJModel.Contest">
         <MappingFragment StoreEntitySet="Contest">
+          <ScalarProperty Name="isCalculatedRating" ColumnName="isCalculatedRating" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="title" ColumnName="title" />
           <ScalarProperty Name="startTime" ColumnName="startTime" />
@@ -41,6 +42,7 @@
     <EntitySetMapping Name="ContestParticipants">
       <EntityTypeMapping TypeName="TDMUOJModel.ContestParticipant">
         <MappingFragment StoreEntitySet="ContestParticipant">
+          <ScalarProperty Name="isVirtual" ColumnName="isVirtual" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="contestId" ColumnName="contestId" />
           <ScalarProperty Name="memberId" ColumnName="memberId" />
@@ -150,6 +152,8 @@
     <EntitySetMapping Name="Submissions">
       <EntityTypeMapping TypeName="TDMUOJModel.Submission">
         <MappingFragment StoreEntitySet="Submission">
+          <ScalarProperty Name="virtualSubmissionTime" ColumnName="virtualSubmissionTime" />
+          <ScalarProperty Name="isVirtual" ColumnName="isVirtual" />
           <ScalarProperty Name="contestId" ColumnName="contestId" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="problemId" ColumnName="problemId" />

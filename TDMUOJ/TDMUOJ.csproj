@@ -128,6 +128,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Content Include="Content\css\Admin.css" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CompilerController.cs" />
     <Compile Include="Controllers\DiscussController.cs" />
@@ -149,28 +150,37 @@
     <Compile Include="Models\Account.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\AccountViewModel.cs" />
     <Compile Include="Models\AdminOverview.cs" />
     <Compile Include="Models\Comment.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\CommentViewModel.cs" />
+    <Compile Include="Models\CompileResultModel.cs" />
     <Compile Include="Models\Contest.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ContestDetail.cs" />
+    <Compile Include="Models\ContestEndedCustom.cs" />
+    <Compile Include="Models\ContestLeaderboardViewModel.cs" />
     <Compile Include="Models\ContestOrganizer.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ContestParticipant.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ContestParticipantViewModel.cs" />
     <Compile Include="Models\ContestProblem.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ContestProblemViewModel.cs" />
+    <Compile Include="Models\ContestProblemDetailViewModel.cs" />
+    <Compile Include="Models\ContestProblemsViewModel.cs" />
     <Compile Include="Models\ContestRanking.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ContestStandingsViewModel.cs" />
     <Compile Include="Models\ContestStatus.cs" />
+    <Compile Include="Models\ContestSubmissionsViewModel.cs" />
     <Compile Include="Models\DetailProblem.cs" />
     <Compile Include="Models\Follower.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -199,6 +209,7 @@
     <Compile Include="Models\ProblemExample.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ProblemExampleViewModel.cs" />
     <Compile Include="Models\ProblemManagementCustom.cs" />
     <Compile Include="Models\ProblemSolved.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -206,6 +217,7 @@
     <Compile Include="Models\ProblemTestCase.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ProblemViewModel.cs" />
     <Compile Include="Models\Ranking.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -216,14 +228,17 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SubmissionManagementCustom.cs" />
+    <Compile Include="Models\SubmissionViewModel.cs" />
     <Compile Include="Models\Tag.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TagProblem.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\TestCaseManagementViewModel.cs" />
     <Compile Include="Models\TestCaseSubmit.cs" />
     <Compile Include="Models\TopUsers.cs" />
+    <Compile Include="Models\TopUsersViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -244,6 +259,9 @@
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\css\Compiler.css" />
+    <Content Include="Content\css\ContestLeaderboard.css" />
+    <Content Include="Content\css\ContestProblem.css" />
+    <Content Include="Content\css\ContestSubmissions.css" />
     <Content Include="Content\css\DetailExam.css" />
     <Content Include="Content\css\DetailProblem.css" />
     <Content Include="Content\css\Discuss.css" />
@@ -344,6 +362,9 @@
     <Content Include="Views\Admin\AccountManagement.cshtml" />
     <Content Include="Views\Admin\TestCaseManagement.cshtml" />
     <Content Include="Views\Admin\ProblemsForContestManagement.cshtml" />
+    <Content Include="Views\Exams\ContestProblemDetail.cshtml" />
+    <Content Include="Views\Exams\ContestLeaderboard.cshtml" />
+    <Content Include="Views\Exams\ContestSubmissions.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,228 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|d:\\hoc it cntt05\\na\\tdmuoj\\tdmuoj\\controllers\\examscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|solutionrelative:tdmuoj\\controllers\\examscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|d:\\hoc it cntt05\\na\\tdmuoj\\tdmuoj\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|solutionrelative:tdmuoj\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|d:\\hoc it cntt05\\na\\tdmuoj\\tdmuoj\\views\\admin\\contestmanagement.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|solutionrelative:tdmuoj\\views\\admin\\contestmanagement.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|d:\\hoc it cntt05\\na\\tdmuoj\\tdmuoj\\controllers\\registercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|solutionrelative:tdmuoj\\controllers\\registercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|d:\\hoc it cntt05\\na\\tdmuoj\\tdmuoj\\models\\contestendedcustom.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|solutionrelative:tdmuoj\\models\\contestendedcustom.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|d:\\hoc it cntt05\\na\\tdmuoj\\tdmuoj\\content\\css\\admin.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|solutionrelative:tdmuoj\\content\\css\\admin.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|d:\\hoc it cntt05\\na\\tdmuoj\\tdmuoj\\views\\exams\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|solutionrelative:tdmuoj\\views\\exams\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|d:\\hoc it cntt05\\na\\tdmuoj\\tdmuoj\\models\\contest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|solutionrelative:tdmuoj\\models\\contest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|d:\\hoc it cntt05\\na\\tdmuoj\\tdmuoj\\views\\exams\\detailexam.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|solutionrelative:tdmuoj\\views\\exams\\detailexam.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|d:\\hoc it cntt05\\na\\tdmuoj\\tdmuoj\\views\\faq\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|solutionrelative:tdmuoj\\views\\faq\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|d:\\hoc it cntt05\\na\\tdmuoj\\tdmuoj\\models\\contestdetail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|solutionrelative:tdmuoj\\models\\contestdetail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|d:\\hoc it cntt05\\na\\tdmuoj\\tdmuoj\\models\\conteststatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|solutionrelative:tdmuoj\\models\\conteststatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 10,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AdminController.cs",
+              "DocumentMoniker": "D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\TDMUOJ\\Controllers\\AdminController.cs",
+              "RelativeDocumentMoniker": "TDMUOJ\\Controllers\\AdminController.cs",
+              "ToolTip": "D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\TDMUOJ\\Controllers\\AdminController.cs",
+              "RelativeToolTip": "TDMUOJ\\Controllers\\AdminController.cs",
+              "ViewState": "AgIAANkAAAAAAAAAAAAYwOIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-10T09:15:51.587Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Admin.css",
+              "DocumentMoniker": "D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\TDMUOJ\\Content\\css\\Admin.css",
+              "RelativeDocumentMoniker": "TDMUOJ\\Content\\css\\Admin.css",
+              "ToolTip": "D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\TDMUOJ\\Content\\css\\Admin.css",
+              "RelativeToolTip": "TDMUOJ\\Content\\css\\Admin.css",
+              "ViewState": "AgIAAPcAAAAAAAAAAAAiwAcBAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-03-10T09:07:11.942Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Contest.cs",
+              "DocumentMoniker": "D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\TDMUOJ\\Models\\Contest.cs",
+              "RelativeDocumentMoniker": "TDMUOJ\\Models\\Contest.cs",
+              "ToolTip": "D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\TDMUOJ\\Models\\Contest.cs",
+              "RelativeToolTip": "TDMUOJ\\Models\\Contest.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAvwCEAAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-10T08:54:28.395Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "RegisterController.cs",
+              "DocumentMoniker": "D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\TDMUOJ\\Controllers\\RegisterController.cs",
+              "RelativeDocumentMoniker": "TDMUOJ\\Controllers\\RegisterController.cs",
+              "ToolTip": "D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\TDMUOJ\\Controllers\\RegisterController.cs",
+              "RelativeToolTip": "TDMUOJ\\Controllers\\RegisterController.cs",
+              "ViewState": "AgIAACEAAAAAAAAAAAAYwCwAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-10T08:51:32.185Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ContestManagement.cshtml",
+              "DocumentMoniker": "D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\TDMUOJ\\Views\\Admin\\ContestManagement.cshtml",
+              "RelativeDocumentMoniker": "TDMUOJ\\Views\\Admin\\ContestManagement.cshtml",
+              "ToolTip": "D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\TDMUOJ\\Views\\Admin\\ContestManagement.cshtml",
+              "RelativeToolTip": "TDMUOJ\\Views\\Admin\\ContestManagement.cshtml",
+              "ViewState": "AgIAABQBAAAAAAAAAAAAACABAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-03-10T08:39:25.937Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "ContestDetail.cs",
+              "DocumentMoniker": "D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\TDMUOJ\\Models\\ContestDetail.cs",
+              "RelativeDocumentMoniker": "TDMUOJ\\Models\\ContestDetail.cs",
+              "ToolTip": "D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\TDMUOJ\\Models\\ContestDetail.cs",
+              "RelativeToolTip": "TDMUOJ\\Models\\ContestDetail.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAAwBMAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-10T08:29:57.765Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "DetailExam.cshtml",
+              "DocumentMoniker": "D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\TDMUOJ\\Views\\Exams\\DetailExam.cshtml",
+              "RelativeDocumentMoniker": "TDMUOJ\\Views\\Exams\\DetailExam.cshtml",
+              "ToolTip": "D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\TDMUOJ\\Views\\Exams\\DetailExam.cshtml",
+              "RelativeToolTip": "TDMUOJ\\Views\\Exams\\DetailExam.cshtml",
+              "ViewState": "AgIAADkAAAAAAAAAAAAAAEEAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-03-10T08:24:25.502Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\TDMUOJ\\Views\\FAQ\\Index.cshtml",
+              "RelativeDocumentMoniker": "TDMUOJ\\Views\\FAQ\\Index.cshtml",
+              "ToolTip": "D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\TDMUOJ\\Views\\FAQ\\Index.cshtml",
+              "RelativeToolTip": "TDMUOJ\\Views\\FAQ\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAD4AAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-03-10T08:20:31.804Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ContestEndedCustom.cs",
+              "DocumentMoniker": "D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\TDMUOJ\\Models\\ContestEndedCustom.cs",
+              "RelativeDocumentMoniker": "TDMUOJ\\Models\\ContestEndedCustom.cs",
+              "ToolTip": "D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\TDMUOJ\\Models\\ContestEndedCustom.cs",
+              "RelativeToolTip": "TDMUOJ\\Models\\ContestEndedCustom.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-10T08:15:18.243Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ExamsController.cs",
+              "DocumentMoniker": "D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\TDMUOJ\\Controllers\\ExamsController.cs",
+              "RelativeDocumentMoniker": "TDMUOJ\\Controllers\\ExamsController.cs",
+              "ToolTip": "D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\TDMUOJ\\Controllers\\ExamsController.cs",
+              "RelativeToolTip": "TDMUOJ\\Controllers\\ExamsController.cs",
+              "ViewState": "AgIAANkCAAAAAAAAAAAAAOQCAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-10T08:10:55.76Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "ContestStatus.cs",
+              "DocumentMoniker": "D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\TDMUOJ\\Models\\ContestStatus.cs",
+              "RelativeDocumentMoniker": "TDMUOJ\\Models\\ContestStatus.cs",
+              "ToolTip": "D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\TDMUOJ\\Models\\ContestStatus.cs",
+              "RelativeToolTip": "TDMUOJ\\Models\\ContestStatus.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAABDAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-10T08:10:06.386Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\TDMUOJ\\Views\\Exams\\Index.cshtml",
+              "RelativeDocumentMoniker": "TDMUOJ\\Views\\Exams\\Index.cshtml",
+              "ToolTip": "D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\TDMUOJ\\Views\\Exams\\Index.cshtml",
+              "RelativeToolTip": "TDMUOJ\\Views\\Exams\\Index.cshtml",
+              "ViewState": "AgIAAFoAAAAAAAAAAAAAAGcAAAA8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-03-10T08:09:46.193Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
