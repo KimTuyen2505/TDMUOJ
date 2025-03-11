@@ -1,0 +1,374 @@
+﻿@model TDMUOJ.Models.ContestDetail
+@{
+    ViewBag.Title = Model.title;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link rel="stylesheet" href="~/Content/css/DetailExam.css" />
+
+<div class="exam-detail-container">
+    <div class="exam-header">
+        <h1 class="exam-title">@Model.title</h1>
+
+        <div class="exam-status-container">
+            <div class="exam-status">
+                @if (Model.startTime <= DateTime.Now && Model.endTime >= DateTime.Now)
+                {
+                    <div class="status-badge status-running">Kỳ thi đang diễn ra</div>
+                }
+                else if (Model.endTime < DateTime.Now)
+                {
+                    <div class="status-badge status-ended">Kỳ thi đã kết thúc</div>
+                }
+                else
+                {
+                    <div class="status-badge status-upcoming">Kỳ thi chưa diễn ra</div>
+                }
+            </div>
+
+            <div class="exam-time-info">
+                @if (Model.startTime <= DateTime.Now && Model.endTime >= DateTime.Now)
+                {
+                    <div class="time-remain" data-endtime="@Model.endTime.ToString("yyyy-MM-dd HH:mm:ss")">
+                        <span class="time-label">Còn lại:</span>
+                        <span class="time-value time-down"></span>
+                    </div>
+                }
+                else if (Model.endTime < DateTime.Now)
+                {
+                    TimeSpan diff = Model.endTime.Subtract(Model.startTime);
+                    <div class="time-info">
+                        <span class="time-label">Thời gian:</span>
+                        <span class="time-value">@diff.TotalMinutes phút</span>
+                        <span class="time-label ml-2">Bắt đầu:</span>
+                        <span class="time-value">@Model.startTime.ToString("dd-MM-yyyy HH:mm")</span>
+                    </div>
+                }
+                else
+                {
+                    <div class="time-remain" data-endtime="@Model.startTime.ToString("yyyy-MM-dd HH:mm:ss")">
+                        <span class="time-label">Bắt đầu trong:</span>
+                        <span class="time-value time-down"></span>
+                    </div>
+                }
+            </div>
+        </div>
+
+        <div class="exam-actions">
+            @if (Session["User"] != null)
+            {
+                if (Model.startTime <= DateTime.Now && Model.endTime >= DateTime.Now)
+                {
+                    if (!Model.IsParticipant)
+                    {
+                        <button id="join-contest-btn" class="action-btn join-btn" data-contest-id="@Model.id">Tham gia kỳ thi</button>
+                    }
+                    else
+                    {
+                        <a href="@Url.Action("ContestLeaderboard", new { id = Model.id })" class="action-btn leaderboard-btn">Bảng xếp hạng</a>
+                        <a href="@Url.Action("ContestSubmissions", new { id = Model.id })" class="action-btn submissions-btn">Bài nộp</a>
+                    }
+                }
+                else if (Model.endTime < DateTime.Now && Model.IsVirtualParticipant == false)
+                {
+                    <a href="@Url.Action("ContestLeaderboard", new { id = Model.id })" class="action-btn leaderboard-btn">Bảng xếp hạng</a>
+                    <a href="@Url.Action("ContestSubmissions", new { id = Model.id })" class="action-btn submissions-btn">Bài nộp</a>
+                }
+            }
+            else
+            {
+                <a href="@Url.Action("Index", "Login")" class="action-btn login-btn">Đăng nhập để tham gia</a>
+            }
+        </div>
+    </div>
+
+    <div class="exam-rules card">
+        <div class="card-header">
+            <h2 class="card-title">Thông tin kỳ thi</h2>
+        </div>
+        <div class="card-body">
+            @Html.Raw(Model.rules)
+        </div>
+    </div>
+
+    @if ((Model.startTime <= DateTime.Now && Model.endTime >= DateTime.Now) || (Model.endTime < DateTime.Now))
+    {
+        <div class="exam-problems card">
+            <div class="card-header">
+                <h2 class="card-title">Danh sách bài tập</h2>
+            </div>
+            <div class="card-body">
+                <div class="problems-table-container">
+                    <table class="problems-table">
+                        <thead>
+                            <tr>
+                                <th class="column-number">#</th>
+                                <th class="column-title">Tên bài tập</th>
+                                <th class="column-solved">Số giải được</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for (var i = 0; i < Model.problems.Count; i++)
+                            {
+                                <tr class="problem-row">
+                                    <td class="column-number">@(i + 1)</td>
+                                    <td class="column-title">
+                                        @if (Model.IsParticipant || Model.endTime < DateTime.Now)
+                                        {
+                                            <a href="@Url.Action("ContestProblemDetail", new { problemId = Model.problems[i].id, contestId = Model.id })" class="problem-link">
+                                                @Model.problems[i].title
+                                            </a>
+                                        }
+                                        else
+                                        {
+                                            <span class="problem-locked">@Model.problems[i].title</span>
+                                        }
+                                    </td>
+                                    <td class="column-solved">
+                                        <div class="solved-count">@Model.problems[i].numberOfAccepted</div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    }
+
+    <div class="comments-section card">
+        <div class="card-header">
+            <h2 class="card-title">Bình luận</h2>
+        </div>
+        <div class="card-body">
+            <div id="comments-list" class="comments-list">
+                @if (Model.comments.Count > 0)
+                {
+                    foreach (var comment in Model.comments)
+                    {
+                        <div class="comment">
+                            <div class="comment-header">
+                                <span class="comment-author">@comment.username</span>
+                                <span class="comment-time">@comment.createdAt.ToString("HH:mm:ss dd/MM/yyyy")</span>
+                            </div>
+                            <div class="comment-content">
+                                @comment.content
+                            </div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div class="empty-comments">
+                        <p>Chưa có bình luận nào. Hãy là người đầu tiên bình luận!</p>
+                    </div>
+                }
+            </div>
+
+            @if (Session["User"] != null)
+            {
+                <div class="comment-form">
+                    <textarea id="comment-content" rows="3" placeholder="Nhập bình luận của bạn"></textarea>
+                    <button id="submit-comment" class="submit-comment-btn">Gửi bình luận</button>
+                </div>
+                <div id="comment-status" class="comment-status"></div>
+            }
+            else
+            {
+                <div class="login-prompt">
+                    <p>Vui lòng <a href="@Url.Action("Index", "Login")" class="login-link">đăng nhập</a> để bình luận.</p>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    // Lấy tất cả các phần tử countdown
+    const timeRemainElements = document.querySelectorAll(".time-remain");
+
+    // Hàm cập nhật countdown
+    function updateCountdown() {
+        timeRemainElements.forEach(element => {
+            const endTime = new Date(element.getAttribute("data-endtime")).getTime();
+            const now = new Date().getTime();
+            const distance = endTime - now;
+            const countdownElement = element.querySelector(".time-down");
+
+            if (distance > 0) {
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                const unit = ["ngày", "giờ", "phút", "giây"];
+                const value = [days, hours, minutes, seconds];
+                const id = (days > 0 ? 0 : hours > 0 ? 1 : minutes > 0 ? 2 : 3);
+
+                let time = "";
+                for (let i = id; i < 4; i++) {
+                    time = `${time} ${value[i]} ${unit[i]}`;
+                }
+
+                countdownElement.innerText = time.trim();
+
+                // Thêm hiệu ứng nhấp nháy cho countdown sắp hết giờ (dưới 5 phút)
+                if (distance < 5 * 60 * 1000) {
+                    countdownElement.classList.add("urgent");
+                } else {
+                    countdownElement.classList.remove("urgent");
+                }
+            } else {
+                countdownElement.innerText = "Hết giờ!";
+
+                // Tự động làm mới trang sau 3 giây khi hết giờ
+                setTimeout(() => {
+                    window.location.reload();
+                }, 3000);
+            }
+        });
+    }
+
+    // Cập nhật mỗi giây
+    setInterval(updateCountdown, 1000);
+
+    // Khởi chạy ngay khi tải trang
+    updateCountdown();
+
+    $(document).ready(function() {
+        // Xử lý bình luận
+        $("#submit-comment").click(function() {
+            var content = $("#comment-content").val().trim();
+            if (content !== "") {
+                // Hiển thị trạng thái đang gửi
+                $("#comment-status").text("Đang gửi bình luận...").removeClass("comment-error comment-success").addClass("comment-pending").show();
+
+                $.ajax({
+                    url: '@Url.Action("AddComment", "Exams")',
+                    type: 'POST',
+                    data: { contestId: @Model.id, content: content },
+                    success: function(response) {
+                        if (response.success) {
+                            @{
+                                var user = (TDMUOJ.Models.Account)Session["User"];
+                            }
+
+                            // Tạo phần tử bình luận mới
+                            var newComment = $('<div class="comment"></div>');
+                            var commentHeader = $('<div class="comment-header"></div>')
+                                .append($('<span class="comment-author"></span>').text('@(user == null ? "" : user.username)'))
+                                .append($('<span class="comment-time"></span>').text(new Date().toLocaleString('vi-VN')));
+                            var commentContent = $('<div class="comment-content"></div>').text(content);
+
+                            newComment.append(commentHeader).append(commentContent);
+
+                            // Thêm bình luận vào đầu danh sách
+                            $("#comments-list").prepend(newComment);
+
+                            // Xóa thông báo trống nếu có
+                            $(".empty-comments").remove();
+
+                            // Xóa nội dung textarea
+                            $("#comment-content").val('');
+
+                            // Hiệu ứng hiển thị bình luận mới
+                            newComment.hide().fadeIn(1000);
+
+                            // Hiển thị thông báo thành công
+                            $("#comment-status").text("Bình luận đã được gửi thành công!")
+                                .removeClass("comment-pending comment-error")
+                                .addClass("comment-success")
+                                .delay(3000).fadeOut(500);
+                        } else {
+                            // Hiển thị thông báo lỗi
+                            $("#comment-status").text("Lỗi: " + response.message)
+                                .removeClass("comment-pending comment-success")
+                                .addClass("comment-error");
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        // Hiển thị thông báo lỗi
+                        $("#comment-status").text("Có lỗi xảy ra khi gửi bình luận: " + error)
+                            .removeClass("comment-pending comment-success")
+                            .addClass("comment-error");
+                    }
+                });
+            } else {
+                // Hiển thị thông báo lỗi nếu nội dung trống
+                $("#comment-status").text("Vui lòng nhập nội dung bình luận.")
+                    .removeClass("comment-pending comment-success")
+                    .addClass("comment-error")
+                    .show();
+            }
+        });
+
+        // Xóa thông báo trạng thái khi người dùng bắt đầu nhập
+        $("#comment-content").on('input', function() {
+            $("#comment-status").fadeOut(300);
+        });
+
+        // Xử lý tham gia kỳ thi
+        $("#join-contest-btn").click(function () {
+            var btn = $(this);
+            console.log(btn.data("contest-id"));
+            var contestId = btn.data("contest-id");
+
+            btn.addClass("loading");
+
+            $.ajax({
+                url: "/Exams/JoinContest",
+                type: "POST",
+                data: { id: contestId },
+                success: function (response) {
+                    btn.removeClass("loading");
+
+                    if (response.success) {
+                        // Hiển thị thông báo thành công
+                        alert(response.message);
+                        // Tải lại trang
+                        location.reload();
+                    } else {
+                        // Hiển thị thông báo lỗi
+                        alert(response.message);
+                    }
+                },
+                error: function () {
+                    btn.removeClass("loading");
+                    alert("Đã xảy ra lỗi. Vui lòng thử lại sau.");
+                }
+            });
+        });
+
+        // Xử lý tham gia ảo
+        $("#virtual-participation-btn").click(function () {
+            var btn = $(this);
+            var contestId = btn.data("contest-id");
+
+            btn.addClass("loading");
+
+            $.ajax({
+                url: "/Exams/JoinVirtualContest",
+                type: "POST",
+                data: { id: contestId },
+                success: function (response) {
+                    btn.removeClass("loading");
+
+                    if (response.success) {
+                        // Hiển thị thông báo thành công
+                        alert(response.message);
+                        // Tải lại trang
+                        location.reload();
+                    } else {
+                        // Hiển thị thông báo lỗi
+                        alert(response.message);
+                    }
+                },
+                error: function () {
+                    btn.removeClass("loading");
+                    alert("Đã xảy ra lỗi. Vui lòng thử lại sau.");
+                }
+            });
+        });
+    });
+</script>

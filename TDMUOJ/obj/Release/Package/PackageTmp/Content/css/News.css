@@ -1,0 +1,245 @@
+﻿/* News Page Styles */
+:root {
+    --primary-color: #1a56db;
+    --primary-hover: #1e429f;
+    --secondary-color: #f3f4f6;
+    --text-color: #374151;
+    --text-light: #6b7280;
+    --background-color: #f9fafb;
+    --white: #ffffff;
+    --border-color: #e5e7eb;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+}
+
+/* Main container */
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* News layout */
+.content-left {
+    flex: 1;
+    background-color: var(--white);
+    border-radius: 10px;
+    box-shadow: 0 1px 3px var(--shadow-color);
+    padding: 24px;
+    margin-bottom: 30px;
+}
+
+    .content-left h1 {
+        font-size: 1.875rem;
+        font-weight: 700;
+        color: var(--text-color);
+        margin: 0 0 16px 0;
+    }
+
+    .content-left hr {
+        border: 0;
+        height: 1px;
+        background-color: var(--border-color);
+        margin: 16px 0;
+    }
+
+/* News article */
+.news {
+    margin-bottom: 32px;
+}
+
+    .news h1 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        margin: 0 0 8px 0;
+    }
+
+    .news h3 {
+        font-size: 0.95rem;
+        font-weight: 400;
+        color: var(--text-light);
+        margin: 0 0 16px 0;
+    }
+
+    .news p {
+        font-size: 1rem;
+        line-height: 1.6;
+        color: var(--text-color);
+        margin-bottom: 16px;
+    }
+
+    .news img {
+        border-radius: 8px;
+        margin: 16px 0;
+        transition: var(--transition);
+        box-shadow: 0 2px 4px var(--shadow-color);
+    }
+
+        .news img.hov:hover {
+            transform: scale(1.02);
+            box-shadow: 0 4px 12px var(--shadow-color);
+        }
+
+/* Right sidebar */
+.content-right {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* Sidebar widgets - Matching Problems.css */
+.sidebar-widget {
+    background-color: var(--white);
+    border-radius: 10px;
+    box-shadow: 0 1px 3px var(--shadow-color);
+    overflow: hidden;
+    margin-bottom: 30px;
+}
+
+.widget-title {
+    background-color: var(--primary-color);
+    color: var(--white);
+    font-size: 1.1rem;
+    font-weight: 600;
+    padding: 14px 16px;
+    margin: 0;
+}
+
+.widget-content {
+    padding: 0;
+}
+
+/* Top users table */
+.top-users-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.top-users-header {
+    background-color: rgba(26, 86, 219, 0.1);
+}
+
+    .top-users-header th {
+        padding: 10px 16px;
+        font-weight: 600;
+        color: var(--text-color);
+        text-align: left;
+    }
+
+.top-user-rank {
+    width: 20%;
+    text-align: center;
+}
+
+.top-user-name {
+    width: 80%;
+    text-align: left;
+}
+
+.top-user-item {
+    border-bottom: 1px solid var(--border-color);
+    transition: var(--transition);
+}
+
+    .top-user-item:hover {
+        background-color: var(--secondary-color);
+    }
+
+    .top-user-item td {
+        padding: 10px 16px;
+        vertical-align: middle;
+    }
+
+.user-link {
+    color: var(--text-color);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+    .user-link:hover {
+        color: var(--primary-color);
+    }
+
+/* New problems widget */
+.new-problems-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.new-problem-item {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border-color);
+    transition: var(--transition);
+}
+
+    .new-problem-item:hover {
+        background-color: var(--secondary-color);
+    }
+
+    .new-problem-item:last-child {
+        border-bottom: none;
+    }
+
+.problem-link {
+    color: var(--text-color);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+    .problem-link:hover {
+        color: var(--primary-color);
+    }
+
+/* Empty state */
+.content-left i {
+    display: block;
+    padding: 24px 0;
+    color: var(--text-light);
+    font-style: italic;
+    text-align: center;
+}
+
+/* Responsive layout */
+@media (min-width: 992px) {
+    .container {
+        flex-direction: row;
+    }
+
+    .content-left {
+        width: 75%;
+        margin-right: 30px;
+    }
+
+    .content-right {
+        width: 25%;
+    }
+}
+
+@media (max-width: 768px) {
+    .content-left {
+        padding: 16px;
+    }
+
+    .news h1 {
+        font-size: 1.3rem;
+    }
+
+    .news h3 {
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .content-left h1 {
+        font-size: 1.5rem;
+    }
+
+    .news h1 {
+        font-size: 1.2rem;
+    }
+}

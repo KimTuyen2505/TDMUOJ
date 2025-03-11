@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -512,6 +513,82 @@ namespace TDMUOJ.Controllers
             {
                 return Json(new { success = false, message = ex.Message });
             }
+        }
+
+        public ActionResult NewsManagement()
+        {
+            var news = db.News
+                .Include(n => n.Account)
+                .OrderByDescending(n => n.createdAt)
+                .ToList();
+            return PartialView(news);
+        }
+
+        [HttpPost]
+        public ActionResult AddNews(News news, HttpPostedFileBase backgroundImage)
+        {
+            if (ModelState.IsValid)
+            {
+                news.createdAt = DateTime.Now;
+                news.updatedAt = DateTime.Now;
+                news.authorId = ((Account)Session["User"]).id; // Assuming you store the logged-in user in Session
+
+                if (backgroundImage != null && backgroundImage.ContentLength > 0)
+                {
+                    var fileName = Path.GetFileName(backgroundImage.FileName);
+                    var path = Path.Combine(Server.MapPath("~/Content/IMAGE/"), fileName);
+                    backgroundImage.SaveAs(path);
+                    news.background = fileName;
+                }
+
+                db.News.Add(news);
+                db.SaveChanges();
+                return Json(new { success = true });
+            }
+            return Json(new { success = false, message = "Invalid data" });
+        }
+
+        [HttpPost]
+        public ActionResult EditNews(News news, HttpPostedFileBase backgroundImage)
+        {
+            if (ModelState.IsValid)
+            {
+                var existingNews = db.News.Find(news.id);
+                if (existingNews == null)
+                {
+                    return Json(new { success = false, message = "News not found" });
+                }
+
+                existingNews.title = news.title;
+                existingNews.content = news.content;
+                existingNews.updatedAt = DateTime.Now;
+
+                if (backgroundImage != null && backgroundImage.ContentLength > 0)
+                {
+                    var fileName = Path.GetFileName(backgroundImage.FileName);
+                    var path = Path.Combine(Server.MapPath("~/Content/IMAGE/"), fileName);
+                    backgroundImage.SaveAs(path);
+                    existingNews.background = fileName;
+                }
+
+                db.SaveChanges();
+                return Json(new { success = true });
+            }
+            return Json(new { success = false, message = "Invalid data" });
+        }
+
+        [HttpPost]
+        public ActionResult DeleteNews(int id)
+        {
+            var news = db.News.Find(id);
+            if (news == null)
+            {
+                return Json(new { success = false, message = "News not found" });
+            }
+
+            db.News.Remove(news);
+            db.SaveChanges();
+            return Json(new { success = true });
         }
     }
 }

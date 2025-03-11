@@ -1,0 +1,507 @@
+﻿/* Variables */
+:root {
+    --primary-color: #1a56db;
+    --primary-hover: #1e429f;
+    --secondary-color: #f3f4f6;
+    --text-color: #374151;
+    --text-light: #6b7280;
+    --background-color: #f9fafb;
+    --white: #ffffff;
+    --border-color: #e5e7eb;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+    /* Status colors */
+    --status-running-bg: #ecfdf5;
+    --status-running-text: #047857;
+    --status-running-border: #a7f3d0;
+    --status-upcoming-bg: #eff6ff;
+    --status-upcoming-text: #1d4ed8;
+    --status-upcoming-border: #bfdbfe;
+    --status-ended-bg: #f3f4f6;
+    --status-ended-text: #4b5563;
+    --status-ended-border: #d1d5db;
+}
+
+/* Main container */
+.exam-detail-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 16px 40px;
+}
+
+/* Exam header */
+.exam-header {
+    margin-bottom: 24px;
+}
+
+.exam-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-color);
+    margin: 0 0 16px;
+}
+
+.exam-status-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 8px;
+}
+
+.status-badge {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-align: center;
+}
+
+.status-running {
+    background-color: var(--status-running-bg);
+    color: var(--status-running-text);
+    border: 1px solid var(--status-running-border);
+}
+
+.status-upcoming {
+    background-color: var(--status-upcoming-bg);
+    color: var(--status-upcoming-text);
+    border: 1px solid var(--status-upcoming-border);
+}
+
+.status-ended {
+    background-color: var(--status-ended-bg);
+    color: var(--status-ended-text);
+    border: 1px solid var(--status-ended-border);
+}
+
+.exam-time-info {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.time-label {
+    font-weight: 500;
+    color: var(--text-light);
+}
+
+.time-value {
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.ml-2 {
+    margin-left: 8px;
+}
+
+.time-down {
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+/* Urgent countdown animation */
+.urgent {
+    color: #ef4444;
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Card styling */
+.card {
+    background-color: var(--white);
+    border-radius: 8px;
+    box-shadow: 0 1px 3px var(--shadow-color);
+    overflow: hidden;
+    margin-bottom: 24px;
+}
+
+.card-header {
+    background-color: var(--primary-color);
+    padding: 16px;
+    color: var(--white);
+}
+
+.card-title {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--white);
+}
+
+.card-body {
+    padding: 16px;
+}
+
+/* Exam rules */
+.exam-rules .card-body {
+    line-height: 1.6;
+}
+
+/* Problems table */
+.problems-table-container {
+    overflow-x: auto;
+}
+
+.problems-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+    .problems-table thead {
+        background-color: rgba(26, 86, 219, 0.1);
+    }
+
+    .problems-table th {
+        padding: 12px 16px;
+        font-weight: 600;
+        text-align: left;
+        color: var(--text-color);
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    .problems-table tbody tr {
+        border-bottom: 1px solid var(--border-color);
+        transition: var(--transition);
+    }
+
+        .problems-table tbody tr:hover {
+            background-color: var(--secondary-color);
+        }
+
+    .problems-table td {
+        padding: 12px 16px;
+        vertical-align: middle;
+    }
+
+.column-number {
+    width: 10%;
+    text-align: center;
+}
+
+.column-title {
+    width: 70%;
+}
+
+.column-solved {
+    width: 20%;
+    text-align: center;
+}
+
+.problem-link {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+    .problem-link:hover {
+        color: var(--primary-hover);
+        text-decoration: underline;
+    }
+
+.solved-count {
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+/* Comments section */
+.comments-list {
+    margin-bottom: 24px;
+}
+
+.empty-comments {
+    text-align: center;
+    color: var(--text-light);
+    padding: 16px;
+    border: 1px dashed var(--border-color);
+    border-radius: 8px;
+}
+
+.comment {
+    padding: 16px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+    .comment:last-child {
+        border-bottom: none;
+    }
+
+.comment-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.comment-author {
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.comment-time {
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+.comment-content {
+    line-height: 1.5;
+    color: var(--text-color);
+    white-space: pre-line;
+}
+
+.comment-form {
+    margin-bottom: 16px;
+}
+
+    .comment-form textarea {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        resize: vertical;
+        margin-bottom: 12px;
+        font-family: inherit;
+        transition: var(--transition);
+    }
+
+        .comment-form textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(26, 86, 219, 0.1);
+        }
+
+.submit-comment-btn {
+    padding: 8px 16px;
+    background-color: var(--primary-color);
+    color: var(--white);
+    border: none;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+    .submit-comment-btn:hover {
+        background-color: var(--primary-hover);
+    }
+
+.comment-status {
+    padding: 12px;
+    border-radius: 6px;
+    margin-top: 12px;
+    display: none;
+}
+
+.comment-pending {
+    background-color: #f3f4f6;
+    color: #4b5563;
+}
+
+.comment-success {
+    background-color: #d1fae5;
+    color: #065f46;
+}
+
+.comment-error {
+    background-color: #fee2e2;
+    color: #b91c1c;
+}
+
+.login-prompt {
+    text-align: center;
+    padding: 16px;
+    background-color: var(--secondary-color);
+    border-radius: 8px;
+}
+
+.login-link {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+    .login-link:hover {
+        color: var(--primary-hover);
+        text-decoration: underline;
+    }
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .exam-title {
+        font-size: 1.75rem;
+    }
+
+    .card-header {
+        padding: 12px 16px;
+    }
+
+    .card-body {
+        padding: 12px;
+    }
+
+    .problems-table th,
+    .problems-table td {
+        padding: 10px 12px;
+    }
+}
+
+@media (max-width: 576px) {
+    .exam-title {
+        font-size: 1.5rem;
+    }
+
+    .exam-status-container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .comment-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+}
+
+/* Exam action buttons */
+.exam-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 16px;
+    margin-bottom: 24px;
+}
+
+.action-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    background-color: var(--primary-color);
+    color: var(--white);
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 1rem;
+    text-decoration: none;
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+    .action-btn:hover {
+        background-color: var(--primary-hover);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        color: var(--white);
+        text-decoration: none;
+    }
+
+    .action-btn:active {
+        transform: translateY(0);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .action-btn:focus {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(26, 86, 219, 0.3);
+    }
+
+/* Nút tham gia kỳ thi */
+.join-btn {
+    background-color: var(--status-running-text);
+}
+
+    .join-btn:hover {
+        background-color: #036c4e;
+    }
+
+/* Nút tham gia ảo */
+.virtual-btn {
+    background-color: var(--status-upcoming-text);
+}
+
+    .virtual-btn:hover {
+        background-color: #1a41b8;
+    }
+
+/* Nút bảng xếp hạng */
+.leaderboard-btn {
+    background-color: #8b5cf6;
+}
+
+    .leaderboard-btn:hover {
+        background-color: #7c3aed;
+    }
+
+/* Nút bài nộp */
+.submissions-btn {
+    background-color: #ec4899;
+}
+
+    .submissions-btn:hover {
+        background-color: #db2777;
+    }
+
+/* Nút đăng nhập */
+.login-btn {
+    background-color: #f59e0b;
+}
+
+    .login-btn:hover {
+        background-color: #d97706;
+    }
+
+/* Thêm hiệu ứng loading khi đang xử lý */
+.action-btn.loading {
+    position: relative;
+    color: transparent;
+}
+
+    .action-btn.loading::after {
+        content: "";
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        border: 3px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        border-top-color: var(--white);
+        animation: spin 1s ease-in-out infinite;
+    }
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Responsive styles */
+@media (max-width: 576px) {
+    .exam-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .action-btn {
+        width: 100%;
+    }
+}

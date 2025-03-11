@@ -1,0 +1,169 @@
+﻿@{
+    ViewBag.Title = "Trang chủ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link rel="stylesheet" href="~/Content/css/Home.css" />
+
+<!-- Hero Section with Slideshow -->
+<section class="hero-section">
+    <div class="slideshow-container">
+        <div class="slideshow">
+            <div class="slide"
+                 style="background-image: url(@Url.Content("~/Content/IMAGE/Slide1.jpg"))"></div>
+            <div class="slide"
+                 style="background-image: url(@Url.Content("~/Content/IMAGE/Slide2.jpg"))"></div>
+            <div class="slide"
+                 style="background-image: url(@Url.Content("~/Content/IMAGE/Slide3.jpg"))"></div>
+            <div class="slide"
+                 style="background-image: url(@Url.Content("~/Content/IMAGE/Slide4.jpg"))"></div>
+            <div class="slide"
+                 style="background-image: url(@Url.Content("~/Content/IMAGE/Slide5.jpg"))"></div>
+            <div class="slide"
+                 style="background-image: url(@Url.Content("~/Content/IMAGE/Slide6.jpg"))"></div>
+        </div>
+
+        <div class="slideshow-controls">
+            <button class="control-btn prev" onclick="plusSlides(-1)">
+                <span class="arrow">&#10094;</span>
+            </button>
+            <div class="slide-indicators">
+                <span class="indicator" onclick="currentSlide(1)"></span>
+                <span class="indicator" onclick="currentSlide(2)"></span>
+                <span class="indicator" onclick="currentSlide(3)"></span>
+                <span class="indicator" onclick="currentSlide(4)"></span>
+                <span class="indicator" onclick="currentSlide(5)"></span>
+                <span class="indicator" onclick="currentSlide(6)"></span>
+            </div>
+            <button class="control-btn next" onclick="plusSlides(1)">
+                <span class="arrow">&#10095;</span>
+            </button>
+        </div>
+
+        <div class="hero-overlay">
+            <div class="container">
+                <h1 class="hero-title">TDMU Online Judge</h1>
+                <p class="hero-subtitle">Nền tảng học tập và luyện thi lập trình thuật toán</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Welcome Section -->
+<section class="welcome-section">
+    <div class="container">
+        <div class="welcome-content">
+            <h2 class="section-title">Chào mừng đến với TDMUOJ</h2>
+            <div class="welcome-description">
+                <p>
+                    Web TDMUOJ là một nơi lý tưởng để bắt đầu học lập trình hoặc nâng
+                    cao kỹ năng lập trình của bạn. Tại đây, bạn có thể tìm thấy nhiều
+                    bài tập lập trình khác nhau với độ khó từ cơ bản đến nâng cao,
+                    cùng với các lời giải chi tiết để giúp bạn hiểu rõ hơn về cách
+                    giải quyết các vấn đề.
+                </p>
+                <p>
+                    Trang web cũng cung cấp các ngôn ngữ lập trình khác nhau để bạn có thể
+                    tập luyện kỹ năng của mình. Hơn nữa, trang web còn cung cấp một cộng đồng
+                    lập trình viên để bạn có thể thảo luận, học hỏi và chia sẻ kiến thức với nhau.
+                </p>
+                <p>
+                    Tất cả những điều này sẽ giúp bạn trở thành một lập trình viên tốt hơn và có
+                    thể giúp bạn đạt được các mục tiêu lập trình của mình.
+                </p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📚</div>
+                    <h3>Học tập</h3>
+                    <p>Tài liệu và bài tập từ cơ bản đến nâng cao</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💻</div>
+                    <h3>Thực hành</h3>
+                    <p>Môi trường lập trình trực tuyến đa ngôn ngữ</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🏆</div>
+                    <h3>Thi đấu</h3>
+                    <p>Các kỳ thi và bảng xếp hạng cạnh tranh</p>
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <a href="@Url.Action("Index", "Register")" class="btn btn-primary">Đăng ký ngay</a>
+                <a href="@Url.Action("Index", "Problems")" class="btn btn-secondary">Xem danh sách bài</a>
+                <a href="@Url.Action("Index", "Exams")" class="btn btn-secondary">Tham gia cuộc thi</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    var slideIndex = 1;
+    var slideTimer;
+
+    // Initialize slideshow
+    document.addEventListener('DOMContentLoaded', function () {
+        showSlides(slideIndex);
+        updateIndicators();
+        startSlideTimer();
+
+        // Pause slideshow on hover
+        var slideshowContainer = document.querySelector('.slideshow-container');
+        slideshowContainer.addEventListener('mouseenter', pauseSlideTimer);
+        slideshowContainer.addEventListener('mouseleave', startSlideTimer);
+    });
+
+    function startSlideTimer() {
+        slideTimer = setInterval(function () {
+            plusSlides(1);
+        }, 5000); // Increased time to 5 seconds for better user experience
+    }
+
+    function pauseSlideTimer() {
+        clearInterval(slideTimer);
+    }
+
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+        var slides = document.getElementsByClassName("slide");
+
+        if (n > slides.length) {
+            slideIndex = 1;
+        }
+        if (n < 1) {
+            slideIndex = slides.length;
+        }
+
+        // Hide all slides
+        for (var i = 0; i < slides.length; i++) {
+            slides[i].classList.remove("active");
+        }
+
+        // Show current slide
+        slides[slideIndex - 1].classList.add("active");
+
+        // Update indicators
+        updateIndicators();
+    }
+
+    function updateIndicators() {
+        var indicators = document.getElementsByClassName("indicator");
+
+        // Reset all indicators
+        for (var i = 0; i < indicators.length; i++) {
+            indicators[i].classList.remove("active");
+        }
+
+        // Activate current indicator
+        indicators[slideIndex - 1].classList.add("active");
+    }
+</script>

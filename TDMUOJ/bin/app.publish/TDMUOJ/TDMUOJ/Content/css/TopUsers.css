@@ -1,0 +1,68 @@
+﻿.content .content-right {
+	width: 19%;
+	height: 100%;
+	overflow: auto;
+	padding-right: 12px;
+}
+
+	.content .content-right .top-user {
+		width: 100%;
+	}
+
+		.content .content-right .top-user .top-user-title {
+			background-color: #4587e4;
+			color: #fff;
+			font-weight: bold;
+			font-size: 18px;
+			width: 100%;
+			display: flex;
+			text-align: center;
+			padding: 5px;
+			border-top-right-radius: 10px;
+			border-top-left-radius: 10px;
+			border: #000 1px solid;
+		}
+
+		.content .content-right .top-user .top-head {
+			padding: 5px;
+			width: 100%;
+			color: #fff;
+			font-weight: bold;
+			text-align: center;
+			background-color: #999af2;
+			border-top: 1px solid white;
+			display: inline-flex;
+			border: #000 1px solid;
+		}
+
+		.content .content-right .top-user .top-child {
+			padding: 5px;
+			width: 100%;
+			text-align: center;
+			font-weight: bold;
+			display: inline-flex;
+			background-color: #fff;
+			border: #000 1px solid;
+		}
+
+		.content .content-right .top-user .user-rank {
+			width: 10%;
+		}
+
+		.content .content-right .top-user .user-name {
+			width: 70%;
+		}
+
+		.content .content-right .top-user .top-problem,
+		.content .content-right .top-user .top-comment {
+			background-color: #fff;
+			font-weight: bold;
+			padding: 5px;
+			width: 100%;
+			border: #000 1px solid;
+		}
+
+		.content .content-right .top-user .last-child {
+			border-bottom-left-radius: 10px;
+			border-bottom-right-radius: 10px;
+		}

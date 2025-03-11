@@ -97,8 +97,8 @@
           <Property Name="content" Type="nvarchar(max)" Nullable="false" />
           <Property Name="authorId" Type="int" Nullable="false" />
           <Property Name="background" Type="nvarchar(max)" />
-          <Property Name="createdAt" Type="datetime" />
-          <Property Name="updatedAt" Type="datetime" />
+          <Property Name="createdAt" Type="datetime" Nullable="false" />
+          <Property Name="updatedAt" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="Problem">
           <Key>
@@ -710,8 +710,8 @@
           <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="authorId" Type="Int32" Nullable="false" />
           <Property Name="background" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="createdAt" Type="DateTime" Precision="3" />
-          <Property Name="updatedAt" Type="DateTime" Precision="3" />
+          <Property Name="createdAt" Type="DateTime" Precision="3" Nullable="false" />
+          <Property Name="updatedAt" Type="DateTime" Precision="3" Nullable="false" />
           <NavigationProperty Name="Account" Relationship="Self.FK__News__authorId__6B24EA82" FromRole="News" ToRole="Account" />
         </EntityType>
         <EntityType Name="Problem">

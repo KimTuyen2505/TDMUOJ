@@ -1,0 +1,66 @@
+﻿<link rel="stylesheet" href="~/Content/css/Footer.css" />
+
+<footer class="site-footer">
+    <div class="footer-content">
+        <div class="container">
+            <div class="footer-grid">
+                <!-- Logo and About -->
+                <div class="footer-column">
+                    <div class="footer-logo">
+                        <img src="~/Content/IMAGE/Home/logo-tdmu.png" alt="TDMU Logo" width="120" />
+                    </div>
+                    <p class="footer-description">
+                        TDMUOJ là nền tảng học tập và luyện thi lập trình thuật toán dành cho sinh viên
+                        và những người yêu thích lập trình.
+                    </p>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="footer-column">
+                    <h3 class="footer-heading">Liên kết nhanh</h3>
+                    <ul class="footer-links">
+                        <li><a href="@Url.Action("Index", "Problems")">Danh sách bài tập</a></li>
+                        <li><a href="@Url.Action("Index", "Submissions")">Các bài nộp</a></li>
+                        <li><a href="@Url.Action("Index", "Exams")">Các kỳ thi</a></li>
+                        <li><a href="@Url.Action("Index", "Members")">Thành viên</a></li>
+                        <li><a href="@Url.Action("Index", "FAQ")">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <!-- Resources -->
+                <div class="footer-column">
+                    <h3 class="footer-heading">Tài nguyên</h3>
+                    <ul class="footer-links">
+                        <li><a href="@Url.Action("Index", "Compiler")">Trình biên dịch</a></li>
+                        <li><a href="@Url.Action("Index", "News")">Tin tức</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div class="footer-column">
+                    <h3 class="footer-heading">Liên hệ</h3>
+                    <address class="contact-info">
+                        <p><i class="contact-icon location-icon"></i> Trường Đại học Thủ Dầu Một</p>
+                        <p><i class="contact-icon email-icon"></i> tdmuoj@tdmu.edu.vn</p>
+                        <p><i class="contact-icon phone-icon"></i> 0123 456 789</p>
+                    </address>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/dhtdm2009" class="social-link facebook" title="Facebook"><span class="sr-only">Facebook</span></a>
+                        <a href="@Html.Raw("https://www.youtube.com/@truongdaihocThuDauMot2009")" class="social-link youtube" title="YouTube"><span class="sr-only">YouTube</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <div class="container">
+            <p class="copyright">
+                Copyright &copy; 2025 TDMUOJ | Viện Đào tạo Công nghệ thông tin, Chuyển đổi số
+            </p>
+            <p class="credits">
+                Thiết kế và phát triển bởi <a href="#">Kim Tuyến</a>
+            </p>
+        </div>
+    </div>
+</footer>

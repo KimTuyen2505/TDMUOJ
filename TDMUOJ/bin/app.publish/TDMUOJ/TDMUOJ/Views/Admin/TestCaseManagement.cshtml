@@ -1,0 +1,363 @@
+﻿@model TDMUOJ.Models.TestCaseManagementViewModel
+@{
+    var index = 0;
+}
+
+<div id="testcases" class="dashboard-item hidden">
+    <div class="flex items-center justify-between mb-4">
+        <h2>Quản lý Test Case</h2>
+        <button id="toggleNewTestCaseForm" class="action-btn btn-primary">
+            Thêm Test Case mới
+        </button>
+    </div>
+
+    <!-- Collapsible form for adding new test case -->
+    <div id="newTestCaseFormContainer" class="admin-form" style="display: none;">
+        <h3>Thêm Test Case mới</h3>
+        <form id="newTestCaseForm" method="post">
+            <div class="form-group">
+                <label for="problemSelect">Chọn bài tập:</label>
+                <select id="problemSelect" name="problemId" class="form-control" required>
+                    <option value="">-- Chọn bài tập --</option>
+                    @foreach (var problem in Model.Problems)
+                    {
+                        <option value="@problem.id">@problem.title</option>
+                    }
+                </select>
+            </div>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="input">Input:</label>
+                    <textarea id="input" name="input" class="form-control code-textarea" rows="6" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="output">Output:</label>
+                    <textarea id="output" name="output" class="form-control code-textarea" rows="6" required></textarea>
+                </div>
+            </div>
+            <div class="form-group checkbox-group">
+                <input type="checkbox" id="isExample" name="isExample" class="checkbox-input">
+                <label for="isExample" class="checkbox-label">
+                    Đánh dấu là ví dụ (hiển thị trong đề bài)
+                </label>
+            </div>
+            <div class="flex justify-end">
+                <button type="submit" class="btn btn-success">
+                    <i class="fas fa-save btn-icon"></i>Lưu Test Case
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <div class="filter-bar mb-4">
+        <div class="filter-group">
+            <label for="testCaseTypeFilter">Loại:</label>
+            <select id="testCaseTypeFilter" class="form-control">
+                <option value="all">Tất cả</option>
+                <option value="testcase">Test Case</option>
+                <option value="example">Ví dụ</option>
+            </select>
+        </div>
+        <div class="filter-group">
+            <label for="problemFilter">Bài tập:</label>
+            <select id="problemFilter" class="form-control">
+                <option value="all">Tất cả</option>
+                @foreach (var problem in Model.Problems)
+                {
+                    <option value="@problem.id">@problem.title</option>
+                }
+            </select>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="admin-table" id="testCasesTable">
+            <thead>
+                <tr>
+                    <th width="5%">STT</th>
+                    <th width="25%">Bài tập</th>
+                    <th width="5%">Loại</th>
+                    <th width="30%">Input</th>
+                    <th width="30%">Output</th>
+                    <th width="10%">Thao tác</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var problem in Model.Problems)
+                {
+                    // Display test cases
+                    foreach (var testCase in problem.ProblemTestCases)
+                    {
+                        index += 1;
+
+                        <tr data-type="testcase" data-problem="@problem.id">
+                            <td>@(index)</td>
+                            <td>
+                                <div class="problem-info">
+                                    <span class="problem-title">@problem.title</span>
+                                </div>
+                            </td>
+                            <td>
+                                <span class="type-badge type-testcase">Test Case</span>
+                            </td>
+                            <td>
+                                <div class="testcase-data">
+                                    <pre class="testcase-code">@testCase.input</pre>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="testcase-data">
+                                    <pre class="testcase-code">@testCase.output</pre>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="btn btn-warning btn-sm"
+                                            data-id="@testCase.id"
+                                            data-problem-id="@problem.id"
+                                            data-input="@Html.Raw(HttpUtility.HtmlAttributeEncode(Json.Encode(testCase.input)))"
+                                            data-output="@Html.Raw(HttpUtility.HtmlAttributeEncode(Json.Encode(testCase.output)))"
+                                            data-is-example="false"
+                                            onclick="showEditTestCaseModalFromData(this)">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <a href="@Url.Action("DeleteTestCase", "Admin", new { id = testCase.id })" class="btn btn-danger btn-sm" onclick="return confirm('Bạn có chắc chắn muốn xóa test case này?');">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+
+                    // Display examples if they exist
+                    if (Model.Examples != null)
+                    {
+                        var problemExamples = Model.Examples.Where(e => e.problemId == problem.id).ToList();
+                        foreach (var example in problemExamples)
+                        {
+                            index += 1;
+
+                            <tr data-type="example" data-problem="@problem.id">
+                                <td>@(index)</td>
+                                <td>
+                                    <div class="problem-info">
+                                        <span class="problem-title">@problem.title</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <span class="type-badge type-example">Ví dụ</span>
+                                </td>
+                                <td>
+                                    <div class="testcase-data">
+                                        <pre class="testcase-code">@example.input</pre>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="testcase-data">
+                                        <pre class="testcase-code">@example.output</pre>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn btn-warning btn-sm"
+                                                data-id="@example.id"
+                                                data-problem-id="@problem.id"
+                                                data-input="@Html.Raw(HttpUtility.HtmlAttributeEncode(Json.Encode(example.input)))"
+                                                data-output="@Html.Raw(HttpUtility.HtmlAttributeEncode(Json.Encode(example.output)))"
+                                                data-is-example="false"
+                                                onclick="showEditTestCaseModalFromData(this)">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <a href="@Url.Action("DeleteExample", "Admin", new { id = example.id })" class="btn btn-danger btn-sm" onclick="return confirm('Bạn có chắc chắn muốn xóa ví dụ này?');">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Modal Edit Test Case -->
+<div id="editTestCaseModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3 class="modal-title"><i class="fas fa-edit mr-2"></i><span id="modalTitle">Chỉnh sửa Test Case</span></h3>
+            <button type="button" class="close">&times;</button>
+        </div>
+
+        <form id="editTestCaseForm" method="post">
+            <input type="hidden" id="testCaseId" name="id" />
+            <input type="hidden" id="editProblemId" name="problemId" />
+            <input type="hidden" id="editIsExampleHidden" name="isExample" value="false" />
+
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="editInput">Input:</label>
+                    <textarea id="editInput" name="input" class="form-control code-textarea" rows="6" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="editOutput">Output:</label>
+                    <textarea id="editOutput" name="output" class="form-control code-textarea" rows="6" required></textarea>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary close-modal">
+                    <i class="fas fa-times btn-icon"></i>Hủy
+                </button>
+                <button type="submit" class="btn btn-success">
+                    <i class="fas fa-save btn-icon"></i>Lưu thay đổi
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const modal = document.getElementById("editTestCaseModal");
+        const closeButtons = document.querySelectorAll("#editTestCaseModal .close, #editTestCaseModal .close-modal");
+        const toggleFormButton = document.getElementById("toggleNewTestCaseForm");
+        const newTestCaseForm = document.getElementById("newTestCaseFormContainer");
+        const testCaseTypeFilter = document.getElementById("testCaseTypeFilter");
+        const problemFilter = document.getElementById("problemFilter");
+
+        // Toggle new test case form
+        toggleFormButton.addEventListener('click', function() {
+            if (newTestCaseForm.style.display === "none") {
+                newTestCaseForm.style.display = "block";
+                toggleFormButton.innerHTML = 'Ẩn biểu mẫu';
+            } else {
+                newTestCaseForm.style.display = "none";
+                toggleFormButton.innerHTML = 'Thêm Test Case mới';
+            }
+        });
+
+        // Close modal when clicking close buttons
+        closeButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                modal.style.display = "none";
+            });
+        });
+
+        // Close modal when clicking outside
+        window.addEventListener('click', function(event) {
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        });
+
+        // Filter functionality
+        function filterTestCases() {
+            const typeValue = testCaseTypeFilter.value;
+            const problemValue = problemFilter.value;
+            const rows = document.querySelectorAll("#testCasesTable tbody tr");
+
+            rows.forEach(row => {
+                const rowType = row.getAttribute("data-type");
+                const rowProblem = row.getAttribute("data-problem");
+
+                const matchesType = typeValue === "all" || rowType === typeValue;
+                const matchesProblem = problemValue === "all" || rowProblem === problemValue;
+
+                if (matchesType && matchesProblem) {
+                    row.style.display = "";
+                } else {
+                    row.style.display = "none";
+                }
+            });
+        }
+
+        testCaseTypeFilter.addEventListener("change", filterTestCases);
+        problemFilter.addEventListener("change", filterTestCases);
+
+        // Handle edit test case form submission
+        document.getElementById("editTestCaseForm").addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const formData = new FormData(this);
+            const isExample = document.getElementById("editIsExampleHidden").value === "true";
+            const url = isExample ? '@Url.Action("EditExample", "Admin")' : '@Url.Action("EditTestCase", "Admin")';
+
+            fetch(url, {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    showNotification('Cập nhật thành công!', 'success');
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 1500);
+                } else {
+                    showNotification('Có lỗi xảy ra: ' + data.message, 'error');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                showNotification('Có lỗi xảy ra khi gửi yêu cầu', 'error');
+            });
+        });
+
+        // Handle new test case form submission
+        document.getElementById("newTestCaseForm").addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const formData = new FormData(this);
+            const isExample = document.getElementById("isExample").checked;
+            const url = isExample ? '@Url.Action("AddExample", "Admin")' : '@Url.Action("AddTestCase", "Admin")';
+
+            fetch(url, {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    showNotification(isExample ? 'Thêm ví dụ mới thành công!' : 'Thêm test case mới thành công!', 'success');
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 1500);
+                } else {
+                    showNotification('Có lỗi xảy ra: ' + data.message, 'error');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                showNotification('Có lỗi xảy ra khi gửi yêu cầu', 'error');
+            });
+        });
+    });
+
+    function showEditTestCaseModalFromData(btn) {
+        var id = btn.getAttribute("data-id");
+        var problemId = btn.getAttribute("data-problem-id");
+        var input = JSON.parse(btn.getAttribute("data-input"));
+        var output = JSON.parse(btn.getAttribute("data-output"));
+        var isExample = btn.getAttribute("data-is-example") === "true";
+
+        showEditTestCaseModal(id, problemId, input, output, isExample);
+    }
+    // Show edit test case modal
+    function showEditTestCaseModal(id, problemId, input, output, isExample) {
+        const modal = document.getElementById("editTestCaseModal");
+        const modalTitle = document.getElementById("modalTitle");
+
+        document.getElementById("testCaseId").value = id;
+        document.getElementById("editProblemId").value = problemId;
+        document.getElementById("editInput").value = input;
+        document.getElementById("editOutput").value = output;
+        document.getElementById("editIsExampleHidden").value = isExample ? "true" : "false";
+
+        modalTitle.textContent = isExample ? "Chỉnh sửa Ví dụ" : "Chỉnh sửa Test Case";
+
+        modal.style.display = "block";
+    }
+</script>
+

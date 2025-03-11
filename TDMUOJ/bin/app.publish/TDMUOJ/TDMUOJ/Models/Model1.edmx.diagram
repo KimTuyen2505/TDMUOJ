@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ebfcc44961bc4169984acf3b2d1710f7" Name="Diagram1">
+        <EntityTypeShape EntityType="TDMUOJModel.Account" Width="1.5" PointX="0.75" PointY="16.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TDMUOJModel.Contest" Width="1.5" PointX="3.75" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TDMUOJModel.ContestOrganizer" Width="1.5" PointX="3" PointY="17.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TDMUOJModel.ContestParticipant" Width="1.5" PointX="6" PointY="17.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TDMUOJModel.ContestProblem" Width="1.5" PointX="1.75" PointY="14.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TDMUOJModel.ContestRanking" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TDMUOJModel.Follower" Width="1.5" PointX="3" PointY="22.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TDMUOJModel.News" Width="1.5" PointX="3" PointY="25.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TDMUOJModel.Problem" Width="1.5" PointX="3" PointY="29" IsExpanded="true" />
+        <EntityTypeShape EntityType="TDMUOJModel.ProblemExample" Width="1.5" PointX="5.25" PointY="28.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TDMUOJModel.ProblemSolved" Width="1.5" PointX="5.25" PointY="23.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TDMUOJModel.ProblemTestCase" Width="1.5" PointX="5.25" PointY="34.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TDMUOJModel.ResetPassword" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TDMUOJModel.Submission" Width="1.5" PointX="8.25" PointY="22.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TDMUOJModel.Tag" Width="1.5" PointX="6" PointY="37.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TDMUOJModel.TagProblem" Width="1.5" PointX="8.25" PointY="30" IsExpanded="true" />
+        <AssociationConnector Association="TDMUOJModel.FK__ContestOr__organ__59FA5E80" ManuallyRouted="false" />
+        <AssociationConnector Association="TDMUOJModel.FK__ContestPa__membe__60A75C0F" ManuallyRouted="false" />
+        <AssociationConnector Association="TDMUOJModel.FK__Follower__follow__3E52440B" ManuallyRouted="false" />
+        <AssociationConnector Association="TDMUOJModel.FK__Follower__follow__3F466844" ManuallyRouted="false" />
+        <AssociationConnector Association="TDMUOJModel.FK__News__authorId__6B24EA82" ManuallyRouted="false" />
+        <AssociationConnector Association="TDMUOJModel.FK__Problem__created__440B1D61" ManuallyRouted="false" />
+        <AssociationConnector Association="TDMUOJModel.FK__ProblemSo__userI__47DBAE45" ManuallyRouted="false" />
+        <AssociationConnector Association="TDMUOJModel.FK__Submissio__userI__76969D2E" ManuallyRouted="false" />
+        <AssociationConnector Association="TDMUOJModel.FK__ContestOr__conte__59063A47" ManuallyRouted="false" />
+        <AssociationConnector Association="TDMUOJModel.FK__ContestPa__conte__5FB337D6" ManuallyRouted="false" />
+        <AssociationConnector Association="TDMUOJModel.FK__ContestPr__conte__6383C8BA" ManuallyRouted="false" />
+        <AssociationConnector Association="TDMUOJModel.FK__ProblemEx__probl__4D94879B" ManuallyRouted="false" />
+        <AssociationConnector Association="TDMUOJModel.FK__ProblemSo__probl__46E78A0C" ManuallyRouted="false" />
+        <AssociationConnector Association="TDMUOJModel.FK__ProblemTe__probl__4AB81AF0" ManuallyRouted="false" />
+        <AssociationConnector Association="TDMUOJModel.FK__Submissio__probl__75A278F5" ManuallyRouted="false" />
+        <AssociationConnector Association="TDMUOJModel.FK__TagProble__probl__534D60F1" ManuallyRouted="false" />
+        <AssociationConnector Association="TDMUOJModel.FK__TagProble__tagId__52593CB8" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="TDMUOJModel.Ranking" Width="1.5" PointX="9" PointY="14.625" />
+        <AssociationConnector Association="TDMUOJModel.FK__RankingCo__userI__6EF57B661" />
+        <AssociationConnector Association="TDMUOJModel.FK__RankingCo__conte__6E01572D1" />
+        <AssociationConnector Association="TDMUOJModel.FK_ContestRanking_Contest" />
+        <AssociationConnector Association="TDMUOJModel.FK_ContestRanking_Ranking" />
+        <AssociationConnector Association="TDMUOJModel.FK__ContestPr__probl__6477ECF31" />
+        <EntityTypeShape EntityType="TDMUOJModel.Comment" Width="1.5" PointX="6" PointY="13.5" />
+        <AssociationConnector Association="TDMUOJModel.FK_Comment_Account" />
+        <AssociationConnector Association="TDMUOJModel.FK_Comment_Contest" />
+        <AssociationConnector Association="TDMUOJModel.FK__ContestPr__probl__6477ECF3" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

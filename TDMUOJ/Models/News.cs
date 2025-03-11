@@ -19,8 +19,8 @@ namespace TDMUOJ.Models
         public string content { get; set; }
         public int authorId { get; set; }
         public string background { get; set; }
-        public Nullable<System.DateTime> createdAt { get; set; }
-        public Nullable<System.DateTime> updatedAt { get; set; }
+        public System.DateTime createdAt { get; set; }
+        public System.DateTime updatedAt { get; set; }
     
         public virtual Account Account { get; set; }
     }

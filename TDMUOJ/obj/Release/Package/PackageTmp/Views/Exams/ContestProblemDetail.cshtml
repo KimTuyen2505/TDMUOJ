@@ -1,0 +1,302 @@
+﻿@model TDMUOJ.Models.ContestProblemDetailViewModel
+@{
+    ViewBag.Title = Model.ProblemTitle;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link rel="stylesheet" href="~/Content/css/ContestProblem.css" />
+
+<div class="contest-problem-container">
+    <div class="contest-info-bar">
+        <div class="contest-info">
+            <h3 class="contest-title">
+                <a href="@Url.Action("DetailExam", new { id = Model.ContestId })">@Model.Contest.title</a>
+            </h3>
+            <div class="contest-time-info">
+                @if (Model.Contest.endTime > DateTime.Now)
+                {
+                    <div class="time-remain" data-endtime="@Model.Contest.endTime.ToString("yyyy-MM-dd HH:mm:ss")">
+                        <span class="time-label">Còn lại:</span>
+                        <span class="time-value time-down"></span>
+                    </div>
+                }
+                else
+                {
+                    <div class="time-info">
+                        <span class="time-label">Kỳ thi đã kết thúc</span>
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="contest-actions">
+            <a href="@Url.Action("ContestLeaderboard", new { id = Model.ContestId })" class="action-btn leaderboard-btn">Bảng xếp hạng</a>
+            <a href="@Url.Action("ContestSubmissions", new { id = Model.ContestId })" class="action-btn submissions-btn">Bài nộp</a>
+        </div>
+    </div>
+
+    <div class="problem-header">
+        <h1 class="problem-title">@Model.ProblemTitle</h1>
+        <div class="problem-meta">
+            <div class="problem-limits">
+                <span class="limit-item">
+                    <span class="limit-label">Thời gian:</span>
+                    <span class="limit-value">@Model.TimeLimit giây</span>
+                </span>
+                <span class="limit-item">
+                    <span class="limit-label">Bộ nhớ:</span>
+                    <span class="limit-value">@Model.MemoryLimit MB</span>
+                </span>
+            </div>
+            <div class="problem-status">
+                @if (Model.IsAccepted)
+                {
+                    <div class="status-badge status-accepted">Đã giải</div>
+                }
+            </div>
+        </div>
+    </div>
+
+    <div class="problem-content card">
+        <div class="card-header">
+            <h2 class="card-title">Đề bài</h2>
+        </div>
+        <div class="card-body">
+            @Html.Raw(Model.ProblemDescription)
+        </div>
+    </div>
+
+    <div class="problem-examples">
+        @foreach (var example in Model.Examples)
+        {
+            <div class="example card">
+                <div class="card-header">
+                    <h2 class="card-title">Ví dụ</h2>
+                </div>
+                <div class="card-body">
+                    <div class="example-input">
+                        <h3 class="example-title">Input:</h3>
+                        <pre class="example-content">@example.Input</pre>
+                    </div>
+                    <div class="example-output">
+                        <h3 class="example-title">Output:</h3>
+                        <pre class="example-content">@example.Output</pre>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <div class="submission-form card">
+        <div class="card-header">
+            <h2 class="card-title">Nộp bài</h2>
+        </div>
+        <div class="card-body">
+            <div class="form-group">
+                <label for="language-select" class="form-label">Ngôn ngữ:</label>
+                <select id="language-select" class="form-control">
+                    <option value="C++">C++</option>
+                    <option value="Java">Java</option>
+                    <option value="Python">Python</option>
+                    <option value="C#">C#</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="code-editor" class="form-label">Code:</label>
+                <textarea id="code-editor"></textarea>
+            </div>
+            <div class="form-actions">
+                <button id="submit-solution" class="submit-btn" data-problem-id="@Model.ProblemId" data-contest-id="@Model.ContestId">Nộp bài</button>
+            </div>
+            <div id="submission-status" class="submission-status"></div>
+        </div>
+    </div>
+
+    @if (Model.Submissions.Count > 0)
+    {
+        <div class="recent-submissions card">
+            <div class="card-header">
+                <h2 class="card-title">Bài nộp gần đây</h2>
+            </div>
+            <div class="card-body">
+                <div class="submissions-table-container">
+                    <table class="submissions-table">
+                        <thead>
+                            <tr>
+                                <th class="column-time">Thời gian</th>
+                                <th class="column-language">Ngôn ngữ</th>
+                                <th class="column-result">Kết quả</th>
+                                <th class="column-time-memory">Thời gian/Bộ nhớ</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var submission in Model.Submissions)
+                            {
+                                <tr class="submission-row">
+                                    <td class="column-time">@submission.SubmittedAt.Value.ToString("HH:mm:ss dd/MM/yyyy")</td>
+                                    <td class="column-language">@submission.Language</td>
+                                    <td class="column-result">
+                                        <div class="result-badge @GetResultClass(submission.Result)">
+                                            @submission.Result
+                                        </div>
+                                        <div class="test-cases">
+                                            @submission.TestCaseAchieved / @submission.TestCaseTotal
+                                        </div>
+                                    </td>
+                                    <td class="column-time-memory">
+                                        <div class="time-memory">
+                                            <span class="time">@submission.MaxTime giây</span> /
+                                            <span class="memory">@submission.MaxMemory MB</span>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    // Lấy tất cả các phần tử countdown
+    const timeRemainElements = document.querySelectorAll(".time-remain");
+
+    // Hàm cập nhật countdown
+    function updateCountdown() {
+        timeRemainElements.forEach(element => {
+            const endTime = new Date(element.getAttribute("data-endtime")).getTime();
+            const now = new Date().getTime();
+            const distance = endTime - now;
+            const countdownElement = element.querySelector(".time-down");
+
+            if (distance > 0) {
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                const unit = ["ngày", "giờ", "phút", "giây"];
+                const value = [days, hours, minutes, seconds];
+                const id = (days > 0 ? 0 : hours > 0 ? 1 : minutes > 0 ? 2 : 3);
+
+                let time = "";
+                for (let i = id; i < 4; i++) {
+                    time = `${time} ${value[i]} ${unit[i]}`;
+                }
+
+                countdownElement.innerText = time.trim();
+
+                // Thêm hiệu ứng nhấp nháy cho countdown sắp hết giờ (dưới 5 phút)
+                if (distance < 5 * 60 * 1000) {
+                    countdownElement.classList.add("urgent");
+                } else {
+                    countdownElement.classList.remove("urgent");
+                }
+            } else {
+                countdownElement.innerText = "Hết giờ!";
+
+                // Tự động chuyển hướng sau 3 giây khi hết giờ
+                setTimeout(() => {
+                    window.location.href = '@Url.Action("DetailExam", "Exams", new { id = Model.ContestId })';
+                }, 3000);
+            }
+        });
+    }
+
+    // Cập nhật mỗi giây
+    setInterval(updateCountdown, 1000);
+
+    // Khởi chạy ngay khi tải trang
+    updateCountdown();
+
+    $(document).ready(function () {
+        // Xử lý nộp bài
+        $("#submit-solution").click(function () {
+            var problemId = $(this).data("problem-id");
+            var contestId = $(this).data("contest-id");
+            var code = document.getElementById("code-editor").value;
+            var language = $("#language-select").val();
+
+            if (code.trim() === "") {
+                $("#submission-status").text("Vui lòng nhập code trước khi nộp bài.")
+                    .removeClass("status-success status-pending")
+                    .addClass("status-error")
+                    .show();
+                return;
+            }
+
+            // Hiển thị trạng thái đang nộp
+            $("#submission-status").text("Đang nộp bài...")
+                .removeClass("status-error status-success")
+                .addClass("status-pending")
+                .show();
+
+            $.ajax({
+                url: '/Exams/SubmitSolution',
+                type: 'POST',
+                data: { problemId: problemId, contestId: contestId, code: code, language: language },
+                success: function (response) {
+                    if (response.success) {
+                        $("#submission-status").text(response.message)
+                            .removeClass("status-error status-pending")
+                            .addClass("status-success");
+
+                        // Làm mới trang sau 2 giây
+                        setTimeout(function () {
+                            window.location.reload();
+                        }, 2000);
+                    } else {
+                        $("#submission-status").text(response.message)
+                            .removeClass("status-success status-pending")
+                            .addClass("status-error");
+                    }
+                },
+                error: function (xhr, status, error) {
+                    console.log(xhr, status, error);
+                    $("#submission-status").text("Có lỗi xảy ra: " + error.message)
+                        .removeClass("status-success status-pending")
+                        .addClass("status-error");
+                }
+            });
+        });
+    });
+</script>
+
+@functions {
+    public string GetResultClass(string result)
+    {
+        switch (result.ToUpper())
+        {
+            case "AC":
+            case "ACCEPTED":
+                return "result-accepted";
+            case "WA":
+            case "WRONG ANSWER":
+                return "result-wrong-answer";
+            case "TLE":
+            case "TIME LIMIT EXCEEDED":
+                return "result-time-limit";
+            case "MLE":
+            case "MEMORY LIMIT EXCEEDED":
+                return "result-memory-limit";
+            case "RTE":
+            case "RUNTIME ERROR":
+                return "result-runtime-error";
+            case "CE":
+            case "COMPILATION ERROR":
+                return "result-compilation-error";
+            case "PE":
+            case "PRESENTATION ERROR":
+                return "result-presentation-error";
+            case "PENDING":
+                return "result-pending";
+            case "RUNNING":
+                return "result-running";
+            default:
+                return "result-unknown";
+        }
+    }
+}

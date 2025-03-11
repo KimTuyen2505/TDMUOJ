@@ -1,0 +1,39 @@
+﻿@model List<TDMUOJ.Models.Account>
+
+<div id="accounts" class="dashboard-item hidden">
+
+    <div class="table-responsive">
+        <table class="admin-table">
+            <thead>
+                <tr>
+                    <th>STT</th>
+                    <th>Tên đăng nhập</th>
+                    <th>Email</th>
+                    <th>Vai trò</th>
+                    <th>Thao tác</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (var i = 0; i < Model.Count; i++)
+                {
+                    <tr>
+                        <td>@(i+1)</td>
+                        <td>@Model[i].username</td>
+                        <td>@Model[i].email</td>
+                        <td>
+                            <span class="role-badge @Model[i].role.ToLower()">@Model[i].role</span>
+                        </td>
+                        <td>
+                            <div class="action-buttons">
+                                <a href="@Url.Action("Index", "Profile", new {id = Model[i].id })" class="action-btn btn-primary">
+                                    Chi tiết
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
