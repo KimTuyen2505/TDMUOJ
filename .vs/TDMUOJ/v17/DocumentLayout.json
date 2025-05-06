@@ -3,24 +3,28 @@
   "WorkspaceRootPath": "D:\\\u0110\u1EA1i H\u1ECDc Th\u1EE7 D\u1EA7u M\u1ED9t_D22KTPM02\\H\u1ECCC T\u1EACP\\TDMUOJ\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|d:\\\u0111\u1EA1i h\u1ECDc th\u1EE7 d\u1EA7u m\u1ED9t_d22ktpm02\\h\u1ECDc t\u1EADp\\tdmuoj\\tdmuoj\\views\\admin\\newsmanagement.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|solutionrelative:tdmuoj\\views\\admin\\newsmanagement.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|d:\\\u0111\u1EA1i h\u1ECDc th\u1EE7 d\u1EA7u m\u1ED9t_d22ktpm02\\h\u1ECDc t\u1EADp\\tdmuoj\\tdmuoj\\controllers\\submitcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|solutionrelative:tdmuoj\\controllers\\submitcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|d:\\\u0111\u1EA1i h\u1ECDc th\u1EE7 d\u1EA7u m\u1ED9t_d22ktpm02\\h\u1ECDc t\u1EADp\\tdmuoj\\tdmuoj\\views\\admin\\testcasemanagement.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|solutionrelative:tdmuoj\\views\\admin\\testcasemanagement.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|d:\\\u0111\u1EA1i h\u1ECDc th\u1EE7 d\u1EA7u m\u1ED9t_d22ktpm02\\h\u1ECDc t\u1EADp\\tdmuoj\\tdmuoj\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|solutionrelative:tdmuoj\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|d:\\\u0111\u1EA1i h\u1ECDc th\u1EE7 d\u1EA7u m\u1ED9t_d22ktpm02\\h\u1ECDc t\u1EADp\\tdmuoj\\tdmuoj\\views\\admin\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|solutionrelative:tdmuoj\\views\\admin\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|d:\\\u0111\u1EA1i h\u1ECDc th\u1EE7 d\u1EA7u m\u1ED9t_d22ktpm02\\h\u1ECDc t\u1EADp\\tdmuoj\\tdmuoj\\packages.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|solutionrelative:tdmuoj\\packages.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|d:\\\u0111\u1EA1i h\u1ECDc th\u1EE7 d\u1EA7u m\u1ED9t_d22ktpm02\\h\u1ECDc t\u1EADp\\tdmuoj\\tdmuoj\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|solutionrelative:tdmuoj\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|d:\\\u0111\u1EA1i h\u1ECDc th\u1EE7 d\u1EA7u m\u1ED9t_d22ktpm02\\h\u1ECDc t\u1EADp\\tdmuoj\\tdmuoj\\global.asax.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|solutionrelative:tdmuoj\\global.asax.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|d:\\\u0111\u1EA1i h\u1ECDc th\u1EE7 d\u1EA7u m\u1ED9t_d22ktpm02\\h\u1ECDc t\u1EADp\\tdmuoj\\tdmuoj\\views\\news\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|solutionrelative:tdmuoj\\views\\news\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|d:\\\u0111\u1EA1i h\u1ECDc th\u1EE7 d\u1EA7u m\u1ED9t_d22ktpm02\\h\u1ECDc t\u1EADp\\tdmuoj\\tdmuoj\\views\\submit\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|solutionrelative:tdmuoj\\views\\submit\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|d:\\\u0111\u1EA1i h\u1ECDc th\u1EE7 d\u1EA7u m\u1ED9t_d22ktpm02\\h\u1ECDc t\u1EADp\\tdmuoj\\tdmuoj\\controllers\\submissionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|solutionrelative:tdmuoj\\controllers\\submissionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,7 +34,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -38,67 +42,80 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "TestCaseManagement.cshtml",
-              "DocumentMoniker": "D:\\\u0110\u1EA1i H\u1ECDc Th\u1EE7 D\u1EA7u M\u1ED9t_D22KTPM02\\H\u1ECCC T\u1EACP\\TDMUOJ\\TDMUOJ\\Views\\Admin\\TestCaseManagement.cshtml",
-              "RelativeDocumentMoniker": "TDMUOJ\\Views\\Admin\\TestCaseManagement.cshtml",
-              "ToolTip": "D:\\\u0110\u1EA1i H\u1ECDc Th\u1EE7 D\u1EA7u M\u1ED9t_D22KTPM02\\H\u1ECCC T\u1EACP\\TDMUOJ\\TDMUOJ\\Views\\Admin\\TestCaseManagement.cshtml",
-              "RelativeToolTip": "TDMUOJ\\Views\\Admin\\TestCaseManagement.cshtml",
-              "ViewState": "AQIAAEoBAAAAAAAAAAAAAFQBAAAfAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-03-11T05:01:15.908Z",
+              "DocumentIndex": 2,
+              "Title": "packages.config",
+              "DocumentMoniker": "D:\\\u0110\u1EA1i H\u1ECDc Th\u1EE7 D\u1EA7u M\u1ED9t_D22KTPM02\\H\u1ECCC T\u1EACP\\TDMUOJ\\TDMUOJ\\packages.config",
+              "RelativeDocumentMoniker": "TDMUOJ\\packages.config",
+              "ToolTip": "D:\\\u0110\u1EA1i H\u1ECDc Th\u1EE7 D\u1EA7u M\u1ED9t_D22KTPM02\\H\u1ECCC T\u1EACP\\TDMUOJ\\TDMUOJ\\packages.config",
+              "RelativeToolTip": "TDMUOJ\\packages.config",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2025-05-03T07:27:30.457Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "NewsManagement.cshtml",
-              "DocumentMoniker": "D:\\\u0110\u1EA1i H\u1ECDc Th\u1EE7 D\u1EA7u M\u1ED9t_D22KTPM02\\H\u1ECCC T\u1EACP\\TDMUOJ\\TDMUOJ\\Views\\Admin\\NewsManagement.cshtml",
-              "RelativeDocumentMoniker": "TDMUOJ\\Views\\Admin\\NewsManagement.cshtml",
-              "ToolTip": "D:\\\u0110\u1EA1i H\u1ECDc Th\u1EE7 D\u1EA7u M\u1ED9t_D22KTPM02\\H\u1ECCC T\u1EACP\\TDMUOJ\\TDMUOJ\\Views\\Admin\\NewsManagement.cshtml",
-              "RelativeToolTip": "TDMUOJ\\Views\\Admin\\NewsManagement.cshtml",
-              "ViewState": "AQIAAMYAAAAAAAAAAAAgwNIAAAA6AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-03-11T04:45:53.453Z",
+              "DocumentIndex": 1,
+              "Title": "Web.config",
+              "DocumentMoniker": "D:\\\u0110\u1EA1i H\u1ECDc Th\u1EE7 D\u1EA7u M\u1ED9t_D22KTPM02\\H\u1ECCC T\u1EACP\\TDMUOJ\\TDMUOJ\\Web.config",
+              "RelativeDocumentMoniker": "TDMUOJ\\Web.config",
+              "ToolTip": "D:\\\u0110\u1EA1i H\u1ECDc Th\u1EE7 D\u1EA7u M\u1ED9t_D22KTPM02\\H\u1ECCC T\u1EACP\\TDMUOJ\\TDMUOJ\\Web.config",
+              "RelativeToolTip": "TDMUOJ\\Web.config",
+              "ViewState": "AQIAADgAAAAAAAAAAAAQwEkAAAAQAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2025-05-03T06:23:31.798Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "AdminController.cs",
-              "DocumentMoniker": "D:\\\u0110\u1EA1i H\u1ECDc Th\u1EE7 D\u1EA7u M\u1ED9t_D22KTPM02\\H\u1ECCC T\u1EACP\\TDMUOJ\\TDMUOJ\\Controllers\\AdminController.cs",
-              "RelativeDocumentMoniker": "TDMUOJ\\Controllers\\AdminController.cs",
-              "ToolTip": "D:\\\u0110\u1EA1i H\u1ECDc Th\u1EE7 D\u1EA7u M\u1ED9t_D22KTPM02\\H\u1ECCC T\u1EACP\\TDMUOJ\\TDMUOJ\\Controllers\\AdminController.cs",
-              "RelativeToolTip": "TDMUOJ\\Controllers\\AdminController.cs",
-              "ViewState": "AQIAAPwBAAAAAAAAAAAQwAUCAAAqAAAA",
+              "Title": "Global.asax.cs",
+              "DocumentMoniker": "D:\\\u0110\u1EA1i H\u1ECDc Th\u1EE7 D\u1EA7u M\u1ED9t_D22KTPM02\\H\u1ECCC T\u1EACP\\TDMUOJ\\TDMUOJ\\Global.asax.cs",
+              "RelativeDocumentMoniker": "TDMUOJ\\Global.asax.cs",
+              "ToolTip": "D:\\\u0110\u1EA1i H\u1ECDc Th\u1EE7 D\u1EA7u M\u1ED9t_D22KTPM02\\H\u1ECCC T\u1EACP\\TDMUOJ\\TDMUOJ\\Global.asax.cs",
+              "RelativeToolTip": "TDMUOJ\\Global.asax.cs",
+              "ViewState": "AQIAAAQAAAAAAAAAAAAQwAwAAAAqAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-11T04:40:01.879Z",
+              "WhenOpened": "2025-05-03T06:03:13.352Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "SubmitController.cs",
+              "DocumentMoniker": "D:\\\u0110\u1EA1i H\u1ECDc Th\u1EE7 D\u1EA7u M\u1ED9t_D22KTPM02\\H\u1ECCC T\u1EACP\\TDMUOJ\\TDMUOJ\\Controllers\\SubmitController.cs",
+              "RelativeDocumentMoniker": "TDMUOJ\\Controllers\\SubmitController.cs",
+              "ToolTip": "D:\\\u0110\u1EA1i H\u1ECDc Th\u1EE7 D\u1EA7u M\u1ED9t_D22KTPM02\\H\u1ECCC T\u1EACP\\TDMUOJ\\TDMUOJ\\Controllers\\SubmitController.cs",
+              "RelativeToolTip": "TDMUOJ\\Controllers\\SubmitController.cs",
+              "ViewState": "AQIAACMAAAAAAAAAAAAawC0AAAAqAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-03T05:32:32.723Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "SubmissionsController.cs",
+              "DocumentMoniker": "D:\\\u0110\u1EA1i H\u1ECDc Th\u1EE7 D\u1EA7u M\u1ED9t_D22KTPM02\\H\u1ECCC T\u1EACP\\TDMUOJ\\TDMUOJ\\Controllers\\SubmissionsController.cs",
+              "RelativeDocumentMoniker": "TDMUOJ\\Controllers\\SubmissionsController.cs",
+              "ToolTip": "D:\\\u0110\u1EA1i H\u1ECDc Th\u1EE7 D\u1EA7u M\u1ED9t_D22KTPM02\\H\u1ECCC T\u1EACP\\TDMUOJ\\TDMUOJ\\Controllers\\SubmissionsController.cs",
+              "RelativeToolTip": "TDMUOJ\\Controllers\\SubmissionsController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-03T05:32:30.873Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
               "Title": "Index.cshtml",
-              "DocumentMoniker": "D:\\\u0110\u1EA1i H\u1ECDc Th\u1EE7 D\u1EA7u M\u1ED9t_D22KTPM02\\H\u1ECCC T\u1EACP\\TDMUOJ\\TDMUOJ\\Views\\News\\Index.cshtml",
-              "RelativeDocumentMoniker": "TDMUOJ\\Views\\News\\Index.cshtml",
-              "ToolTip": "D:\\\u0110\u1EA1i H\u1ECDc Th\u1EE7 D\u1EA7u M\u1ED9t_D22KTPM02\\H\u1ECCC T\u1EACP\\TDMUOJ\\TDMUOJ\\Views\\News\\Index.cshtml",
-              "RelativeToolTip": "TDMUOJ\\Views\\News\\Index.cshtml",
-              "ViewState": "AQIAADkAAAAAAAAAAAAcwFQAAAAGAAAA",
+              "DocumentMoniker": "D:\\\u0110\u1EA1i H\u1ECDc Th\u1EE7 D\u1EA7u M\u1ED9t_D22KTPM02\\H\u1ECCC T\u1EACP\\TDMUOJ\\TDMUOJ\\Views\\Submit\\Index.cshtml",
+              "RelativeDocumentMoniker": "TDMUOJ\\Views\\Submit\\Index.cshtml",
+              "ToolTip": "D:\\\u0110\u1EA1i H\u1ECDc Th\u1EE7 D\u1EA7u M\u1ED9t_D22KTPM02\\H\u1ECCC T\u1EACP\\TDMUOJ\\TDMUOJ\\Views\\Submit\\Index.cshtml",
+              "RelativeToolTip": "TDMUOJ\\Views\\Submit\\Index.cshtml",
+              "ViewState": "AQIAAB4AAAAAAAAAAAAAACgAAAAzAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-03-11T04:30:54.792Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "D:\\\u0110\u1EA1i H\u1ECDc Th\u1EE7 D\u1EA7u M\u1ED9t_D22KTPM02\\H\u1ECCC T\u1EACP\\TDMUOJ\\TDMUOJ\\Views\\Admin\\Index.cshtml",
-              "RelativeDocumentMoniker": "TDMUOJ\\Views\\Admin\\Index.cshtml",
-              "ToolTip": "D:\\\u0110\u1EA1i H\u1ECDc Th\u1EE7 D\u1EA7u M\u1ED9t_D22KTPM02\\H\u1ECCC T\u1EACP\\TDMUOJ\\TDMUOJ\\Views\\Admin\\Index.cshtml",
-              "RelativeToolTip": "TDMUOJ\\Views\\Admin\\Index.cshtml",
-              "ViewState": "AQIAABcAAAAAAAAAAAAgwHwAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-03-11T04:29:40.341Z",
+              "WhenOpened": "2025-05-03T05:32:01.903Z",
               "EditorCaption": ""
             }
           ]

@@ -13,14 +13,14 @@ namespace TDMUOJ.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            if (Session["User"] == null)
-            {
-                Account account = db.Accounts.SingleOrDefault(n => n.username == "tuyencute03" && n.password == "123456");
-                if (account != null)
-                {
-                    Session["User"] = account;
-                }
-            }
+            //if (Session["User"] == null)
+            //{
+            //    Account account = db.Accounts.SingleOrDefault(n => n.username == "tuyencute03" && n.password == "123456");
+            //    if (account != null)
+            //    {
+            //        Session["User"] = account;
+            //    }
+            //}
             return View();
         }
     }

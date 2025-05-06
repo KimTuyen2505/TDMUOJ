@@ -5,7 +5,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 <Project>
   <PropertyGroup>
     <_PublishTargetUrl>D:\Đại Học Thủ Dầu Một_D22KTPM02\HỌC TẬP\TDMUOJ\TDMUOJ\bin\app.publish\TDMUOJ</_PublishTargetUrl>
-    <History>True|2025-03-10T13:39:12.4026980Z;</History>
+    <History>True|2025-05-01T04:09:55.0405634Z;True|2025-05-01T11:07:53.0751663+07:00;True|2025-03-10T20:39:12.4026980+07:00;</History>
     <LastFailureDetails />
   </PropertyGroup>
   <ItemGroup>
@@ -199,10 +199,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>03/10/2025 17:59:09</publishTime>
     </File>
     <File Include="bin/TDMUOJ.dll">
-      <publishTime>03/10/2025 20:39:11</publishTime>
+      <publishTime>05/01/2025 11:07:51</publishTime>
     </File>
     <File Include="bin/TDMUOJ.pdb">
-      <publishTime>03/10/2025 20:39:11</publishTime>
+      <publishTime>05/01/2025 11:07:51</publishTime>
     </File>
     <File Include="bin/WebGrease.dll">
       <publishTime>03/10/2025 17:59:09</publishTime>
@@ -480,6 +480,9 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     <File Include="Scripts/modernizr-2.8.3.js">
       <publishTime>03/10/2025 17:59:09</publishTime>
     </File>
+    <File Include="Views/AccessDenied/Index.cshtml">
+      <publishTime>03/19/2025 21:20:18</publishTime>
+    </File>
     <File Include="Views/Admin/AccountManagement.cshtml">
       <publishTime>03/10/2025 17:59:09</publishTime>
     </File>
@@ -487,7 +490,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>03/10/2025 17:59:09</publishTime>
     </File>
     <File Include="Views/Admin/Index.cshtml">
-      <publishTime>03/10/2025 17:59:09</publishTime>
+      <publishTime>03/11/2025 11:54:15</publishTime>
+    </File>
+    <File Include="Views/Admin/NewsManagement.cshtml">
+      <publishTime>03/19/2025 19:33:25</publishTime>
     </File>
     <File Include="Views/Admin/Overview.cshtml">
       <publishTime>03/10/2025 17:59:09</publishTime>

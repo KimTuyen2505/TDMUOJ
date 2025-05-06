@@ -129,6 +129,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Content Include="Content\css\Admin.css" />
+    <Compile Include="Controllers\AccessDeniedController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CompilerController.cs" />
     <Compile Include="Controllers\DiscussController.cs" />
@@ -366,9 +367,11 @@
     <Content Include="Views\Exams\ContestLeaderboard.cshtml" />
     <Content Include="Views\Exams\ContestSubmissions.cshtml" />
     <Content Include="Views\Admin\NewsManagement.cshtml" />
+    <Content Include="Views\AccessDenied\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\SubmissionProcessor\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />

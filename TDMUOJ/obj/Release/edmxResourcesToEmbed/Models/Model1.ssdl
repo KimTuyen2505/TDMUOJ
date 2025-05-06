@@ -92,8 +92,8 @@
     <Property Name="content" Type="nvarchar(max)" Nullable="false" />
     <Property Name="authorId" Type="int" Nullable="false" />
     <Property Name="background" Type="nvarchar(max)" />
-    <Property Name="createdAt" Type="datetime" />
-    <Property Name="updatedAt" Type="datetime" />
+    <Property Name="createdAt" Type="datetime" Nullable="false" />
+    <Property Name="updatedAt" Type="datetime" Nullable="false" />
   </EntityType>
   <EntityType Name="Problem">
     <Key>

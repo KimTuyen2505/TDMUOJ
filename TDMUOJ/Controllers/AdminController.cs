@@ -16,6 +16,19 @@ namespace TDMUOJ.Controllers
         // GET: Admin
         public ActionResult Index()
         {
+            // Check if user is logged in
+            if (Session["User"] == null)
+            {
+                return RedirectToAction("Index","Login");
+            }
+
+            // Check if user is admin
+            var currentUser = (Account)Session["User"];
+            if (currentUser.role != "admin")
+            {
+                return RedirectToAction("Index","AccessDenied");
+            }
+
             return View();
         }
         public ActionResult Overview()

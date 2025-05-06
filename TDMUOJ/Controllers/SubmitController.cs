@@ -17,7 +17,7 @@ namespace TDMUOJ.Controllers
         TDMUOJEntities db = new TDMUOJEntities();
 
         private const string Judge0Host = "https://judge0-ce.p.rapidapi.com";
-        private const string Judge0ApiKey = "9d6278f51amsh90e372ae79b0394p15510djsn12e35de53995";
+        private const string Judge0ApiKey = "8fee4e793dmshe983019f755f13dp10a8ccjsn03c2c33fb74e";
         // GET: Submit
         public ActionResult Index(int id)
         {
@@ -43,10 +43,10 @@ namespace TDMUOJ.Controllers
             {
                 return View(problem);
             }
-            if (Session["User"] == null)
-            {
-                return RedirectToAction("Index", "Login");
-            }
+            //if (Session["User"] == null)
+            //{
+            //    return RedirectToAction("Index", "Login");
+            //}
 
             List<TestCaseSubmit> testCaseSubmissions = new List<TestCaseSubmit>();
             foreach (var testCase in testCases)
@@ -151,7 +151,8 @@ namespace TDMUOJ.Controllers
 
                 Submission submission = new Submission();
                 submission.problemId = problemId;
-                submission.userId = (Session["User"] as Account).id;
+                //submission.userId = (Session["User"] as Account).id;
+                submission.userId = 2;
                 submission.code = code;
                 submission.language = lang;
                 submission.maxTime = maxTime;
@@ -171,7 +172,8 @@ namespace TDMUOJ.Controllers
                     {
                         ProblemSolved ps = new ProblemSolved();
                         ps.problemId = problemId;
-                        ps.userId = (Session["User"] as Account).id;
+                        //ps.userId = (Session["User"] as Account).id;
+                        ps.userId = 2;
 
                         account.numberOfAccepted = account.numberOfAccepted + 1;
 
