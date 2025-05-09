@@ -26,23 +26,24 @@ namespace TDMUOJ.Filters
 
         protected virtual void HandleNonHttpsRequest(AuthorizationContext filterContext)
         {
+            filterContext.Result = new HttpStatusCodeResult(403, "HTTPS Required");
             //if (filterContext.HttpContext.Request.Url.Host.Contains("localhost"))
             //{
             //    // Cho phép HTTP trong môi trường phát triển
             //    return;
             //}
 
-            if (string.Equals(filterContext.HttpContext.Request.HttpMethod, "GET", StringComparison.OrdinalIgnoreCase))
-            {
-                // Chuyển hướng đến HTTPS
-                string url = "https://" + filterContext.HttpContext.Request.Url.Host + filterContext.HttpContext.Request.RawUrl;
-                filterContext.Result = new RedirectResult(url);
-            }
-            else
-            {
-                // Đối với các phương thức không phải GET, trả về lỗi
-                filterContext.Result = new HttpStatusCodeResult(403, "HTTPS Required");
-            }
+            //if (string.Equals(filterContext.HttpContext.Request.HttpMethod, "GET", StringComparison.OrdinalIgnoreCase))
+            //{
+            //    // Chuyển hướng đến HTTPS
+            //    string url = "https://" + filterContext.HttpContext.Request.Url.Host + filterContext.HttpContext.Request.RawUrl;
+            //    filterContext.Result = new RedirectResult(url);
+            //}
+            //else
+            //{
+            //    // Đối với các phương thức không phải GET, trả về lỗi
+            //    filterContext.Result = new HttpStatusCodeResult(403, "HTTPS Required");
+            //}
         }
     }
 }

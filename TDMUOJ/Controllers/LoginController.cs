@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Helpers;
 using System.Web.Mvc;
 using TDMUOJ.Models;
+using TDMUOJ.Utilities;
 
 namespace TDMUOJ.Controllers
 {
@@ -21,6 +22,12 @@ namespace TDMUOJ.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Index(FormCollection form)
         {
+            // Xác thực CAPTCHA
+            if (!RecaptchaValidator.Validate(Request))
+            {
+                ViewBag.Error = "Xác thực CAPTCHA thất bại. Vui lòng thử lại.";
+                return View();
+            }
             string username = form["username"];
             string password = form["password"];
 

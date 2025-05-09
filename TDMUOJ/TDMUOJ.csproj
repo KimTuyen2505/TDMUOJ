@@ -163,6 +163,7 @@
     <Compile Include="App_Start\CorsConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Utilities\RecaptchaValidator.cs" />
     <Compile Include="Utilities\ValidationUtility.cs" />
     <Content Include="Content\css\Admin.css" />
     <Compile Include="Controllers\AccessDeniedController.cs" />

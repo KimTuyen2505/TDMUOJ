@@ -7,9 +7,31 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device=width,initial=scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Đăng nhập</title>
     <link rel="stylesheet" href="~/Content/css/Login.css" />
+    <!-- Thêm CSS cho reCAPTCHA -->
+    <style>
+        .g-recaptcha {
+            margin: 10px 0;
+        }
+
+        /* Đảm bảo CAPTCHA hiển thị đúng trên thiết bị di động */
+        @@media screen and (max-width: 480px) {
+            .g-recaptcha {
+                transform: scale(0.85);
+                transform-origin: 0 0;
+            }
+        }
+
+        /* Định dạng thông báo lỗi */
+        .error-message {
+            color: red;
+            margin-bottom: 10px;
+        }
+    </style>
+    <!-- Thêm script reCAPTCHA -->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
     <section>
@@ -25,14 +47,20 @@
             <div class="ctn">
                 <div class="fromm">
                     <h2>Đăng nhập</h2>
-                    <div style="color: red;">@ViewBag.Error</div>
-                    <form action="~/Login/Index" method="post">
+                    @if (ViewBag.Error != null)
+                    {
+                        <div class="error-message">@ViewBag.Error</div>
+                    }
+                    <form action="~/Login/Index" method="post" id="loginForm">
                         @Html.AntiForgeryToken()
                         <div class="inputboxx">
-                            <input type="text" name="username" placeholder="Tên tài khoản" />
+                            <input type="text" name="username" placeholder="Tên tài khoản" required />
                         </div>
                         <div class="inputboxx">
-                            <input type="password" name="password" placeholder="Mật khẩu" />
+                            <input type="password" name="password" placeholder="Mật khẩu" required />
+                        </div>
+                        <div class="inputboxx">
+                            <div class="g-recaptcha" data-sitekey="@System.Web.Configuration.WebConfigurationManager.AppSettings["RecaptchaSiteKey"]"></div>
                         </div>
                         <div class="inputboxx">
                             <input type="submit" value="Đăng nhập" />
@@ -46,5 +74,19 @@
             </div>
         </div>
     </section>
+
+    <!-- Script xác thực CAPTCHA -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.getElementById('loginForm').addEventListener('submit', function (event) {
+                var response = grecaptcha.getResponse();
+
+                if (response.length === 0) {
+                    event.preventDefault();
+                    alert('Vui lòng xác nhận bạn không phải là robot!');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
