@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Register";
     Layout = null;
 }
@@ -27,6 +26,7 @@
                 <h2>Đăng ký</h2>
                 <div style="color: red;">@ViewBag.Error</div>
                 <form id="myForm" action="~/Register/Index" method="post">
+                    @Html.AntiForgeryToken()
                     <div class="inputboxx">
                         <input type="text" name="fullName" placeholder="Họ và tên (có thể bỏ trống)" />
                     </div>

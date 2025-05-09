@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("NguyenDangKimTuyen_FunctionTest")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bc3ce5f61d3b648f8e01bdaa25a3f0f45a1ecb71")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2649327afd346d583d2a5134ab14ab2ea0e5e075")]
 [assembly: System.Reflection.AssemblyProductAttribute("NguyenDangKimTuyen_FunctionTest")]
 [assembly: System.Reflection.AssemblyTitleAttribute("NguyenDangKimTuyen_FunctionTest")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

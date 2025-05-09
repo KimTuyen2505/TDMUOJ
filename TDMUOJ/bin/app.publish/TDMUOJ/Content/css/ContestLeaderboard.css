@@ -1,0 +1,375 @@
+﻿/* Variables */
+:root {
+    --primary-color: #1a56db;
+    --primary-hover: #1e429f;
+    --secondary-color: #f3f4f6;
+    --text-color: #374151;
+    --text-light: #6b7280;
+    --background-color: #f9fafb;
+    --white: #ffffff;
+    --border-color: #e5e7eb;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+    /* Rank colors */
+    --rank-first-bg: #fef9c3;
+    --rank-first-text: #854d0e;
+    --rank-first-border: #facc15;
+    --rank-second-bg: #f1f5f9;
+    --rank-second-text: #64748b;
+    --rank-second-border: #cbd5e1;
+    --rank-third-bg: #fef2f2;
+    --rank-third-text: #b91c1c;
+    --rank-third-border: #fecaca;
+    /* Rating change colors */
+    --rating-up-color: #16a34a;
+    --rating-down-color: #dc2626;
+    --rating-same-color: #6b7280;
+}
+
+/* Main container */
+.leaderboard-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 16px 40px;
+}
+
+/* Contest info bar */
+.contest-info-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--white);
+    border-radius: 8px;
+    box-shadow: 0 1px 3px var(--shadow-color);
+    padding: 16px;
+    margin-bottom: 24px;
+}
+
+.contest-info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.contest-title {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+    .contest-title a {
+        color: var(--primary-color);
+        text-decoration: none;
+        transition: var(--transition);
+    }
+
+        .contest-title a:hover {
+            color: var(--primary-hover);
+            text-decoration: underline;
+        }
+
+.contest-time-info {
+    display: flex;
+    align-items: center;
+    color: var(--text-light);
+}
+
+.time-label {
+    font-weight: 500;
+    margin-right: 8px;
+}
+
+.time-value {
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.time-down {
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+/* Urgent countdown animation */
+.urgent {
+    color: #ef4444;
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.contest-actions {
+    display: flex;
+    gap: 12px;
+}
+
+.action-btn {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: var(--primary-color);
+    color: var(--white);
+    border: none;
+    border-radius: 6px;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+    .action-btn:hover {
+        background-color: var(--primary-hover);
+        color: var(--white);
+    }
+
+/* Leaderboard header */
+.leaderboard-header {
+    margin-bottom: 24px;
+}
+
+.leaderboard-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-color);
+    margin: 0;
+}
+
+/* Leaderboard table */
+.leaderboard-table-container {
+    background-color: var(--white);
+    border-radius: 8px;
+    box-shadow: 0 1px 3px var(--shadow-color);
+    overflow: hidden;
+    overflow-x: auto;
+}
+
+.leaderboard-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+    .leaderboard-table thead {
+        background-color: var(--primary-color) !important;
+        color: var(--white);
+    }
+
+    .leaderboard-table thead tr th {
+        text-align: center;
+    }
+
+    .leaderboard-table th {
+        padding: 16px;
+        font-weight: 600;
+        text-align: left;
+        vertical-align: middle;
+        white-space: nowrap;
+        background-color: var(--primary-color);
+        color: var(--white);
+        border: none;
+    }
+
+    .leaderboard-table th .column-problem a {
+        color: white;
+    }
+
+    .leaderboard-table tbody tr {
+        border-bottom: 1px solid var(--border-color);
+        transition: var(--transition);
+    }
+
+        .leaderboard-table tbody tr:hover {
+            background-color: var(--secondary-color);
+        }
+
+    .leaderboard-table td {
+        padding: 16px;
+        vertical-align: middle;
+    }
+
+/* Top ranked participants */
+.top-ranked {
+    background-color: rgba(26, 86, 219, 0.05);
+}
+
+/* Rank badges */
+.rank-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    font-weight: 700;
+    font-size: 1rem;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+}
+
+.rank-first {
+    background-color: var(--rank-first-bg);
+    color: var(--rank-first-text);
+    border: 2px solid var(--rank-first-border);
+}
+
+.rank-second {
+    background-color: var(--rank-second-bg);
+    color: var(--rank-second-text);
+    border: 2px solid var(--rank-second-border);
+}
+
+.rank-third {
+    background-color: var(--rank-third-bg);
+    color: var(--rank-third-text);
+    border: 2px solid var(--rank-third-border);
+}
+
+/* User links */
+.user-link {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.05rem;
+    transition: var(--transition);
+}
+
+    .user-link:hover {
+        color: var(--primary-hover);
+        text-decoration: underline;
+    }
+
+/* Rating change */
+.rating-change {
+    display: inline-block;
+    margin-left: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.rating-up {
+    color: var(--rating-up-color);
+}
+
+.rating-down {
+    color: var(--rating-down-color);
+}
+
+.rating-same {
+    color: var(--rating-same-color);
+}
+
+/* Problem columns */
+.column-rank {
+    width: 80px;
+    text-align: center;
+}
+
+.column-user {
+    min-width: 200px;
+}
+
+.column-score, .column-penalty {
+    width: 100px;
+    text-align: center;
+}
+
+.column-problem {
+    width: 80px;
+}
+
+.problem-link {
+    color: var(--white);
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+    .problem-link:hover {
+        color: var(--white);
+        text-decoration: underline;
+    }
+
+/* Problem status */
+.problem-solved {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    margin: 0 auto;
+    background-color: var(--status-accepted-bg);
+    color: var(--status-accepted-text);
+    border: 1px solid var(--status-accepted-border);
+    border-radius: 50%;
+}
+
+.problem-unsolved {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    margin: 0 auto;
+    background-color: var(--secondary-color);
+    color: var(--text-light);
+    border: 1px solid var(--border-color);
+    border-radius: 50%;
+}
+
+.solved-icon {
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.unsolved-icon {
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+/* Responsive styles */
+@media (max-width: 992px) {
+    .leaderboard-table {
+        min-width: 800px;
+    }
+}
+
+@media (max-width: 768px) {
+    .contest-info-bar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+    }
+
+    .contest-actions {
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    .leaderboard-title {
+        font-size: 1.5rem;
+    }
+
+    .leaderboard-table th,
+    .leaderboard-table td {
+        padding: 12px;
+    }
+
+    .rank-badge {
+        width: 30px;
+        height: 30px;
+        font-size: 0.9rem;
+    }
+
+    .user-link {
+        font-size: 0.95rem;
+    }
+}

@@ -1,0 +1,124 @@
+﻿@{
+    ViewBag.Title = "Administrator";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TDMUOJ Admin Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/Admin.css")">
+</head>
+<body>
+    <button class="mobile-menu-btn" id="mobileMenuBtn">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div id="sidebar">
+        <h1>TDMUOJ Admin</h1>
+        <ul>
+            <li>
+                <a href="#" class="nav-link active" data-target="dashboard">
+                    <i class="fas fa-tachometer-alt"></i> Tổng quan
+                </a>
+            </li>
+            <li>
+                <a href="#" class="nav-link" data-target="accounts">
+                    <i class="fas fa-users"></i> Quản lý tài khoản
+                </a>
+            </li>
+            <li>
+                <a href="#" class="nav-link" data-target="contests">
+                    <i class="fas fa-trophy"></i> Quản lý cuộc thi
+                </a>
+            </li>
+            <li>
+                <a href="#" class="nav-link" data-target="problems">
+                    <i class="fas fa-tasks"></i> Quản lý bài tập
+                </a>
+            </li>
+            <li>
+                <a href="#" class="nav-link" data-target="submissions">
+                    <i class="fas fa-code"></i> Quản lý bài nộp
+                </a>
+            </li>
+            <li>
+                <a href="#" class="nav-link" data-target="testcases">
+                    <i class="fas fa-vial"></i> Quản lý Test Case
+                </a>
+            </li>
+            <li>
+                <a href="#" class="nav-link" data-target="contestProblems">
+                    <i class="fas fa-clipboard-list"></i> Quản lý bài tập trong kỳ thi
+                </a>
+            </li>
+            <li>
+                <a href="#" class="nav-link" data-target="news">
+                    <i class="fas fa-newspaper"></i> Quản lý tin tức
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div id="content">
+        @Html.Action("Overview", "Admin")
+        @Html.Action("AccountManagement", "Admin")
+        @Html.Action("ContestManagement", "Admin")
+        @Html.Action("ProblemManagement", "Admin")
+        @Html.Action("SubmissionManagement", "Admin")
+        @Html.Action("TestCaseManagement", "Admin")
+        @Html.Action("ProblemsForContestManagement", "Admin")
+        @Html.Action("NewsManagement", "Admin")
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const dashboardItems = document.querySelectorAll('.dashboard-item');
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const sidebar = document.getElementById('sidebar');
+
+            // Mobile menu toggle
+            mobileMenuBtn.addEventListener('click', function () {
+                sidebar.classList.toggle('active');
+            });
+
+            // Close sidebar when clicking outside on mobile
+            document.addEventListener('click', function (e) {
+                if (window.innerWidth <= 768 &&
+                    !sidebar.contains(e.target) &&
+                    e.target !== mobileMenuBtn) {
+                    sidebar.classList.remove('active');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('data-target');
+
+                    // Hide all sections
+                    dashboardItems.forEach(item => item.classList.add('hidden'));
+
+                    // Show selected section
+                    document.getElementById(targetId).classList.remove('hidden');
+
+                    // Update active state of links
+                    navLinks.forEach(navLink => navLink.classList.remove('active'));
+                    this.classList.add('active');
+
+                    // Close sidebar on mobile after navigation
+                    if (window.innerWidth <= 768) {
+                        sidebar.classList.remove('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+

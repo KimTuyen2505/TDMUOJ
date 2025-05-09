@@ -43,5 +43,7 @@ namespace TDMUOJ.Models
         public virtual DbSet<TagProblem> TagProblems { get; set; }
         public virtual DbSet<Ranking> Rankings { get; set; }
         public virtual DbSet<Comment> Comments { get; set; }
+        public virtual DbSet<EmailVerification> EmailVerifications { get; set; }
+        public virtual DbSet<OTPVerification> OTPVerifications { get; set; }
     }
 }

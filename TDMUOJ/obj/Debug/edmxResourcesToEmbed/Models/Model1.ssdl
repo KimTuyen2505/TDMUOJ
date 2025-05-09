@@ -14,6 +14,10 @@
     <Property Name="rating" Type="int" />
     <Property Name="maxRating" Type="int" />
     <Property Name="numberOfAccepted" Type="int" />
+    <Property Name="isEmailVerified" Type="bit" />
+    <Property Name="failedLoginAttempts" Type="int" />
+    <Property Name="isLocked" Type="bit" />
+    <Property Name="lockoutEnd" Type="datetime" />
   </EntityType>
   <EntityType Name="Comment">
     <Key>
@@ -75,6 +79,16 @@
     <Property Name="contestId" Type="int" Nullable="false" />
     <Property Name="rankingId" Type="int" Nullable="false" />
   </EntityType>
+  <EntityType Name="EmailVerification">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Token" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="ExpiryDate" Type="datetime" Nullable="false" />
+    <Property Name="IsVerified" Type="bit" />
+  </EntityType>
   <EntityType Name="Follower">
     <Key>
       <PropertyRef Name="id" />
@@ -94,6 +108,16 @@
     <Property Name="background" Type="nvarchar(max)" />
     <Property Name="createdAt" Type="datetime" Nullable="false" />
     <Property Name="updatedAt" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OTPVerification">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="OTPCode" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="ExpiryDate" Type="datetime" Nullable="false" />
+    <Property Name="IsUsed" Type="bit" />
   </EntityType>
   <EntityType Name="Problem">
     <Key>
@@ -485,8 +509,10 @@
     <EntitySet Name="ContestParticipant" EntityType="Self.ContestParticipant" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ContestProblem" EntityType="Self.ContestProblem" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ContestRanking" EntityType="Self.ContestRanking" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EmailVerification" EntityType="Self.EmailVerification" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Follower" EntityType="Self.Follower" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="News" EntityType="Self.News" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OTPVerification" EntityType="Self.OTPVerification" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Problem" EntityType="Self.Problem" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ProblemExample" EntityType="Self.ProblemExample" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ProblemSolved" EntityType="Self.ProblemSolved" Schema="dbo" store:Type="Tables" />

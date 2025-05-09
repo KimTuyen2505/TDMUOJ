@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Login";
     Layout = null;
 }
@@ -28,6 +27,7 @@
                     <h2>Đăng nhập</h2>
                     <div style="color: red;">@ViewBag.Error</div>
                     <form action="~/Login/Index" method="post">
+                        @Html.AntiForgeryToken()
                         <div class="inputboxx">
                             <input type="text" name="username" placeholder="Tên tài khoản" />
                         </div>
@@ -37,7 +37,7 @@
                         <div class="inputboxx">
                             <input type="submit" value="Đăng nhập" />
                         </div>
-                        <p class="forget"><a href="#">Quên mật khẩu? </a></p>
+                        <p class="forget"><a href="@Url.Action("Index", "ForgotPassword")">Quên mật khẩu? </a></p>
                         <p class="forget">
                             Không có tài khoản? <a href="@Url.Action("Index", "Register")">Đăng ký</a>
                         </p>

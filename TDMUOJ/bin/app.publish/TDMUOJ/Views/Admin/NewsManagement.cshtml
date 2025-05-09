@@ -1,0 +1,254 @@
+﻿@model List<TDMUOJ.Models.News>
+
+<div id="news" class="dashboard-item hidden">
+    <div class="flex items-center justify-between mb-4">
+        <h2>Quản lý Tin tức</h2>
+        <button id="toggleAddNewsForm" class="action-btn btn-primary">
+            </i> Thêm tin tức mới
+        </button>
+    </div>
+
+    <!-- Collapsible form for adding news -->
+    <div id="addNewsFormContainer" class="admin-form" style="display: none;">
+        <h3>Thêm tin tức mới</h3>
+        <form id="addNewsForm" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="newsTitle">Tiêu đề:</label>
+                <input type="text" id="newsTitle" name="title" class="form-control" required />
+            </div>
+            <div class="form-group">
+                <label for="newsContent">Nội dung:</label>
+                <textarea id="newsContent" name="content" class="form-control" rows="6" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="newsBackground">Hình ảnh nền:</label>
+                <input type="file" id="newsBackground" name="backgroundImage" class="form-control" accept="image/*" />
+            </div>
+            <div class="flex justify-end">
+                <button type="submit" class="btn btn-success">
+                    <i class="fas fa-save btn-icon"></i>Lưu tin tức
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <div class="table-responsive">
+        <table class="admin-table">
+            <thead>
+                <tr>
+                    <th width="5%">STT</th>
+                    <th width="20%">Tiêu đề</th>
+                    <th width="35%">Nội dung</th>
+                    <th width="10%">Tác giả</th>
+                    <th width="10%">Ngày tạo</th>
+                    <th width="10%">Ngày cập nhật</th>
+                    <th width="10%">Thao tác</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (var i = 0; i < Model.Count; i++)
+                {
+                    var news = Model[i];
+                    <tr>
+                        <td>@(i+1)</td>
+                        <td>@news.title</td>
+                        <td>@(news.content.Length > 100 ? news.content.Substring(0, 100) + "..." : news.content)</td>
+                        <td>@news.Account.username</td>
+                        <td>@news.createdAt.ToString("dd/MM/yyyy HH:mm")</td>
+                        <td>@news.updatedAt.ToString("dd/MM/yyyy HH:mm")</td>
+                        <td>
+                            <div class="action-buttons">
+                                <button class="btn btn-warning btn-sm"
+                                        data-id="@news.id"
+                                        data-title="@news.title"
+                                        data-content='@Html.Raw(Json.Encode(news.content))'
+                                        data-background="@news.background"
+                                        onclick="showEditNewsModal(this)">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button onclick="deleteNews(@news.id)" class="btn btn-danger btn-sm">
+                                    <i class="fas fa-trash-alt"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Modal Edit News -->
+<div id="editNewsModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3 class="modal-title"><i class="fas fa-edit mr-2"></i>Chỉnh sửa Tin tức</h3>
+            <button type="button" class="close">&times;</button>
+        </div>
+
+        <form id="editNewsForm" method="post" enctype="multipart/form-data">
+            <input type="hidden" id="editNewsId" name="id" />
+
+            <div class="form-group">
+                <label for="editNewsTitle">Tiêu đề:</label>
+                <input type="text" id="editNewsTitle" name="title" class="form-control" required />
+            </div>
+            <div class="form-group">
+                <label for="editNewsContent">Nội dung:</label>
+                <textarea id="editNewsContent" name="content" class="form-control" rows="6" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="editNewsBackground">Hình ảnh nền:</label>
+                <input type="file" id="editNewsBackground" name="backgroundImage" class="form-control" accept="image/*" />
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary close-modal">
+                    <i class="fas fa-times btn-icon"></i>Hủy
+                </button>
+                <button type="submit" class="btn btn-success">
+                    <i class="fas fa-save btn-icon"></i>Lưu thay đổi
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const modal = document.getElementById("editNewsModal");
+        const closeButtons = document.querySelectorAll("#editNewsModal .close, #editNewsModal .close-modal");
+        const toggleFormButton = document.getElementById("toggleAddNewsForm");
+        const addNewsForm = document.getElementById("addNewsFormContainer");
+
+        // Toggle add news form
+        toggleFormButton.addEventListener('click', function() {
+            if (addNewsForm.style.display === "none") {
+                addNewsForm.style.display = "block";
+                toggleFormButton.innerHTML = 'Ẩn biểu mẫu';
+            } else {
+                addNewsForm.style.display = "none";
+                toggleFormButton.innerHTML = 'Thêm tin tức mới';
+            }
+        });
+
+        // Close modal when clicking close buttons
+        closeButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                modal.style.display = "none";
+            });
+        });
+
+        // Close modal when clicking outside
+        window.addEventListener('click', function(event) {
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        });
+
+        // Handle add news form submission
+        document.getElementById('addNewsForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const formData = new FormData(this);
+
+            fetch('@Url.Action("AddNews", "Admin")', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    showNotification('Thêm tin tức mới thành công!', 'success');
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 1500);
+                } else {
+                    showNotification('Có lỗi xảy ra: ' + data.message, 'error');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                showNotification('Có lỗi xảy ra khi gửi yêu cầu', 'error');
+            });
+        });
+
+        // Handle edit news form submission
+        document.getElementById('editNewsForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const formData = new FormData(this);
+
+            fetch('@Url.Action("EditNews", "Admin")', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    showNotification('Cập nhật tin tức thành công!', 'success');
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 1500);
+                } else {
+                    showNotification('Có lỗi xảy ra: ' + data.message, 'error');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                showNotification('Có lỗi xảy ra khi gửi yêu cầu', 'error');
+            });
+        });
+    });
+
+    function showEditNewsModal(button) {
+        const modal = document.getElementById("editNewsModal");
+
+        // Lấy dữ liệu từ data-* attributes
+        const id = button.getAttribute("data-id");
+        const title = button.getAttribute("data-title");
+        const content = JSON.parse(button.getAttribute("data-content"));
+        const background = button.getAttribute("data-backg round");
+
+        // Gán dữ liệu vào modal
+        document.getElementById("editNewsId").value = id;
+        document.getElementById("editNewsTitle").value = title;
+        document.getElementById("editNewsContent").value = content;
+
+        // Hiển thị modal (Tùy vào cách bạn sử dụng)
+        if (modal) {
+            modal.style.display = "block"; // Nếu modal không dùng Bootstrap
+        } else {
+            $('#editNewsModal').modal('show'); // Nếu dùng Bootstrap Modal
+        }
+    }
+
+
+    function deleteNews(id) {
+        if (confirm('Bạn có chắc chắn muốn xóa tin tức này?')) {
+            fetch('@Url.Action("DeleteNews", "Admin")', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ id: id })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    showNotification('Xóa tin tức thành công!', 'success');
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 1500);
+                } else {
+                    showNotification('Có lỗi xảy ra: ' + data.message, 'error');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                showNotification('Có lỗi xảy ra khi gửi yêu cầu', 'error');
+            });
+        }
+    }
+</script>
+

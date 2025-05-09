@@ -4,6 +4,10 @@
     <EntitySetMapping Name="Accounts">
       <EntityTypeMapping TypeName="TDMUOJModel.Account">
         <MappingFragment StoreEntitySet="Account">
+          <ScalarProperty Name="lockoutEnd" ColumnName="lockoutEnd" />
+          <ScalarProperty Name="isLocked" ColumnName="isLocked" />
+          <ScalarProperty Name="failedLoginAttempts" ColumnName="failedLoginAttempts" />
+          <ScalarProperty Name="isEmailVerified" ColumnName="isEmailVerified" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="username" ColumnName="username" />
           <ScalarProperty Name="password" ColumnName="password" />
@@ -205,6 +209,28 @@
           <ScalarProperty Name="userId" ColumnName="userId" />
           <ScalarProperty Name="content" ColumnName="content" />
           <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmailVerifications">
+      <EntityTypeMapping TypeName="TDMUOJModel.EmailVerification">
+        <MappingFragment StoreEntitySet="EmailVerification">
+          <ScalarProperty Name="IsVerified" ColumnName="IsVerified" />
+          <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
+          <ScalarProperty Name="Token" ColumnName="Token" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OTPVerifications">
+      <EntityTypeMapping TypeName="TDMUOJModel.OTPVerification">
+        <MappingFragment StoreEntitySet="OTPVerification">
+          <ScalarProperty Name="IsUsed" ColumnName="IsUsed" />
+          <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
+          <ScalarProperty Name="OTPCode" ColumnName="OTPCode" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

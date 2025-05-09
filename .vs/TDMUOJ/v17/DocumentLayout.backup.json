@@ -1,0 +1,547 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\tdmuoj\\app_start\\corsconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|solutionrelative:tdmuoj\\app_start\\corsconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|d:\\hoc it cntt05\\na\\tdmuoj\\tdmuoj\\app_start\\filterconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|solutionrelative:tdmuoj\\app_start\\filterconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\tdmuoj\\filters\\requirehttpsattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|solutionrelative:tdmuoj\\filters\\requirehttpsattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|d:\\hoc it cntt05\\na\\tdmuoj\\tdmuoj\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|solutionrelative:tdmuoj\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\tdmuoj\\global.asax.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|solutionrelative:tdmuoj\\global.asax.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|d:\\hoc it cntt05\\na\\tdmuoj\\tdmuoj\\app_start\\routeconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|solutionrelative:tdmuoj\\app_start\\routeconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\tdmuoj\\views\\register\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|solutionrelative:tdmuoj\\views\\register\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\tdmuoj\\utilities\\validationutility.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|solutionrelative:tdmuoj\\utilities\\validationutility.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\tdmuoj\\controllers\\registercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|solutionrelative:tdmuoj\\controllers\\registercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\tdmuoj\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|solutionrelative:tdmuoj\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\tdmuoj\\views\\login\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|solutionrelative:tdmuoj\\views\\login\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|d:\\hoc it cntt05\\na\\tdmuoj\\tdmuoj\\controllers\\forgotpasswordcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|solutionrelative:tdmuoj\\controllers\\forgotpasswordcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\tdmuoj\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|solutionrelative:tdmuoj\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\tdmuoj\\models\\account.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|solutionrelative:tdmuoj\\models\\account.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\tdmuoj\\views\\register\\registrationsuccess.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|solutionrelative:tdmuoj\\views\\register\\registrationsuccess.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\tdmuoj\\views\\register\\verificationsuccess.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|solutionrelative:tdmuoj\\views\\register\\verificationsuccess.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\tdmuoj\\views\\register\\verificationfailed.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|solutionrelative:tdmuoj\\views\\register\\verificationfailed.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\tdmuoj\\views\\register\\resendverification.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|solutionrelative:tdmuoj\\views\\register\\resendverification.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\tdmuoj\\views\\forgotpassword\\verifyotp.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|solutionrelative:tdmuoj\\views\\forgotpassword\\verifyotp.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\tdmuoj\\views\\forgotpassword\\resetsuccess.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|solutionrelative:tdmuoj\\views\\forgotpassword\\resetsuccess.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\tdmuoj\\views\\forgotpassword\\resetpassword.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|solutionrelative:tdmuoj\\views\\forgotpassword\\resetpassword.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\tdmuoj\\views\\forgotpassword\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|solutionrelative:tdmuoj\\views\\forgotpassword\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\tdmuoj\\views\\admin\\problemsforcontestmanagement.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|solutionrelative:tdmuoj\\views\\admin\\problemsforcontestmanagement.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\tdmuoj\\filters\\authorizerolesattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|solutionrelative:tdmuoj\\filters\\authorizerolesattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\tdmuoj\\models\\model1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|solutionrelative:tdmuoj\\models\\model1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\tdmuoj\\models\\model1.context.tt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|solutionrelative:tdmuoj\\models\\model1.context.tt||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\tdmuoj\\models\\emailverification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|solutionrelative:tdmuoj\\models\\emailverification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\tdmuoj\\packages.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|solutionrelative:tdmuoj\\packages.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\tdmuoj\\controllers\\submitcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|solutionrelative:tdmuoj\\controllers\\submitcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\tdmuoj\\views\\submit\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|solutionrelative:tdmuoj\\views\\submit\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\tdmuoj\\controllers\\submissionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AFF2D824-9EAD-485F-B13F-2675C6BC1D12}|TDMUOJ\\TDMUOJ.csproj|solutionrelative:tdmuoj\\controllers\\submissionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Web.config",
+              "DocumentMoniker": "D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\TDMUOJ\\Web.config",
+              "RelativeDocumentMoniker": "TDMUOJ\\Web.config",
+              "ToolTip": "D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\TDMUOJ\\Web.config",
+              "RelativeToolTip": "TDMUOJ\\Web.config",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAACwAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2025-05-08T16:29:28.216Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "RequireHttpsAttribute.cs",
+              "DocumentMoniker": "D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\TDMUOJ\\Filters\\RequireHttpsAttribute.cs",
+              "RelativeDocumentMoniker": "TDMUOJ\\Filters\\RequireHttpsAttribute.cs",
+              "ToolTip": "D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\TDMUOJ\\Filters\\RequireHttpsAttribute.cs",
+              "RelativeToolTip": "TDMUOJ\\Filters\\RequireHttpsAttribute.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-08T08:36:26.796Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "FilterConfig.cs",
+              "DocumentMoniker": "D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\TDMUOJ\\App_Start\\FilterConfig.cs",
+              "RelativeDocumentMoniker": "TDMUOJ\\App_Start\\FilterConfig.cs",
+              "ToolTip": "D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\TDMUOJ\\App_Start\\FilterConfig.cs",
+              "RelativeToolTip": "TDMUOJ\\App_Start\\FilterConfig.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-08T14:13:30.157Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CorsConfig.cs",
+              "DocumentMoniker": "D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\TDMUOJ\\App_Start\\CorsConfig.cs",
+              "RelativeDocumentMoniker": "TDMUOJ\\App_Start\\CorsConfig.cs",
+              "ToolTip": "D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\TDMUOJ\\App_Start\\CorsConfig.cs",
+              "RelativeToolTip": "TDMUOJ\\App_Start\\CorsConfig.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwBQAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-08T08:31:43.592Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "RouteConfig.cs",
+              "DocumentMoniker": "D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\TDMUOJ\\App_Start\\RouteConfig.cs",
+              "RelativeDocumentMoniker": "TDMUOJ\\App_Start\\RouteConfig.cs",
+              "ToolTip": "D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\TDMUOJ\\App_Start\\RouteConfig.cs",
+              "RelativeToolTip": "TDMUOJ\\App_Start\\RouteConfig.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAsAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-08T15:56:09.642Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\TDMUOJ\\Views\\Login\\Index.cshtml",
+              "RelativeDocumentMoniker": "TDMUOJ\\Views\\Login\\Index.cshtml",
+              "ToolTip": "D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\TDMUOJ\\Views\\Login\\Index.cshtml",
+              "RelativeToolTip": "TDMUOJ\\Views\\Login\\Index.cshtml",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAACQAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-08T09:09:41.387Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Global.asax.cs",
+              "DocumentMoniker": "D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\TDMUOJ\\Global.asax.cs",
+              "RelativeDocumentMoniker": "TDMUOJ\\Global.asax.cs",
+              "ToolTip": "D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\TDMUOJ\\Global.asax.cs",
+              "RelativeToolTip": "TDMUOJ\\Global.asax.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-03T06:03:13.352Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ValidationUtility.cs",
+              "DocumentMoniker": "D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\TDMUOJ\\Utilities\\ValidationUtility.cs",
+              "RelativeDocumentMoniker": "TDMUOJ\\Utilities\\ValidationUtility.cs",
+              "ToolTip": "D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\TDMUOJ\\Utilities\\ValidationUtility.cs",
+              "RelativeToolTip": "TDMUOJ\\Utilities\\ValidationUtility.cs",
+              "ViewState": "AgIAADoAAAAAAAAAAADwv04AAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-08T08:51:47.838Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "RegisterController.cs",
+              "DocumentMoniker": "D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\TDMUOJ\\Controllers\\RegisterController.cs",
+              "RelativeDocumentMoniker": "TDMUOJ\\Controllers\\RegisterController.cs",
+              "ToolTip": "D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\TDMUOJ\\Controllers\\RegisterController.cs",
+              "RelativeToolTip": "TDMUOJ\\Controllers\\RegisterController.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAAA3wC4AAAA+AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-08T08:19:22.103Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\TDMUOJ\\Views\\Register\\Index.cshtml",
+              "RelativeDocumentMoniker": "TDMUOJ\\Views\\Register\\Index.cshtml",
+              "ToolTip": "D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\TDMUOJ\\Views\\Register\\Index.cshtml",
+              "RelativeToolTip": "TDMUOJ\\Views\\Register\\Index.cshtml",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAACUAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-08T09:09:57.929Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "LoginController.cs",
+              "DocumentMoniker": "D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\TDMUOJ\\Controllers\\LoginController.cs",
+              "RelativeDocumentMoniker": "TDMUOJ\\Controllers\\LoginController.cs",
+              "ToolTip": "D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\TDMUOJ\\Controllers\\LoginController.cs",
+              "RelativeToolTip": "TDMUOJ\\Controllers\\LoginController.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAA2wBUAAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-08T08:37:10.997Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "ForgotPasswordController.cs",
+              "DocumentMoniker": "D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\TDMUOJ\\Controllers\\ForgotPasswordController.cs",
+              "RelativeDocumentMoniker": "TDMUOJ\\Controllers\\ForgotPasswordController.cs",
+              "ToolTip": "D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\TDMUOJ\\Controllers\\ForgotPasswordController.cs",
+              "RelativeToolTip": "TDMUOJ\\Controllers\\ForgotPasswordController.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAACYAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-08T08:46:58.882Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "AdminController.cs",
+              "DocumentMoniker": "D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\TDMUOJ\\Controllers\\AdminController.cs",
+              "RelativeDocumentMoniker": "TDMUOJ\\Controllers\\AdminController.cs",
+              "ToolTip": "D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\TDMUOJ\\Controllers\\AdminController.cs",
+              "RelativeToolTip": "TDMUOJ\\Controllers\\AdminController.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAowDEAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-08T08:35:11.178Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Account.cs",
+              "DocumentMoniker": "D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\TDMUOJ\\Models\\Account.cs",
+              "RelativeDocumentMoniker": "TDMUOJ\\Models\\Account.cs",
+              "ToolTip": "D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\TDMUOJ\\Models\\Account.cs",
+              "RelativeToolTip": "TDMUOJ\\Models\\Account.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-08T08:28:37.707Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "ResendVerification.cshtml",
+              "DocumentMoniker": "D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\TDMUOJ\\Views\\Register\\ResendVerification.cshtml",
+              "RelativeDocumentMoniker": "TDMUOJ\\Views\\Register\\ResendVerification.cshtml",
+              "ToolTip": "D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\TDMUOJ\\Views\\Register\\ResendVerification.cshtml",
+              "RelativeToolTip": "TDMUOJ\\Views\\Register\\ResendVerification.cshtml",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAmwCsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-08T09:10:31.223Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "RegistrationSuccess.cshtml",
+              "DocumentMoniker": "D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\TDMUOJ\\Views\\Register\\RegistrationSuccess.cshtml",
+              "RelativeDocumentMoniker": "TDMUOJ\\Views\\Register\\RegistrationSuccess.cshtml",
+              "ToolTip": "D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\TDMUOJ\\Views\\Register\\RegistrationSuccess.cshtml",
+              "RelativeToolTip": "TDMUOJ\\Views\\Register\\RegistrationSuccess.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-08T09:10:18.255Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "VerificationFailed.cshtml",
+              "DocumentMoniker": "D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\TDMUOJ\\Views\\Register\\VerificationFailed.cshtml",
+              "RelativeDocumentMoniker": "TDMUOJ\\Views\\Register\\VerificationFailed.cshtml",
+              "ToolTip": "D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\TDMUOJ\\Views\\Register\\VerificationFailed.cshtml",
+              "RelativeToolTip": "TDMUOJ\\Views\\Register\\VerificationFailed.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-08T09:10:45.929Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "VerificationSuccess.cshtml",
+              "DocumentMoniker": "D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\TDMUOJ\\Views\\Register\\VerificationSuccess.cshtml",
+              "RelativeDocumentMoniker": "TDMUOJ\\Views\\Register\\VerificationSuccess.cshtml",
+              "ToolTip": "D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\TDMUOJ\\Views\\Register\\VerificationSuccess.cshtml",
+              "RelativeToolTip": "TDMUOJ\\Views\\Register\\VerificationSuccess.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-08T09:11:03.28Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "VerifyOTP.cshtml",
+              "DocumentMoniker": "D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\TDMUOJ\\Views\\ForgotPassword\\VerifyOTP.cshtml",
+              "RelativeDocumentMoniker": "TDMUOJ\\Views\\ForgotPassword\\VerifyOTP.cshtml",
+              "ToolTip": "D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\TDMUOJ\\Views\\ForgotPassword\\VerifyOTP.cshtml",
+              "RelativeToolTip": "TDMUOJ\\Views\\ForgotPassword\\VerifyOTP.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-08T09:09:21.552Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "ResetSuccess.cshtml",
+              "DocumentMoniker": "D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\TDMUOJ\\Views\\ForgotPassword\\ResetSuccess.cshtml",
+              "RelativeDocumentMoniker": "TDMUOJ\\Views\\ForgotPassword\\ResetSuccess.cshtml",
+              "ToolTip": "D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\TDMUOJ\\Views\\ForgotPassword\\ResetSuccess.cshtml",
+              "RelativeToolTip": "TDMUOJ\\Views\\ForgotPassword\\ResetSuccess.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-08T09:09:07.276Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "ResetPassword.cshtml",
+              "DocumentMoniker": "D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\TDMUOJ\\Views\\ForgotPassword\\ResetPassword.cshtml",
+              "RelativeDocumentMoniker": "TDMUOJ\\Views\\ForgotPassword\\ResetPassword.cshtml",
+              "ToolTip": "D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\TDMUOJ\\Views\\ForgotPassword\\ResetPassword.cshtml",
+              "RelativeToolTip": "TDMUOJ\\Views\\ForgotPassword\\ResetPassword.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAC8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-08T09:08:52.735Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\TDMUOJ\\Views\\ForgotPassword\\Index.cshtml",
+              "RelativeDocumentMoniker": "TDMUOJ\\Views\\ForgotPassword\\Index.cshtml",
+              "ToolTip": "D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\TDMUOJ\\Views\\ForgotPassword\\Index.cshtml",
+              "RelativeToolTip": "TDMUOJ\\Views\\ForgotPassword\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-08T09:00:30.101Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "ProblemsForContestManagement.cshtml",
+              "DocumentMoniker": "D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\TDMUOJ\\Views\\Admin\\ProblemsForContestManagement.cshtml",
+              "RelativeDocumentMoniker": "TDMUOJ\\Views\\Admin\\ProblemsForContestManagement.cshtml",
+              "ToolTip": "D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\TDMUOJ\\Views\\Admin\\ProblemsForContestManagement.cshtml",
+              "RelativeToolTip": "TDMUOJ\\Views\\Admin\\ProblemsForContestManagement.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAABEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-08T08:52:28.072Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "AuthorizeRolesAttribute.cs",
+              "DocumentMoniker": "D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\TDMUOJ\\Filters\\AuthorizeRolesAttribute.cs",
+              "RelativeDocumentMoniker": "TDMUOJ\\Filters\\AuthorizeRolesAttribute.cs",
+              "ToolTip": "D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\TDMUOJ\\Filters\\AuthorizeRolesAttribute.cs",
+              "RelativeToolTip": "TDMUOJ\\Filters\\AuthorizeRolesAttribute.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-08T08:35:59.351Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "Model1.cs",
+              "DocumentMoniker": "D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\TDMUOJ\\Models\\Model1.cs",
+              "RelativeDocumentMoniker": "TDMUOJ\\Models\\Model1.cs",
+              "ToolTip": "D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\TDMUOJ\\Models\\Model1.cs",
+              "RelativeToolTip": "TDMUOJ\\Models\\Model1.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-08T08:31:09.808Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "Model1.Context.tt",
+              "DocumentMoniker": "D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\TDMUOJ\\Models\\Model1.Context.tt",
+              "RelativeDocumentMoniker": "TDMUOJ\\Models\\Model1.Context.tt",
+              "ToolTip": "D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\TDMUOJ\\Models\\Model1.Context.tt",
+              "RelativeToolTip": "TDMUOJ\\Models\\Model1.Context.tt",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2025-05-08T08:30:42.798Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "EmailVerification.cs",
+              "DocumentMoniker": "D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\TDMUOJ\\Models\\EmailVerification.cs",
+              "RelativeDocumentMoniker": "TDMUOJ\\Models\\EmailVerification.cs",
+              "ToolTip": "D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\TDMUOJ\\Models\\EmailVerification.cs",
+              "RelativeToolTip": "TDMUOJ\\Models\\EmailVerification.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-08T08:29:53.038Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "packages.config",
+              "DocumentMoniker": "D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\TDMUOJ\\packages.config",
+              "RelativeDocumentMoniker": "TDMUOJ\\packages.config",
+              "ToolTip": "D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\TDMUOJ\\packages.config",
+              "RelativeToolTip": "TDMUOJ\\packages.config",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2025-05-03T07:27:30.457Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "SubmitController.cs",
+              "DocumentMoniker": "D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\TDMUOJ\\Controllers\\SubmitController.cs",
+              "RelativeDocumentMoniker": "TDMUOJ\\Controllers\\SubmitController.cs",
+              "ToolTip": "D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\TDMUOJ\\Controllers\\SubmitController.cs",
+              "RelativeToolTip": "TDMUOJ\\Controllers\\SubmitController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-03T05:32:32.723Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "SubmissionsController.cs",
+              "DocumentMoniker": "D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\TDMUOJ\\Controllers\\SubmissionsController.cs",
+              "RelativeDocumentMoniker": "TDMUOJ\\Controllers\\SubmissionsController.cs",
+              "ToolTip": "D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\TDMUOJ\\Controllers\\SubmissionsController.cs",
+              "RelativeToolTip": "TDMUOJ\\Controllers\\SubmissionsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-03T05:32:30.873Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\TDMUOJ\\Views\\Submit\\Index.cshtml",
+              "RelativeDocumentMoniker": "TDMUOJ\\Views\\Submit\\Index.cshtml",
+              "ToolTip": "D:\\Hoc IT CNTT05\\Na\\TDMUOJ\\TDMUOJ\\Views\\Submit\\Index.cshtml",
+              "RelativeToolTip": "TDMUOJ\\Views\\Submit\\Index.cshtml",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAAACgAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-03T05:32:01.903Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

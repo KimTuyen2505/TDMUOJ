@@ -48,6 +48,8 @@
         <AssociationConnector Association="TDMUOJModel.FK_Comment_Account" />
         <AssociationConnector Association="TDMUOJModel.FK_Comment_Contest" />
         <AssociationConnector Association="TDMUOJModel.FK__ContestPr__probl__6477ECF3" />
+        <EntityTypeShape EntityType="TDMUOJModel.EmailVerification" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="TDMUOJModel.OTPVerification" Width="1.5" PointX="2.75" PointY="3.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -1,0 +1,45 @@
+﻿@{
+    ViewBag.Title = "Quên mật khẩu";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewBag.Title - TDMUOJ</title>
+    <link rel="stylesheet" href="~/Content/css/Login.css" />
+</head>
+<body>
+    <section>
+        <div class="color"></div>
+        <div class="color"></div>
+        <div class="color"></div>
+        <div class="boxx">
+            <div class="square" style="--i: 0"></div>
+            <div class="square" style="--i: 1"></div>
+            <div class="square" style="--i: 2"></div>
+            <div class="square" style="--i: 3"></div>
+            <div class="square" style="--i: 4"></div>
+            <div class="ctn">
+                <div class="fromm">
+                    <h2>Quên mật khẩu</h2>
+                    <div style="color: red;">@ViewBag.Error</div>
+                    <form action="@Url.Action("Index", "ForgotPassword")" method="post">
+                        <div class="inputboxx">
+                            <input type="email" name="email" placeholder="Nhập địa chỉ email của bạn" required />
+                        </div>
+                        <div class="inputboxx">
+                            <input type="submit" value="Gửi mã OTP" />
+                        </div>
+                        <p class="forget">
+                            <a href="@Url.Action("Index", "Login")">Quay lại đăng nhập</a>
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

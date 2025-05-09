@@ -39,6 +39,10 @@ namespace TDMUOJ.Models
         public Nullable<int> rating { get; set; }
         public Nullable<int> maxRating { get; set; }
         public Nullable<int> numberOfAccepted { get; set; }
+        public Nullable<bool> isEmailVerified { get; set; }
+        public Nullable<int> failedLoginAttempts { get; set; }
+        public Nullable<bool> isLocked { get; set; }
+        public Nullable<System.DateTime> lockoutEnd { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ContestOrganizer> ContestOrganizers { get; set; }

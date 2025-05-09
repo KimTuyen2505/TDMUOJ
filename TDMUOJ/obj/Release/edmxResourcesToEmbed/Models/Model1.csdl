@@ -24,6 +24,10 @@
     <NavigationProperty Name="Submissions" Relationship="Self.FK__Submissio__userI__76969D2E" FromRole="Account" ToRole="Submission" />
     <NavigationProperty Name="Rankings" Relationship="TDMUOJModel.FK__RankingCo__userI__6EF57B661" FromRole="Account" ToRole="Ranking" />
     <NavigationProperty Name="Comments" Relationship="TDMUOJModel.FK_Comment_Account" FromRole="Account" ToRole="Comment" />
+    <Property Name="isEmailVerified" Type="Boolean" />
+    <Property Name="failedLoginAttempts" Type="Int32" />
+    <Property Name="isLocked" Type="Boolean" />
+    <Property Name="lockoutEnd" Type="DateTime" Precision="3" />
   </EntityType>
   <EntityType Name="Contest">
     <Key>
@@ -531,6 +535,8 @@
       <End Role="Contest" EntitySet="Contests" />
       <End Role="Comment" EntitySet="Comments" />
     </AssociationSet>
+    <EntitySet Name="EmailVerifications" EntityType="TDMUOJModel.EmailVerification" />
+    <EntitySet Name="OTPVerifications" EntityType="TDMUOJModel.OTPVerification" />
   </EntityContainer>
   <EntityType Name="Ranking">
     <Key>
@@ -641,4 +647,24 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="EmailVerification">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Token" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="ExpiryDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="IsVerified" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="OTPVerification">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="OTPCode" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="ExpiryDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="IsUsed" Type="Boolean" />
+  </EntityType>
 </Schema>
